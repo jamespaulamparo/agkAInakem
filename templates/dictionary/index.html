@@ -1,44 +1,112 @@
 {% extends 'base.html' %}
 
-{% block title %}Mental Health Dictionary — Words For It{% endblock %}
+{% block title %}Mental Health Dictionary | agkAInakem{% endblock %}
 
 {% block content %}
 <div class="container" style="padding-top: var(--space-8);">
-  <div class="mb-8">
-    <div class="badge badge-everyday mb-2">Pillar A &middot; Specialized Vocabulary</div>
-    <h1>Specialized Mental Health Dictionary</h1>
-    <p class="lead" style="max-width: 700px;">
-      A curated vocabulary knowledge base explaining emotional experiences, psychological concepts, and coping terminology with clear distinctions.
+
+  <!-- Header -->
+  <div class="mb-8 reveal">
+    <span class="hero-btn-tag" style="color: var(--color-primary);" data-en="Milestone 2 &middot; Specialized Vocabulary" data-fil="Milestone 2 &middot; Masusing Diksiyonaryo">
+      Milestone 2 &middot; Specialized Vocabulary
+    </span>
+    <h1 data-en="Specialized Mental Health Dictionary" data-fil="Diksiyonaryo ng Kalusugang Pangkaisipan">
+      Specialized Mental Health Dictionary
+    </h1>
+    <p class="lead" style="max-width: 720px;" 
+       data-en="A curated vocabulary knowledge base explaining emotional states, psychological concepts, and coping terminology with clear distinctions."
+       data-fil="Isang maingat na inihandang kaalaman na nagpapaliwanag ng mga damdamin, konseptong sikolohikal, at mga paraan ng pagharap nang may malinaw na pagkakaiba.">
+      A curated vocabulary knowledge base explaining emotional states, psychological concepts, and coping terminology with clear distinctions.
     </p>
   </div>
 
-  <!-- Search & Category Filters Preview -->
-  <div style="background-color: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: var(--space-6); margin-bottom: var(--space-8); box-shadow: var(--shadow-card);">
-    <div style="display: flex; gap: var(--space-3); margin-bottom: var(--space-4);">
-      <input type="text" placeholder="Search curated terms (e.g. Burnout, Overwhelm, Rumination)..." class="discovery-input" style="border: 1px solid var(--color-border); border-radius: var(--radius-pill); padding: 0.75rem 1.25rem; width: 100%; background: var(--color-surface-soft);">
-      <button class="btn btn-primary">Search</button>
-    </div>
-    
-    <div style="display: flex; flex-wrap: wrap; gap: var(--space-2); align-items: center;">
-      <span style="font-size: var(--font-size-xs); font-weight: 700; color: var(--color-text-muted); text-transform: uppercase;">Categories:</span>
-      <span class="prompt-chip" style="background-color: var(--color-primary-light); color: var(--color-primary-hover); font-weight: 600;">All Categories</span>
-      <span class="prompt-chip">Emotional Exhaustion</span>
-      <span class="prompt-chip">Stress & Anxiety</span>
-      <span class="prompt-chip">Emotional Experiences</span>
-      <span class="prompt-chip">Motivation & Engagement</span>
-      <span class="prompt-chip">Self-Perception</span>
-      <span class="prompt-chip">Interpersonal Experiences</span>
-      <span class="prompt-chip">Coping & Regulation</span>
-      <span class="prompt-chip">Help-Seeking</span>
+  <!-- Search & Filter Controls -->
+  <div class="mb-8 reveal delay-1" style="background-color: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: var(--space-6); box-shadow: var(--shadow-card);">
+    <form action="{% url 'dictionary:index' %}" method="get" style="display: flex; gap: var(--space-3); margin-bottom: var(--space-5);">
+      <input 
+        type="text" 
+        name="q" 
+        value="{{ query }}" 
+        placeholder="Search terms, concepts, or descriptions (e.g. Burnout, Rumination, Grounding)..." 
+        data-en="Search terms, concepts, or descriptions (e.g. Burnout, Rumination, Grounding)..."
+        data-fil="Maghanap ng salita o paliwanag (hal. Burnout, Rumination, Grounding)..."
+        class="discovery-input" 
+        style="border: 1px solid var(--color-border); border-radius: var(--radius-pill); padding: 0.75rem 1.25rem; width: 100%; background: var(--color-surface-soft);"
+      >
+      {% if selected_cat_slug %}<input type="hidden" name="category" value="{{ selected_cat_slug }}">{% endif %}
+      <button type="submit" class="btn btn-primary" data-en="Search" data-fil="Hanapin">Search</button>
+      {% if query or selected_cat_slug %}
+        <a href="{% url 'dictionary:index' %}" class="btn btn-outline" data-en="Clear" data-fil="I-reset">Clear</a>
+      {% endif %}
+    </form>
+
+    <!-- Category Filters -->
+    <div class="dict-filter-bar">
+      <span style="font-size: var(--font-size-xs); font-weight: 800; text-transform: uppercase; color: var(--color-text-subtle); margin-right: var(--space-2);"
+            data-en="Categories:" data-fil="Kategorya:">
+        Categories:
+      </span>
+      <a href="{% url 'dictionary:index' %}{% if query %}?q={{ query }}{% endif %}" 
+         class="dict-filter-pill {% if not selected_cat_slug %}is-active{% endif %}"
+         data-en="All Categories ({{ total_count }})"
+         data-fil="Lahat ({{ total_count }})">
+        All Categories ({{ total_count }})
+      </a>
+      {% for cat in categories %}
+        <a href="{% url 'dictionary:index' %}?category={{ cat.slug }}{% if query %}&q={{ query }}{% endif %}" 
+           class="dict-filter-pill {% if selected_cat_slug == cat.slug %}is-active{% endif %}">
+          <span class="lang-block-en">{{ cat.name }}</span>
+          <span class="lang-block-fil" style="display: none;">{{ cat.name_fil|default:cat.name }}</span>
+        </a>
+      {% endfor %}
     </div>
   </div>
 
-  <!-- Notice of Milestone 2 -->
-  <div style="background-color: var(--color-surface); border: 1px dashed var(--color-primary); border-radius: var(--radius-md); padding: var(--space-6); text-align: center; color: var(--color-text-muted);">
-    <h3 style="color: var(--color-primary); font-size: var(--font-size-lg); margin-bottom: var(--space-2);">Dictionary Database Models Ready for Milestone 2</h3>
-    <p style="margin-bottom: 0;">
-      The underlying database models (Category, Term, TermDefinition, TermRelationship, TermExample, SourceReference, ReflectionQuestion) and initial curated vocabulary dataset will be seeded in Milestone 2.
-    </p>
-  </div>
+  <!-- Term Grid -->
+  {% if terms %}
+    <div class="term-grid reveal delay-2">
+      {% for item in terms %}
+        <a href="{% url 'dictionary:detail' slug=item.slug %}" class="term-card">
+          <div class="term-card-header">
+            <div>
+              <h2 class="term-title" style="font-size: var(--font-size-xl);">{{ item.term }}</h2>
+              {% if item.term_fil %}
+                <span class="term-fil-tag">{{ item.term_fil }}</span>
+              {% endif %}
+            </div>
+            {% if item.term_type == 'clinical' %}
+              <span class="badge badge-clinical" data-en="Clinical" data-fil="Klinikal">Clinical</span>
+            {% elif item.term_type == 'psychological' %}
+              <span class="badge badge-psychological" data-en="Psychological" data-fil="Sikolohikal">Psychological</span>
+            {% else %}
+              <span class="badge badge-everyday" data-en="Everyday" data-fil="Pang-araw-araw">Everyday</span>
+            {% endif %}
+          </div>
+
+          <p class="term-short-def">
+            <span class="lang-block-en">{{ item.short_definition }}</span>
+            <span class="lang-block-fil" style="display: none;">{{ item.short_definition_fil|default:item.short_definition }}</span>
+          </p>
+
+          <div class="term-card-footer">
+            <span style="font-size: 0.72rem; color: var(--color-text-subtle);">
+              <span class="lang-block-en">{{ item.category.name }}</span>
+              <span class="lang-block-fil" style="display: none;">{{ item.category.name_fil|default:item.category.name }}</span>
+            </span>
+            <span data-en="View distinctions &rarr;" data-fil="Tingnan ang detalye &rarr;">View distinctions &rarr;</span>
+          </div>
+        </a>
+      {% endfor %}
+    </div>
+  {% else %}
+    <div style="background-color: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: var(--space-12); text-align: center;">
+      <h3 data-en="No vocabulary entries found" data-fil="Walang nahanap na salita">No vocabulary entries found</h3>
+      <p style="color: var(--color-text-muted);" data-en="Try searching for a different word or clearing your filter." data-fil="Subukang maghanap ng ibang salita o i-reset ang filter.">
+        Try searching for a different word or clearing your filter.
+      </p>
+      <a href="{% url 'dictionary:index' %}" class="btn btn-outline" data-en="Reset Filter" data-fil="I-reset ang Filter">Reset Filter</a>
+    </div>
+  {% endif %}
+
 </div>
 {% endblock %}

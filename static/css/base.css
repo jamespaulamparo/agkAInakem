@@ -1,6 +1,5 @@
 /**
- * agkAInakem — Base & Reset Styles
- * Minimalist, expansive layout with generous breathing room.
+ * agkAInakem — Base Layout & Creative Portfolio Background
  */
 
 *, *::before, *::after {
@@ -21,14 +20,66 @@ body {
   line-height: var(--line-height-normal);
   color: var(--color-text);
   background-color: var(--color-background);
-  background-image: var(--gradient-ambient);
-  background-attachment: fixed;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+  position: relative;
+}
+
+/* Ambient Moving Graphic Orbs (Creative Portfolio Atmosphere) */
+.ambient-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.ambient-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.45;
+  will-change: transform;
+}
+
+.ambient-orb-teal {
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(79, 168, 160, 0.35) 0%, rgba(79, 168, 160, 0) 70%);
+  top: -100px;
+  left: -80px;
+  animation: floatOrb 22s ease-in-out infinite alternate;
+}
+
+.ambient-orb-sky {
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(142, 197, 232, 0.38) 0%, rgba(142, 197, 232, 0) 70%);
+  top: 15%;
+  right: -140px;
+  animation: floatOrb 26s ease-in-out infinite alternate-reverse;
+}
+
+.ambient-orb-sage {
+  width: 550px;
+  height: 550px;
+  background: radial-gradient(circle, rgba(169, 200, 165, 0.32) 0%, rgba(169, 200, 165, 0) 70%);
+  bottom: -100px;
+  left: 20%;
+  animation: floatOrb 28s ease-in-out infinite alternate;
+}
+
+@keyframes floatOrb {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(40px, 35px) scale(1.08); }
+  100% { transform: translate(-30px, 20px) scale(0.96); }
 }
 
 /* Accessibility Focus States */
@@ -45,7 +96,7 @@ body {
   background: var(--color-primary);
   color: var(--color-text-on-primary);
   padding: var(--space-3) var(--space-5);
-  font-weight: 600;
+  font-weight: 700;
   border-radius: var(--radius-sm);
   z-index: 10000;
   text-decoration: none;
@@ -68,44 +119,40 @@ body {
   border: 0;
 }
 
-/* Typography Hierarchy */
+/* Typography Scale */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-family);
-  font-weight: 700;
+  font-weight: 800;
   line-height: var(--line-height-tight);
   color: var(--color-text);
-  letter-spacing: -0.025em;
+  letter-spacing: -0.03em;
 }
 
 h1 {
   font-size: var(--font-size-3xl);
-  margin-bottom: var(--space-5);
-}
-
-@media (min-width: 768px) {
-  h1 {
-    font-size: var(--font-size-hero);
-  }
-}
-
-h2 {
-  font-size: var(--font-size-2xl);
   margin-bottom: var(--space-4);
 }
 
 @media (min-width: 768px) {
-  h2 {
-    font-size: var(--font-size-3xl);
-  }
+  h1 { font-size: var(--font-size-hero); }
+}
+
+h2 {
+  font-size: var(--font-size-2xl);
+  margin-bottom: var(--space-3);
+}
+
+@media (min-width: 768px) {
+  h2 { font-size: var(--font-size-3xl); }
 }
 
 h3 {
   font-size: var(--font-size-xl);
-  margin-bottom: var(--space-3);
+  margin-bottom: var(--space-2);
 }
 
 p {
-  margin-bottom: var(--space-5);
+  margin-bottom: var(--space-4);
   color: var(--color-text);
 }
 
@@ -126,7 +173,7 @@ a:hover {
   color: var(--color-primary-hover);
 }
 
-/* Structural Layout with Generous White Space */
+/* Containers */
 .site-wrapper {
   display: flex;
   flex-direction: column;
@@ -135,7 +182,7 @@ a:hover {
 
 .site-main {
   flex: 1 0 auto;
-  padding-bottom: var(--space-20);
+  padding-bottom: var(--space-24);
 }
 
 .container {
@@ -155,11 +202,11 @@ a:hover {
   max-width: var(--max-width-wide);
 }
 
-/* Minimalist Scroll Animations */
+/* Scroll Animation */
 .reveal {
   opacity: 0;
-  transform: translateY(22px);
-  transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateY(24px);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: opacity, transform;
 }
 
@@ -168,13 +215,12 @@ a:hover {
   transform: translateY(0);
 }
 
-/* Stagger Delays */
 .delay-1 { transition-delay: 0.1s; }
 .delay-2 { transition-delay: 0.2s; }
 .delay-3 { transition-delay: 0.3s; }
 .delay-4 { transition-delay: 0.4s; }
 
-/* Utility Spacers */
+/* Utilities */
 .text-center { text-align: center; }
 .text-muted { color: var(--color-text-muted); }
 .text-teal { color: var(--color-primary); }
@@ -187,7 +233,3 @@ a:hover {
 .mb-16 { margin-bottom: var(--space-16); }
 .mt-4 { margin-top: var(--space-4); }
 .mt-8 { margin-top: var(--space-8); }
-.mt-12 { margin-top: var(--space-12); }
-.py-12 { padding-top: var(--space-12); padding-bottom: var(--space-12); }
-.py-16 { padding-top: var(--space-16); padding-bottom: var(--space-16); }
-.py-20 { padding-top: var(--space-20); padding-bottom: var(--space-20); }

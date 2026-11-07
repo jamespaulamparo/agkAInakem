@@ -1,59 +1,62 @@
 /**
- * agkAInakem — Official Design System Tokens
- * Rooted in San Fernando, La Union, Philippines
+ * agkAInakem — Official Design System & Creative Portfolio Tokens
+ * San Fernando, La Union, Philippines
  * Soft Teal (#4FA8A0), Sky Blue (#8EC5E8), Sage Green (#A9C8A5), Warm Off-White (#F7F4EF)
  */
 
 :root {
-  /* Brand Identity */
-  --color-primary: #4FA8A0;          /* Soft Teal · Primary actions & brand anchor */
-  --color-primary-hover: #3E8F87;    /* Deeper teal for hover */
-  --color-primary-light: #EBF5F4;    /* Subtle teal tint */
-  --color-primary-soft: rgba(79, 168, 160, 0.12);
+  /* Brand Palette */
+  --color-primary: #4FA8A0;          /* Soft Teal · Identity Anchor */
+  --color-primary-hover: #3E8F87;
+  --color-primary-light: #EBF5F4;
+  --color-primary-glow: rgba(79, 168, 160, 0.28);
 
-  --color-secondary: #8EC5E8;        /* Sky Blue · Supportive & calm secondary */
+  --color-secondary: #8EC5E8;        /* Sky Blue · Supportive & Calm */
   --color-secondary-hover: #72B1D9;
   --color-secondary-light: #EBF4FB;
-  --color-secondary-soft: rgba(142, 197, 232, 0.15);
+  --color-secondary-glow: rgba(142, 197, 232, 0.32);
 
-  --color-success: #A9C8A5;          /* Sage Green · Positive states & healing */
+  --color-success: #A9C8A5;          /* Sage Green · Positive Healing */
+  --color-success-hover: #96B992;
   --color-success-light: #EFF6EE;
   --color-success-dark: #274D2B;
+  --color-success-glow: rgba(169, 200, 165, 0.35);
 
-  --color-background: #F7F4EF;       /* Warm Off-White · Base ambient background */
-  --color-surface: #FFFFFF;          /* Pure White · Card surfaces */
-  --color-surface-soft: #FCFAF7;     /* Soft card contrast surface */
+  --color-background: #F7F4EF;       /* Warm Off-White Base */
+  --color-surface: #FFFFFF;          /* Pure White Cards */
+  --color-surface-soft: #FCFAF7;
+  --color-surface-glass: rgba(255, 255, 255, 0.85);
 
-  /* The "AI" Accent in agkAInakem */
-  --color-brand-ai: #2C8C83;         /* Highlighted saturated teal */
+  /* The Highlighted "AI" in agkAInakem */
+  --color-brand-ai: #2C8C83;
   --color-brand-ai-gradient: linear-gradient(135deg, #3FA89F 0%, #68BCE8 100%);
 
-  /* Ambient Mesh Gradients */
-  --gradient-ambient: radial-gradient(at 15% 15%, rgba(79, 168, 160, 0.08) 0px, transparent 55%),
-                      radial-gradient(at 85% 20%, rgba(142, 197, 232, 0.12) 0px, transparent 50%),
-                      radial-gradient(at 50% 85%, rgba(169, 200, 165, 0.08) 0px, transparent 55%);
+  /* Creative Portfolio Ambient Mesh Gradients */
+  --gradient-ambient: radial-gradient(at 10% 12%, rgba(79, 168, 160, 0.12) 0px, transparent 55%),
+                      radial-gradient(at 88% 18%, rgba(142, 197, 232, 0.16) 0px, transparent 50%),
+                      radial-gradient(at 50% 80%, rgba(169, 200, 165, 0.12) 0px, transparent 60%);
 
   /* Semantic Alerts */
-  --color-danger: #D95D39;           /* Red for urgent emergency hotline callouts */
+  --color-danger: #D95D39;
   --color-danger-light: #FBF1EE;
-  --color-warning: #E09F3E;          /* Warm Amber */
+  --color-warning: #E09F3E;
   --color-warning-light: #FDF7ED;
 
-  /* Typography & High-Contrast Reading */
-  --color-text: #263A38;             /* Deep slate-teal · Optimal contrast on warm backgrounds */
-  --color-text-muted: #647572;       /* Balanced secondary copy (WCAG AA compliant) */
-  --color-text-subtle: #899B98;      /* Meta labels, captions */
+  /* Typography Neutrals (High Contrast & Legibility) */
+  --color-text: #213533;             /* Deep slate-teal */
+  --color-text-muted: #5D706D;       /* Subtitle / secondary body */
+  --color-text-subtle: #879995;      /* Meta labels */
   --color-text-on-primary: #FFFFFF;
-  --color-text-on-secondary: #19384C;
+  --color-text-on-secondary: #16364A;
   --color-text-on-success: #1C3B1E;
 
-  /* Borders & Dividers */
-  --color-border: #E4E9E5;          /* Restrained structural borders */
-  --color-border-subtle: #EEF2EF;   /* Whisper-thin inner dividers */
-  --color-border-focus: #4FA8A0;    /* High-visibility accessibility focus ring */
+  /* Borders & Focus */
+  --color-border: #E3E8E4;
+  --color-border-subtle: #EEF2EF;
+  --color-border-focus: #4FA8A0;
 
-  /* Typography Scale */
-  --font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  /* Typography */
+  --font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --font-size-xs: 0.75rem;    /* 12px */
   --font-size-sm: 0.875rem;   /* 14px */
   --font-size-base: 1rem;     /* 16px */
@@ -61,47 +64,47 @@
   --font-size-xl: 1.25rem;    /* 20px */
   --font-size-2xl: 1.5rem;    /* 24px */
   --font-size-3xl: 1.875rem;  /* 30px */
-  --font-size-4xl: 2.25rem;   /* 36px */
-  --font-size-hero: 2.85rem;  /* 45px */
+  --font-size-4xl: 2.35rem;   /* 37px */
+  --font-size-hero: 3.1rem;   /* 50px */
 
-  --line-height-tight: 1.25;
+  --line-height-tight: 1.2;
   --line-height-normal: 1.55;
   --line-height-relaxed: 1.75;
 
-  /* Generous Spacing for White Space Minimalism */
-  --space-1: 0.25rem;   /* 4px */
-  --space-2: 0.5rem;    /* 8px */
-  --space-3: 0.75rem;   /* 12px */
-  --space-4: 1rem;      /* 16px */
-  --space-5: 1.25rem;   /* 20px */
-  --space-6: 1.5rem;    /* 24px */
-  --space-8: 2rem;      /* 32px */
-  --space-10: 2.5rem;   /* 40px */
-  --space-12: 3rem;     /* 48px */
-  --space-16: 4rem;     /* 64px */
-  --space-20: 5rem;     /* 80px */
-  --space-24: 6rem;     /* 96px */
+  /* Spacing Scale */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
 
   /* Radii */
-  --radius-sm: 8px;
-  --radius-md: 14px;
-  --radius-lg: 20px;
-  --radius-xl: 28px;
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
   --radius-pill: 9999px;
 
-  /* Shadows */
-  --shadow-subtle: 0 2px 8px rgba(38, 58, 56, 0.03);
-  --shadow-card: 0 4px 20px rgba(38, 58, 56, 0.05);
-  --shadow-soft: 0 10px 30px rgba(38, 58, 56, 0.06);
-  --shadow-hover: 0 14px 36px rgba(38, 58, 56, 0.09);
+  /* Creative Portfolio Shadows & Elevation */
+  --shadow-subtle: 0 2px 10px rgba(33, 53, 51, 0.04);
+  --shadow-card: 0 6px 24px rgba(33, 53, 51, 0.06);
+  --shadow-hover: 0 16px 40px rgba(33, 53, 51, 0.10);
+  --shadow-hero-btn: 0 10px 30px rgba(79, 168, 160, 0.16);
 
-  /* Layout Constrains */
-  --max-width-content: 1140px;
-  --max-width-text: 720px;
-  --max-width-wide: 1240px;
+  /* Layout */
+  --max-width-content: 1160px;
+  --max-width-text: 740px;
+  --max-width-wide: 1260px;
 
-  /* Transitions & Smooth Animations */
-  --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
-  --transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  --transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  /* Motion & Micro-interactions */
+  --transition-fast: 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-smooth: 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-spring: 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
