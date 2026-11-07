@@ -42,7 +42,8 @@ export const api = {
   checkIn: (body) => request('/check-ins/', { method: 'POST', body }),
   // optional account
   me: () => request('/auth/me/', { cacheable: false }),
-  stats: (days) => request(`/stats/?days=${days}`, { cacheable: false }),
+  stats: (days, demo = true) => request(`/stats/?days=${days}&demo=${demo ? 1 : 0}`, { cacheable: false }),
+  demoData: (load) => request('/stats/demo/', { method: load ? 'POST' : 'DELETE' }),
   research: (on) => request('/auth/research/', { method: on ? 'POST' : 'DELETE' }),
   register: (body) => request('/auth/register/', { method: 'POST', body }),
   login: (body) => request('/auth/login/', { method: 'POST', body }),

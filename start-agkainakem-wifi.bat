@@ -20,6 +20,7 @@ echo [4/5] Loading dictionary and support data...
 %PY% manage.py seed_vocabulary
 %PY% manage.py seed_support
 %PY% manage.py create_admin --username pc --password password --if-missing
+%PY% manage.py seed_demo_data --if-empty
 
 echo.
 echo [5/5] Sharing on your Wi-Fi at port 8000. Phones on the SAME Wi-Fi can open:

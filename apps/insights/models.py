@@ -11,9 +11,10 @@ class UsageCount(models.Model):
     event = models.CharField(max_length=40)
     label = models.CharField(max_length=60, blank=True, default='')
     count = models.PositiveIntegerField(default=0)
+    is_demo = models.BooleanField(default=False, help_text='Sample data added for demos; can be removed from the dashboard.')
 
     class Meta:
-        unique_together = ('day', 'event', 'label')
+        unique_together = ('day', 'event', 'label', 'is_demo')
         ordering = ['-day', 'event']
 
     def __str__(self):

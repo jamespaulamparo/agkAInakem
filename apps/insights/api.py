@@ -26,6 +26,7 @@ from rest_framework.throttling import ScopedRateThrottle
 from apps.accounts.models import Consent, ResearchConsent
 from apps.dictionary.models import Category, Term
 from apps.journal.models import JournalEntry
+from .demo import DEMO_DOMAIN, clear_demo, demo_counts, load_demo
 from .models import UsageCount
 
 MIN_GROUP = 5
@@ -81,7 +82,7 @@ def events(request):
         label = _valid(event, label)
         if label is None:
             continue
-        row, _ = UsageCount.objects.get_or_create(day=today, event=event, label=label)
+        row, _ = UsageCount.objects.get_or_create(day=today, event=event, label=label, is_demo=False)
         UsageCount.objects.filter(pk=row.pk).update(count=F('count') + 1)
         saved += 1
     return Response({'saved': saved})
@@ -101,10 +102,12 @@ def _series(qs, days, start):
 @permission_classes([IsAdminUser])
 def stats(request):
     days = max(7, min(int(request.GET.get('days', 30) or 30), 365))
+    with_demo = request.GET.get('demo', '1') != '0'
     today = timezone.localdate()
     start = today - timedelta(days - 1)
     prev_start = start - timedelta(days)
-    usage = UsageCount.objects.filter(day__gte=start)
+    all_usage = UsageCount.objects.all() if with_demo else UsageCount.objects.filter(is_demo=False)
+    usage = all_usage.filter(day__gte=start)
 
     def total(event, qs=usage):
         return qs.filter(event=event).aggregate(n=Sum('count'))['n'] or 0
@@ -115,19 +118,21 @@ def stats(request):
         return rows[:limit] if limit else rows
 
     daily = lambda event: _series(usage.filter(event=event).values('day').annotate(n=Sum('count')), days, start)
-    prev = UsageCount.objects.filter(day__gte=prev_start, day__lt=start)
+    prev = all_usage.filter(day__gte=prev_start, day__lt=start)
 
     # Accounts (counts only)
     users = User.objects.filter(is_staff=False)
+    if not with_demo:
+        users = users.exclude(username__endswith='@' + DEMO_DOMAIN)
     joined = users.filter(date_joined__date__gte=start).extra(select={'day': 'date(date_joined)'}).values('day').annotate(n=Count('id'))
     joined_by_day = Counter()
     for r in joined:
         d = r['day']
         joined_by_day[d if isinstance(d, str) else d.isoformat()] += r['n']
-    entries = JournalEntry.objects.filter(user__is_staff=False)
+    entries = JournalEntry.objects.filter(user__in=users)
 
     # Research aggregates: opted-in people only, suppressed below MIN_GROUP
-    research_users = ResearchConsent.objects.filter(user__is_staff=False).values_list('user_id', flat=True)
+    research_users = list(ResearchConsent.objects.filter(user__in=users).values_list('user_id', flat=True))
     n_research = len(research_users)
     research = {'participants': n_research, 'min_group': MIN_GROUP, 'suppressed': n_research < MIN_GROUP}
     if n_research >= MIN_GROUP:
@@ -154,6 +159,7 @@ def stats(request):
 
     terms = Term.public.all()
     return Response({
+        'demo': {**demo_counts(), 'included': with_demo},
         'range': {'days': days, 'start': start.isoformat(), 'end': today.isoformat()},
         'headline': {
             'visits': total('visit'), 'visits_prev': total('visit', prev),
@@ -176,7 +182,7 @@ def stats(request):
             'total': users.count(), 'new': users.filter(date_joined__date__gte=start).count(),
             'active_30d': users.filter(last_login__gte=timezone.now() - timedelta(30)).count(),
             'with_journal': entries.values('user').distinct().count(), 'entries': entries.count(),
-            'consents': Consent.objects.filter(user__is_staff=False).count(), 'research_opt_in': n_research,
+            'consents': Consent.objects.filter(user__in=users).count(), 'research_opt_in': n_research,
             'daily_new': [{'date': (start + timedelta(d)).isoformat(), 'n': joined_by_day.get((start + timedelta(d)).isoformat(), 0)} for d in range(days)],
             'deleted': total('account_deleted'), 'exports': total('data_export'),
         },
@@ -189,13 +195,23 @@ def stats(request):
     })
 
 
+@api_view(['POST', 'DELETE'])
+@permission_classes([IsAdminUser])
+def demo_data(request):
+    """Staff tool: add (POST) or remove (DELETE) clearly-marked sample data."""
+    if request.method == 'POST':
+        return Response({'added': load_demo()})
+    return Response({'removed': clear_demo(remember=True)})
+
+
 @api_view(['GET'])
 @permission_classes([IsAdminUser])
 def export_csv(request):
     resp = HttpResponse(content_type='text/csv')
     resp['Content-Disposition'] = f'attachment; filename="agkainakem-usage-{timezone.localdate()}.csv"'
     w = csv.writer(resp)
-    w.writerow(['day', 'event', 'label', 'count'])
-    for r in UsageCount.objects.order_by('day', 'event', 'label').values_list('day', 'event', 'label', 'count'):
+    w.writerow(['day', 'event', 'label', 'count', 'sample_data'])
+    qs = UsageCount.objects.all() if request.GET.get('demo', '1') != '0' else UsageCount.objects.filter(is_demo=False)
+    for r in qs.order_by('day', 'event', 'label').values_list('day', 'event', 'label', 'count', 'is_demo'):
         w.writerow(r)
     return resp

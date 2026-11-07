@@ -79,30 +79,33 @@ function DisplayMenu() {
 function Nav() {
   const { t } = useI18n()
   const { pathname } = useLocation()
+  const { user } = useAuth()
   const [scrolled, setScrolled] = useState(false)
   useEffect(() => {
     const on = () => setScrolled(window.scrollY > 8)
     on(); window.addEventListener('scroll', on, { passive: true })
     return () => window.removeEventListener('scroll', on)
   }, [])
-  const { user } = useAuth()
   const links = [
+    { to: '/', label: t('nav_home'), icon: 'home', end: true },
     { to: '/help', label: t('nav_help') },
     { to: '/journal', label: t('nav_journal') },
     { to: '/dictionary', label: t('nav_dictionary') },
+    // Staff only: the team dashboard (charts, demo data, exports).
+    ...(user?.is_staff ? [{ to: '/dashboard', label: t('nav_dashboard'), icon: 'chart', wide: true }] : []),
   ]
   return (
     <header className={`sticky top-0 z-40 transition-[background,box-shadow] duration-300 ${scrolled || pathname !== '/' ? 'bg-paper/85 backdrop-blur-md shadow-[0_1px_0_#E4E9E5]' : ''}`}>
-      <nav className="mx-auto flex h-16 max-w-page items-center gap-2 px-3 sm:gap-4 sm:px-6" aria-label="Main">
-        <Link to="/" className="flex items-center gap-2 text-[1.05rem] max-[339px]:hidden" aria-label="agkAInakem home">
-          <BrandMark size={26} /><BrandName className="hidden min-[400px]:inline" />
+      <nav className="mx-auto flex h-16 max-w-page items-center gap-2 px-2 min-[360px]:px-3 sm:gap-4 sm:px-6" aria-label="Main">
+        <Link to="/" className="flex items-center gap-2 text-[1.05rem] max-[399px]:hidden" aria-label="agkAInakem home">
+          <BrandMark size={26} /><BrandName className="hidden lg:inline" />
         </Link>
         <div className="ml-auto flex items-center gap-0.5 sm:gap-2">
           {links.map((l) => (
-            <NavLink key={l.to} to={l.to} className={({ isActive }) =>
-              `relative whitespace-nowrap rounded-full px-1 py-2 text-[0.8rem] font-semibold min-[360px]:px-1.5 sm:px-3 sm:text-sm transition-colors ${isActive ? 'text-ink' : 'text-ink-muted hover:text-ink'}`}>
+            <NavLink key={l.to} to={l.to} end={l.end} title={l.label} aria-label={l.label} className={({ isActive }) =>
+              `${l.wide ? 'hidden sm:block ' : ''}relative whitespace-nowrap rounded-full px-1 py-2 text-[0.74rem] min-[360px]:text-[0.8rem] font-semibold min-[360px]:px-1.5 sm:px-3 sm:text-sm transition-colors ${isActive ? 'text-ink' : 'text-ink-muted hover:text-ink'}`}>
               {({ isActive }) => (<>
-                {l.label}
+                {l.icon ? <><Icon name={l.icon} size={17} className="md:hidden" /><span className="hidden md:inline">{l.label}</span></> : l.label}
                 {isActive && <motion.span layoutId="nav-dot" className="absolute bottom-0.5 left-1/2 h-1 w-1 -translate-x-1/2 rounded-full bg-teal" />}
               </>)}
             </NavLink>

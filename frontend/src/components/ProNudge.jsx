@@ -23,7 +23,7 @@ export function ProNudgeView({ entries, variant = 'home' }) {
   const home = variant === 'home'
   return (
     <motion.aside role="note" initial={{ opacity: 0, y: home ? -8 : 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}
-      className={`no-print relative w-full rounded-2xl bg-sky-soft text-left ring-1 ring-sky-ink/20 ${home ? 'max-w-xl px-5 py-4' : 'px-6 py-5'}`}>
+      className={`no-print relative w-full rounded-2xl bg-sky-soft text-left ring-1 ring-sky-ink/20 ${home ? 'mx-auto mt-10 max-w-xl px-5 py-4' : 'px-6 py-5'}`}>
       <div className="flex items-start gap-3.5">
         <span className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-talkbtn text-white"><Icon name="users" size={17} /></span>
         <div className="min-w-0 flex-1">

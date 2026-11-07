@@ -34,5 +34,6 @@ urlpatterns = [
     path('events/', insights.events),
     path('stats/', insights.stats),
     path('stats/export.csv', insights.export_csv),
+    path('stats/demo/', insights.demo_data),
     path('meta/share/', meta.share),
 ]

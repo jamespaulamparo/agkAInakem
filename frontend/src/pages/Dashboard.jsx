@@ -58,11 +58,19 @@ export default function Dashboard() {
   const [data, setData] = useState(null)
   const [err, setErr] = useState(null)
   const [loading, setLoading] = useState(false)
+  const [withDemo, setWithDemo] = useState(true)
+  const [tick, setTick] = useState(0)
+  const [busy, setBusy] = useState(null)
   useEffect(() => {
     if (!user?.is_staff) return
     setLoading(true)
-    api.stats(days).then((d) => { setData(d); setErr(null) }).catch(setErr).finally(() => setLoading(false))
-  }, [days, user?.is_staff])
+    api.stats(days, withDemo).then((d) => { setData(d); setErr(null) }).catch(setErr).finally(() => setLoading(false))
+  }, [days, withDemo, tick, user?.is_staff])
+  const demoAction = async (load) => {
+    if (!load && !window.confirm('Remove all sample accounts, journals and usage counts? Real data is not affected.')) return
+    setBusy(load ? 'load' : 'clear')
+    try { await api.demoData(load); setTick((x) => x + 1) } finally { setBusy(null) }
+  }
 
   if (!ready) return <Spinner />
   if (!user?.is_staff) return <Page className="pt-14"><h1 className="text-center text-4xl font-extrabold">Dashboard</h1><StaffLogin /></Page>
@@ -85,9 +93,17 @@ export default function Dashboard() {
           <button key={d} onClick={() => setDays(d)} aria-pressed={days === d}
             className={`rounded-full px-3.5 py-1.5 text-sm font-semibold ring-1 ${days === d ? 'bg-ink text-paper ring-ink' : 'text-ink-muted ring-line hover:text-ink'}`}>{l}</button>
         ))}
-        <a href="/api/stats/export.csv" className="ml-auto inline-flex items-center gap-1.5 rounded-full px-3.5 py-1.5 text-sm font-semibold text-teal-ink ring-1 ring-line hover:ring-teal"><Icon name="download" size={14} />Daily counts (CSV)</a>
+        <label className="ml-2 flex cursor-pointer items-center gap-2 text-sm font-semibold text-ink-muted">
+          <input type="checkbox" checked={withDemo} onChange={(e) => setWithDemo(e.target.checked)} className="h-4 w-4 accent-teal-ink" />Include sample data
+        </label>
+        <a href={`/api/stats/export.csv?demo=${withDemo ? 1 : 0}`} className="ml-auto inline-flex items-center gap-1.5 rounded-full px-3.5 py-1.5 text-sm font-semibold text-teal-ink ring-1 ring-line hover:ring-teal"><Icon name="download" size={14} />Daily counts (CSV)</a>
       </div>
 
+      {withDemo && data.demo.users > 0 && (
+        <p className="mt-4 rounded-lg bg-amber-soft px-4 py-2.5 text-sm text-ink-muted">
+          <strong className="text-ink">Includes sample data:</strong> {data.demo.users} made-up accounts ({data.demo.research} opted in to research) and sample usage counts. Untick “Include sample data” to see real data only.
+        </p>
+      )}
       <div className={`transition-opacity ${loading ? 'opacity-50' : ''}`}>
         <div className="mt-10 grid grid-cols-2 gap-8 md:grid-cols-5">
           <StatTile label="Visits" value={h.visits} prev={h.visits_prev} />
@@ -168,6 +184,21 @@ export default function Dashboard() {
               <ChartCard title="Feelings chosen most" table={rows(r.feelings, (s) => feelingLabel(s, 'en'))}><BarList items={r.feelings} format={(s) => feelingLabel(s, 'en')} color={C.s1} /></ChartCard>
             </div>
           )}
+        </section>
+
+        <section className="border-t border-line py-10">
+          <h2 className="text-xl font-bold">Admin tools</h2>
+          <p className="mt-1 max-w-2xl text-sm text-ink-muted">Sample data is made-up and clearly marked: accounts end in @demo.agkainakem.local and can’t be signed in to. Removing it never touches real data.</p>
+          <div className="mt-5 flex flex-wrap gap-3">
+            <button onClick={() => demoAction(true)} disabled={!!busy} className="inline-flex items-center gap-2 rounded-full bg-ink px-4 py-2 text-sm font-semibold text-paper disabled:opacity-50">
+              <Icon name="sparkle" size={15} />{busy === 'load' ? 'Adding…' : data.demo.users ? 'Regenerate sample data' : 'Add sample data'}
+            </button>
+            <button onClick={() => demoAction(false)} disabled={!!busy || !data.demo.users} className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold ring-1 ring-line hover:ring-teal disabled:opacity-40">
+              <Icon name="x" size={15} />{busy === 'clear' ? 'Removing…' : 'Remove sample data'}
+            </button>
+            <a href={`/api/stats/export.csv?demo=${withDemo ? 1 : 0}`} className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold ring-1 ring-line hover:ring-teal"><Icon name="download" size={15} />Download daily counts</a>
+            <a href="/admin/" className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold text-ink-muted ring-1 ring-line hover:ring-teal">Edit dictionary &amp; hotlines (Django admin)</a>
+          </div>
         </section>
 
         <p className="border-t border-line pt-6 text-xs text-ink-faint">

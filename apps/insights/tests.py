@@ -33,7 +33,7 @@ class EventsTests(TestCase):
 
     def test_no_identifying_fields(self):
         names = {f.name for f in UsageCount._meta.get_fields()}
-        self.assertEqual(names, {'id', 'day', 'event', 'label', 'count'})
+        self.assertEqual(names, {'id', 'day', 'event', 'label', 'count', 'is_demo'})
 
 
 class StatsTests(TestCase):
@@ -79,3 +79,37 @@ class StatsTests(TestCase):
         self.c.force_authenticate(u)
         self.assertTrue(self.c.post('/api/auth/research/').json()['user']['research_opt_in'])
         self.assertFalse(self.c.delete('/api/auth/research/').json()['user']['research_opt_in'])
+
+
+class DemoDataTests(TestCase):
+    def setUp(self):
+        import tempfile, pathlib
+        from unittest import mock
+        self.tmp = tempfile.TemporaryDirectory()
+        p = mock.patch('apps.insights.demo.REMOVED_MARKER', pathlib.Path(self.tmp.name) / 'marker')
+        p.start(); self.addCleanup(p.stop); self.addCleanup(self.tmp.cleanup)
+        cache.clear()
+        self.c = APIClient()
+        self.staff = User.objects.create_user('pc', password='x-strong-pass-1', is_staff=True)
+        self.c.force_authenticate(self.staff)
+
+    def test_load_filter_and_clear(self):
+        added = self.c.post('/api/stats/demo/').json()['added']
+        self.assertEqual(added['users'], 60)
+        self.assertGreater(added['research'], 5)
+        self.assertLess(added['research'], 30)              # most do not opt in
+        self.assertFalse(User.objects.get(username__startswith='ana1@').has_usable_password())
+        with_demo = self.c.get('/api/stats/').json()
+        without = self.c.get('/api/stats/?demo=0').json()
+        self.assertEqual(with_demo['accounts']['total'], 60)
+        self.assertEqual(without['accounts']['total'], 0)
+        self.assertGreater(with_demo['headline']['visits'], 0)
+        self.assertEqual(without['headline']['visits'], 0)
+        self.assertFalse(with_demo['research']['suppressed'])
+        self.c.delete('/api/stats/demo/')
+        self.assertEqual(User.objects.filter(username__endswith='@demo.agkainakem.local').count(), 0)
+        self.assertFalse(UsageCount.objects.filter(is_demo=True).exists())
+
+    def test_staff_only(self):
+        self.c.force_authenticate(None)
+        self.assertIn(self.c.post('/api/stats/demo/').status_code, (401, 403))

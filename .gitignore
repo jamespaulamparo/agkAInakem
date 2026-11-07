@@ -21,3 +21,4 @@ media/
 
 # Frontend
 frontend/node_modules/
+.sample-data-removed

@@ -109,6 +109,8 @@ export const CONTACT_STRINGS = {
 
 export const JOURNAL_STRINGS = {
   privacy_link: ['Privacy', 'Privacy'],
+  nav_home: ['Home', 'Tahanan'],
+  nav_dashboard: ['Dashboard', 'Dashboard'],
   in_english: ['In English:', 'Sa Ingles:'],
   refs_fil: ['Filipino-language references', 'Mga sanggunian sa Filipino'],
   refs_other: ['Research and health references', 'Mga sanggunian sa pananaliksik at kalusugan'],

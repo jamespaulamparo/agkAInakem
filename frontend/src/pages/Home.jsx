@@ -39,10 +39,10 @@ function CyclingWord() {
 function Hero() {
   const { t, simple } = useI18n()
   return (
-    <section className="relative flex min-h-[calc(100svh-4rem)] flex-col items-center justify-center overflow-hidden px-4 pb-28 pt-4">
+    <section className="relative flex min-h-[calc(100svh-4rem)] flex-col items-center justify-center overflow-hidden px-4 pb-[6svh] pt-[2svh]">
       <div className="pointer-events-none absolute inset-0 -z-10" aria-hidden="true"
         style={{ background: 'radial-gradient(60% 45% at 50% 25%, rgba(142,197,232,.22), transparent 70%), radial-gradient(40% 40% at 75% 75%, rgba(169,200,165,.18), transparent 70%)' }} />
-      <motion.div className="flex h-[26svh] min-h-[170px] w-full max-w-[420px] items-center justify-center" initial={{ opacity: 0, scale: 0.92 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}>
+      <motion.div className="flex h-[34svh] min-h-[150px] max-h-[380px] w-full max-w-[420px] items-center justify-center" initial={{ opacity: 0, scale: 0.92 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}>
         {simple ? <HeartStatic size={150} /> : <Suspense fallback={<HeartStatic size={150} />}><Heart3D /></Suspense>}
       </motion.div>
       <motion.h1 className="mt-2 text-center text-[2.3rem] font-extrabold leading-[1.08] sm:text-6xl"
@@ -50,7 +50,13 @@ function Hero() {
         {t('need_q')}
       </motion.h1>
       <div className="mt-9"><HelpChoices delay={0.25} /></div>
-      <div className="mt-10 flex w-full justify-center"><ProNudge variant="home" /></div>
+      <ProNudge variant="home" />
+      {/* Quiet hint that there is more below; the first screen stays focused on getting help. */}
+      <motion.button type="button" aria-label="Scroll down" onClick={() => window.scrollTo({ top: window.innerHeight - 64, behavior: 'smooth' })}
+        className="absolute bottom-5 left-1/2 -translate-x-1/2 rounded-full p-2 text-ink-faint hover:text-ink"
+        initial={{ opacity: 0 }} animate={{ opacity: 1, y: [0, 5, 0] }} transition={{ opacity: { delay: 1.2 }, y: { repeat: Infinity, duration: 2.4, ease: 'easeInOut' } }}>
+        <Icon name="arrow" size={20} className="rotate-90" />
+      </motion.button>
     </section>
   )
 }
@@ -65,7 +71,7 @@ function WordsSection() {
     if (text.trim()) navigate(`/explore?q=${encodeURIComponent(text.trim())}`)
   }
   return (
-    <section className="bg-surface px-4 py-20 sm:py-28">
+    <section className="bg-surface px-4 py-14 sm:py-20">
       <div className="mx-auto grid max-w-page items-center gap-12 md:grid-cols-[0.8fr_1.2fr]">
       <Reveal className="mx-auto w-full max-w-sm"><WordsArt /></Reveal>
       <Reveal className="flex flex-col items-center text-center md:items-start md:text-left">
@@ -100,8 +106,8 @@ function Reveal({ children, className = '' }) {
 function JournalSection() {
   const { t } = useI18n()
   return (
-    <section className="px-4 py-20 sm:py-28">
-      <div className="mx-auto grid max-w-page items-center gap-12 md:grid-cols-[1.2fr_0.8fr]">
+    <section className="px-4 pb-20 pt-6 sm:pb-28 sm:pt-8">
+      <div className="mx-auto grid max-w-page items-center gap-12 md:items-start md:grid-cols-[1.2fr_0.8fr]">
         <Reveal className="text-center md:text-left">
           <h2 className="text-3xl font-extrabold sm:text-5xl">{t('home_journal')}</h2>
           <div className="mt-8 flex justify-center gap-2 md:justify-start" aria-hidden="true">
