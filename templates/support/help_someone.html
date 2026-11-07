@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block title %}Help Someone Else — Notice, Ask, Listen, Connect — Words For It{% endblock %}
+
+{% block content %}
+<div class="container container-narrow" style="padding-top: var(--space-8);">
+  <div class="mb-8">
+    <div class="badge badge-psychological mb-2">Pillar B &middot; Practical Guide</div>
+    <h1>Helping Someone Who May Be Struggling</h1>
+    <p class="lead">
+      When you notice changes in a friend, classmate, or coworker, knowing how to approach them can feel daunting. The <strong>Notice &rarr; Ask &rarr; Listen &rarr; Connect</strong> framework provides simple, grounded guidance.
+    </p>
+  </div>
+
+  <!-- Step 1: Notice -->
+  <div style="background-color: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: var(--space-6); margin-bottom: var(--space-6); box-shadow: var(--shadow-card);">
+    <div style="display: flex; align-items: center; gap: var(--space-3); margin-bottom: var(--space-3);">
+      <span style="background-color: var(--color-primary-light); color: var(--color-primary-hover); font-weight: 800; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center;">1</span>
+      <h2 style="font-size: var(--font-size-xl); margin-bottom: 0;">Notice Changes</h2>
+    </div>
+    <p style="color: var(--color-text-muted);">
+      Look for subtle shifts in behavior over time rather than a single off-day: withdrawing from conversations, looking perpetually exhausted, expressing hopelessness, or sudden uncharacteristic irritability.
+    </p>
+  </div>
+
+  <!-- Step 2: Ask -->
+  <div style="background-color: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: var(--space-6); margin-bottom: var(--space-6); box-shadow: var(--shadow-card);">
+    <div style="display: flex; align-items: center; gap: var(--space-3); margin-bottom: var(--space-3);">
+      <span style="background-color: var(--color-primary-light); color: var(--color-primary-hover); font-weight: 800; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center;">2</span>
+      <h2 style="font-size: var(--font-size-xl); margin-bottom: 0;">Ask Gently</h2>
+    </div>
+    <p style="color: var(--color-text-muted); margin-bottom: var(--space-3);">
+      Choose a private, relaxed moment. Use open-ended, non-judgmental language:
+    </p>
+    <div style="background-color: var(--color-surface-soft); border-left: 3px solid var(--color-primary); padding: var(--space-3) var(--space-4); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; font-style: italic; color: var(--color-text);">
+      "I've noticed you seem carrying a lot lately, and I just wanted to check in. How are things really going?"
+    </div>
+  </div>
+
+  <!-- Step 3: Listen -->
+  <div style="background-color: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: var(--space-6); margin-bottom: var(--space-6); box-shadow: var(--shadow-card);">
+    <div style="display: flex; align-items: center; gap: var(--space-3); margin-bottom: var(--space-3);">
+      <span style="background-color: var(--color-primary-light); color: var(--color-primary-hover); font-weight: 800; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center;">3</span>
+      <h2 style="font-size: var(--font-size-xl); margin-bottom: 0;">Listen Without Fixing</h2>
+    </div>
+    <p style="color: var(--color-text-muted);">
+      Your job is not to diagnose or provide immediate solutions. Give them space to speak, validate their feelings ("That sounds really exhausting"), and avoid dismissing their experience with "it could be worse."
+    </p>
+  </div>
+
+  <!-- Step 4: Connect -->
+  <div style="background-color: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: var(--space-6); margin-bottom: var(--space-8); box-shadow: var(--shadow-card);">
+    <div style="display: flex; align-items: center; gap: var(--space-3); margin-bottom: var(--space-3);">
+      <span style="background-color: var(--color-primary-light); color: var(--color-primary-hover); font-weight: 800; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center;">4</span>
+      <h2 style="font-size: var(--font-size-xl); margin-bottom: 0;">Connect to Support</h2>
+    </div>
+    <p style="color: var(--color-text-muted);">
+      Encourage them to take a manageable step toward support: speaking to a counselor, contacting a designated responder in their school/organization, or calling a trusted service. Offer to sit with them or help them reach out.
+    </p>
+  </div>
+
+  <div style="text-align: center;">
+    <a href="{% url 'support:reach_out' %}" class="btn btn-secondary">Explore Responders & Hotlines</a>
+  </div>
+</div>
+{% endblock %}

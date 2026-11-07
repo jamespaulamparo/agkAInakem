@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}{{ page_title|default:"Words For It — Language for Emotional Experiences" }}{% endblock %}</title>
+
+  <!-- Typography: Plus Jakarta Sans via Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Design System & CSS -->
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/tokens.css' %}">
+  <link rel="stylesheet" href="{% static 'css/base.css' %}">
+  <link rel="stylesheet" href="{% static 'css/components.css' %}">
+  {% block extra_css %}{% endblock %}
+</head>
+<body>
+  <!-- Accessibility Skip Link -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- 24/7 Crisis & Immediate Support Banner -->
+  <aside class="crisis-banner" role="complementary" aria-label="Crisis Support Information">
+    <span class="crisis-banner-badge">Urgent Support</span>
+    <span>In immediate distress or danger? Call or text <strong>988</strong> (US/CA), <strong>111</strong> (UK), or your local emergency team.</span>
+    <a href="{% url 'support:reach_out' %}#crisis-resources">View verified emergency contacts &rarr;</a>
+  </aside>
+
+  <!-- Global Header & Navigation -->
+  <header class="site-header" role="banner">
+    <div class="container nav-container">
+      <a href="{% url 'home' %}" class="brand-link" aria-label="Words For It Homepage">
+        <div class="brand-logo-mark" aria-hidden="true">W</div>
+        <span class="brand-name">Words For It</span>
+      </a>
+
+      <!-- Desktop & Responsive Mobile Menu -->
+      <nav id="navMenu" class="nav-menu" role="navigation" aria-label="Main Navigation">
+        <li class="nav-item">
+          <a href="{% url 'discovery:explore' %}" class="{% if request.resolver_match.app_name == 'discovery' %}active{% endif %}">Explore</a>
+        </li>
+        <li class="nav-item">
+          <a href="{% url 'dictionary:index' %}" class="{% if request.resolver_match.app_name == 'dictionary' %}active{% endif %}">Dictionary</a>
+        </li>
+        <li class="nav-item">
+          <a href="{% url 'support:reach_out' %}" class="{% if request.resolver_match.app_name == 'support' and request.resolver_match.url_name == 'reach_out' %}active{% endif %}">Reach Out</a>
+        </li>
+        <li class="nav-item">
+          <a href="{% url 'support:help_someone' %}" class="{% if request.resolver_match.url_name == 'help_someone' %}active{% endif %}">Help Someone</a>
+        </li>
+        <li class="nav-item">
+          <a href="{% url 'about' %}" class="{% if request.resolver_match.url_name == 'about' %}active{% endif %}">About & Safety</a>
+        </li>
+      </nav>
+
+      <!-- Primary Action Pills -->
+      <div class="nav-actions">
+        <a href="{% url 'discovery:explore' %}" class="btn btn-outline btn-sm">Find Words</a>
+        <a href="{% url 'support:reach_out' %}" class="btn btn-primary btn-sm">Reach Out</a>
+      </div>
+
+      <!-- Mobile Hamburger Button -->
+      <button id="mobileNavToggle" class="mobile-nav-toggle" aria-expanded="false" aria-controls="navMenu" aria-label="Toggle navigation menu">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Content Shell -->
+  <main id="main-content" class="site-main" role="main">
+    {% block content %}{% endblock %}
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="brand-link mb-2">
+            <div class="brand-logo-mark" aria-hidden="true">W</div>
+            <span class="brand-name">Words For It</span>
+          </div>
+          <p>
+            A calm, curated mental health literacy and early-support platform. Helping you find language for emotional experiences and discover pathways to human assistance.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="{% url 'discovery:explore' %}">Sentence Discovery</a></li>
+            <li><a href="{% url 'dictionary:index' %}">Mental Health Dictionary</a></li>
+            <li><a href="{% url 'support:reach_out' %}">Reach Out Hub</a></li>
+            <li><a href="{% url 'support:help_someone' %}">Notice, Ask, Listen, Connect</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Platform & Safety</h4>
+          <ul>
+            <li><a href="{% url 'about' %}">About & Principles</a></li>
+            <li><a href="{% url 'about' %}#privacy">Privacy by Default</a></li>
+            <li><a href="{% url 'about' %}#extension">Companion Extension</a></li>
+            <li><a href="{% url 'about' %}#clinical-scope">Clinical Non-Diagnostic Scope</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Mandatory Medical & Non-Diagnostic Disclaimer -->
+      <div class="footer-disclaimer-box">
+        <strong>Important Safety Notice:</strong> Words For It provides educational mental health literacy and early-support communication resources. It does not provide medical advice, diagnosis, psychiatric assessment, or crisis intervention. If you are experiencing thoughts of self-harm or need urgent support, please contact emergency services or a licensed healthcare provider immediately.
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; 2026 Words For It. Built with care for emotional clarity and human support.</div>
+        <div>Chromium Manifest V3 Companion Ready</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="{% static 'js/main.js' %}"></script>
+  {% block extra_js %}{% endblock %}
+</body>
+</html>

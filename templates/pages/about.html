@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% block title %}About & Safety Principles — Words For It{% endblock %}
+
+{% block content %}
+<div class="container container-narrow" style="padding-top: var(--space-8);">
+  <div class="mb-8">
+    <div class="badge badge-everyday mb-2">Transparency & Ethics</div>
+    <h1>About Words For It</h1>
+    <p class="lead">
+      Words For It is a browser-based mental health literacy and early-support platform. We help people discover language for emotional experiences, understand mental health concepts, and connect with trustworthy human support.
+    </p>
+  </div>
+
+  <section class="mb-8" id="clinical-scope">
+    <h2>1. What Words For It Is — and Is Not</h2>
+    <div style="background-color: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: var(--space-6); margin-bottom: var(--space-4);">
+      <h3 style="color: var(--color-primary); font-size: var(--font-size-lg);">What We Do</h3>
+      <ul style="margin-left: var(--space-5); color: var(--color-text); line-height: 1.8;">
+        <li>Provide a curated, reviewed dictionary of mental health vocabulary.</li>
+        <li>Help you find words for complex feelings based on phrases you enter.</li>
+        <li>Explain clear differences between similar concepts (e.g. stress vs. burnout).</li>
+        <li>Offer step-by-step educational first-aid and grounding practices.</li>
+        <li>Guide friends, family, and peers on how to notice, ask, listen, and connect.</li>
+        <li>Facilitate contact with verified school, community, or workplace responders.</li>
+      </ul>
+    </div>
+
+    <div style="background-color: var(--color-danger-light); border: 1px solid rgba(217, 93, 57, 0.25); border-radius: var(--radius-md); padding: var(--space-6);">
+      <h3 style="color: var(--color-danger); font-size: var(--font-size-lg);">What We Explicitly Do Not Do</h3>
+      <ul style="margin-left: var(--space-5); color: var(--color-text); line-height: 1.8;">
+        <li><strong>We do not diagnose:</strong> We never generate diagnostic labels or assess whether someone is clinically ill.</li>
+        <li><strong>We do not replace professionals:</strong> Our educational tools do not substitute for clinical therapy, counseling, or psychiatric treatment.</li>
+        <li><strong>We do not simulate a therapist:</strong> There is no conversational AI acting as a mental health counselor.</li>
+        <li><strong>We do not score risk or monitor you:</strong> We do not secretly calculate risk scores or track your internet activity.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="mb-8" id="privacy">
+    <h2>2. Privacy by Default</h2>
+    <p>
+      Mental health information is deeply personal and sensitive. Words For It is engineered with strong privacy protections:
+    </p>
+    <ul style="margin-left: var(--space-5); color: var(--color-text); line-height: 1.8; margin-bottom: var(--space-4);">
+      <li><strong>Anonymous browsing:</strong> Browsing the dictionary, reading distinctions, and exploring sentences works completely without an account.</li>
+      <li><strong>No text retention by default:</strong> Submitted discovery sentences are processed in-memory to match curated concepts and are not retained or sold to third parties.</li>
+      <li><strong>Privacy-preserving check-ins:</strong> Any optional self-reported check-in statuses are decoupled from personal identifiers and never exposed to organizational administrators.</li>
+    </ul>
+  </section>
+
+  <section class="mb-8" id="extension">
+    <h2>3. Companion Browser Extension</h2>
+    <p>
+      The Words For It Chromium companion extension brings the curated dictionary to your web browsing:
+    </p>
+    <ul style="margin-left: var(--space-5); color: var(--color-text); line-height: 1.8; margin-bottom: var(--space-4);">
+      <li><strong>Contextual highlight lookup:</strong> Select a term or phrase on any webpage and right-click to view the verified definition and distinction popup.</li>
+      <li><strong>Zero background tracking:</strong> The extension does not monitor browsing history, inspect webpages silently, or track user activity. It only reads text you explicitly choose to look up.</li>
+      <li><strong>Shared database:</strong> Lookups query the exact same reviewed mental health database as the website.</li>
+    </ul>
+  </section>
+
+  <section class="mb-8">
+    <h2>4. Editorial & Curated Relationships</h2>
+    <p>
+      Unlike a generic dictionary or an uncontrolled generative AI model, every mental health concept in Words For It is organized with explicit relationship types (such as <em>Similar to</em>, <em>Different from</em>, <em>Can contribute to</em>, and <em>Often confused with</em>). Definitions cite recognized sources (such as WHO ICD-11, APA, or verified psychological literature) to ensure trustworthiness.
+    </p>
+  </section>
+</div>
+{% endblock %}

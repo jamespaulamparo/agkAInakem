@@ -1,0 +1,129 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Words For It — Emotional Vocabulary & Early Support{% endblock %}
+
+{% block content %}
+<div class="container">
+  <!-- Hero Section -->
+  <section class="hero-section" aria-labelledby="hero-heading">
+    <div class="hero-badge">Mental Health Literacy &middot; Early Support</div>
+    <h1 id="hero-heading" class="hero-title">Find the words for what you're feeling.</h1>
+    <p class="hero-description">
+      Explore nuanced emotional vocabulary, understand mental health concepts, and discover clear, respectful pathways to human support when you need it.
+    </p>
+
+    <!-- Sentence Discovery Input Box -->
+    <div class="discovery-box" role="search" aria-label="Sentence-to-word emotional vocabulary discovery">
+      <form action="{% url 'discovery:explore' %}" method="get" class="discovery-form">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input 
+          type="text" 
+          id="discoveryInput" 
+          name="q" 
+          class="discovery-input" 
+          placeholder="Describe how you're feeling in your own words (e.g. 'I feel tired and everything feels like too much')..." 
+          aria-label="Describe what you are experiencing"
+          autocomplete="off"
+        >
+        <button type="submit" class="btn btn-primary">Find Words</button>
+      </form>
+      <div class="sample-prompts" aria-label="Example phrases you can explore">
+        <span>Try an example:</span>
+        <button type="button" class="prompt-chip" data-prompt="I feel tired and everything feels like too much.">"Everything feels like too much"</button>
+        <button type="button" class="prompt-chip" data-prompt="I feel disconnected from the people around me.">"Feeling disconnected"</button>
+        <button type="button" class="prompt-chip" data-prompt="I worry constantly and my body feels tense.">"Worrying constantly"</button>
+        <button type="button" class="prompt-chip" data-prompt="I have no motivation to start anything even though I care.">"No motivation to begin"</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Dual Pillars Section -->
+  <section class="mb-12" aria-labelledby="pillars-heading">
+    <div class="text-center mb-8">
+      <h2 id="pillars-heading">Two Connected Pillars for Better Mental Health Literacy</h2>
+      <p class="lead" style="max-width: 650px; margin: 0 auto;">
+        From discovering language that accurately reflects your state to taking an informed first step toward human assistance.
+      </p>
+    </div>
+
+    <div class="pillars-grid">
+      <!-- Pillar A -->
+      <article class="pillar-card">
+        <div class="pillar-card-header">
+          <div class="pillar-icon-box pillar-icon-teal" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+              <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+            </svg>
+          </div>
+          <div>
+            <span class="pillar-tag">Pillar A</span>
+            <h3 class="mb-0">Find Words For It</h3>
+          </div>
+        </div>
+        <p>
+          A specialized mental health dictionary and vocabulary discovery engine. Unpack the difference between tiredness and burnout, sadness and depression, or isolation and loneliness through reviewed psychological definitions and curated relationships.
+        </p>
+        <div class="pillar-card-actions">
+          <a href="{% url 'discovery:explore' %}" class="btn btn-primary">Sentence Discovery</a>
+          <a href="{% url 'dictionary:index' %}" class="btn btn-outline">Browse Dictionary</a>
+        </div>
+      </article>
+
+      <!-- Pillar B -->
+      <article class="pillar-card">
+        <div class="pillar-card-header">
+          <div class="pillar-icon-box pillar-icon-sky" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+              <circle cx="9" cy="7" r="4"></circle>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+            </svg>
+          </div>
+          <div>
+            <span class="pillar-tag">Pillar B</span>
+            <h3 class="mb-0">Reach Out</h3>
+          </div>
+        </div>
+        <p>
+          A respectful, guided early-support system. Access non-blocking calming first-aid instructions, learn the structured <em>Notice &rarr; Ask &rarr; Listen &rarr; Connect</em> framework to support friends, and find verified human responders within your school or community.
+        </p>
+        <div class="pillar-card-actions">
+          <a href="{% url 'support:reach_out' %}" class="btn btn-secondary">Open Reach Out Hub</a>
+          <a href="{% url 'support:help_someone' %}" class="btn btn-outline">Help Someone Else</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- Companion Browser Extension Section -->
+  <section class="extension-banner" aria-labelledby="extension-heading">
+    <div class="extension-banner-content">
+      <div class="badge badge-everyday mb-2">Companion Tool</div>
+      <h3 id="extension-heading">Words For It Browser Extension</h3>
+      <p>
+        Make specialized emotional vocabulary accessible across the web. Highlight any mental health-related word or sentence on any webpage to see its definition, clear distinctions, and related concepts without switching tabs.
+      </p>
+    </div>
+    <div>
+      <a href="{% url 'about' %}#extension" class="btn btn-outline">Learn About Extension</a>
+    </div>
+  </section>
+
+  <!-- Core Insight Card -->
+  <section style="background-color: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: var(--space-8); margin-bottom: var(--space-12);">
+    <div style="max-width: 720px; margin: 0 auto; text-align: center;">
+      <span class="badge badge-approved mb-2">Our Guiding Principle</span>
+      <h3 style="font-size: var(--font-size-xl); margin-bottom: var(--space-3);">People can experience distress without having the language or confidence to seek support.</h3>
+      <p style="color: var(--color-text-muted); line-height: var(--line-height-relaxed); margin-bottom: 0;">
+        Words For It bridges this gap by providing structured vocabulary, clear contextual explanations, and gentle pathways to human responders — deliberately avoiding automated clinical diagnoses or synthetic therapist personas.
+      </p>
+    </div>
+  </section>
+</div>
+{% endblock %}

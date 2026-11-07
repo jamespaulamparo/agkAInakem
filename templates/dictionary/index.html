@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block title %}Mental Health Dictionary — Words For It{% endblock %}
+
+{% block content %}
+<div class="container" style="padding-top: var(--space-8);">
+  <div class="mb-8">
+    <div class="badge badge-everyday mb-2">Pillar A &middot; Specialized Vocabulary</div>
+    <h1>Specialized Mental Health Dictionary</h1>
+    <p class="lead" style="max-width: 700px;">
+      A curated vocabulary knowledge base explaining emotional experiences, psychological concepts, and coping terminology with clear distinctions.
+    </p>
+  </div>
+
+  <!-- Search & Category Filters Preview -->
+  <div style="background-color: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: var(--space-6); margin-bottom: var(--space-8); box-shadow: var(--shadow-card);">
+    <div style="display: flex; gap: var(--space-3); margin-bottom: var(--space-4);">
+      <input type="text" placeholder="Search curated terms (e.g. Burnout, Overwhelm, Rumination)..." class="discovery-input" style="border: 1px solid var(--color-border); border-radius: var(--radius-pill); padding: 0.75rem 1.25rem; width: 100%; background: var(--color-surface-soft);">
+      <button class="btn btn-primary">Search</button>
+    </div>
+    
+    <div style="display: flex; flex-wrap: wrap; gap: var(--space-2); align-items: center;">
+      <span style="font-size: var(--font-size-xs); font-weight: 700; color: var(--color-text-muted); text-transform: uppercase;">Categories:</span>
+      <span class="prompt-chip" style="background-color: var(--color-primary-light); color: var(--color-primary-hover); font-weight: 600;">All Categories</span>
+      <span class="prompt-chip">Emotional Exhaustion</span>
+      <span class="prompt-chip">Stress & Anxiety</span>
+      <span class="prompt-chip">Emotional Experiences</span>
+      <span class="prompt-chip">Motivation & Engagement</span>
+      <span class="prompt-chip">Self-Perception</span>
+      <span class="prompt-chip">Interpersonal Experiences</span>
+      <span class="prompt-chip">Coping & Regulation</span>
+      <span class="prompt-chip">Help-Seeking</span>
+    </div>
+  </div>
+
+  <!-- Notice of Milestone 2 -->
+  <div style="background-color: var(--color-surface); border: 1px dashed var(--color-primary); border-radius: var(--radius-md); padding: var(--space-6); text-align: center; color: var(--color-text-muted);">
+    <h3 style="color: var(--color-primary); font-size: var(--font-size-lg); margin-bottom: var(--space-2);">Dictionary Database Models Ready for Milestone 2</h3>
+    <p style="margin-bottom: 0;">
+      The underlying database models (Category, Term, TermDefinition, TermRelationship, TermExample, SourceReference, ReflectionQuestion) and initial curated vocabulary dataset will be seeded in Milestone 2.
+    </p>
+  </div>
+</div>
+{% endblock %}

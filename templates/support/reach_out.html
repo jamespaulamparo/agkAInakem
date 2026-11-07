@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+
+{% block title %}Reach Out — Support Hub — Words For It{% endblock %}
+
+{% block content %}
+<div class="container" style="padding-top: var(--space-8);">
+  <div class="mb-8">
+    <div class="badge badge-psychological mb-2">Pillar B &middot; Early Support</div>
+    <h1>Reach Out Hub</h1>
+    <p class="lead" style="max-width: 720px;">
+      Compassionate, practical support options for yourself or someone you care about. Choose the pathway that matches your current situation.
+    </p>
+  </div>
+
+  <!-- Priority Options Grid -->
+  <div class="pillars-grid mb-8">
+    <!-- Option 1: I Need Help -->
+    <div class="pillar-card">
+      <div class="pillar-card-header">
+        <div class="pillar-icon-box pillar-icon-teal">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+          </svg>
+        </div>
+        <div>
+          <span class="pillar-tag">Self-Support</span>
+          <h3 class="mb-0">I Need Support</h3>
+        </div>
+      </div>
+      <p>
+        Access calming first-aid instructions, non-blocking grounding exercises (e.g. 5-4-3-2-1), or request a conversation with a verified peer responder or counselor.
+      </p>
+      <div class="pillar-card-actions">
+        <a href="#grounding" class="btn btn-primary">First-Aid Exercises</a>
+        <a href="#responders" class="btn btn-outline">Find Responders</a>
+      </div>
+    </div>
+
+    <!-- Option 2: Someone Else Needs Help -->
+    <div class="pillar-card">
+      <div class="pillar-card-header">
+        <div class="pillar-icon-box pillar-icon-sky">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+            <circle cx="9" cy="7" r="4"></circle>
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+          </svg>
+        </div>
+        <div>
+          <span class="pillar-tag">Supporting Others</span>
+          <h3 class="mb-0">Help Someone Else</h3>
+        </div>
+      </div>
+      <p>
+        Learn how to recognize warning signs, start a gentle conversation, listen without judgment, and guide someone toward appropriate help using our structured framework.
+      </p>
+      <div class="pillar-card-actions">
+        <a href="{% url 'support:help_someone' %}" class="btn btn-secondary">Notice &rarr; Ask &rarr; Listen &rarr; Connect</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Verified Crisis Resources Section -->
+  <section id="crisis-resources" style="background-color: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: var(--space-8); margin-bottom: var(--space-8);">
+    <div style="display: flex; align-items: center; gap: var(--space-3); margin-bottom: var(--space-4);">
+      <span class="crisis-banner-badge" style="font-size: var(--font-size-sm); padding: 4px 12px;">Immediate 24/7 Lifelines</span>
+      <h2 style="font-size: var(--font-size-xl); margin-bottom: 0;">Verified Crisis & Emergency Contacts</h2>
+    </div>
+    <p style="color: var(--color-text-muted); line-height: var(--line-height-relaxed); margin-bottom: var(--space-6);">
+      If you or someone around you is in immediate danger of harm, please connect directly with established emergency crisis personnel. These services are free, confidential, and available 24/7.
+    </p>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: var(--space-4);">
+      <div style="border: 1px solid var(--color-border-subtle); border-radius: var(--radius-md); padding: var(--space-4); background-color: var(--color-surface-soft);">
+        <strong style="color: var(--color-text);">United States & Canada</strong>
+        <p style="font-size: var(--font-size-lg); font-weight: 800; color: var(--color-danger); margin: var(--space-2) 0;">Call or Text 988</p>
+        <span style="font-size: var(--font-size-xs); color: var(--color-text-subtle);">Suicide & Crisis Lifeline</span>
+      </div>
+
+      <div style="border: 1px solid var(--color-border-subtle); border-radius: var(--radius-md); padding: var(--space-4); background-color: var(--color-surface-soft);">
+        <strong style="color: var(--color-text);">United Kingdom</strong>
+        <p style="font-size: var(--font-size-lg); font-weight: 800; color: var(--color-danger); margin: var(--space-2) 0;">Call 111 or 999</p>
+        <span style="font-size: var(--font-size-xs); color: var(--color-text-subtle);">NHS Mental Health Services</span>
+      </div>
+
+      <div style="border: 1px solid var(--color-border-subtle); border-radius: var(--radius-md); padding: var(--space-4); background-color: var(--color-surface-soft);">
+        <strong style="color: var(--color-text);">Australia</strong>
+        <p style="font-size: var(--font-size-lg); font-weight: 800; color: var(--color-danger); margin: var(--space-2) 0;">Call 13 11 14</p>
+        <span style="font-size: var(--font-size-xs); color: var(--color-text-subtle);">Lifeline Australia</span>
+      </div>
+    </div>
+  </section>
+</div>
+{% endblock %}
