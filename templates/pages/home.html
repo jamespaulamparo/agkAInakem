@@ -1,303 +1,218 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}agkAInakem — Mental Health Literacy & Early Support | San Fernando, La Union{% endblock %}
+{% block title %}agkAInakem — Mental Health Literacy | San Fernando, La Union{% endblock %}
 
 {% block content %}
 <div class="container">
 
   <!-- =========================================================================
-       1. HERO HEADER (Creative, Clean, Expansive White Space)
+       1. HERO STAGE with Interactive 3D WebGL Canvas (Pointer Lerp Rotation)
        ========================================================================= -->
-  <section class="hero-section reveal" aria-labelledby="hero-title" style="padding-top: var(--space-12); padding-bottom: var(--space-8);">
+  <section class="hero-stage reveal" aria-labelledby="hero-title">
     <div class="hero-pill">
       <span class="hero-pill-dot" aria-hidden="true"></span>
-      <span data-en="San Fernando, La Union &middot; Mental Health Literacy &middot; Early Support"
-            data-fil="San Fernando, La Union &middot; Literasiya sa Kalusugang Pangkaisipan">
-        San Fernando, La Union &middot; Mental Health Literacy &middot; Early Support
+      <span data-en="San Fernando, La Union &middot; Early Support" data-fil="San Fernando, La Union &middot; Maagang Tulong">
+        San Fernando, La Union &middot; Early Support
       </span>
     </div>
 
+    <!-- Interactive 3D Canvas (Raycasting & Pointer Lerp Animation) -->
+    <div id="webgl-hero-container" class="webgl-container" aria-label="Interactive 3D geometry representing calm and clarity" title="Move cursor or drag to rotate"></div>
+
     <h1 id="hero-title" class="hero-title">
-      <span data-en="Find the words for what you are feeling." data-fil="Hanapin ang mga angkop na salita sa iyong nararamdaman.">
-        Find the words for what you are feeling.
+      <span data-en="Find the words. Get the support." data-fil="Hanapin ang salita. Abutin ang tulong.">
+        Find the words. Get the support.
       </span>
     </h1>
 
     <p class="hero-lead">
-      <span data-en="A modern, compassionate platform connecting inner experiences to structured psychological language and verified local human care in San Fernando, La Union."
-            data-fil="Isang makabago at mapagmalasakit na platapormang nag-uugnay sa iyong nararamdaman patungo sa maayos na salita at mapagkakatiwalaang tulong sa San Fernando, La Union.">
-        A modern, compassionate platform connecting inner experiences to structured psychological language and verified local human care in San Fernando, La Union.
+      <span data-en="A tranquil platform helping you describe what hurts and connect directly with local care in San Fernando, La Union."
+            data-fil="Isang payapang platapormang tumutulong sa iyong ilarawan ang nararamdaman at lumapit sa katuwang sa San Fernando, La Union.">
+        A tranquil platform helping you describe what hurts and connect directly with local care in San Fernando, La Union.
       </span>
     </p>
   </section>
 
 
   <!-- =========================================================================
-       2. THE THREE BIG HERO BUTTONS (Centerpiece UI Feature)
+       2. THE THREE BIG HERO ACTION BUTTONS (Portal Triggers, NO Cluttered Cards)
        ========================================================================= -->
-  <section class="hero-trio-section reveal delay-1" aria-label="Primary Support Actions">
-    <div class="hero-trio-grid">
+  <section class="hero-trio-grid reveal delay-1" aria-label="Core Portals">
 
-      <!-- Big Button 1: I Need Help -->
-      <a href="{% url 'support:reach_out' %}" class="hero-big-btn hero-btn-teal" aria-label="I Need Help - Access immediate support and calming exercises">
-        <div class="hero-btn-icon-wrapper icon-wrapper-teal" aria-hidden="true">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Portal 1: I Need Help -->
+    <a href="{% url 'support:reach_out' %}" class="hero-portal-btn portal-teal" aria-label="I Need Help - Access immediate calming tools and emergency care">
+      <div class="portal-header">
+        <div class="portal-icon portal-icon-teal" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
             <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
           </svg>
         </div>
-        <span class="hero-btn-tag" data-en="Immediate Support" data-fil="Agarang Gabay">Immediate Support</span>
-        <h2 class="hero-btn-title" data-en="I Need Help" data-fil="Kailangan Ko ng Tulong">I Need Help</h2>
-        <p class="hero-btn-desc" data-en="Access non-blocking 5-4-3-2-1 grounding exercises, calming guides, and verified hospital & crisis hotlines in San Fernando."
-           data-fil="Magsanay ng simpleng pampakalma, alamin ang mga hakbang kapag hirap na hirap, at tingnan ang mga ospital at hotline sa San Fernando.">
-          Access non-blocking 5-4-3-2-1 grounding exercises, calming guides, and verified hospital & crisis hotlines in San Fernando.
-        </p>
-        <span class="hero-btn-action-label">
-          <span data-en="Open Self-Care Tools" data-fil="Buksan ang Gabay">Open Self-Care Tools</span> &rarr;
-        </span>
-      </a>
+        <h2 class="portal-title" data-en="I Need Help" data-fil="Kailangan Ko ng Tulong">I Need Help</h2>
+      </div>
+      <p class="portal-sub" data-en="5-4-3-2-1 sensory grounding and direct emergency hotlines (ITRMC &amp; 911)."
+         data-fil="Pampakalmang ehersisyo at mga agarang hotline (ITRMC at 911).">
+        5-4-3-2-1 sensory grounding and direct emergency hotlines (ITRMC &amp; 911).
+      </p>
+      <span class="portal-action-pill">
+        <span data-en="Open Calming Guide" data-fil="Buksan ang Gabay">Open Calming Guide</span> &rarr;
+      </span>
+    </a>
 
-      <!-- Big Button 2: Someone Else Needs Help -->
-      <a href="{% url 'support:help_someone' %}" class="hero-big-btn hero-btn-sky" aria-label="Someone Else Needs Help - Notice, Ask, Listen, Connect">
-        <div class="hero-btn-icon-wrapper icon-wrapper-sky" aria-hidden="true">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Portal 2: Someone Else Needs Help -->
+    <a href="{% url 'support:help_someone' %}" class="hero-portal-btn portal-sky" aria-label="Someone Else Needs Help - Notice, Ask, Listen, Connect">
+      <div class="portal-header">
+        <div class="portal-icon portal-icon-sky" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
             <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
             <circle cx="9" cy="7" r="4"></circle>
             <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
             <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
           </svg>
         </div>
-        <span class="hero-btn-tag" data-en="Supporting Others" data-fil="Pagtulong sa Iba">Supporting Others</span>
-        <h2 class="hero-btn-title" data-en="Someone Else Needs Help" data-fil="May Kakilala Akong Nahihirapan">Someone Else Needs Help</h2>
-        <p class="hero-btn-desc" data-en="Learn how to approach a friend, classmate, or loved one with the gentle Notice &rarr; Ask &rarr; Listen &rarr; Connect framework."
-           data-fil="Alamin kung paano lalapitan at kakausapin ang kaibigan o kapamilya gamit ang Banayad na Notice, Ask, Listen, at Connect.">
-          Learn how to approach a friend, classmate, or loved one with the gentle Notice &rarr; Ask &rarr; Listen &rarr; Connect framework.
-        </p>
-        <span class="hero-btn-action-label">
-          <span data-en="Read Conversation Guide" data-fil="Basahin ang Gabay sa Pag-uusap">Read Conversation Guide</span> &rarr;
-        </span>
-      </a>
+        <h2 class="portal-title" data-en="Someone Else Needs Help" data-fil="May Kakilala Akong Nahihirapan">Someone Else Needs Help</h2>
+      </div>
+      <p class="portal-sub" data-en="Notice &rarr; Ask &rarr; Listen &rarr; Connect guide with gentle conversational scripts."
+         data-fil="Gabay sa pakikipag-usap nang may malasakit gamit ang Notice, Ask, Listen, at Connect.">
+        Notice &rarr; Ask &rarr; Listen &rarr; Connect guide with gentle conversational scripts.
+      </p>
+      <span class="portal-action-pill">
+        <span data-en="Read Framework" data-fil="Basahin ang Paraan">Read Framework</span> &rarr;
+      </span>
+    </a>
 
-      <!-- Big Button 3: Daily Tracker -->
-      <a href="{% url 'support:daily_tracker' %}" class="hero-big-btn hero-btn-sage" aria-label="Daily Tracker - Check in on your emotional pulse">
-        <div class="hero-btn-icon-wrapper icon-wrapper-sage" aria-hidden="true">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Portal 3: Daily Tracker -->
+    <a href="{% url 'support:daily_tracker' %}" class="hero-portal-btn portal-sage" aria-label="Daily Tracker - Record your pulse">
+      <div class="portal-header">
+        <div class="portal-icon portal-icon-sage" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
             <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
           </svg>
         </div>
-        <span class="hero-btn-tag" data-en="Personal Check-In" data-fil="Pansariling Talaan">Personal Check-In</span>
-        <h2 class="hero-btn-title" data-en="Daily Tracker" data-fil="Araw-araw na Tracker">Daily Tracker</h2>
-        <p class="hero-btn-desc" data-en="Take a quick 10-second pulse check of your emotional state. Completely private, anonymous, and judgment-free."
-           data-fil="Mabilisang 10-segundong pag-check sa sarili (Mabuti / Nahihirapan / Sobrang Bigat). Ligtas, pribado, at walang paghuhusga.">
-          Take a quick 10-second pulse check of your emotional state. Completely private, anonymous, and judgment-free.
-        </p>
-        <span class="hero-btn-action-label">
-          <span data-en="Record Today's Pulse" data-fil="Mag-check In Ngayon">Record Today's Pulse</span> &rarr;
-        </span>
-      </a>
-
-    </div>
-  </section>
-
-
-  <!-- =========================================================================
-       3. INTERACTIVE SENTENCE DISCOVERY (English & Filipino)
-       ========================================================================= -->
-  <section class="reveal delay-2" aria-labelledby="discovery-heading">
-    <div class="text-center mb-6">
-      <h2 id="discovery-heading" style="font-size: var(--font-size-2xl);" data-en="Describe Your Experience" data-fil="Ilarawan ang Iyong Nararamdaman">
-        Describe Your Experience
-      </h2>
-      <p class="lead" style="max-width: 620px; margin: 0 auto;" data-en="Type a sentence in your own words. We identify emotional themes and surface curated vocabulary."
-         data-fil="Mag-type ng pangungusap sa sariling pananalita. Aalamin natin ang mga tema at magmumungkahi ng angkop na mga konsepto.">
-        Type a sentence in your own words. We identify emotional themes and surface curated vocabulary.
+        <h2 class="portal-title" data-en="Daily Tracker" data-fil="Araw-araw na Tracker">Daily Tracker</h2>
+      </div>
+      <p class="portal-sub" data-en="A 10-second private emotional pulse check-in. Anonymous and judgment-free."
+         data-fil="Mabilisang 10-segundong pag-alam sa sarili. Ligtas, pribado, at walang pagsusuri.">
+        A 10-second private emotional pulse check-in. Anonymous and judgment-free.
       </p>
-    </div>
+      <span class="portal-action-pill">
+        <span data-en="Check In Today" data-fil="Mag-check In Ngayon">Check In Today</span> &rarr;
+      </span>
+    </a>
 
-    <div class="discovery-container">
-      <div class="discovery-card" role="search" aria-label="Sentence discovery">
-        <form action="{% url 'discovery:explore' %}" method="get" class="discovery-form">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <circle cx="11" cy="11" r="8"></circle>
-            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-          </svg>
-          <input 
-            type="text" 
-            id="discoveryInput" 
-            name="q" 
-            class="discovery-input" 
-            placeholder="Type how you are feeling (e.g. 'Everything feels like too much' or 'Ubos na ubos na ang lakas ko')..." 
-            data-en="Type how you are feeling (e.g. 'Everything feels like too much')..."
-            data-fil="I-type ang iyong nararamdaman (hal. 'Ubos na ubos na ang lakas ko')..."
-            aria-label="Describe how you are feeling in your own words"
-            autocomplete="off"
-          >
-          <button type="submit" class="btn btn-primary" data-en="Find Words" data-fil="Tuklasin">Find Words</button>
-        </form>
+  </section>
 
-        <div class="discovery-suggestions">
-          <div class="suggestions-header">
-            <span data-en="Popular phrases you can explore:" data-fil="Mga karaniwang halimbawa:">Popular phrases you can explore:</span>
-            <span data-en="Click to test" data-fil="Pindutin para subukan">Click to test</span>
-          </div>
-          <div class="suggestions-chips">
-            <button type="button" class="prompt-chip" 
-                    data-prompt="I feel tired and everything feels like too much."
-                    data-prompt-fil="Pakiramdam ko pagod na pagod ako at sobra-sobra ang mga pasanin.">
-              &ldquo;Everything feels like too much&rdquo;
-            </button>
-            <button type="button" class="prompt-chip" 
-                    data-prompt="I feel depleted and can't recover even when I sleep."
-                    data-prompt-fil="Ubos na ubos na ang lakas ko at hindi makabawi kahit natulog na.">
-              &ldquo;Depleted despite resting&rdquo;
-            </button>
-            <button type="button" class="prompt-chip" 
-                    data-prompt="I constantly worry about things going wrong."
-                    data-prompt-fil="Lagi akong nag-aalala at kinakabahan sa maaaring mangyari.">
-              &ldquo;Constant worry and tension&rdquo;
-            </button>
-            <button type="button" class="prompt-chip" 
-                    data-prompt="I feel invisible and disconnected from everyone around me."
-                    data-prompt-fil="Pakiramdam ko mag-isa ako at walang tunay na nakauunawa sa akin.">
-              &ldquo;Disconnected and lonely&rdquo;
-            </button>
-          </div>
-        </div>
-      </div>
+
+  <!-- =========================================================================
+       3. MINIMALIST SENTENCE DISCOVERY
+       ========================================================================= -->
+  <section class="discovery-minimal reveal delay-2">
+    <form action="{% url 'discovery:explore' %}" method="get" class="discovery-minimal-input-wrap">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="11" cy="11" r="8"></circle>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+      </svg>
+      <input 
+        type="text" 
+        id="discoveryInput" 
+        name="q" 
+        class="discovery-minimal-input" 
+        placeholder="Type a feeling (e.g. 'Everything feels like too much' or 'Ubos na ubos na ako')..." 
+        data-en="Type a feeling (e.g. 'Everything feels like too much')..."
+        data-fil="I-type ang nararamdaman (hal. 'Ubos na ubos na ang lakas ko')..."
+        autocomplete="off"
+      >
+      <button type="submit" class="btn btn-primary btn-sm" data-en="Find" data-fil="Hanapin">Find</button>
+    </form>
+
+    <div class="discovery-minimal-chips">
+      <button type="button" class="prompt-chip" 
+              data-prompt="Everything feels like too much right now." 
+              data-prompt-fil="Sobra-sobra na ang mga pasanin ko ngayon.">
+        &ldquo;Everything feels like too much&rdquo;
+      </button>
+      <button type="button" class="prompt-chip" 
+              data-prompt="I feel exhausted and cannot recover even with rest." 
+              data-prompt-fil="Pagod na pagod ako at hindi makabawi kahit natulog na.">
+        &ldquo;Exhausted despite rest&rdquo;
+      </button>
+      <button type="button" class="prompt-chip" 
+              data-prompt="I worry constantly and my body feels tense." 
+              data-prompt-fil="Lagi akong nag-aalala at tensyonado ang katawan ko.">
+        &ldquo;Constant worry&rdquo;
+      </button>
     </div>
   </section>
 
 
   <!-- =========================================================================
-       4. DICTIONARY SPOTLIGHT (Milestone 2 Featured Terms)
+       4. REAL DICTIONARY LIST PREVIEW (Tagalog.com Style — Absolutely NO CARDS)
        ========================================================================= -->
-  <section class="py-12 reveal delay-3" aria-labelledby="dict-spotlight-heading">
-    <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: var(--space-6); flex-wrap: wrap; gap: var(--space-4);">
-      <div>
-        <span class="hero-btn-tag" style="color: var(--color-primary);" data-en="Milestone 2 &middot; Curated Knowledge" data-fil="Milestone 2 &middot; Maingat na Diksiyonaryo">
-          Milestone 2 &middot; Curated Knowledge
-        </span>
-        <h2 id="dict-spotlight-heading" style="font-size: var(--font-size-3xl); margin-bottom: 0;" data-en="Featured Vocabulary &amp; Distinctions" data-fil="Mga Tampok na Konsepto at Pagkakaiba">
-          Featured Vocabulary &amp; Distinctions
-        </h2>
-      </div>
-      <a href="{% url 'dictionary:index' %}" class="btn btn-outline" data-en="Browse All 40+ Terms &rarr;" data-fil="Tingnan Lahat ng Salita &rarr;">
-        Browse All Terms &rarr;
+  <section class="dict-list-wrap reveal delay-3" style="margin-bottom: var(--space-16);">
+    <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: var(--space-3); border-bottom: 2px solid var(--color-border); padding-bottom: var(--space-2);">
+      <h2 style="font-size: 1.35rem; font-weight: 800; margin-bottom: 0;" data-en="Dictionary Preview" data-fil="Silip sa Diksiyonaryo">
+        Dictionary Preview
+      </h2>
+      <a href="{% url 'dictionary:index' %}" style="font-size: var(--font-size-xs); font-weight: 700;" data-en="Browse Full Dictionary &rarr;" data-fil="Tingnan ang Buong Diksiyonaryo &rarr;">
+        Browse Full Dictionary &rarr;
       </a>
     </div>
 
-    <div class="term-grid">
-      <!-- Term 1: Burnout -->
-      <a href="{% url 'dictionary:detail' slug='burnout' %}" class="term-card">
-        <div class="term-card-header">
-          <div>
-            <h3 class="term-title">Burnout</h3>
-            <span class="term-fil-tag">Sobra-sobrang Pagkaubos</span>
-          </div>
+    <div class="dict-list">
+      <!-- Row 1: Burnout -->
+      <div class="dict-entry-row">
+        <div class="dict-entry-top">
+          <a href="{% url 'dictionary:detail' slug='burnout' %}" class="dict-entry-word">Burnout</a>
+          <span class="dict-entry-fil">Sobra-sobrang Pagkaubos</span>
           <span class="badge badge-psychological">Psychological</span>
         </div>
-        <p class="term-short-def" data-en="A state of physical, emotional, or mental exhaustion associated with prolonged, unmanaged stress."
+        <p class="dict-entry-def" data-en="A state of physical, emotional, or mental exhaustion associated with prolonged, unmanaged stress."
            data-fil="Kalagayan ng matinding pisikal at emosyonal na pagkaubos dulot ng matagalang stress na walang sapat na pahinga.">
           A state of physical, emotional, or mental exhaustion associated with prolonged, unmanaged stress.
         </p>
-        <div class="term-card-footer">
-          <span style="font-size: 0.75rem; color: var(--color-text-subtle);">Distinct from: Temporary Tiredness</span>
-          <span>Explore entry &rarr;</span>
+        <div class="dict-entry-meta">
+          <span><strong>Differs from:</strong> <a href="{% url 'dictionary:detail' slug='temporary-tiredness' %}">Temporary Tiredness</a></span>
+          <span><strong>Related to:</strong> <a href="{% url 'dictionary:detail' slug='chronic-stress' %}">Chronic Stress</a></span>
         </div>
-      </a>
+      </div>
 
-      <!-- Term 2: Overwhelm -->
-      <a href="{% url 'dictionary:detail' slug='overwhelm' %}" class="term-card">
-        <div class="term-card-header">
-          <div>
-            <h3 class="term-title">Overwhelm</h3>
-            <span class="term-fil-tag">Pagkabigla sa Dami ng Pasanin</span>
-          </div>
+      <!-- Row 2: Overwhelm -->
+      <div class="dict-entry-row">
+        <div class="dict-entry-top">
+          <a href="{% url 'dictionary:detail' slug='overwhelm' %}" class="dict-entry-word">Overwhelm</a>
+          <span class="dict-entry-fil">Pagkabigla sa Dami ng Pasanin</span>
           <span class="badge badge-everyday">Everyday</span>
         </div>
-        <p class="term-short-def" data-en="The feeling that the demands placed on you far exceed your immediate capacity to manage them."
+        <p class="dict-entry-def" data-en="The feeling that the demands placed on you far exceed your immediate capacity to manage them."
            data-fil="Pakiramdam na sabay-sabay at sobra-sobra ang mga pasanin kumpara sa kaya mong dalhin sa sandaling ito.">
           The feeling that the demands placed on you far exceed your immediate capacity to manage them.
         </p>
-        <div class="term-card-footer">
-          <span style="font-size: 0.75rem; color: var(--color-text-subtle);">Associated with: Chronic Stress</span>
-          <span>Explore entry &rarr;</span>
+        <div class="dict-entry-meta">
+          <span><strong>Associated with:</strong> <a href="{% url 'dictionary:detail' slug='chronic-stress' %}">Chronic Stress</a></span>
         </div>
-      </a>
+      </div>
 
-      <!-- Term 3: Grounding -->
-      <a href="{% url 'dictionary:detail' slug='grounding' %}" class="term-card">
-        <div class="term-card-header">
-          <div>
-            <h3 class="term-title">Grounding</h3>
-            <span class="term-fil-tag">Pagpapakalma / Sensory Anchor</span>
-          </div>
+      <!-- Row 3: Grounding -->
+      <div class="dict-entry-row">
+        <div class="dict-entry-top">
+          <a href="{% url 'dictionary:detail' slug='grounding' %}" class="dict-entry-word">Grounding</a>
+          <span class="dict-entry-fil">Pagpapakalma / Sensory Anchor</span>
           <span class="badge badge-psychological">Coping</span>
         </div>
-        <p class="term-short-def" data-en="Mindfulness strategies that anchor your awareness in the physical reality of the present moment."
+        <p class="dict-entry-def" data-en="Mindfulness strategies that anchor your awareness in the physical reality of the present moment."
            data-fil="Mga simpleng paraan gamit ang paningin at pandama upang ibalik ang isip sa kasalukuyang sandali.">
           Mindfulness strategies that anchor your awareness in the physical reality of the present moment.
         </p>
-        <div class="term-card-footer">
-          <span style="font-size: 0.75rem; color: var(--color-text-subtle);">Opposite of: Rumination</span>
-          <span>Explore entry &rarr;</span>
-        </div>
-      </a>
-    </div>
-  </section>
-
-
-  <!-- =========================================================================
-       5. SAN FERNANDO, LA UNION CARE NETWORK
-       ========================================================================= -->
-  <section class="py-12 reveal delay-4" id="local-support" aria-labelledby="san-fernando-heading">
-    <div style="background-color: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-xl); padding: var(--space-8); box-shadow: var(--shadow-card);">
-      <div style="text-align: center; max-width: 680px; margin: 0 auto var(--space-8) auto;">
-        <span class="hero-btn-tag" style="color: var(--color-danger);" data-en="Verified Regional Resources" data-fil="Opisyal na Katuwang sa Rehiyon">
-          Verified Regional Resources
-        </span>
-        <h2 id="san-fernando-heading" style="font-size: var(--font-size-2xl);" data-en="San Fernando, La Union Healthcare Facilities" data-fil="Mga Pasilidad ng Kalusugan sa San Fernando">
-          San Fernando, La Union Healthcare Facilities
-        </h2>
-        <p style="color: var(--color-text-muted); font-size: var(--font-size-sm);" data-en="All resources are verified healthcare and emergency entities operating in San Fernando and Region 1."
-           data-fil="Lahat ng nakatala rito ay opisyal at beripikadong pasilidad ng kalusugan at emerhensiya sa San Fernando.">
-          All resources are verified healthcare and emergency entities operating in San Fernando and Region 1.
-        </p>
-      </div>
-
-      <div class="relationship-card-grid">
-        <div class="rel-card">
-          <span class="badge badge-psychological mb-2">Tertiary Public Hospital</span>
-          <h3 style="font-size: 1.15rem; margin-bottom: 2px;">ITRMC Psychiatry Clinic</h3>
-          <p style="font-size: var(--font-size-xs); color: var(--color-text-subtle); margin-bottom: var(--space-3);">Parian, City of San Fernando, La Union</p>
-          <p style="font-size: var(--font-size-xs); color: var(--color-text-muted); margin-bottom: var(--space-3);">
-            Specialized outpatient consultations, clinical psychiatric care, and acute intervention.
-          </p>
-          <strong style="color: var(--color-text); font-size: 1rem;">(072) 607-6418</strong>
-        </div>
-
-        <div class="rel-card">
-          <span class="badge badge-clinical mb-2">City Emergency Response</span>
-          <h3 style="font-size: 1.15rem; margin-bottom: 2px;">San Fernando CDRRMO</h3>
-          <p style="font-size: var(--font-size-xs); color: var(--color-text-subtle); margin-bottom: var(--space-3);">City Hall Compound, San Fernando, La Union</p>
-          <p style="font-size: var(--font-size-xs); color: var(--color-text-muted); margin-bottom: var(--space-3);">
-            24/7 immediate local ambulance dispatch and municipal rescue service.
-          </p>
-          <strong style="color: var(--color-danger); font-size: 1rem;">911 / (072) 687-8100</strong>
-        </div>
-
-        <div class="rel-card">
-          <span class="badge badge-everyday mb-2">24/7 National Lifeline</span>
-          <h3 style="font-size: 1.15rem; margin-bottom: 2px;">NCMH Crisis Hotline</h3>
-          <p style="font-size: var(--font-size-xs); color: var(--color-text-subtle); margin-bottom: var(--space-3);">Department of Health &middot; Philippines</p>
-          <p style="font-size: var(--font-size-xs); color: var(--color-text-muted); margin-bottom: var(--space-3);">
-            Free, nationwide confidential crisis counseling and referral support.
-          </p>
-          <strong style="color: var(--color-primary); font-size: 1rem;">Dial 1553 (Toll-Free)</strong>
+        <div class="dict-entry-meta">
+          <span><strong>Opposite of:</strong> <a href="{% url 'dictionary:detail' slug='rumination' %}">Rumination</a></span>
         </div>
       </div>
     </div>
   </section>
 
 </div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/three_hero.js' %}"></script>
 {% endblock %}

@@ -3,12 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{% block title %}agkAInakem — Mental Health Literacy & Early Support | San Fernando, La Union{% endblock %}</title>
+  <title>{% block title %}agkAInakem — Mental Health Literacy | San Fernando, La Union{% endblock %}</title>
 
   <!-- Google Fonts: Plus Jakarta Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Three.js for Interactive 3D WebGL Experiences -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
   <!-- Design System CSS -->
   {% load static %}
@@ -18,7 +21,7 @@
   {% block extra_css %}{% endblock %}
 </head>
 <body>
-  <!-- Ambient Moving Graphic Orbs (Creative Portfolio Atmosphere) -->
+  <!-- Ambient Moving Graphic Orbs -->
   <div class="ambient-bg" aria-hidden="true">
     <div class="ambient-orb ambient-orb-teal"></div>
     <div class="ambient-orb ambient-orb-sky"></div>
@@ -28,22 +31,22 @@
   <!-- Accessibility Skip Link -->
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
-  <!-- 24/7 San Fernando, La Union & Philippine Crisis Banner -->
-  <aside class="crisis-banner" role="complementary" aria-label="Crisis & Emergency Support Information">
-    <span class="crisis-banner-badge" data-en="Emergency Care" data-fil="Agarang Tulong">Emergency Care</span>
-    <span data-en="In immediate distress in San Fernando or nationwide? Call <strong>911</strong> &bull; ITRMC Psychiatry: <strong>(072) 607-6418</strong> &bull; NCMH Crisis Hotline: <strong>1553</strong> (Toll-Free)."
-          data-fil="Kailangan ng agarang tulong sa San Fernando o saanmang bahagi ng bansa? Tumawag sa <strong>911</strong> &bull; ITRMC Psychiatry: <strong>(072) 607-6418</strong> &bull; NCMH Crisis Hotline: <strong>1553</strong>.">
-      In immediate distress in San Fernando or nationwide? Call <strong>911</strong> &bull; ITRMC Psychiatry: <strong>(072) 607-6418</strong> &bull; NCMH Crisis Hotline: <strong>1553</strong> (Toll-Free).
+  <!-- Minimalist San Fernando Crisis Bar -->
+  <aside class="crisis-banner" role="complementary" aria-label="Crisis Support Information">
+    <span class="crisis-banner-badge" data-en="Emergency" data-fil="Emerhensiya">Emergency</span>
+    <span data-en="San Fernando, La Union: Call <strong>911</strong> &bull; ITRMC Psychiatry: <strong>(072) 607-6418</strong> &bull; NCMH: <strong>1553</strong>"
+          data-fil="San Fernando, La Union: Tumawag sa <strong>911</strong> &bull; ITRMC Psychiatry: <strong>(072) 607-6418</strong> &bull; NCMH: <strong>1553</strong>">
+      San Fernando, La Union: Call <strong>911</strong> &bull; ITRMC Psychiatry: <strong>(072) 607-6418</strong> &bull; NCMH: <strong>1553</strong>
     </span>
-    <a href="{% url 'support:reach_out' %}#local-support" data-en="View all local contacts &rarr;" data-fil="Tingnan ang mga kontak &rarr;">View all local contacts &rarr;</a>
+    <a href="{% url 'support:reach_out' %}#emergency" data-en="Hotlines &rarr;" data-fil="Mga Hotline &rarr;">Hotlines &rarr;</a>
   </aside>
 
-  <!-- Global Header & Navigation with Bilingual Toggle -->
+  <!-- Ultra-Clean, Decluttered Header -->
   <header class="site-header" role="banner">
     <div class="container nav-container">
-      <a href="{% url 'home' %}" class="brand-wrapper" aria-label="agkAInakem Homepage">
+      <a href="{% url 'home' %}" class="brand-wrapper" aria-label="agkAInakem Home">
         <div class="brand-logo-mark" aria-hidden="true">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
             <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2z"></path>
             <path d="M7 12c1.5 2 3.5 2 5 0s3.5-2 5 0"></path>
           </svg>
@@ -54,40 +57,32 @@
         </div>
       </a>
 
-      <!-- Desktop Nav -->
+      <!-- Streamlined Navigation (Only essential links, no clutter) -->
       <nav id="navMenu" class="nav-menu" role="navigation" aria-label="Main Navigation">
-        <li class="nav-item">
-          <a href="{% url 'home' %}" class="{% if request.resolver_match.url_name == 'home' %}active{% endif %}" data-en="Home" data-fil="Tahanan">Home</a>
-        </li>
-        <li class="nav-item">
-          <a href="{% url 'discovery:explore' %}" class="{% if request.resolver_match.app_name == 'discovery' %}active{% endif %}" data-en="Explore Words" data-fil="Tuklasin">Explore Words</a>
-        </li>
         <li class="nav-item">
           <a href="{% url 'dictionary:index' %}" class="{% if request.resolver_match.app_name == 'dictionary' %}active{% endif %}" data-en="Dictionary" data-fil="Diksiyonaryo">Dictionary</a>
         </li>
         <li class="nav-item">
-          <a href="{% url 'support:reach_out' %}" class="{% if request.resolver_match.url_name == 'reach_out' %}active{% endif %}" data-en="Reach Out" data-fil="Humiling ng Tulong">Reach Out</a>
+          <a href="{% url 'support:reach_out' %}" class="{% if request.resolver_match.url_name == 'reach_out' %}active{% endif %}" data-en="Reach Out" data-fil="Tulong">Reach Out</a>
         </li>
         <li class="nav-item">
-          <a href="{% url 'support:daily_tracker' %}" class="{% if request.resolver_match.url_name == 'daily_tracker' %}active{% endif %}" data-en="Daily Tracker" data-fil="Araw-araw na Tracker">Daily Tracker</a>
+          <a href="{% url 'support:daily_tracker' %}" class="{% if request.resolver_match.url_name == 'daily_tracker' %}active{% endif %}" data-en="Tracker" data-fil="Tracker">Tracker</a>
         </li>
         <li class="nav-item">
-          <a href="{% url 'about' %}" class="{% if request.resolver_match.url_name == 'about' %}active{% endif %}" data-en="About &amp; Ethics" data-fil="Tungkol at Etika">About &amp; Ethics</a>
+          <a href="{% url 'about' %}" class="{% if request.resolver_match.url_name == 'about' %}active{% endif %}" data-en="About" data-fil="Tungkol">About</a>
         </li>
       </nav>
 
-      <!-- Right Controls: Bilingual Switcher Pill & Actions -->
+      <!-- Right Side Controls: Clean Bilingual Toggle -->
       <div class="nav-right-controls">
-        <div class="lang-switcher" aria-label="Language selection toggle">
+        <div class="lang-switcher" aria-label="Language Toggle">
           <button type="button" class="lang-btn is-active" data-lang="en">EN</button>
           <button type="button" class="lang-btn" data-lang="fil">FIL</button>
         </div>
 
-        <a href="{% url 'support:reach_out' %}" class="btn btn-primary btn-sm" data-en="Reach Out" data-fil="Tulong">Reach Out</a>
-
         <!-- Mobile Toggle Button -->
         <button id="mobileNavToggle" class="mobile-nav-toggle" aria-expanded="false" aria-controls="navMenu" aria-label="Toggle navigation menu">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <line x1="3" y1="12" x2="21" y2="12"></line>
             <line x1="3" y1="6" x2="21" y2="6"></line>
             <line x1="3" y1="18" x2="21" y2="18"></line>
@@ -102,60 +97,26 @@
     {% block content %}{% endblock %}
   </main>
 
-  <!-- Site Footer -->
+  <!-- Minimalist Clean Footer -->
   <footer class="site-footer" role="contentinfo">
     <div class="container">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <div class="brand-wrapper mb-2">
-            <div class="brand-logo-mark" aria-hidden="true">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2z"></path>
-                <path d="M7 12c1.5 2 3.5 2 5 0s3.5-2 5 0"></path>
-              </svg>
-            </div>
-            <div class="brand-text-group">
-              <span class="brand-name">agk<span class="brand-ai">AI</span>nakem</span>
-              <span class="brand-location">San Fernando, La Union, Philippines</span>
-            </div>
-          </div>
-          <p data-en="A modern, compassionate mental health literacy and early-support platform. Helping you discover language for inner emotional experiences and connect with verified human assistance."
-             data-fil="Isang makabago at mapagmalasakit na plataporma para sa literasiya sa kalusugang pangkaisipan at maagang tulong. Tumutulong sa iyong ipahayag ang nararamdaman at lumapit sa mapagkakatiwalaang katuwang.">
-            A modern, compassionate mental health literacy and early-support platform. Helping you discover language for inner emotional experiences and connect with verified human assistance.
+      <div class="footer-minimal-row">
+        <div>
+          <span class="brand-name" style="font-size: 1.1rem;">agk<span class="brand-ai">AI</span>nakem</span>
+          <span style="color: var(--color-text-subtle); font-size: var(--font-size-xs); margin-left: var(--space-2);">San Fernando, La Union</span>
+          <p style="font-size: var(--font-size-xs); color: var(--color-text-muted); margin-top: var(--space-1); margin-bottom: 0;"
+             data-en="Calm mental health literacy and human connection. Non-diagnostic educational platform."
+             data-fil="Edukasyon sa kalusugang pangkaisipan at tulong. Hindi ito pamalit sa medikal na diagnosis.">
+            Calm mental health literacy and human connection. Non-diagnostic educational platform.
           </p>
         </div>
 
-        <div class="footer-col">
-          <h4 data-en="Exploration" data-fil="Pagtuklas">Exploration</h4>
-          <ul>
-            <li><a href="{% url 'discovery:explore' %}" data-en="Sentence Discovery" data-fil="Pagtuklas ng Salita">Sentence Discovery</a></li>
-            <li><a href="{% url 'dictionary:index' %}" data-en="Curated Dictionary" data-fil="Diksiyonaryo">Curated Dictionary</a></li>
-            <li><a href="{% url 'support:reach_out' %}" data-en="Reach Out Hub" data-fil="Sentro ng Tulong">Reach Out Hub</a></li>
-            <li><a href="{% url 'support:daily_tracker' %}" data-en="Daily Mood Tracker" data-fil="Araw-araw na Tracker">Daily Mood Tracker</a></li>
-          </ul>
+        <div style="display: flex; gap: var(--space-5); font-size: var(--font-size-xs);">
+          <a href="{% url 'dictionary:index' %}" data-en="Dictionary" data-fil="Diksiyonaryo">Dictionary</a>
+          <a href="{% url 'support:reach_out' %}" data-en="Reach Out" data-fil="Tulong">Reach Out</a>
+          <a href="{% url 'support:daily_tracker' %}" data-en="Tracker" data-fil="Tracker">Tracker</a>
+          <a href="{% url 'about' %}" data-en="Safety &amp; Privacy" data-fil="Ligtas at Pribado">Safety &amp; Privacy</a>
         </div>
-
-        <div class="footer-col">
-          <h4 data-en="San Fernando Care" data-fil="Kalingang San Fernando">San Fernando Care</h4>
-          <ul>
-            <li><a href="{% url 'support:reach_out' %}#local-support">ITRMC Psychiatry (Parian)</a></li>
-            <li><a href="{% url 'support:reach_out' %}#local-support">San Fernando CDRRMO (911)</a></li>
-            <li><a href="{% url 'support:reach_out' %}#local-support">NCMH Crisis Line (1553)</a></li>
-            <li><a href="{% url 'about' %}" data-en="Non-Diagnostic Scope" data-fil="Saklaw at Etika">Non-Diagnostic Scope</a></li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- Legal & Medical Disclaimer -->
-      <div class="footer-disclaimer-box" 
-           data-en="<strong>Important Safety Notice:</strong> <em>agkAInakem</em> provides educational mental health literacy and early-support communication resources. It does not provide medical advice, diagnosis, psychiatric assessment, or crisis intervention. If you or someone around you is in immediate danger of harm, call 911, contact the ITRMC Psychiatry Department in Parian, or dial the National Center for Mental Health Crisis Hotline at 1553."
-           data-fil="<strong>Mahalagang Paalala sa Kaligtasan:</strong> Ang <em>agkAInakem</em> ay nagbibigay ng edukasyon sa literasiya ng emosyon at maagang gabay. Hindi ito nagbibigay ng medikal na pagsusuri, diagnosis, o panggagamot. Kung ikaw o ang isang kakilala ay nasa agarang panganib, tumawag agad sa 911, sa ITRMC Psychiatry sa Parian, o sa NCMH Crisis Hotline sa 1553.">
-        <strong>Important Safety Notice:</strong> <em>agkAInakem</em> provides educational mental health literacy and early-support communication resources. It does not provide medical advice, diagnosis, psychiatric assessment, or crisis intervention. If you or someone around you is in immediate danger of harm, call 911, contact the ITRMC Psychiatry Department in Parian, or dial the National Center for Mental Health Crisis Hotline at 1553.
-      </div>
-
-      <div class="footer-bottom">
-        <div>&copy; 2026 agkAInakem &middot; Dedicated to San Fernando, La Union &amp; Region 1</div>
-        <div data-en="Bilingual (EN / FIL) Accessible Edition" data-fil="Edisyong Naa-access sa Ingles at Filipino">Bilingual (EN / FIL) Accessible Edition</div>
       </div>
     </div>
   </footer>

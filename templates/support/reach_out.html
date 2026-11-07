@@ -1,167 +1,148 @@
 {% extends 'base.html' %}
 
-{% block title %}Reach Out — Support Hub | San Fernando, La Union | agkAInakem{% endblock %}
+{% block title %}Reach Out — Support & Emergency Contacts | agkAInakem{% endblock %}
 
 {% block content %}
-<div class="container" style="padding-top: var(--space-8);">
-  <div class="mb-8 reveal">
-    <div class="facility-badge facility-badge-gov mb-2">Pillar B &middot; San Fernando, La Union Early Support</div>
-    <h1>Agpadungso (Reach Out) Hub</h1>
-    <p class="lead" style="max-width: 760px;">
-      Compassionate, practical support options for yourself or someone you care about in San Fernando, La Union and across Region 1. Choose the pathway that matches your current situation.
+<div class="container container-narrow" style="padding-top: var(--space-8);">
+
+  <div class="mb-8 reveal text-center">
+    <h1 style="font-size: 2.4rem;" data-en="Reach Out" data-fil="Humiling ng Tulong">Reach Out</h1>
+    <p class="lead" style="max-width: 540px; margin: 0 auto;"
+       data-en="Calming exercises, practical guides, and verified emergency healthcare in San Fernando, La Union."
+       data-fil="Pampakalmang ehersisyo, gabay sa pag-uusap, at beripikadong tulong sa San Fernando, La Union.">
+      Calming exercises, practical guides, and verified emergency healthcare in San Fernando, La Union.
     </p>
   </div>
 
-  <!-- Priority Options Grid -->
-  <div class="pillars-grid mb-12 reveal delay-1">
-    <!-- Option 1: I Need Support -->
-    <div class="pillar-card">
-      <div class="pillar-card-top">
-        <div class="pillar-icon-box pillar-icon-teal">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
-          </svg>
-        </div>
-        <div>
-          <span class="facility-badge facility-badge-gov">Self-Care</span>
-          <h3 class="mb-0">Masapolko ti Tulong (I Need Support)</h3>
-        </div>
-      </div>
-      <p>
-        Access calming grounding instructions (such as the 5-4-3-2-1 sensory technique), gentle reflection prompts, or connect with verified mental health facilities in San Fernando.
-      </p>
-      <div class="pillar-card-actions">
-        <a href="#grounding" class="btn btn-primary">Grounding Exercise</a>
-        <a href="#local-support" class="btn btn-outline">Local Hotlines &amp; Hospitals</a>
-      </div>
+  <!-- 1. Instant 5-4-3-2-1 Sensory Grounding (Interactive Stepper) -->
+  <section class="mb-10 reveal delay-1" style="border-bottom: 1px solid var(--color-border); padding-bottom: var(--space-8);">
+    <div style="display: flex; align-items: baseline; gap: var(--space-3); margin-bottom: var(--space-3);">
+      <h2 style="font-size: 1.35rem; margin-bottom: 0;" data-en="5-4-3-2-1 Grounding Practice" data-fil="5-4-3-2-1 Pampakalma">
+        5-4-3-2-1 Grounding Practice
+      </h2>
+      <span class="badge badge-psychological" data-en="Sensory Anchor" data-fil="Pandama">Sensory Anchor</span>
     </div>
-
-    <!-- Option 2: Someone Else Needs Help -->
-    <div class="pillar-card">
-      <div class="pillar-card-top">
-        <div class="pillar-icon-box pillar-icon-sky">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-            <circle cx="9" cy="7" r="4"></circle>
-            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-          </svg>
-        </div>
-        <div>
-          <span class="facility-badge facility-badge-hospital">Supporting Others</span>
-          <h3 class="mb-0">Tulong iti Sabali (Help Someone)</h3>
-        </div>
-      </div>
-      <p>
-        Learn how to recognize distress signs, ask gently using Ilokano and Filipino conversational phrasing, listen without judgment, and connect a friend to local care.
-      </p>
-      <div class="pillar-card-actions">
-        <a href="{% url 'support:help_someone' %}" class="btn btn-secondary">Notice &rarr; Ask &rarr; Listen &rarr; Connect</a>
-      </div>
-    </div>
-  </div>
-
-  <!-- Grounding Step 5-4-3-2-1 Minimalist Box -->
-  <section id="grounding" class="mb-12 reveal delay-2" style="background-color: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: var(--space-8); box-shadow: var(--shadow-card);">
-    <div style="display: flex; align-items: center; gap: var(--space-3); margin-bottom: var(--space-4);">
-      <span class="facility-badge facility-badge-gov">Non-Blocking First Aid</span>
-      <h2 style="font-size: var(--font-size-xl); margin-bottom: 0;">5-4-3-2-1 Grounding Practice (Panangikabil ti Bagi iti Agdama)</h2>
-    </div>
-    <p style="color: var(--color-text-muted); font-size: var(--font-size-sm); margin-bottom: var(--space-6);">
-      When anxiety or overwhelm (<em>pannakariro wenno panagdanag</em>) spikes, this simple sensory exercise helps bring your awareness back to the safe present moment. You can skip this anytime if you need immediate human help.
+    <p style="font-size: var(--font-size-sm); color: var(--color-text-muted); margin-bottom: var(--space-4);"
+       data-en="Anchor your awareness in the physical present when feeling anxious or overwhelmed."
+       data-fil="Ibalik ang isip sa kasalukuyang sandali gamit ang iyong limang pandama.">
+      Anchor your awareness in the physical present when feeling anxious or overwhelmed.
     </p>
 
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: var(--space-3);">
-      <div style="background-color: var(--color-surface-soft); padding: var(--space-4); border-radius: var(--radius-sm); border-top: 3px solid var(--color-primary);">
-        <strong style="color: var(--color-primary); font-size: 1.1rem;">5</strong> Things you see
-        <p style="font-size: var(--font-size-xs); color: var(--color-text-muted); margin-top: 4px; margin-bottom: 0;">Notice five objects around you.</p>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: var(--space-2); text-align: center;">
+      <div style="background: #FFFFFF; border: 1px solid var(--color-border); border-radius: var(--radius-sm); padding: var(--space-3);">
+        <strong style="color: var(--color-primary); font-size: 1.2rem; display: block;">5</strong>
+        <span style="font-size: var(--font-size-xs); font-weight: 700;" data-en="See" data-fil="Makita">See</span>
+        <span style="font-size: 0.7rem; color: var(--color-text-subtle); display: block;" data-en="5 objects around you" data-fil="5 bagay sa paligid">5 objects</span>
       </div>
-      <div style="background-color: var(--color-surface-soft); padding: var(--space-4); border-radius: var(--radius-sm); border-top: 3px solid var(--color-secondary);">
-        <strong style="color: #1F547A; font-size: 1.1rem;">4</strong> Things you touch
-        <p style="font-size: var(--font-size-xs); color: var(--color-text-muted); margin-top: 4px; margin-bottom: 0;">Feel your feet, your desk, or cloth.</p>
+      <div style="background: #FFFFFF; border: 1px solid var(--color-border); border-radius: var(--radius-sm); padding: var(--space-3);">
+        <strong style="color: #1A527A; font-size: 1.2rem; display: block;">4</strong>
+        <span style="font-size: var(--font-size-xs); font-weight: 700;" data-en="Touch" data-fil="Mahawakan">Touch</span>
+        <span style="font-size: 0.7rem; color: var(--color-text-subtle); display: block;" data-en="4 textures or surfaces" data-fil="4 na bagay na nahahawakan">4 textures</span>
       </div>
-      <div style="background-color: var(--color-surface-soft); padding: var(--space-4); border-radius: var(--radius-sm); border-top: 3px solid var(--color-success);">
-        <strong style="color: var(--color-success-dark); font-size: 1.1rem;">3</strong> Things you hear
-        <p style="font-size: var(--font-size-xs); color: var(--color-text-muted); margin-top: 4px; margin-bottom: 0;">Listen for wind, traffic, or a clock.</p>
+      <div style="background: #FFFFFF; border: 1px solid var(--color-border); border-radius: var(--radius-sm); padding: var(--space-3);">
+        <strong style="color: var(--color-success-dark); font-size: 1.2rem; display: block;">3</strong>
+        <span style="font-size: var(--font-size-xs); font-weight: 700;" data-en="Hear" data-fil="Marinig">Hear</span>
+        <span style="font-size: 0.7rem; color: var(--color-text-subtle); display: block;" data-en="3 distinct sounds" data-fil="3 tunog sa paligid">3 sounds</span>
       </div>
-      <div style="background-color: var(--color-surface-soft); padding: var(--space-4); border-radius: var(--radius-sm); border-top: 3px solid var(--color-warning);">
-        <strong style="color: var(--color-warning); font-size: 1.1rem;">2</strong> Things you smell
-        <p style="font-size: var(--font-size-xs); color: var(--color-text-muted); margin-top: 4px; margin-bottom: 0;">Notice ambient scents in the room.</p>
+      <div style="background: #FFFFFF; border: 1px solid var(--color-border); border-radius: var(--radius-sm); padding: var(--space-3);">
+        <strong style="color: var(--color-warning); font-size: 1.2rem; display: block;">2</strong>
+        <span style="font-size: var(--font-size-xs); font-weight: 700;" data-en="Smell" data-fil="Maamoy">Smell</span>
+        <span style="font-size: 0.7rem; color: var(--color-text-subtle); display: block;" data-en="2 ambient scents" data-fil="2 amoy sa hangin">2 scents</span>
       </div>
-      <div style="background-color: var(--color-surface-soft); padding: var(--space-4); border-radius: var(--radius-sm); border-top: 3px solid var(--color-danger);">
-        <strong style="color: var(--color-danger); font-size: 1.1rem;">1</strong> Thing you taste
-        <p style="font-size: var(--font-size-xs); color: var(--color-text-muted); margin-top: 4px; margin-bottom: 0;">Take a sip of water or notice your breath.</p>
+      <div style="background: #FFFFFF; border: 1px solid var(--color-border); border-radius: var(--radius-sm); padding: var(--space-3);">
+        <strong style="color: var(--color-danger); font-size: 1.2rem; display: block;">1</strong>
+        <span style="font-size: var(--font-size-xs); font-weight: 700;" data-en="Taste" data-fil="Malasahan">Taste</span>
+        <span style="font-size: 0.7rem; color: var(--color-text-subtle); display: block;" data-en="1 taste or breath" data-fil="1 lagok ng tubig o hininga">1 breath</span>
       </div>
     </div>
   </section>
 
-  <!-- Verified Crisis & Local Support Directory -->
-  <section id="local-support" class="reveal delay-3" style="background-color: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: var(--space-8); margin-bottom: var(--space-12);">
-    <div style="display: flex; align-items: center; gap: var(--space-3); margin-bottom: var(--space-4);">
-      <span class="crisis-banner-badge" style="font-size: var(--font-size-xs); padding: 4px 12px;">San Fernando &amp; Nationwide Care</span>
-      <h2 style="font-size: var(--font-size-xl); margin-bottom: 0;">Verified Healthcare &amp; Emergency Contacts</h2>
+  <!-- 2. Verified San Fernando, La Union Emergency & Care (Tagalog.com List Style) -->
+  <section id="emergency" class="mb-10 reveal delay-2">
+    <div style="margin-bottom: var(--space-4);">
+      <h2 style="font-size: 1.35rem;" data-en="Verified Care Contacts &amp; Facilities" data-fil="Mga Beripikadong Pasilidad at Hotline">
+        Verified Care Contacts &amp; Facilities
+      </h2>
+      <p style="font-size: var(--font-size-xs); color: var(--color-text-subtle); margin-bottom: 0;"
+         data-en="San Fernando, La Union and National Crisis Lines."
+         data-fil="San Fernando, La Union at Pambansang Crisis Hotline.">
+        San Fernando, La Union and National Crisis Lines.
+      </p>
     </div>
-    <p style="color: var(--color-text-muted); line-height: var(--line-height-relaxed); font-size: var(--font-size-sm); margin-bottom: var(--space-6);">
-      If you or someone around you is experiencing thoughts of suicide or acute psychological distress, please contact these verified medical and crisis services immediately.
-    </p>
 
-    <div class="local-support-grid">
+    <div class="dict-list">
       <!-- 1. ITRMC -->
-      <div class="support-facility-card">
-        <span class="facility-badge facility-badge-hospital">Tertiary Regional Hospital</span>
-        <h3 style="font-size: var(--font-size-lg); margin-bottom: 4px;">Ilocos Training and Regional Medical Center (ITRMC)</h3>
-        <p style="font-size: var(--font-size-xs); color: var(--color-text-subtle); margin-bottom: var(--space-3);">Department of Psychiatry &middot; Parian, City of San Fernando, La Union</p>
-        <p style="font-size: var(--font-size-xs); color: var(--color-text-muted); margin-bottom: var(--space-3); flex-grow: 1;">
-          Direct public hospital psychiatric care, outpatient clinic, psychiatric evaluations, and emergency consultations.
-        </p>
-        <div class="facility-phone">
-          <span>(072) 607-6418</span>
+      <div class="dict-entry-row">
+        <div class="dict-entry-top">
+          <strong style="font-size: 1.15rem; color: var(--color-text);">Ilocos Training and Regional Medical Center (ITRMC)</strong>
+          <span class="badge badge-psychological">Tertiary Hospital</span>
         </div>
-        <span style="font-size: 0.72rem; color: var(--color-text-subtle);">Hospital Trunkline: (072) 607-6422 to 24</span>
+        <p class="dict-entry-def" style="font-size: var(--font-size-sm); color: var(--color-text-muted);">
+          Department of Psychiatry &middot; Parian, City of San Fernando, La Union. Clinical evaluations, outpatient consultations, and emergency psychiatric care.
+        </p>
+        <div class="dict-entry-meta">
+          <span><strong>Clinic Phone:</strong> (072) 607-6418</span>
+          <span><strong>Trunkline:</strong> (072) 607-6422 to 24</span>
+        </div>
       </div>
 
-      <!-- 2. CDRRMO San Fernando Emergency -->
-      <div class="support-facility-card">
-        <span class="facility-badge facility-badge-crisis">Local City Emergency</span>
-        <h3 style="font-size: var(--font-size-lg); margin-bottom: 4px;">San Fernando CDRRMO &amp; Emergency Operations</h3>
-        <p style="font-size: var(--font-size-xs); color: var(--color-text-subtle); margin-bottom: var(--space-3);">City Hall Compound, City of San Fernando, La Union</p>
-        <p style="font-size: var(--font-size-xs); color: var(--color-text-muted); margin-bottom: var(--space-3); flex-grow: 1;">
-          Immediate city ambulance and rescue assistance for critical emergencies within San Fernando.
-        </p>
-        <div class="facility-phone">
-          <span style="color: var(--color-danger);">911 / (072) 687-8100</span>
+      <!-- 2. San Fernando CDRRMO -->
+      <div class="dict-entry-row">
+        <div class="dict-entry-top">
+          <strong style="font-size: 1.15rem; color: var(--color-text);">San Fernando CDRRMO Emergency Rescue</strong>
+          <span class="badge badge-clinical">City Emergency</span>
         </div>
-        <span style="font-size: 0.72rem; color: var(--color-text-subtle);">Mobile Rescue Hotline: 0917-862-2376</span>
+        <p class="dict-entry-def" style="font-size: var(--font-size-sm); color: var(--color-text-muted);">
+          City Hall Compound, San Fernando, La Union. 24/7 municipal ambulance dispatch and critical rescue.
+        </p>
+        <div class="dict-entry-meta">
+          <span style="color: var(--color-danger); font-weight: 800;">Emergency Hotline: 911 / (072) 687-8100</span>
+          <span>Mobile: 0917-862-2376</span>
+        </div>
       </div>
 
-      <!-- 3. NCMH Crisis Hotline -->
-      <div class="support-facility-card">
-        <span class="facility-badge facility-badge-gov">24/7 Nationwide Toll-Free</span>
-        <h3 style="font-size: var(--font-size-lg); margin-bottom: 4px;">National Center for Mental Health (NCMH)</h3>
-        <p style="font-size: var(--font-size-xs); color: var(--color-text-subtle); margin-bottom: var(--space-3);">Department of Health &middot; Philippines</p>
-        <p style="font-size: var(--font-size-xs); color: var(--color-text-muted); margin-bottom: var(--space-3); flex-grow: 1;">
-          24/7 free, confidential crisis counseling, psychological first-aid, and regional psychiatric referrals.
-        </p>
-        <div class="facility-phone">
-          <span>1553 (Toll-Free Nationwide)</span>
+      <!-- 3. NCMH -->
+      <div class="dict-entry-row">
+        <div class="dict-entry-top">
+          <strong style="font-size: 1.15rem; color: var(--color-text);">National Center for Mental Health (NCMH)</strong>
+          <span class="badge badge-everyday">24/7 Toll-Free</span>
         </div>
-        <span style="font-size: 0.72rem; color: var(--color-text-subtle);">Globe/TM: 0917-899-8727 &bull; Smart: 0908-639-2672</span>
+        <p class="dict-entry-def" style="font-size: var(--font-size-sm); color: var(--color-text-muted);">
+          Department of Health. 24/7 nationwide toll-free psychological first-aid and crisis counseling.
+        </p>
+        <div class="dict-entry-meta">
+          <span style="color: var(--color-primary); font-weight: 800;">Dial 1553 (Toll-Free Nationwide)</span>
+          <span>Globe/TM: 0917-899-8727 &bull; Smart: 0908-639-2672</span>
+        </div>
       </div>
 
-      <!-- 4. Hopeline Philippines -->
-      <div class="support-facility-card">
-        <span class="facility-badge facility-badge-hospital">Crisis Support</span>
-        <h3 style="font-size: var(--font-size-lg); margin-bottom: 4px;">Hopeline Philippines</h3>
-        <p style="font-size: var(--font-size-xs); color: var(--color-text-subtle); margin-bottom: var(--space-3);">24/7 Suicide Prevention &amp; Emotional Support</p>
-        <p style="font-size: var(--font-size-xs); color: var(--color-text-muted); margin-bottom: var(--space-3); flex-grow: 1;">
-          Free, non-judgmental telephone assistance for individuals in crisis or dealing with depression.
-        </p>
-        <div class="facility-phone">
-          <span>(02) 8804-4673</span>
+      <!-- 4. Hopeline -->
+      <div class="dict-entry-row">
+        <div class="dict-entry-top">
+          <strong style="font-size: 1.15rem; color: var(--color-text);">Hopeline Philippines</strong>
+          <span class="badge badge-psychological">Crisis Support</span>
         </div>
-        <span style="font-size: 0.72rem; color: var(--color-text-subtle);">Mobile: 0917-558-4673 &bull; Toll-Free for Globe/TM: 2919</span>
+        <p class="dict-entry-def" style="font-size: var(--font-size-sm); color: var(--color-text-muted);">
+          24/7 emotional support and crisis telephone assistance.
+        </p>
+        <div class="dict-entry-meta">
+          <span>(02) 8804-4673 &bull; Mobile: 0917-558-4673</span>
+        </div>
       </div>
     </div>
   </section>
+
+  <!-- Step to Support Someone Else -->
+  <div style="text-align: center; margin-bottom: var(--space-12);" class="reveal delay-3">
+    <p style="font-size: var(--font-size-sm); color: var(--color-text-muted); margin-bottom: var(--space-3);"
+       data-en="Looking for guidance on how to speak with someone who may be struggling?"
+       data-fil="Naghahanap ng gabay kung paano kakausapin ang kakilalang nahihirapan?">
+      Looking for guidance on how to speak with someone who may be struggling?
+    </p>
+    <a href="{% url 'support:help_someone' %}" class="btn btn-outline btn-sm" data-en="Notice, Ask, Listen, Connect Guide &rarr;" data-fil="Basahin ang Gabay sa Pag-uusap &rarr;">
+      Notice, Ask, Listen, Connect Guide &rarr;
+    </a>
+  </div>
+
 </div>
 {% endblock %}

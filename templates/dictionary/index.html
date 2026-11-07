@@ -1,112 +1,117 @@
 {% extends 'base.html' %}
 
-{% block title %}Mental Health Dictionary | agkAInakem{% endblock %}
+{% block title %}Dictionary — Mental Health Vocabulary | agkAInakem{% endblock %}
 
 {% block content %}
-<div class="container" style="padding-top: var(--space-8);">
+<div class="container" style="padding-top: var(--space-6);">
 
-  <!-- Header -->
-  <div class="mb-8 reveal">
-    <span class="hero-btn-tag" style="color: var(--color-primary);" data-en="Milestone 2 &middot; Specialized Vocabulary" data-fil="Milestone 2 &middot; Masusing Diksiyonaryo">
-      Milestone 2 &middot; Specialized Vocabulary
-    </span>
-    <h1 data-en="Specialized Mental Health Dictionary" data-fil="Diksiyonaryo ng Kalusugang Pangkaisipan">
-      Specialized Mental Health Dictionary
-    </h1>
-    <p class="lead" style="max-width: 720px;" 
-       data-en="A curated vocabulary knowledge base explaining emotional states, psychological concepts, and coping terminology with clear distinctions."
-       data-fil="Isang maingat na inihandang kaalaman na nagpapaliwanag ng mga damdamin, konseptong sikolohikal, at mga paraan ng pagharap nang may malinaw na pagkakaiba.">
-      A curated vocabulary knowledge base explaining emotional states, psychological concepts, and coping terminology with clear distinctions.
-    </p>
-  </div>
+  <div class="dict-list-wrap">
+    <!-- Minimalist Header & Search (Tagalog.com Style) -->
+    <div style="margin-bottom: var(--space-6);" class="reveal">
+      <h1 style="font-size: 2.2rem; margin-bottom: var(--space-2);" data-en="Mental Health Dictionary" data-fil="Diksiyonaryo ng Kalusugang Pangkaisipan">
+        Mental Health Dictionary
+      </h1>
+      <p style="font-size: var(--font-size-sm); color: var(--color-text-muted); margin-bottom: var(--space-4);"
+         data-en="A specialized glossary of emotional states, psychological concepts, and practical distinctions."
+         data-fil="Isang masusing talasalitaan ng mga emosyon, konseptong sikolohikal, at mga praktikal na pagkakaiba.">
+        A specialized glossary of emotional states, psychological concepts, and practical distinctions.
+      </p>
 
-  <!-- Search & Filter Controls -->
-  <div class="mb-8 reveal delay-1" style="background-color: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: var(--space-6); box-shadow: var(--shadow-card);">
-    <form action="{% url 'dictionary:index' %}" method="get" style="display: flex; gap: var(--space-3); margin-bottom: var(--space-5);">
-      <input 
-        type="text" 
-        name="q" 
-        value="{{ query }}" 
-        placeholder="Search terms, concepts, or descriptions (e.g. Burnout, Rumination, Grounding)..." 
-        data-en="Search terms, concepts, or descriptions (e.g. Burnout, Rumination, Grounding)..."
-        data-fil="Maghanap ng salita o paliwanag (hal. Burnout, Rumination, Grounding)..."
-        class="discovery-input" 
-        style="border: 1px solid var(--color-border); border-radius: var(--radius-pill); padding: 0.75rem 1.25rem; width: 100%; background: var(--color-surface-soft);"
-      >
-      {% if selected_cat_slug %}<input type="hidden" name="category" value="{{ selected_cat_slug }}">{% endif %}
-      <button type="submit" class="btn btn-primary" data-en="Search" data-fil="Hanapin">Search</button>
-      {% if query or selected_cat_slug %}
-        <a href="{% url 'dictionary:index' %}" class="btn btn-outline" data-en="Clear" data-fil="I-reset">Clear</a>
-      {% endif %}
-    </form>
+      <form action="{% url 'dictionary:index' %}" method="get" class="discovery-minimal-input-wrap">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input 
+          type="text" 
+          name="q" 
+          value="{{ query }}" 
+          placeholder="Search for a term (e.g. Burnout, Rumination, Grounding)..." 
+          data-en="Search for a term (e.g. Burnout, Rumination, Grounding)..."
+          data-fil="Maghanap ng salita (hal. Burnout, Rumination, Grounding)..."
+          class="discovery-minimal-input"
+        >
+        {% if selected_cat_slug %}<input type="hidden" name="category" value="{{ selected_cat_slug }}">{% endif %}
+        <button type="submit" class="btn btn-primary btn-sm" data-en="Search" data-fil="Hanapin">Search</button>
+        {% if query or selected_cat_slug %}
+          <a href="{% url 'dictionary:index' %}" class="btn btn-outline btn-sm" data-en="Reset" data-fil="I-reset">Reset</a>
+        {% endif %}
+      </form>
+    </div>
 
-    <!-- Category Filters -->
-    <div class="dict-filter-bar">
-      <span style="font-size: var(--font-size-xs); font-weight: 800; text-transform: uppercase; color: var(--color-text-subtle); margin-right: var(--space-2);"
-            data-en="Categories:" data-fil="Kategorya:">
-        Categories:
-      </span>
+    <!-- Category Nav Bar (Text Links, NOT Card Grids) -->
+    <nav class="dict-cat-nav reveal delay-1" aria-label="Dictionary Categories">
       <a href="{% url 'dictionary:index' %}{% if query %}?q={{ query }}{% endif %}" 
-         class="dict-filter-pill {% if not selected_cat_slug %}is-active{% endif %}"
-         data-en="All Categories ({{ total_count }})"
+         class="dict-cat-link {% if not selected_cat_slug %}is-active{% endif %}"
+         data-en="All Entries ({{ total_count }})"
          data-fil="Lahat ({{ total_count }})">
-        All Categories ({{ total_count }})
+        All ({{ total_count }})
       </a>
       {% for cat in categories %}
         <a href="{% url 'dictionary:index' %}?category={{ cat.slug }}{% if query %}&q={{ query }}{% endif %}" 
-           class="dict-filter-pill {% if selected_cat_slug == cat.slug %}is-active{% endif %}">
+           class="dict-cat-link {% if selected_cat_slug == cat.slug %}is-active{% endif %}">
           <span class="lang-block-en">{{ cat.name }}</span>
           <span class="lang-block-fil" style="display: none;">{{ cat.name_fil|default:cat.name }}</span>
         </a>
       {% endfor %}
-    </div>
-  </div>
+    </nav>
 
-  <!-- Term Grid -->
-  {% if terms %}
-    <div class="term-grid reveal delay-2">
-      {% for item in terms %}
-        <a href="{% url 'dictionary:detail' slug=item.slug %}" class="term-card">
-          <div class="term-card-header">
-            <div>
-              <h2 class="term-title" style="font-size: var(--font-size-xl);">{{ item.term }}</h2>
+    <!-- Dictionary List (Clean, Flat, Legible Rows — NO CARDS) -->
+    {% if terms %}
+      <div class="dict-list reveal delay-2">
+        {% for item in terms %}
+          <article class="dict-entry-row">
+            <div class="dict-entry-top">
+              <a href="{% url 'dictionary:detail' slug=item.slug %}" class="dict-entry-word">{{ item.term }}</a>
               {% if item.term_fil %}
-                <span class="term-fil-tag">{{ item.term_fil }}</span>
+                <span class="dict-entry-fil">{{ item.term_fil }}</span>
+              {% endif %}
+
+              {% if item.term_type == 'clinical' %}
+                <span class="badge badge-clinical" data-en="Clinical" data-fil="Klinikal">Clinical</span>
+              {% elif item.term_type == 'psychological' %}
+                <span class="badge badge-psychological" data-en="Psychological" data-fil="Sikolohikal">Psychological</span>
+              {% else %}
+                <span class="badge badge-everyday" data-en="Everyday" data-fil="Pang-araw-araw">Everyday</span>
               {% endif %}
             </div>
-            {% if item.term_type == 'clinical' %}
-              <span class="badge badge-clinical" data-en="Clinical" data-fil="Klinikal">Clinical</span>
-            {% elif item.term_type == 'psychological' %}
-              <span class="badge badge-psychological" data-en="Psychological" data-fil="Sikolohikal">Psychological</span>
-            {% else %}
-              <span class="badge badge-everyday" data-en="Everyday" data-fil="Pang-araw-araw">Everyday</span>
-            {% endif %}
-          </div>
 
-          <p class="term-short-def">
-            <span class="lang-block-en">{{ item.short_definition }}</span>
-            <span class="lang-block-fil" style="display: none;">{{ item.short_definition_fil|default:item.short_definition }}</span>
-          </p>
+            <p class="dict-entry-def">
+              <span class="lang-block-en">{{ item.short_definition }}</span>
+              <span class="lang-block-fil" style="display: none;">{{ item.short_definition_fil|default:item.short_definition }}</span>
+            </p>
 
-          <div class="term-card-footer">
-            <span style="font-size: 0.72rem; color: var(--color-text-subtle);">
-              <span class="lang-block-en">{{ item.category.name }}</span>
-              <span class="lang-block-fil" style="display: none;">{{ item.category.name_fil|default:item.category.name }}</span>
-            </span>
-            <span data-en="View distinctions &rarr;" data-fil="Tingnan ang detalye &rarr;">View distinctions &rarr;</span>
-          </div>
-        </a>
-      {% endfor %}
-    </div>
-  {% else %}
-    <div style="background-color: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: var(--space-12); text-align: center;">
-      <h3 data-en="No vocabulary entries found" data-fil="Walang nahanap na salita">No vocabulary entries found</h3>
-      <p style="color: var(--color-text-muted);" data-en="Try searching for a different word or clearing your filter." data-fil="Subukang maghanap ng ibang salita o i-reset ang filter.">
-        Try searching for a different word or clearing your filter.
-      </p>
-      <a href="{% url 'dictionary:index' %}" class="btn btn-outline" data-en="Reset Filter" data-fil="I-reset ang Filter">Reset Filter</a>
-    </div>
-  {% endif %}
+            <div class="dict-entry-meta">
+              <span style="color: var(--color-text-subtle);">
+                Category: 
+                <span class="lang-block-en">{{ item.category.name }}</span>
+                <span class="lang-block-fil" style="display: none;">{{ item.category.name_fil|default:item.category.name }}</span>
+              </span>
+
+              {% for rel in item.outgoing_relationships.all|slice:":2" %}
+                <span>
+                  <strong>{{ rel.get_relationship_type_display }}:</strong> 
+                  <a href="{% url 'dictionary:detail' slug=rel.target_term.slug %}">{{ rel.target_term.term }}</a>
+                </span>
+              {% endfor %}
+
+              <a href="{% url 'dictionary:detail' slug=item.slug %}" style="margin-left: auto;" data-en="Full definition &rarr;" data-fil="Buong paliwanag &rarr;">
+                Full definition &rarr;
+              </a>
+            </div>
+          </article>
+        {% endfor %}
+      </div>
+    {% else %}
+      <div style="padding: var(--space-12) 0; text-align: center; color: var(--color-text-muted);">
+        <p data-en="No matching terms found. Try a different search." data-fil="Walang nahanap na salita. Subukang maghanap ulit.">
+          No matching terms found. Try a different search.
+        </p>
+        <a href="{% url 'dictionary:index' %}" class="btn btn-outline btn-sm" data-en="Clear filters" data-fil="I-reset ang filter">Clear filters</a>
+      </div>
+    {% endif %}
+
+  </div>
 
 </div>
 {% endblock %}

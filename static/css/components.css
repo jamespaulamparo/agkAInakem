@@ -1,16 +1,16 @@
 /**
- * agkAInakem — Component Architecture (Creative Portfolio x Discord Polish)
- * Interactive 3 Big Hero Buttons, Bilingual Toggle, Animated Cards & Dictionary UI.
+ * agkAInakem — Minimalist Aesthetic Component Styles
+ * Three Big Hero Buttons, 3D WebGL Canvas, Clean Tagalog.com-style Dictionary (No Cards).
  */
 
 /* ==========================================================================
-   1. Emergency Hotline Banner (San Fernando, La Union & PH)
+   1. Emergency Hotline Banner
    ========================================================================== */
 .crisis-banner {
   background-color: var(--color-danger-light);
   border-bottom: 1px solid rgba(217, 93, 57, 0.2);
   color: var(--color-text);
-  padding: 0.55rem var(--space-4);
+  padding: 0.5rem var(--space-4);
   font-size: var(--font-size-xs);
   display: flex;
   justify-content: center;
@@ -25,28 +25,22 @@
 .crisis-banner-badge {
   background-color: var(--color-danger);
   color: #FFFFFF;
-  padding: 2px 8px;
+  padding: 2px 7px;
   border-radius: var(--radius-pill);
   font-weight: 800;
-  font-size: 0.68rem;
+  font-size: 0.65rem;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
 }
 
 .crisis-banner a {
   color: var(--color-danger);
   font-weight: 700;
   text-decoration: underline;
-  text-underline-offset: 2px;
-}
-
-.crisis-banner a:hover {
-  color: #B23D1B;
 }
 
 
 /* ==========================================================================
-   2. Site Header, Brand & Bilingual Toggle
+   2. Header & Clean Bilingual Switcher
    ========================================================================== */
 .site-header {
   background-color: rgba(247, 244, 239, 0.88);
@@ -57,14 +51,12 @@
   z-index: 90;
   border-bottom: 1px solid var(--color-border);
   padding: var(--space-3) 0;
-  transition: all var(--transition-fast);
 }
 
 .nav-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: var(--space-4);
 }
 
 .brand-wrapper {
@@ -75,8 +67,8 @@
 }
 
 .brand-logo-mark {
-  width: 38px;
-  height: 38px;
+  width: 34px;
+  height: 34px;
   border-radius: var(--radius-sm);
   background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
   display: flex;
@@ -84,13 +76,8 @@
   justify-content: center;
   color: #FFFFFF;
   font-weight: 900;
-  box-shadow: 0 4px 14px var(--color-primary-glow);
+  box-shadow: 0 4px 12px var(--color-primary-glow);
   flex-shrink: 0;
-  transition: transform var(--transition-spring);
-}
-
-.brand-wrapper:hover .brand-logo-mark {
-  transform: rotate(-6deg) scale(1.05);
 }
 
 .brand-text-group {
@@ -100,13 +87,12 @@
 
 .brand-name {
   font-weight: 900;
-  font-size: 1.3rem;
+  font-size: 1.25rem;
   letter-spacing: -0.03em;
   color: var(--color-text);
   line-height: 1.1;
 }
 
-/* The Highlighted "AI" */
 .brand-ai {
   background: var(--color-brand-ai-gradient);
   -webkit-background-clip: text;
@@ -116,14 +102,13 @@
 }
 
 .brand-location {
-  font-size: 0.65rem;
+  font-size: 0.62rem;
   color: var(--color-text-subtle);
   font-weight: 700;
   letter-spacing: 0.05em;
   text-transform: uppercase;
 }
 
-/* Navigation Links */
 .nav-menu {
   display: flex;
   align-items: center;
@@ -134,11 +119,11 @@
 
 .nav-item a {
   color: var(--color-text-muted);
-  font-weight: 600;
+  font-weight: 700;
   font-size: var(--font-size-sm);
-  padding: var(--space-2) 0;
-  transition: color var(--transition-fast);
   text-decoration: none;
+  padding: var(--space-1) 0;
+  transition: color var(--transition-fast);
 }
 
 .nav-item a:hover,
@@ -146,31 +131,26 @@
   color: var(--color-primary);
 }
 
-/* Right Nav Controls: Bilingual Switcher & Actions */
 .nav-right-controls {
   display: flex;
   align-items: center;
   gap: var(--space-3);
 }
 
-/* Sleek Bilingual Toggle Pill */
 .lang-switcher {
   display: inline-flex;
-  align-items: center;
   background-color: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-pill);
-  padding: 3px;
-  box-shadow: var(--shadow-subtle);
+  padding: 2px;
 }
 
 .lang-btn {
   background: none;
   border: none;
-  padding: 4px 10px;
-  font-size: 0.75rem;
-  font-weight: 700;
-  font-family: inherit;
+  padding: 3px 9px;
+  font-size: 0.72rem;
+  font-weight: 800;
   color: var(--color-text-muted);
   border-radius: var(--radius-pill);
   cursor: pointer;
@@ -180,25 +160,19 @@
 .lang-btn.is-active {
   background-color: var(--color-primary);
   color: #FFFFFF;
-  box-shadow: 0 2px 8px var(--color-primary-glow);
 }
 
-.lang-btn:hover:not(.is-active) {
-  color: var(--color-primary);
-}
-
-/* Mobile Toggle */
 .mobile-nav-toggle {
   display: none;
   background: none;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-sm);
-  padding: var(--space-2);
+  padding: var(--space-1);
   color: var(--color-text);
   cursor: pointer;
 }
 
-@media (max-width: 860px) {
+@media (max-width: 800px) {
   .nav-menu {
     display: none;
     flex-direction: column;
@@ -207,9 +181,8 @@
     left: 0;
     right: 0;
     background-color: var(--color-surface);
-    padding: var(--space-6);
+    padding: var(--space-5);
     border-bottom: 1px solid var(--color-border);
-    box-shadow: var(--shadow-soft);
     gap: var(--space-4);
   }
   .nav-menu.open { display: flex; }
@@ -218,634 +191,487 @@
 
 
 /* ==========================================================================
-   3. THE THREE BIG HERO BUTTONS (Creative Portfolio Highlight)
-   ========================================================================= */
-.hero-trio-section {
-  padding: var(--space-8) 0 var(--space-12) 0;
+   3. Modern Hero with Interactive 3D WebGL Canvas
+   ========================================================================= -->
+.hero-stage {
+  padding: var(--space-10) 0 var(--space-8) 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
 }
 
+.webgl-container {
+  width: 280px;
+  height: 280px;
+  margin: 0 auto var(--space-4) auto;
+  cursor: grab;
+}
+
+.webgl-container:active {
+  cursor: grabbing;
+}
+
+.hero-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  background: rgba(255, 255, 255, 0.75);
+  border: 1px solid var(--color-border);
+  padding: 4px 14px;
+  border-radius: var(--radius-pill);
+  font-size: var(--font-size-xs);
+  font-weight: 700;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-3);
+}
+
+.hero-pill-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: var(--color-primary);
+}
+
+.hero-title {
+  max-width: 780px;
+  font-size: 2.75rem;
+  letter-spacing: -0.04em;
+  margin-bottom: var(--space-3);
+}
+
+@media (max-width: 768px) {
+  .hero-title { font-size: 2rem; }
+}
+
+.hero-lead {
+  max-width: 580px;
+  font-size: 1.05rem;
+  color: var(--color-text-muted);
+  line-height: var(--line-height-normal);
+  margin-bottom: var(--space-8);
+}
+
+
+/* ==========================================================================
+   4. The Three Big Hero Buttons (Portals, NOT Cluttered Cards)
+   ========================================================================== */
 .hero-trio-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: var(--space-6);
-  margin-bottom: var(--space-16);
+  gap: var(--space-5);
+  margin-bottom: var(--space-12);
+  width: 100%;
 }
 
-@media (min-width: 860px) {
+@media (min-width: 840px) {
   .hero-trio-grid {
     grid-template-columns: repeat(3, 1fr);
   }
 }
 
-.hero-big-btn {
+.hero-portal-btn {
   display: flex;
   flex-direction: column;
-  background: var(--color-surface-glass);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border: 1px solid var(--color-border);
-  border-radius: var(--radius-xl);
-  padding: var(--space-8);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
   text-decoration: none;
+  transition: all var(--transition-spring);
   position: relative;
   overflow: hidden;
-  box-shadow: var(--shadow-card);
-  transition: transform var(--transition-spring), box-shadow var(--transition-spring), border-color var(--transition-spring);
 }
 
-.hero-big-btn::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 5px;
-  transition: height var(--transition-smooth);
+.hero-portal-btn:hover {
+  transform: translateY(-5px);
+  background: #FFFFFF;
 }
 
-.hero-big-btn:hover {
-  transform: translateY(-6px);
-  box-shadow: var(--shadow-hover);
+.portal-teal:hover {
+  border-color: var(--color-primary);
+  box-shadow: 0 12px 30px var(--color-primary-glow);
 }
 
-/* Button 1: I Need Help (Teal) */
-.hero-btn-teal::before {
-  background: linear-gradient(90deg, var(--color-primary), #63C7BE);
+.portal-sky:hover {
+  border-color: var(--color-secondary);
+  box-shadow: 0 12px 30px var(--color-secondary-glow);
 }
 
-.hero-btn-teal:hover {
-  border-color: rgba(79, 168, 160, 0.5);
-  box-shadow: 0 16px 40px var(--color-primary-glow);
+.portal-sage:hover {
+  border-color: var(--color-success);
+  box-shadow: 0 12px 30px var(--color-success-glow);
 }
 
-/* Button 2: Someone Else (Sky Blue) */
-.hero-btn-sky::before {
-  background: linear-gradient(90deg, var(--color-secondary), #65A7D6);
+.portal-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-3);
 }
 
-.hero-btn-sky:hover {
-  border-color: rgba(142, 197, 232, 0.6);
-  box-shadow: 0 16px 40px var(--color-secondary-glow);
-}
-
-/* Button 3: Daily Tracker (Sage Green) */
-.hero-btn-sage::before {
-  background: linear-gradient(90deg, var(--color-success), #7BA876);
-}
-
-.hero-btn-sage:hover {
-  border-color: rgba(169, 200, 165, 0.6);
-  box-shadow: 0 16px 40px var(--color-success-glow);
-}
-
-.hero-btn-icon-wrapper {
-  width: 54px;
-  height: 54px;
+.portal-icon {
+  width: 44px;
+  height: 44px;
   border-radius: var(--radius-md);
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: var(--space-5);
+  flex-shrink: 0;
   transition: transform var(--transition-spring);
 }
 
-.hero-big-btn:hover .hero-btn-icon-wrapper {
-  transform: scale(1.12) rotate(4deg);
+.hero-portal-btn:hover .portal-icon {
+  transform: scale(1.1);
 }
 
-.icon-wrapper-teal {
-  background: var(--color-primary-light);
-  color: var(--color-primary);
-}
+.portal-icon-teal { background: var(--color-primary-light); color: var(--color-primary); }
+.portal-icon-sky { background: var(--color-secondary-light); color: #154D73; }
+.portal-icon-sage { background: var(--color-success-light); color: var(--color-success-dark); }
 
-.icon-wrapper-sky {
-  background: var(--color-secondary-light);
-  color: #1A547E;
-}
-
-.icon-wrapper-sage {
-  background: var(--color-success-light);
-  color: var(--color-success-dark);
-}
-
-.hero-btn-tag {
-  font-size: var(--font-size-xs);
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  margin-bottom: var(--space-2);
-  display: inline-block;
-}
-
-.hero-btn-teal .hero-btn-tag { color: var(--color-primary); }
-.hero-btn-sky .hero-btn-tag { color: #1E5C88; }
-.hero-btn-sage .hero-btn-tag { color: var(--color-success-dark); }
-
-.hero-btn-title {
-  font-size: 1.45rem;
+.portal-title {
+  font-size: 1.25rem;
   font-weight: 800;
   color: var(--color-text);
-  margin-bottom: var(--space-3);
-  line-height: 1.25;
+  line-height: 1.2;
 }
 
-.hero-btn-desc {
-  font-size: var(--font-size-sm);
+.portal-sub {
+  font-size: var(--font-size-xs);
   color: var(--color-text-muted);
-  line-height: var(--line-height-relaxed);
-  margin-bottom: var(--space-6);
+  line-height: var(--line-height-normal);
+  margin-bottom: var(--space-4);
   flex-grow: 1;
 }
 
-.hero-btn-action-label {
+.portal-action-pill {
   display: inline-flex;
   align-items: center;
-  gap: var(--space-2);
-  font-weight: 700;
-  font-size: var(--font-size-sm);
-  transition: gap var(--transition-fast);
-}
-
-.hero-big-btn:hover .hero-btn-action-label {
-  gap: var(--space-3);
-}
-
-.hero-btn-teal .hero-btn-action-label { color: var(--color-primary); }
-.hero-btn-sky .hero-btn-action-label { color: #1A547E; }
-.hero-btn-sage .hero-btn-action-label { color: var(--color-success-dark); }
-
-
-/* ==========================================================================
-   4. Buttons & Controls
-   ========================================================================== */
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--space-2);
-  font-family: var(--font-family);
-  font-weight: 700;
-  font-size: var(--font-size-sm);
-  padding: 0.65rem 1.35rem;
-  border-radius: var(--radius-pill);
-  border: 1px solid transparent;
-  cursor: pointer;
-  text-decoration: none;
-  transition: all var(--transition-fast);
-}
-
-.btn:hover {
-  transform: translateY(-2px);
-}
-
-.btn-primary {
-  background-color: var(--color-primary);
-  color: var(--color-text-on-primary);
-  border-color: var(--color-primary);
-}
-
-.btn-primary:hover {
-  background-color: var(--color-primary-hover);
-  box-shadow: 0 4px 16px var(--color-primary-glow);
-}
-
-.btn-secondary {
-  background-color: var(--color-secondary-light);
-  color: var(--color-text-on-secondary);
-  border-color: rgba(142, 197, 232, 0.5);
-}
-
-.btn-secondary:hover {
-  background-color: var(--color-secondary);
-  color: #FFFFFF;
-}
-
-.btn-outline {
-  background-color: transparent;
-  color: var(--color-text);
-  border-color: var(--color-border);
-}
-
-.btn-outline:hover {
-  background-color: var(--color-surface);
-  border-color: var(--color-primary);
-  color: var(--color-primary);
-}
-
-.btn-sm {
-  padding: 0.4rem 0.9rem;
+  gap: var(--space-1);
   font-size: var(--font-size-xs);
+  font-weight: 800;
 }
 
-.btn-lg {
-  padding: 0.9rem 1.85rem;
-  font-size: var(--font-size-base);
-}
+.portal-teal .portal-action-pill { color: var(--color-primary); }
+.portal-sky .portal-action-pill { color: #154D73; }
+.portal-sage .portal-action-pill { color: var(--color-success-dark); }
 
 
 /* ==========================================================================
-   5. Interactive Sentence Discovery Box (English & Filipino)
+   5. Minimalist Sentence Discovery Input
    ========================================================================== */
-.discovery-container {
-  max-width: 800px;
+.discovery-minimal {
+  max-width: 720px;
   margin: 0 auto var(--space-16) auto;
+  width: 100%;
 }
 
-.discovery-card {
-  background-color: var(--color-surface);
+.discovery-minimal-input-wrap {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  background: #FFFFFF;
   border: 1px solid var(--color-border);
-  border-radius: var(--radius-xl);
-  padding: var(--space-4) var(--space-5);
-  box-shadow: var(--shadow-card);
+  border-radius: var(--radius-pill);
+  padding: var(--space-2) var(--space-4);
+  box-shadow: var(--shadow-subtle);
   transition: all var(--transition-smooth);
 }
 
-.discovery-card:focus-within {
+.discovery-minimal-input-wrap:focus-within {
   border-color: var(--color-primary);
-  box-shadow: 0 14px 40px var(--color-primary-glow);
+  box-shadow: 0 8px 24px var(--color-primary-glow);
 }
 
-.discovery-form {
-  display: flex;
-  gap: var(--space-3);
-  align-items: center;
-}
-
-.discovery-input {
+.discovery-minimal-input {
   flex: 1;
   border: none;
   outline: none;
-  font-family: var(--font-family);
-  font-size: 1.05rem;
+  font-family: inherit;
+  font-size: var(--font-size-base);
   color: var(--color-text);
   background: transparent;
   padding: var(--space-2) 0;
 }
 
-.discovery-input::placeholder {
-  color: var(--color-text-subtle);
-  font-weight: 400;
-}
-
-.discovery-suggestions {
-  margin-top: var(--space-4);
-  padding-top: var(--space-3);
-  border-top: 1px solid var(--color-border-subtle);
+.discovery-minimal-chips {
   display: flex;
-  flex-direction: column;
-  gap: var(--space-2);
-}
-
-.suggestions-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: var(--font-size-xs);
-  color: var(--color-text-subtle);
-}
-
-.suggestions-chips {
-  display: flex;
+  justify-content: center;
   flex-wrap: wrap;
   gap: var(--space-2);
+  margin-top: var(--space-3);
 }
 
 .prompt-chip {
-  background-color: var(--color-surface-soft);
-  border: 1px solid var(--color-border-subtle);
+  background: transparent;
+  border: 1px solid var(--color-border);
   border-radius: var(--radius-pill);
-  padding: 5px 14px;
+  padding: 4px 12px;
   font-size: var(--font-size-xs);
   color: var(--color-text-muted);
   cursor: pointer;
-  text-decoration: none;
   transition: all var(--transition-fast);
 }
 
 .prompt-chip:hover {
-  background-color: var(--color-primary-light);
+  background: var(--color-primary-light);
   border-color: var(--color-primary);
   color: var(--color-primary-hover);
-  transform: translateY(-1px);
 }
 
 
 /* ==========================================================================
-   6. Dictionary Browse & Term Cards (Milestone 2)
+   6. REAL DICTIONARY LIST (Tagalog.com Style — Absolutely NO Cards)
    ========================================================================== */
-.dict-filter-bar {
+.dict-list-wrap {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.dict-cat-nav {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-2);
-  margin-bottom: var(--space-8);
-  align-items: center;
+  margin-bottom: var(--space-6);
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: var(--space-3);
 }
 
-.dict-filter-pill {
-  padding: 6px 16px;
-  border-radius: var(--radius-pill);
-  background-color: var(--color-surface);
-  border: 1px solid var(--color-border);
-  color: var(--color-text-muted);
+.dict-cat-link {
   font-size: var(--font-size-xs);
   font-weight: 700;
+  color: var(--color-text-muted);
   text-decoration: none;
+  padding: 4px 8px;
+  border-radius: var(--radius-sm);
   transition: all var(--transition-fast);
 }
 
-.dict-filter-pill:hover,
-.dict-filter-pill.is-active {
-  background-color: var(--color-primary);
-  border-color: var(--color-primary);
-  color: #FFFFFF;
-  box-shadow: 0 4px 12px var(--color-primary-glow);
+.dict-cat-link:hover,
+.dict-cat-link.is-active {
+  color: var(--color-primary);
+  background-color: var(--color-primary-light);
 }
 
-.term-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: var(--space-6);
-  margin-bottom: var(--space-12);
-}
-
-.term-card {
-  background-color: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
-  padding: var(--space-6);
-  box-shadow: var(--shadow-subtle);
-  transition: transform var(--transition-smooth), box-shadow var(--transition-smooth), border-color var(--transition-smooth);
+/* Tagalog.com Style Dictionary Entries */
+.dict-list {
   display: flex;
   flex-direction: column;
-  text-decoration: none;
-  color: var(--color-text);
-  position: relative;
 }
 
-.term-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-card);
-  border-color: rgba(79, 168, 160, 0.4);
-}
-
-.term-card-header {
+.dict-entry-row {
+  padding: var(--space-5) 0;
+  border-bottom: 1px solid var(--color-border-subtle);
   display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: var(--space-3);
-  gap: var(--space-2);
+  flex-direction: column;
+  gap: var(--space-1);
 }
 
-.term-title {
-  font-size: var(--font-size-xl);
+.dict-entry-row:last-child {
+  border-bottom: none;
+}
+
+.dict-entry-top {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.dict-entry-word {
+  font-size: 1.35rem;
   font-weight: 800;
-  margin-bottom: 2px;
+  color: var(--color-text);
+  text-decoration: none;
+  transition: color var(--transition-fast);
 }
 
-.term-fil-tag {
-  font-size: var(--font-size-xs);
+.dict-entry-word:hover {
+  color: var(--color-primary);
+}
+
+.dict-entry-fil {
+  font-size: var(--font-size-sm);
   color: var(--color-text-subtle);
   font-style: italic;
-  display: block;
-  margin-bottom: var(--space-2);
 }
 
 .badge {
   display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  padding: 3px 10px;
-  border-radius: var(--radius-pill);
-  font-size: 0.7rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-}
-
-.badge-everyday {
-  background-color: var(--color-primary-light);
-  color: var(--color-primary-hover);
-}
-
-.badge-psychological {
-  background-color: var(--color-secondary-light);
-  color: #174E74;
-}
-
-.badge-clinical {
-  background-color: #FDF0ED;
-  color: var(--color-danger);
-}
-
-.term-short-def {
-  font-size: var(--font-size-sm);
-  color: var(--color-text-muted);
-  line-height: var(--line-height-relaxed);
-  margin-bottom: var(--space-4);
-  flex-grow: 1;
-}
-
-.term-card-footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-top: var(--space-3);
-  border-top: 1px solid var(--color-border-subtle);
-  font-size: var(--font-size-xs);
-  color: var(--color-primary);
-  font-weight: 700;
-}
-
-
-/* ==========================================================================
-   7. Term Detail View & Relational Graphs (Milestone 2)
-   ========================================================================== */
-.term-detail-header {
-  background-color: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-xl);
-  padding: var(--space-8);
-  box-shadow: var(--shadow-card);
-  margin-bottom: var(--space-8);
-}
-
-.simpler-terms-box {
-  background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-secondary-light) 100%);
-  border: 1px solid rgba(79, 168, 160, 0.25);
-  border-radius: var(--radius-md);
-  padding: var(--space-6);
-  margin-bottom: var(--space-6);
-}
-
-.relationship-card-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: var(--space-4);
-  margin-bottom: var(--space-8);
-}
-
-.rel-card {
-  background-color: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  padding: var(--space-5);
-  box-shadow: var(--shadow-subtle);
-}
-
-.rel-type-pill {
-  display: inline-block;
-  padding: 2px 8px;
+  padding: 2px 7px;
   border-radius: var(--radius-pill);
   font-size: 0.68rem;
-  font-weight: 800;
+  font-weight: 700;
   text-transform: uppercase;
-  margin-bottom: var(--space-2);
 }
 
-.rel-different { background: #FDF0ED; color: var(--color-danger); }
-.rel-similar { background: var(--color-primary-light); color: var(--color-primary); }
-.rel-related { background: var(--color-secondary-light); color: #164D73; }
-.rel-opposite { background: var(--color-success-light); color: var(--color-success-dark); }
+.badge-everyday { background: var(--color-primary-light); color: var(--color-primary-hover); }
+.badge-psychological { background: var(--color-secondary-light); color: #164D73; }
+.badge-clinical { background: var(--color-danger-light); color: var(--color-danger); }
+
+.dict-entry-def {
+  font-size: 0.95rem;
+  color: var(--color-text);
+  line-height: 1.5;
+  margin: var(--space-1) 0;
+}
+
+.dict-entry-meta {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-subtle);
+  display: flex;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+
+.dict-entry-meta a {
+  color: var(--color-primary);
+  font-weight: 600;
+  text-decoration: none;
+}
 
 
 /* ==========================================================================
-   8. Daily Emotional Pulse / Tracker Card
+   7. Dictionary Detail View (Editorial Typography — NO Box Cards)
    ========================================================================== */
-.tracker-card {
-  background-color: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-xl);
-  padding: var(--space-8);
-  box-shadow: var(--shadow-card);
-  max-width: 680px;
-  margin: 0 auto var(--space-12) auto;
+.dict-detail-page {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: var(--space-8) 0;
 }
 
-.mood-selector {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-3);
+.dict-detail-header {
+  border-bottom: 2px solid var(--color-border);
+  padding-bottom: var(--space-6);
   margin-bottom: var(--space-6);
 }
 
-.mood-option {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: var(--space-5) var(--space-3);
-  border: 2px solid var(--color-border);
-  border-radius: var(--radius-md);
-  background: var(--color-surface-soft);
-  cursor: pointer;
-  transition: all var(--transition-fast);
-  text-align: center;
+.dict-detail-word {
+  font-size: 2.85rem;
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  margin-bottom: var(--space-1);
 }
 
-.mood-option:hover {
-  transform: translateY(-2px);
+.dict-def-block {
+  margin-bottom: var(--space-8);
 }
 
-.mood-option.is-selected {
-  border-color: var(--color-primary);
-  background-color: var(--color-primary-light);
-  box-shadow: 0 4px 16px var(--color-primary-glow);
-}
-
-.mood-circle {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  margin-bottom: var(--space-2);
-}
-
-.mood-circle-green { background-color: var(--color-success); }
-.mood-circle-yellow { background-color: var(--color-warning); }
-.mood-circle-red { background-color: var(--color-danger); }
-
-.mood-label {
-  font-size: var(--font-size-xs);
-  font-weight: 700;
+.dict-def-primary {
+  font-size: 1.25rem;
+  line-height: 1.6;
   color: var(--color-text);
+  margin-bottom: var(--space-4);
 }
 
-
-/* ==========================================================================
-   9. Site Footer
-   ========================================================================== */
-.site-footer {
-  background-color: var(--color-surface);
-  border-top: 1px solid var(--color-border);
-  padding: var(--space-16) 0 var(--space-10) 0;
-  font-size: var(--font-size-sm);
+.dict-simpler-callout {
+  border-left: 3px solid var(--color-primary);
+  padding-left: var(--space-4);
+  margin: var(--space-4) 0;
+  font-size: 1rem;
   color: var(--color-text-muted);
 }
 
-.footer-grid {
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr;
-  gap: var(--space-10);
-  margin-bottom: var(--space-10);
-}
-
-@media (max-width: 800px) {
-  .footer-grid {
-    grid-template-columns: 1fr;
-    gap: var(--space-8);
-  }
-}
-
-.footer-brand p {
-  max-width: 440px;
-  color: var(--color-text-muted);
-  font-size: var(--font-size-sm);
-  line-height: var(--line-height-relaxed);
-  margin-top: var(--space-3);
-}
-
-.footer-col h4 {
+.dict-section-title {
   font-size: var(--font-size-sm);
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: var(--color-text);
-  margin-bottom: var(--space-4);
+  color: var(--color-text-subtle);
+  margin-top: var(--space-8);
+  margin-bottom: var(--space-3);
+  border-bottom: 1px solid var(--color-border-subtle);
+  padding-bottom: var(--space-1);
 }
 
-.footer-col ul {
+.dict-distinctions-list {
   list-style: none;
   display: flex;
   flex-direction: column;
   gap: var(--space-3);
 }
 
-.footer-col a {
+.dict-distinction-item {
+  font-size: var(--font-size-sm);
+  color: var(--color-text);
+  line-height: 1.55;
+}
+
+
+/* ==========================================================================
+   8. Daily Tracker & Support (Minimalist Layout)
+   ========================================================================== */
+.tracker-stage {
+  max-width: 600px;
+  margin: var(--space-6) auto;
+  text-align: center;
+}
+
+.mood-trio-row {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-4);
+  margin: var(--space-6) 0;
+}
+
+.mood-circle-btn {
+  background: #FFFFFF;
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  width: 140px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.mood-circle-btn:hover,
+.mood-circle-btn.is-selected {
+  border-color: var(--color-primary);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px var(--color-primary-glow);
+}
+
+.mood-dot {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  margin-bottom: var(--space-2);
+}
+
+.mood-dot-green { background: var(--color-success); }
+.mood-dot-yellow { background: var(--color-warning); }
+.mood-dot-red { background: var(--color-danger); }
+
+
+/* ==========================================================================
+   9. Minimalist Footer Row
+   ========================================================================== */
+.site-footer {
+  border-top: 1px solid var(--color-border);
+  padding: var(--space-8) 0;
+  margin-top: auto;
+}
+
+.footer-minimal-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+}
+
+.footer-minimal-row a {
   color: var(--color-text-muted);
   text-decoration: none;
 }
 
-.footer-col a:hover {
+.footer-minimal-row a:hover {
   color: var(--color-primary);
-}
-
-.footer-disclaimer-box {
-  background-color: var(--color-surface-soft);
-  border: 1px solid var(--color-border-subtle);
-  border-radius: var(--radius-md);
-  padding: var(--space-5);
-  margin-bottom: var(--space-8);
-  font-size: var(--font-size-xs);
-  line-height: var(--line-height-relaxed);
-  color: var(--color-text-subtle);
-}
-
-.footer-bottom {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-top: var(--space-6);
-  border-top: 1px solid var(--color-border-subtle);
-  font-size: var(--font-size-xs);
-  flex-wrap: wrap;
-  gap: var(--space-3);
 }

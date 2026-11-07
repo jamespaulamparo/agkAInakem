@@ -1,207 +1,156 @@
 {% extends 'base.html' %}
 
-{% block title %}{{ term.term }} — Mental Health Dictionary | agkAInakem{% endblock %}
+{% block title %}{{ term.term }} — Definition & Distinctions | agkAInakem{% endblock %}
 
 {% block content %}
-<div class="container container-narrow" style="padding-top: var(--space-8);">
+<div class="container">
 
-  <!-- Breadcrumbs -->
-  <nav aria-label="Breadcrumb" class="mb-4" style="font-size: var(--font-size-xs); color: var(--color-text-subtle);">
-    <a href="{% url 'dictionary:index' %}" data-en="&larr; Back to Dictionary" data-fil="&larr; Bumalik sa Diksiyonaryo">&larr; Back to Dictionary</a>
-    <span> / </span>
-    <span class="lang-block-en">{{ term.category.name }}</span>
-    <span class="lang-block-fil" style="display: none;">{{ term.category.name_fil|default:term.category.name }}</span>
-  </nav>
+  <article class="dict-detail-page reveal">
+    <!-- Breadcrumb -->
+    <nav class="mb-4" style="font-size: var(--font-size-xs); color: var(--color-text-subtle);">
+      <a href="{% url 'dictionary:index' %}" data-en="&larr; Back to Dictionary" data-fil="&larr; Bumalik sa Diksiyonaryo">&larr; Back to Dictionary</a>
+      <span> &middot; </span>
+      <span class="lang-block-en">{{ term.category.name }}</span>
+      <span class="lang-block-fil" style="display: none;">{{ term.category.name_fil|default:term.category.name }}</span>
+    </nav>
 
-  <!-- Term Header -->
-  <div class="term-detail-header reveal">
-    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: var(--space-3); flex-wrap: wrap; gap: var(--space-3);">
-      <div>
-        <h1 style="font-size: var(--font-size-hero); margin-bottom: 2px;">{{ term.term }}</h1>
-        {% if term.term_fil %}
-          <p style="font-size: var(--font-size-lg); color: var(--color-text-muted); font-style: italic; margin-bottom: 0;">
-            {{ term.term_fil }}
-          </p>
-        {% endif %}
+    <!-- Header Section (Classic Dictionary Entry Style) -->
+    <header class="dict-detail-header">
+      <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: var(--space-2);">
+        <h1 class="dict-detail-word">{{ term.term }}</h1>
+        <div>
+          {% if term.term_type == 'clinical' %}
+            <span class="badge badge-clinical" data-en="Clinical Term" data-fil="Klinikal na Termino">Clinical Term</span>
+          {% elif term.term_type == 'psychological' %}
+            <span class="badge badge-psychological" data-en="Psychological Concept" data-fil="Konseptong Sikolohikal">Psychological Concept</span>
+          {% else %}
+            <span class="badge badge-everyday" data-en="Everyday Expression" data-fil="Pang-araw-araw na Salita">Everyday Expression</span>
+          {% endif %}
+        </div>
       </div>
-      <div>
-        {% if term.term_type == 'clinical' %}
-          <span class="badge badge-clinical" data-en="Clinical Term" data-fil="Klinikal na Termino">Clinical Term</span>
-        {% elif term.term_type == 'psychological' %}
-          <span class="badge badge-psychological" data-en="Psychological Concept" data-fil="Konseptong Sikolohikal">Psychological Concept</span>
-        {% else %}
-          <span class="badge badge-everyday" data-en="Everyday Expression" data-fil="Pang-araw-araw na Salita">Everyday Expression</span>
-        {% endif %}
+
+      {% if term.term_fil %}
+        <p style="font-size: 1.15rem; color: var(--color-text-subtle); font-style: italic; margin-bottom: 0;">
+          {{ term.term_fil }}
+        </p>
+      {% endif %}
+    </header>
+
+    <!-- Definitions Block -->
+    <section class="dict-def-block">
+      <h2 class="sr-only">Definition</h2>
+      
+      <!-- Primary Meaning -->
+      <div class="dict-def-primary">
+        <span class="lang-block-en">{{ term.short_definition }}</span>
+        <span class="lang-block-fil" style="display: none;">{{ term.short_definition_fil|default:term.short_definition }}</span>
       </div>
-    </div>
 
-    <!-- Plain Definition -->
-    <p style="font-size: 1.15rem; line-height: 1.6; color: var(--color-text); margin-bottom: var(--space-4);">
-      <span class="lang-block-en">{{ term.short_definition }}</span>
-      <span class="lang-block-fil" style="display: none;">{{ term.short_definition_fil|default:term.short_definition }}</span>
-    </p>
-
-    <!-- In Simpler Terms Box -->
-    {% if term.in_simpler_terms or term.in_simpler_terms_fil %}
-      <div class="simpler-terms-box">
-        <strong style="color: var(--color-primary-hover); font-size: var(--font-size-xs); text-transform: uppercase; letter-spacing: 0.05em; display: block; margin-bottom: 4px;"
-                data-en="In Simpler Terms:" data-fil="Sa Mas Simpleng Salita:">
-          In Simpler Terms:
-        </strong>
-        <p style="margin-bottom: 0; font-size: var(--font-size-sm); color: var(--color-text); line-height: var(--line-height-relaxed);">
+      <!-- In Simpler Terms Callout -->
+      {% if term.in_simpler_terms or term.in_simpler_terms_fil %}
+        <div class="dict-simpler-callout">
+          <strong style="display: block; font-size: var(--font-size-xs); text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-primary); margin-bottom: 2px;"
+                  data-en="In Simpler Terms:" data-fil="Sa Mas Simpleng Salita:">
+            In Simpler Terms:
+          </strong>
           <span class="lang-block-en">{{ term.in_simpler_terms }}</span>
           <span class="lang-block-fil" style="display: none;">{{ term.in_simpler_terms_fil|default:term.in_simpler_terms }}</span>
-        </p>
-      </div>
-    {% endif %}
+        </div>
+      {% endif %}
 
-    <!-- Detailed Definition -->
-    {% if term.detailed_definition or term.detailed_definition_fil %}
-      <div style="border-top: 1px solid var(--color-border-subtle); padding-top: var(--space-4);">
-        <h2 style="font-size: var(--font-size-base); color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: var(--space-2);"
-            data-en="Comprehensive Explanation" data-fil="Mas Malalim na Paliwanag">
-          Comprehensive Explanation
-        </h2>
-        <p style="color: var(--color-text-muted); font-size: var(--font-size-sm); line-height: var(--line-height-relaxed); margin-bottom: 0;">
+      <!-- Detailed Explanation -->
+      {% if term.detailed_definition or term.detailed_definition_fil %}
+        <p style="font-size: var(--font-size-sm); color: var(--color-text-muted); line-height: 1.7; margin-top: var(--space-4);">
           <span class="lang-block-en">{{ term.detailed_definition }}</span>
           <span class="lang-block-fil" style="display: none;">{{ term.detailed_definition_fil|default:term.detailed_definition }}</span>
         </p>
-      </div>
-    {% endif %}
-  </div>
-
-
-  <!-- =========================================================================
-       Explicit Psychological Distinctions & Relationships
-       ========================================================================= -->
-  {% if outgoing_rels or incoming_rels %}
-    <section class="mb-10 reveal delay-1" aria-labelledby="relationships-heading">
-      <h2 id="relationships-heading" style="font-size: var(--font-size-2xl);" 
-          data-en="How It Differs &amp; Connects" data-fil="Paano Ito Naiiba at Nauugnay sa Ibang Konsepto">
-        How It Differs &amp; Connects
-      </h2>
-      <p style="color: var(--color-text-muted); font-size: var(--font-size-sm); margin-bottom: var(--space-5);"
-         data-en="Understanding what a concept is not is just as important as knowing what it is."
-         data-fil="Mahalagang maunawaan kung ano ang pagkakaiba nito sa ibang magkakatulad na salita.">
-        Understanding what a concept is not is just as important as knowing what it is.
-      </p>
-
-      <div class="relationship-card-grid">
-        {% for rel in outgoing_rels %}
-          <div class="rel-card">
-            <span class="rel-type-pill {% if rel.relationship_type == 'different_from' or rel.relationship_type == 'often_confused_with' %}rel-different{% elif rel.relationship_type == 'opposite_of' %}rel-opposite{% elif rel.relationship_type == 'similar_to' %}rel-similar{% else %}rel-related{% endif %}">
-              {{ rel.get_relationship_type_display }}
-            </span>
-            <h3 style="font-size: 1.15rem; margin-bottom: var(--space-2);">
-              <a href="{% url 'dictionary:detail' slug=rel.target_term.slug %}">{{ rel.target_term.term }}</a>
-            </h3>
-            <p style="font-size: var(--font-size-xs); color: var(--color-text-muted); line-height: 1.6; margin-bottom: 0;">
-              <span class="lang-block-en">{{ rel.explanation }}</span>
-              <span class="lang-block-fil" style="display: none;">{{ rel.explanation_fil|default:rel.explanation }}</span>
-            </p>
-          </div>
-        {% endfor %}
-
-        {% for rel in incoming_rels %}
-          <div class="rel-card">
-            <span class="rel-type-pill rel-related">
-              Incoming &middot; {{ rel.get_relationship_type_display }}
-            </span>
-            <h3 style="font-size: 1.15rem; margin-bottom: var(--space-2);">
-              <a href="{% url 'dictionary:detail' slug=rel.source_term.slug %}">{{ rel.source_term.term }}</a>
-            </h3>
-            <p style="font-size: var(--font-size-xs); color: var(--color-text-muted); line-height: 1.6; margin-bottom: 0;">
-              <span class="lang-block-en">{{ rel.explanation }}</span>
-              <span class="lang-block-fil" style="display: none;">{{ rel.explanation_fil|default:rel.explanation }}</span>
-            </p>
-          </div>
-        {% endfor %}
-      </div>
+      {% endif %}
     </section>
-  {% endif %}
 
+    <!-- Explicit Distinctions & Word Relationships (Usage Notes) -->
+    {% if outgoing_rels or incoming_rels %}
+      <section class="mb-8">
+        <h2 class="dict-section-title" data-en="Distinctions &amp; Psychological Relationships" data-fil="Mga Pagkakaiba at Kaugnay na Salita">
+          Distinctions &amp; Psychological Relationships
+        </h2>
 
-  <!-- =========================================================================
-       Everyday Examples & Contexts
-       ========================================================================= -->
-  {% if examples %}
-    <section class="mb-10 reveal delay-2">
-      <h2 style="font-size: var(--font-size-xl);" data-en="Everyday Situations" data-fil="Mga Halimbawa sa Buhay">Everyday Situations</h2>
-      <div style="display: flex; flex-direction: column; gap: var(--space-3); margin-top: var(--space-3);">
-        {% for ex in examples %}
-          <div style="background-color: var(--color-surface); border: 1px solid var(--color-border); border-left: 4px solid var(--color-secondary); padding: var(--space-4) var(--space-5); border-radius: var(--radius-sm);">
-            <p style="margin-bottom: 0; font-size: var(--font-size-sm); color: var(--color-text); line-height: 1.6;">
+        <ul class="dict-distinctions-list">
+          {% for rel in outgoing_rels %}
+            <li class="dict-distinction-item">
+              <strong>{{ rel.get_relationship_type_display }}:</strong> 
+              <a href="{% url 'dictionary:detail' slug=rel.target_term.slug %}" style="font-weight: 800; color: var(--color-primary);">{{ rel.target_term.term }}</a>
+              &mdash;
+              <span class="lang-block-en">{{ rel.explanation }}</span>
+              <span class="lang-block-fil" style="display: none;">{{ rel.explanation_fil|default:rel.explanation }}</span>
+            </li>
+          {% endfor %}
+
+          {% for rel in incoming_rels %}
+            <li class="dict-distinction-item">
+              <strong>Incoming:</strong> 
+              <a href="{% url 'dictionary:detail' slug=rel.source_term.slug %}" style="font-weight: 800; color: var(--color-primary);">{{ rel.source_term.term }}</a>
+              &mdash;
+              <span class="lang-block-en">{{ rel.explanation }}</span>
+              <span class="lang-block-fil" style="display: none;">{{ rel.explanation_fil|default:rel.explanation }}</span>
+            </li>
+          {% endfor %}
+        </ul>
+      </section>
+    {% endif %}
+
+    <!-- Real-life Everyday Contexts -->
+    {% if examples %}
+      <section class="mb-8">
+        <h2 class="dict-section-title" data-en="Everyday Example Situations" data-fil="Mga Halimbawa sa Pang-araw-araw">
+          Everyday Example Situations
+        </h2>
+        <ul style="margin-left: var(--space-4); font-size: var(--font-size-sm); color: var(--color-text-muted); line-height: 1.7;">
+          {% for ex in examples %}
+            <li style="margin-bottom: var(--space-2);">
               <span class="lang-block-en">&ldquo;{{ ex.situation }}&rdquo;</span>
               <span class="lang-block-fil" style="display: none;">&ldquo;{{ ex.situation_fil|default:ex.situation }}&rdquo;</span>
-            </p>
-          </div>
-        {% endfor %}
-      </div>
-    </section>
-  {% endif %}
+            </li>
+          {% endfor %}
+        </ul>
+      </section>
+    {% endif %}
 
-
-  <!-- =========================================================================
-       Questions for Reflection
-       ========================================================================= -->
-  {% if questions %}
-    <section class="mb-10 reveal delay-3">
-      <h2 style="font-size: var(--font-size-xl);" data-en="Questions for Gentle Reflection" data-fil="Mga Tanong para sa Sariling Pagninilay">
-        Questions for Gentle Reflection
-      </h2>
-      <div style="background-color: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: var(--space-6); margin-top: var(--space-3);">
-        <ul style="margin-left: var(--space-5); color: var(--color-text); font-size: var(--font-size-sm); line-height: 1.8;">
+    <!-- Self-Reflection Prompts -->
+    {% if questions %}
+      <section class="mb-8">
+        <h2 class="dict-section-title" data-en="Questions for Self-Awareness" data-fil="Mga Tanong para sa Pagninilay">
+          Questions for Self-Awareness
+        </h2>
+        <ul style="margin-left: var(--space-4); font-size: var(--font-size-sm); color: var(--color-text-muted); line-height: 1.7;">
           {% for q in questions %}
-            <li>
+            <li style="margin-bottom: var(--space-2);">
               <span class="lang-block-en">{{ q.question }}</span>
               <span class="lang-block-fil" style="display: none;">{{ q.question_fil|default:q.question }}</span>
             </li>
           {% endfor %}
         </ul>
-      </div>
-    </section>
-  {% endif %}
+      </section>
+    {% endif %}
 
+    <!-- Sources & Attributions -->
+    {% if sources %}
+      <section class="mb-8" style="padding-top: var(--space-4); border-top: 1px solid var(--color-border-subtle);">
+        <h2 class="sr-only">References</h2>
+        <p style="font-size: var(--font-size-xs); color: var(--color-text-subtle); margin-bottom: 0;">
+          <strong>Sources:</strong>
+          {% for s in sources %}
+            {{ s.title }} ({{ s.citation }}){% if not forloop.last %} &bull; {% endif %}
+          {% endfor %}
+        </p>
+      </section>
+    {% endif %}
 
-  <!-- =========================================================================
-       Verified Sources & Literature
-       ========================================================================= -->
-  {% if sources %}
-    <section class="mb-10 reveal delay-4" style="border-top: 1px solid var(--color-border-subtle); padding-top: var(--space-6);">
-      <h2 style="font-size: var(--font-size-base); color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: var(--space-3);"
-          data-en="Sources &amp; Editorial References" data-fil="Mga Sanggunian at Batayan">
-        Sources &amp; Editorial References
-      </h2>
-      <ul style="list-style: none; display: flex; flex-direction: column; gap: var(--space-2); font-size: var(--font-size-xs); color: var(--color-text-subtle);">
-        {% for s in sources %}
-          <li>
-            <strong>{{ s.title }}</strong> &middot; {{ s.citation }}
-            {% if s.url %}
-              (<a href="{{ s.url }}" target="_blank" rel="noopener">Link</a>)
-            {% endif %}
-            {% if s.is_clinical_reference %}
-              <span class="badge badge-clinical" style="font-size: 0.65rem; padding: 1px 6px;">Clinical Reference</span>
-            {% endif %}
-          </li>
-        {% endfor %}
-      </ul>
-    </section>
-  {% endif %}
-
-  <!-- Support Footer Action -->
-  <div style="background-color: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: var(--space-6); text-align: center; margin-bottom: var(--space-12);">
-    <h3 style="font-size: var(--font-size-lg); margin-bottom: var(--space-2);"
-        data-en="Does this sound like what you are experiencing?"
-        data-fil="Ganito ba ang iyong kasalukuyang nararamdaman?">
-      Does this sound like what you are experiencing?
-    </h3>
-    <p style="color: var(--color-text-muted); font-size: var(--font-size-sm); margin-bottom: var(--space-4);"
-       data-en="You are never alone. Reach out for guided calming steps or connect with local care in San Fernando."
-       data-fil="Hindi ka nag-iisa. Alamin ang mga paraan ng pagpapakalma o makipag-ugnayan sa mga katuwang sa San Fernando.">
-      You are never alone. Reach out for guided calming steps or connect with local care in San Fernando.
-    </p>
-    <a href="{% url 'support:reach_out' %}" class="btn btn-primary" data-en="Open Reach Out Hub" data-fil="Pumunta sa Sentro ng Tulong">Open Reach Out Hub</a>
-  </div>
+    <!-- Bottom Action Pill -->
+    <div style="margin-top: var(--space-8); padding-top: var(--space-6); border-top: 1px solid var(--color-border); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: var(--space-4);">
+      <a href="{% url 'dictionary:index' %}" class="btn btn-outline btn-sm" data-en="&larr; Browse All Words" data-fil="&larr; Lahat ng Salita">&larr; Browse All Words</a>
+      <a href="{% url 'support:reach_out' %}" class="btn btn-primary btn-sm" data-en="Reach Out for Support" data-fil="Humingi ng Gabay">Reach Out for Support</a>
+    </div>
+  </article>
 
 </div>
 {% endblock %}

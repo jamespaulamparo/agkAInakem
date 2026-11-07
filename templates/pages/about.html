@@ -1,80 +1,62 @@
 {% extends 'base.html' %}
 
-{% block title %}About agkAInakem & Safety Principles | San Fernando, La Union{% endblock %}
+{% block title %}About & Ethics | agkAInakem{% endblock %}
 
 {% block content %}
 <div class="container container-narrow" style="padding-top: var(--space-8);">
-  <div class="mb-10 reveal">
-    <div class="facility-badge facility-badge-gov mb-2">Ethics &middot; Cultural Grounding &middot; Privacy</div>
-    <h1>About agk<span class="brand-ai">AI</span>nakem</h1>
-    <p class="lead">
-      <em>agkAInakem</em> is a culturally grounded, browser-based mental health literacy and early-support platform designed for the community of <strong>San Fernando, La Union</strong> and the wider Ilokano and Filipino public.
+
+  <div class="mb-8 reveal text-center">
+    <h1 style="font-size: 2.2rem;" data-en="About &amp; Principles" data-fil="Tungkol at mga Prinsipyo">About &amp; Principles</h1>
+    <p class="lead" style="max-width: 520px; margin: 0 auto;"
+       data-en="Core safety boundaries, privacy guarantees, and our mission in San Fernando, La Union."
+       data-fil="Mga panuntunan sa kaligtasan, proteksyon sa datos, at misyon sa San Fernando, La Union.">
+      Core safety boundaries, privacy guarantees, and our mission in San Fernando, La Union.
     </p>
   </div>
 
-  <!-- Cultural Philosophy Section -->
-  <section class="mb-10 reveal delay-1">
-    <h2>1. The Philosophy of <em>Nakem</em></h2>
-    <div style="background-color: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: var(--space-6); margin-bottom: var(--space-4); box-shadow: var(--shadow-subtle);">
-      <p style="color: var(--color-text); line-height: 1.8; margin-bottom: var(--space-4);">
-        In Ilokano philosophy, <strong>nakem</strong> represents the deepest locus of human being — conscience, inner consciousness, emotional will, and moral sensibility. To experience distress is often described as <em>pannakaburibor wenno pannakariribuk ti nakem</em> (the disturbance or confusion of one's inner being).
+  <div class="dict-list reveal delay-1" style="margin-bottom: var(--space-12);">
+    <!-- Principle 1: Clinical Boundaries -->
+    <article class="dict-entry-row" style="padding: var(--space-5) 0;">
+      <h2 style="font-size: 1.25rem; color: var(--color-primary); margin-bottom: var(--space-2);"
+          data-en="1. Non-Diagnostic Educational Scope"
+          data-fil="1. Saklaw: Edukasyon, Hindi Pagsusuring Medikal">
+        1. Non-Diagnostic Educational Scope
+      </h2>
+      <p style="font-size: var(--font-size-sm); color: var(--color-text-muted); line-height: 1.6; margin-bottom: var(--space-2);"
+         data-en="<em>agkAInakem</em> provides vocabulary to help people articulate their experiences. We explicitly <strong>do not diagnose</strong>, prescribe, predict clinical risk, or simulate an artificial therapist."
+         data-fil="Ang <em>agkAInakem</em> ay nagbibigay ng tamang salita para sa iyong nararamdaman. <strong>Hindi kami nagbibigay ng diagnosis</strong> o nagpapanggap bilang therapist.">
+        <em>agkAInakem</em> provides vocabulary to help people articulate their experiences. We explicitly <strong>do not diagnose</strong>, prescribe, predict clinical risk, or simulate an artificial therapist.
       </p>
-      <p style="color: var(--color-text); line-height: 1.8; margin-bottom: 0;">
-        <strong>agk<span class="brand-ai">AI</span>nakem</strong> signifies mutual attunement — two beings arriving at shared understanding and compassion. By highlighting <strong style="color: var(--color-primary);">AI</strong> within <em>agkAInakem</em>, we acknowledge technology not as an authority on human suffering, but as a humble linguistic companion that helps you retrieve and navigate vocabulary for what hurts.
+    </article>
+
+    <!-- Principle 2: Privacy by Default -->
+    <article class="dict-entry-row" style="padding: var(--space-5) 0;">
+      <h2 style="font-size: 1.25rem; color: var(--color-primary); margin-bottom: var(--space-2);"
+          data-en="2. Strict Privacy by Default"
+          data-fil="2. Mahigpit na Proteksyon sa Pribadong Datos">
+        2. Strict Privacy by Default
+      </h2>
+      <p style="font-size: var(--font-size-sm); color: var(--color-text-muted); line-height: 1.6; margin-bottom: 0;"
+         data-en="Exploring vocabulary and checking in is completely anonymous. No account is required. We do not track browsing history, sell data, or profile users."
+         data-fil="Ang paghahanap ng salita at pag-check in ay bukas at hindi nangangailangan ng account. Hindi namin ibinebenta ang iyong datos o sinusubaybayan ang iyong internet activity.">
+        Exploring vocabulary and checking in is completely anonymous. No account is required. We do not track browsing history, sell data, or profile users.
       </p>
-    </div>
-  </section>
+    </article>
 
-  <!-- Boundaries Section -->
-  <section class="mb-10 reveal delay-2" id="clinical-scope">
-    <h2>2. Clinical Non-Diagnostic Scope & Boundaries</h2>
-    <div style="background-color: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: var(--space-6); margin-bottom: var(--space-4);">
-      <h3 style="color: var(--color-primary); font-size: var(--font-size-lg);">What We Do</h3>
-      <ul style="margin-left: var(--space-5); color: var(--color-text); line-height: 1.8;">
-        <li>Provide a curated, bilingual dictionary of mental health and emotional terms.</li>
-        <li>Help you articulate complex states through sentence-to-concept exploration.</li>
-        <li>Highlight psychological distinctions (e.g. stress vs. burnout, sadness vs. depression).</li>
-        <li>Provide non-blocking sensory calming practices (5-4-3-2-1 grounding).</li>
-        <li>Connect residents directly to verified healthcare providers in San Fernando, La Union.</li>
-      </ul>
-    </div>
+    <!-- Principle 3: Localized Care -->
+    <article class="dict-entry-row" style="padding: var(--space-5) 0;">
+      <h2 style="font-size: 1.25rem; color: var(--color-primary); margin-bottom: var(--space-2);"
+          data-en="3. Grounded in San Fernando, La Union"
+          data-fil="3. Nakaugat sa San Fernando, La Union">
+        3. Grounded in San Fernando, La Union
+      </h2>
+      <p style="font-size: var(--font-size-sm); color: var(--color-text-muted); line-height: 1.6; margin-bottom: 0;"
+         data-en="Instead of unreachable overseas hotlines, we link directly to Ilocos Training and Regional Medical Center (ITRMC) Psychiatry in Parian, San Fernando CDRRMO (911), and the Philippine National Crisis Hotline (1553)."
+         data-fil="Sa halip na mga numerong pang-ibang bansa, direktang nakakonekta ang aming plataporma sa ITRMC Psychiatry sa Parian, San Fernando CDRRMO (911), at NCMH Crisis Hotline (1553).">
+        Instead of unreachable overseas hotlines, we link directly to Ilocos Training and Regional Medical Center (ITRMC) Psychiatry in Parian, San Fernando CDRRMO (911), and the Philippine National Crisis Hotline (1553).
+      </p>
+    </article>
+  </div>
 
-    <div style="background-color: var(--color-danger-light); border: 1px solid rgba(217, 93, 57, 0.25); border-radius: var(--radius-md); padding: var(--space-6);">
-      <h3 style="color: var(--color-danger); font-size: var(--font-size-lg);">What We Explicitly Do Not Do</h3>
-      <ul style="margin-left: var(--space-5); color: var(--color-text); line-height: 1.8;">
-        <li><strong>We do not diagnose:</strong> We never generate diagnostic labels or assess whether someone is clinically ill.</li>
-        <li><strong>We do not replace healthcare providers:</strong> Our tools never substitute for psychiatric consultation, clinical psychology, or licensed therapy.</li>
-        <li><strong>We do not simulate a therapist:</strong> There is no conversational AI acting as a synthetic counselor or making clinical decisions.</li>
-        <li><strong>We do not monitor or calculate risk scores:</strong> We do not track your internet browsing or profile your mental health.</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- Privacy Section -->
-  <section class="mb-10 reveal delay-3" id="privacy">
-    <h2>3. Privacy by Default</h2>
-    <p style="color: var(--color-text-muted); line-height: 1.8;">
-      Emotional vulnerability requires safety. <em>agkAInakem</em> is designed so that exploring emotional concepts never compromises your identity:
-    </p>
-    <ul style="margin-left: var(--space-5); color: var(--color-text); line-height: 1.8; margin-bottom: var(--space-4);">
-      <li><strong>No account required:</strong> Exploring vocabulary, reading distinctions, and finding responders is open and anonymous.</li>
-      <li><strong>In-memory sentence discovery:</strong> Queries entered in the discovery bar are evaluated to retrieve relevant dictionary terms and are not permanently logged or sold.</li>
-      <li><strong>No third-party trackers:</strong> We do not monetize user data or embed behavioral ad scripts.</li>
-    </ul>
-  </section>
-
-  <!-- San Fernando Locality Section -->
-  <section class="mb-10 reveal delay-4">
-    <h2>4. Rooted in San Fernando, La Union</h2>
-    <p style="color: var(--color-text-muted); line-height: 1.8;">
-      Rather than generic global numbers that fail locally, <em>agkAInakem</em> points directly to established facilities in our province:
-    </p>
-    <ul style="margin-left: var(--space-5); color: var(--color-text); line-height: 1.8;">
-      <li><strong>Ilocos Training and Regional Medical Center (ITRMC)</strong> — Psychiatry Department, Parian: <strong>(072) 607-6418</strong></li>
-      <li><strong>City Disaster Risk Reduction &amp; Management Office (CDRRMO)</strong> — City Hall: <strong>Call 911 / (072) 687-8100</strong></li>
-      <li><strong>Department of Health (DOH) Center for Health Development Region 1</strong> — San Fernando, La Union</li>
-      <li><strong>National Center for Mental Health (NCMH)</strong> — Nationwide 24/7 Crisis Hotline: <strong>1553 (Toll-Free)</strong></li>
-    </ul>
-  </section>
 </div>
 {% endblock %}
