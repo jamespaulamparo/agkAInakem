@@ -1,17 +1,17 @@
 /**
- * Words For It — Component Styles
- * Navigation, Cards, Banners, Badges, Buttons, and Layout Elements.
+ * agkAInakem — Component Styles
+ * Minimalist, decluttered, professional UI with dropdowns, accordions, and subtle animations.
  */
 
 /* ==========================================================================
-   1. Emergency Crisis Banner
+   1. Localized Emergency Hotline Banner (San Fernando, La Union / PH)
    ========================================================================== */
 .crisis-banner {
   background-color: var(--color-danger-light);
-  border-bottom: 1px solid rgba(217, 93, 57, 0.2);
+  border-bottom: 1px solid rgba(217, 93, 57, 0.18);
   color: var(--color-text);
-  padding: var(--space-2) var(--space-4);
-  font-size: var(--font-size-sm);
+  padding: 0.6rem var(--space-4);
+  font-size: var(--font-size-xs);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -19,6 +19,7 @@
   gap: var(--space-3);
   position: relative;
   z-index: 100;
+  flex-wrap: wrap;
 }
 
 .crisis-banner-badge {
@@ -27,53 +28,55 @@
   padding: 2px 8px;
   border-radius: var(--radius-pill);
   font-weight: 700;
-  font-size: var(--font-size-xs);
+  font-size: 0.7rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
 
 .crisis-banner a {
   color: var(--color-danger);
-  font-weight: 600;
+  font-weight: 700;
   text-decoration: underline;
+  text-underline-offset: 2px;
 }
 
 .crisis-banner a:hover {
-  color: #B84725;
+  color: #B23D1B;
 }
 
 
 /* ==========================================================================
-   2. Site Header & Navigation
+   2. Site Header & Decluttered Navigation with Dropdowns
    ========================================================================== */
 .site-header {
-  background-color: rgba(247, 244, 239, 0.95);
-  backdrop-filter: blur(8px);
+  background-color: rgba(247, 244, 239, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   position: sticky;
   top: 0;
   z-index: 90;
   border-bottom: 1px solid var(--color-border);
   padding: var(--space-4) 0;
-  transition: padding var(--transition-fast);
+  transition: all var(--transition-fast);
 }
 
 .nav-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: var(--space-4);
 }
 
-.brand-link {
+.brand-wrapper {
   display: flex;
   align-items: center;
-  gap: var(--space-2);
+  gap: var(--space-3);
   text-decoration: none;
-  color: var(--color-text);
 }
 
 .brand-logo-mark {
-  width: 32px;
-  height: 32px;
+  width: 36px;
+  height: 36px;
   border-radius: var(--radius-sm);
   background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
   display: flex;
@@ -81,47 +84,127 @@
   justify-content: center;
   color: #FFFFFF;
   font-weight: 800;
-  font-size: var(--font-size-base);
+  font-size: 1.1rem;
   box-shadow: var(--shadow-subtle);
+  flex-shrink: 0;
+}
+
+.brand-text-group {
+  display: flex;
+  flex-direction: column;
 }
 
 .brand-name {
   font-weight: 800;
-  font-size: var(--font-size-lg);
-  letter-spacing: -0.02em;
+  font-size: 1.25rem;
+  letter-spacing: -0.03em;
   color: var(--color-text);
+  line-height: 1.1;
 }
 
+/* Specific Highlight for "AI" in agkAInakem */
+.brand-ai {
+  background: var(--color-brand-ai-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 900;
+  display: inline-block;
+  padding: 0 1px;
+}
+
+.brand-location {
+  font-size: 0.68rem;
+  color: var(--color-text-subtle);
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+/* Nav Menu & Dropdowns */
 .nav-menu {
   display: flex;
   align-items: center;
   list-style: none;
   gap: var(--space-6);
+  margin: 0;
 }
 
-.nav-item a {
+.nav-item {
+  position: relative;
+}
+
+.nav-item > a,
+.nav-dropdown-trigger {
   color: var(--color-text-muted);
   font-weight: 600;
   font-size: var(--font-size-sm);
   padding: var(--space-2) 0;
-  position: relative;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-family: inherit;
   transition: color var(--transition-fast);
 }
 
-.nav-item a:hover,
-.nav-item a.active {
+.nav-item > a:hover,
+.nav-dropdown-trigger:hover,
+.nav-item.active > a {
   color: var(--color-primary);
 }
 
-.nav-item a.active::after {
-  content: '';
+/* Dropdown Menu (Declutters icons/tabs) */
+.nav-dropdown-menu {
   position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background-color: var(--color-primary);
-  border-radius: var(--radius-pill);
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(8px);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-soft);
+  min-width: 280px;
+  padding: var(--space-2);
+  display: none;
+  flex-direction: column;
+  z-index: 100;
+  opacity: 0;
+  transition: opacity var(--transition-fast), transform var(--transition-fast);
+}
+
+.nav-dropdown:hover .nav-dropdown-menu,
+.nav-dropdown.is-open .nav-dropdown-menu {
+  display: flex;
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+.dropdown-item {
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  transition: background-color var(--transition-fast);
+}
+
+.dropdown-item:hover {
+  background-color: var(--color-surface-soft);
+}
+
+.dropdown-title {
+  color: var(--color-text);
+  font-weight: 600;
+  font-size: var(--font-size-sm);
+  margin-bottom: 2px;
+}
+
+.dropdown-desc {
+  color: var(--color-text-subtle);
+  font-size: var(--font-size-xs);
+  line-height: 1.35;
 }
 
 .nav-actions {
@@ -141,10 +224,11 @@
   cursor: pointer;
 }
 
-@media (max-width: 860px) {
+@media (max-width: 900px) {
   .nav-menu {
     display: none;
     flex-direction: column;
+    align-items: flex-start;
     position: absolute;
     top: 100%;
     left: 0;
@@ -153,11 +237,23 @@
     padding: var(--space-6);
     border-bottom: 1px solid var(--color-border);
     box-shadow: var(--shadow-soft);
-    gap: var(--space-4);
+    gap: var(--space-3);
   }
 
   .nav-menu.open {
     display: flex;
+  }
+
+  .nav-dropdown-menu {
+    position: static;
+    transform: none;
+    box-shadow: none;
+    border: none;
+    padding-left: var(--space-4);
+    display: flex;
+    opacity: 1;
+    min-width: unset;
+    width: 100%;
   }
 
   .nav-actions {
@@ -181,7 +277,7 @@
   font-family: var(--font-family);
   font-weight: 600;
   font-size: var(--font-size-sm);
-  padding: 0.65rem 1.25rem;
+  padding: 0.68rem 1.35rem;
   border-radius: var(--radius-pill);
   border: 1px solid transparent;
   cursor: pointer;
@@ -208,7 +304,7 @@
 .btn-secondary {
   background-color: var(--color-secondary-light);
   color: var(--color-text-on-secondary);
-  border-color: rgba(142, 197, 232, 0.4);
+  border-color: rgba(142, 197, 232, 0.45);
 }
 
 .btn-secondary:hover {
@@ -229,75 +325,92 @@
 }
 
 .btn-sm {
-  padding: 0.4rem 0.85rem;
+  padding: 0.42rem 0.95rem;
   font-size: var(--font-size-xs);
 }
 
 .btn-lg {
-  padding: 0.85rem 1.75rem;
+  padding: 0.9rem 1.85rem;
   font-size: var(--font-size-base);
 }
 
 
 /* ==========================================================================
-   4. Hero Section
+   4. Hero Section with Breathing Room & Ambient Canvas
    ========================================================================== */
 .hero-section {
-  padding: var(--space-12) 0 var(--space-10) 0;
+  padding: var(--space-16) 0 var(--space-12) 0;
   text-align: center;
+  position: relative;
 }
 
-.hero-badge {
+@media (min-width: 900px) {
+  .hero-section {
+    padding: var(--space-20) 0 var(--space-16) 0;
+  }
+}
+
+.hero-pill {
   display: inline-flex;
   align-items: center;
   gap: var(--space-2);
-  background-color: var(--color-primary-light);
-  color: var(--color-primary-hover);
-  padding: var(--space-1) var(--space-4);
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid var(--color-border);
+  padding: 6px 16px;
   border-radius: var(--radius-pill);
   font-size: var(--font-size-xs);
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  margin-bottom: var(--space-4);
-  border: 1px solid rgba(79, 168, 160, 0.2);
+  font-weight: 600;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-6);
+  backdrop-filter: blur(8px);
+}
+
+.hero-pill-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--color-primary);
 }
 
 .hero-title {
-  max-width: 800px;
+  max-width: 840px;
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: var(--space-4);
+  margin-bottom: var(--space-6);
+  font-weight: 800;
 }
 
-.hero-description {
-  max-width: 660px;
+.hero-lead {
+  max-width: 680px;
   margin-left: auto;
   margin-right: auto;
   font-size: var(--font-size-lg);
   line-height: var(--line-height-relaxed);
   color: var(--color-text-muted);
-  margin-bottom: var(--space-8);
+  margin-bottom: var(--space-10);
 }
 
 
 /* ==========================================================================
-   5. Interactive Discovery Search Bar (Homepage preview)
+   5. Minimalist Sentence-to-Word Discovery Box
    ========================================================================== */
-.discovery-box {
+.discovery-container {
+  max-width: 760px;
+  margin: 0 auto var(--space-16) auto;
+}
+
+.discovery-card {
   background-color: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-xl);
   padding: var(--space-4) var(--space-5);
   box-shadow: var(--shadow-soft);
-  max-width: 780px;
-  margin: 0 auto var(--space-12) auto;
-  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+  transition: all var(--transition-smooth);
 }
 
-.discovery-box:focus-within {
+.discovery-card:focus-within {
   border-color: var(--color-primary);
-  box-shadow: 0 10px 32px rgba(79, 168, 160, 0.12);
+  box-shadow: 0 12px 36px rgba(79, 168, 160, 0.12);
 }
 
 .discovery-form {
@@ -314,53 +427,156 @@
   font-size: var(--font-size-base);
   color: var(--color-text);
   background: transparent;
-  padding: var(--space-2) var(--space-1);
+  padding: var(--space-2) 0;
 }
 
 .discovery-input::placeholder {
   color: var(--color-text-subtle);
+  font-weight: 400;
 }
 
-.sample-prompts {
+.discovery-suggestions {
+  margin-top: var(--space-4);
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--color-border-subtle);
   display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.suggestions-header {
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
+  font-size: var(--font-size-xs);
+  color: var(--color-text-subtle);
+}
+
+.suggestions-chips {
+  display: flex;
   flex-wrap: wrap;
   gap: var(--space-2);
-  margin-top: var(--space-3);
-  font-size: var(--font-size-xs);
-  color: var(--color-text-muted);
 }
 
 .prompt-chip {
   background-color: var(--color-surface-soft);
   border: 1px solid var(--color-border-subtle);
   border-radius: var(--radius-pill);
-  padding: 4px 12px;
+  padding: 5px 14px;
+  font-size: var(--font-size-xs);
   color: var(--color-text-muted);
   cursor: pointer;
   text-decoration: none;
   transition: all var(--transition-fast);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
 }
 
 .prompt-chip:hover {
   background-color: var(--color-primary-light);
-  border-color: rgba(79, 168, 160, 0.3);
+  border-color: rgba(79, 168, 160, 0.35);
   color: var(--color-primary-hover);
+  transform: translateY(-1px);
+}
+
+.prompt-chip-ilocano {
+  border-color: rgba(142, 197, 232, 0.4);
+  background-color: var(--color-secondary-light);
+  color: #1E4E6D;
+  font-style: italic;
+}
+
+.prompt-chip-ilocano:hover {
+  background-color: #DCECF7;
+  color: #133952;
 }
 
 
 /* ==========================================================================
-   6. Dual Pillar Cards Grid
+   6. Collapsible Minimalist Accordions (Declutters Content)
+   ========================================================================== */
+.accordion-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.accordion-item {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.accordion-item:hover {
+  border-color: rgba(79, 168, 160, 0.4);
+}
+
+.accordion-item.is-open {
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-subtle);
+}
+
+.accordion-trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-5) var(--space-6);
+  background: none;
+  border: none;
+  text-align: left;
+  font-family: inherit;
+  font-size: var(--font-size-base);
+  font-weight: 700;
+  color: var(--color-text);
+  cursor: pointer;
+  gap: var(--space-4);
+}
+
+.accordion-trigger:focus-visible {
+  outline: 2px solid var(--color-primary);
+}
+
+.accordion-arrow {
+  width: 20px;
+  height: 20px;
+  stroke: var(--color-text-muted);
+  transition: transform var(--transition-smooth);
+  flex-shrink: 0;
+}
+
+.accordion-item.is-open .accordion-arrow {
+  transform: rotate(180deg);
+  stroke: var(--color-primary);
+}
+
+.accordion-content {
+  display: none;
+  padding: 0 var(--space-6) var(--space-6) var(--space-6);
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-relaxed);
+}
+
+.accordion-item.is-open .accordion-content {
+  display: block;
+}
+
+
+/* ==========================================================================
+   7. Dual Pillars Grid (Minimalist & Spaced)
    ========================================================================== */
 .pillars-grid {
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--space-8);
-  margin-bottom: var(--space-12);
+  margin-bottom: var(--space-16);
 }
 
-@media (min-width: 768px) {
+@media (min-width: 800px) {
   .pillars-grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -376,7 +592,6 @@
   flex-direction: column;
   transition: transform var(--transition-smooth), box-shadow var(--transition-smooth), border-color var(--transition-smooth);
   position: relative;
-  overflow: hidden;
 }
 
 .pillar-card:hover {
@@ -385,7 +600,7 @@
   border-color: rgba(79, 168, 160, 0.4);
 }
 
-.pillar-card-header {
+.pillar-card-top {
   display: flex;
   align-items: center;
   gap: var(--space-3);
@@ -399,7 +614,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.25rem;
+  flex-shrink: 0;
 }
 
 .pillar-icon-teal {
@@ -409,15 +624,7 @@
 
 .pillar-icon-sky {
   background-color: var(--color-secondary-light);
-  color: #2B6D96;
-}
-
-.pillar-tag {
-  font-size: var(--font-size-xs);
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--color-text-muted);
+  color: #1F547A;
 }
 
 .pillar-card h3 {
@@ -440,85 +647,97 @@
 
 
 /* ==========================================================================
-   7. Information & Companion Extension Teaser
+   8. Local Community Care Cards (San Fernando, La Union)
    ========================================================================== */
-.extension-banner {
+.local-support-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-6);
+  margin-top: var(--space-8);
+}
+
+.support-facility-card {
   background-color: var(--color-surface);
   border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
-  padding: var(--space-8);
+  border-radius: var(--radius-md);
+  padding: var(--space-6);
   box-shadow: var(--shadow-card);
+  transition: all var(--transition-smooth);
   display: flex;
   flex-direction: column;
-  gap: var(--space-6);
-  margin-bottom: var(--space-12);
 }
 
-@media (min-width: 860px) {
-  .extension-banner {
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-  }
+.support-facility-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-hover);
+  border-color: rgba(79, 168, 160, 0.35);
 }
 
-.extension-banner-content {
-  max-width: 650px;
-}
-
-.extension-banner-content h3 {
-  font-size: var(--font-size-xl);
-  margin-bottom: var(--space-2);
-}
-
-.extension-banner-content p {
-  color: var(--color-text-muted);
-  margin-bottom: 0;
-  line-height: var(--line-height-relaxed);
-}
-
-
-/* ==========================================================================
-   8. Badges, Tags & Distinctions
-   ========================================================================== */
-.badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
+.facility-badge {
+  display: inline-block;
+  align-self: flex-start;
   padding: 3px 10px;
   border-radius: var(--radius-pill);
   font-size: var(--font-size-xs);
-  font-weight: 600;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: var(--space-3);
 }
 
-.badge-everyday {
+.facility-badge-hospital {
+  background-color: var(--color-secondary-light);
+  color: #1A496C;
+}
+
+.facility-badge-gov {
   background-color: var(--color-primary-light);
   color: var(--color-primary-hover);
 }
 
-.badge-psychological {
-  background-color: var(--color-secondary-light);
-  color: #1F4D6F;
+.facility-badge-crisis {
+  background-color: var(--color-danger-light);
+  color: var(--color-danger);
 }
 
-.badge-clinical {
-  background-color: #FEEFEF;
-  color: #B23B2B;
-}
-
-.badge-approved {
-  background-color: var(--color-success-light);
-  color: var(--color-text-on-success);
+.facility-phone {
+  font-size: var(--font-size-lg);
+  font-weight: 800;
+  color: var(--color-text);
+  margin: var(--space-2) 0;
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
 }
 
 
 /* ==========================================================================
-   9. Site Footer
+   9. Abstract AI Vector Graphics (Non-photo)
+   ========================================================================== */
+.abstract-graphic {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+.glow-circle {
+  animation: gentlePulse 6s ease-in-out infinite alternate;
+}
+
+@keyframes gentlePulse {
+  0% { transform: scale(0.98); opacity: 0.85; }
+  100% { transform: scale(1.02); opacity: 1; }
+}
+
+
+/* ==========================================================================
+   10. Site Footer
    ========================================================================== */
 .site-footer {
   background-color: var(--color-surface);
   border-top: 1px solid var(--color-border);
-  padding: var(--space-12) 0 var(--space-8) 0;
+  padding: var(--space-16) 0 var(--space-10) 0;
   font-size: var(--font-size-sm);
   color: var(--color-text-muted);
 }
@@ -526,22 +745,23 @@
 .footer-grid {
   display: grid;
   grid-template-columns: 2fr 1fr 1fr;
-  gap: var(--space-8);
-  margin-bottom: var(--space-8);
+  gap: var(--space-10);
+  margin-bottom: var(--space-10);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 800px) {
   .footer-grid {
     grid-template-columns: 1fr;
-    gap: var(--space-6);
+    gap: var(--space-8);
   }
 }
 
 .footer-brand p {
-  max-width: 400px;
+  max-width: 440px;
   color: var(--color-text-muted);
   font-size: var(--font-size-sm);
   line-height: var(--line-height-relaxed);
+  margin-top: var(--space-3);
 }
 
 .footer-col h4 {
@@ -550,14 +770,14 @@
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: var(--color-text);
-  margin-bottom: var(--space-3);
+  margin-bottom: var(--space-4);
 }
 
 .footer-col ul {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: var(--space-2);
+  gap: var(--space-3);
 }
 
 .footer-col a {
@@ -572,8 +792,8 @@
   background-color: var(--color-surface-soft);
   border: 1px solid var(--color-border-subtle);
   border-radius: var(--radius-md);
-  padding: var(--space-4);
-  margin-bottom: var(--space-6);
+  padding: var(--space-5);
+  margin-bottom: var(--space-8);
   font-size: var(--font-size-xs);
   line-height: var(--line-height-relaxed);
   color: var(--color-text-subtle);
@@ -586,4 +806,6 @@
   padding-top: var(--space-6);
   border-top: 1px solid var(--color-border-subtle);
   font-size: var(--font-size-xs);
+  flex-wrap: wrap;
+  gap: var(--space-3);
 }

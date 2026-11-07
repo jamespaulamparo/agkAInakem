@@ -1,66 +1,99 @@
 {% extends 'base.html' %}
 
-{% block title %}Help Someone Else — Notice, Ask, Listen, Connect — Words For It{% endblock %}
+{% block title %}Help Someone Else — Notice, Ask, Listen, Connect | agkAInakem{% endblock %}
 
 {% block content %}
 <div class="container container-narrow" style="padding-top: var(--space-8);">
-  <div class="mb-8">
-    <div class="badge badge-psychological mb-2">Pillar B &middot; Practical Guide</div>
+  <div class="mb-10 reveal">
+    <div class="facility-badge facility-badge-gov mb-2">Pillar B &middot; Practical Guide for Peers &amp; Family</div>
     <h1>Helping Someone Who May Be Struggling</h1>
     <p class="lead">
-      When you notice changes in a friend, classmate, or coworker, knowing how to approach them can feel daunting. The <strong>Notice &rarr; Ask &rarr; Listen &rarr; Connect</strong> framework provides simple, grounded guidance.
+      When you notice changes in a friend, classmate, coworker, or family member in our community, taking the first step to ask can be life-changing. Here is a culturally sensitive, practical framework grounded in <em>nakem</em> (compassion and empathy).
     </p>
   </div>
 
   <!-- Step 1: Notice -->
-  <div style="background-color: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: var(--space-6); margin-bottom: var(--space-6); box-shadow: var(--shadow-card);">
-    <div style="display: flex; align-items: center; gap: var(--space-3); margin-bottom: var(--space-3);">
-      <span style="background-color: var(--color-primary-light); color: var(--color-primary-hover); font-weight: 800; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center;">1</span>
-      <h2 style="font-size: var(--font-size-xl); margin-bottom: 0;">Notice Changes</h2>
+  <div class="accordion-item is-open mb-6 reveal delay-1" style="box-shadow: var(--shadow-card);">
+    <div style="padding: var(--space-6);">
+      <div style="display: flex; align-items: center; gap: var(--space-3); margin-bottom: var(--space-3);">
+        <span style="background-color: var(--color-primary-light); color: var(--color-primary-hover); font-weight: 800; width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center;">1</span>
+        <h2 style="font-size: var(--font-size-xl); margin-bottom: 0;">Notice Changes (Panangmatmat)</h2>
+      </div>
+      <p style="color: var(--color-text-muted); font-size: var(--font-size-sm); line-height: 1.7;">
+        Distress often shows in behavioral shifts over days or weeks, rather than a single bad moment. Pay attention if they:
+      </p>
+      <ul style="margin-left: var(--space-5); color: var(--color-text); font-size: var(--font-size-sm); line-height: 1.8; margin-bottom: var(--space-3);">
+        <li>Withdraw from family dinners, church, sports, or barkada gatherings.</li>
+        <li>Appear perpetually exhausted (<em>nabanbannog</em>) or unfocused.</li>
+        <li>Express hopelessness: <em>&ldquo;Kasla awan met serserbi ti amin&rdquo;</em> (Nothing seems to matter anymore).</li>
+        <li>Exhibit sudden shifts in sleep patterns, appetite, or personal hygiene.</li>
+      </ul>
     </div>
-    <p style="color: var(--color-text-muted);">
-      Look for subtle shifts in behavior over time rather than a single off-day: withdrawing from conversations, looking perpetually exhausted, expressing hopelessness, or sudden uncharacteristic irritability.
-    </p>
   </div>
 
   <!-- Step 2: Ask -->
-  <div style="background-color: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: var(--space-6); margin-bottom: var(--space-6); box-shadow: var(--shadow-card);">
-    <div style="display: flex; align-items: center; gap: var(--space-3); margin-bottom: var(--space-3);">
-      <span style="background-color: var(--color-primary-light); color: var(--color-primary-hover); font-weight: 800; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center;">2</span>
-      <h2 style="font-size: var(--font-size-xl); margin-bottom: 0;">Ask Gently</h2>
-    </div>
-    <p style="color: var(--color-text-muted); margin-bottom: var(--space-3);">
-      Choose a private, relaxed moment. Use open-ended, non-judgmental language:
-    </p>
-    <div style="background-color: var(--color-surface-soft); border-left: 3px solid var(--color-primary); padding: var(--space-3) var(--space-4); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; font-style: italic; color: var(--color-text);">
-      "I've noticed you seem carrying a lot lately, and I just wanted to check in. How are things really going?"
+  <div class="accordion-item is-open mb-6 reveal delay-2" style="box-shadow: var(--shadow-card);">
+    <div style="padding: var(--space-6);">
+      <div style="display: flex; align-items: center; gap: var(--space-3); margin-bottom: var(--space-3);">
+        <span style="background-color: var(--color-secondary-light); color: #1F547A; font-weight: 800; width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center;">2</span>
+        <h2 style="font-size: var(--font-size-xl); margin-bottom: 0;">Ask Gently (Panagsaludsod)</h2>
+      </div>
+      <p style="color: var(--color-text-muted); font-size: var(--font-size-sm); margin-bottom: var(--space-4);">
+        Choose a quiet, comfortable space where they won't feel cornered. Use warm, open-ended Ilokano or Filipino phrases:
+      </p>
+      <div style="background-color: var(--color-surface-soft); border-left: 3px solid var(--color-primary); padding: var(--space-4); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; margin-bottom: var(--space-3);">
+        <p style="font-style: italic; color: var(--color-text); margin-bottom: 4px; font-weight: 600;">
+          &ldquo;Nadlawko a kasla adda marikriknam ita, kabsat. Kumustaka a talaga? Addaak laeng ditoy no kayatmo ti makisarita.&rdquo;
+        </p>
+        <span style="font-size: var(--font-size-xs); color: var(--color-text-subtle);">
+          (I've noticed you seem carrying something lately. How are you really doing? I'm right here if you want to talk.)
+        </span>
+      </div>
+      <p style="font-size: var(--font-size-xs); color: var(--color-text-muted); margin-bottom: 0;">
+        <strong>Common pitfall to avoid:</strong> Avoid minimizing their feelings with <em>&ldquo;Kaya mo 'yan, lilipas din 'yan&rdquo;</em> or <em>&ldquo;Agsipud laeng ta awan serserbim&rdquo;</em>. Take their emotions seriously.
+      </p>
     </div>
   </div>
 
   <!-- Step 3: Listen -->
-  <div style="background-color: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: var(--space-6); margin-bottom: var(--space-6); box-shadow: var(--shadow-card);">
-    <div style="display: flex; align-items: center; gap: var(--space-3); margin-bottom: var(--space-3);">
-      <span style="background-color: var(--color-primary-light); color: var(--color-primary-hover); font-weight: 800; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center;">3</span>
-      <h2 style="font-size: var(--font-size-xl); margin-bottom: 0;">Listen Without Fixing</h2>
+  <div class="accordion-item is-open mb-6 reveal delay-3" style="box-shadow: var(--shadow-card);">
+    <div style="padding: var(--space-6);">
+      <div style="display: flex; align-items: center; gap: var(--space-3); margin-bottom: var(--space-3);">
+        <span style="background-color: var(--color-success-light); color: var(--color-success-dark); font-weight: 800; width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center;">3</span>
+        <h2 style="font-size: var(--font-size-xl); margin-bottom: 0;">Listen Sincerely (Panagdengngeg)</h2>
+      </div>
+      <p style="color: var(--color-text-muted); font-size: var(--font-size-sm); line-height: 1.7; margin-bottom: var(--space-3);">
+        Your role is not to diagnose or provide immediate philosophical answers. Give them space to express their burden without interrupting:
+      </p>
+      <ul style="margin-left: var(--space-5); color: var(--color-text); font-size: var(--font-size-sm); line-height: 1.8; margin-bottom: 0;">
+        <li>Validate: <em>&ldquo;Agyamanak ta imbagam kaniak. Talaga a narigat ti mapaspasamak kenka.&rdquo;</em> (Thank you for telling me. That sounds genuinely hard.)</li>
+        <li>Comfort with presence: Silence is okay. Sitting with them in peace is often more helpful than rushed advice.</li>
+      </ul>
     </div>
-    <p style="color: var(--color-text-muted);">
-      Your job is not to diagnose or provide immediate solutions. Give them space to speak, validate their feelings ("That sounds really exhausting"), and avoid dismissing their experience with "it could be worse."
-    </p>
   </div>
 
   <!-- Step 4: Connect -->
-  <div style="background-color: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: var(--space-6); margin-bottom: var(--space-8); box-shadow: var(--shadow-card);">
-    <div style="display: flex; align-items: center; gap: var(--space-3); margin-bottom: var(--space-3);">
-      <span style="background-color: var(--color-primary-light); color: var(--color-primary-hover); font-weight: 800; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center;">4</span>
-      <h2 style="font-size: var(--font-size-xl); margin-bottom: 0;">Connect to Support</h2>
+  <div class="accordion-item is-open mb-8 reveal delay-4" style="box-shadow: var(--shadow-card);">
+    <div style="padding: var(--space-6);">
+      <div style="display: flex; align-items: center; gap: var(--space-3); margin-bottom: var(--space-3);">
+        <span style="background-color: #FCECE9; color: var(--color-danger); font-weight: 800; width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center;">4</span>
+        <h2 style="font-size: var(--font-size-xl); margin-bottom: 0;">Connect to Support (Panangtulong)</h2>
+      </div>
+      <p style="color: var(--color-text-muted); font-size: var(--font-size-sm); line-height: 1.7; margin-bottom: var(--space-4);">
+        Gently encourage them to take an informed next step. Offer to help them find contacts in San Fernando:
+      </p>
+      <div style="background-color: var(--color-surface-soft); padding: var(--space-4); border-radius: var(--radius-sm); margin-bottom: var(--space-4);">
+        <strong style="color: var(--color-text); font-size: var(--font-size-sm);">Local Referral Options:</strong>
+        <ul style="margin-left: var(--space-5); color: var(--color-text-muted); font-size: var(--font-size-xs); line-height: 1.7; margin-top: var(--space-2);">
+          <li><strong>ITRMC Psychiatry Clinic</strong> in Parian, San Fernando, La Union &bull; (072) 607-6418</li>
+          <li><strong>Campus Guidance Office</strong> (for students at DMMMSU, SLC, LORMA, or Union Christian College)</li>
+          <li><strong>National Center for Mental Health</strong> 24/7 Hotline &bull; Dial 1553 (Toll-Free)</li>
+        </ul>
+      </div>
+      <div style="text-align: center;">
+        <a href="{% url 'support:reach_out' %}#local-support" class="btn btn-primary">View Full San Fernando Directory &rarr;</a>
+      </div>
     </div>
-    <p style="color: var(--color-text-muted);">
-      Encourage them to take a manageable step toward support: speaking to a counselor, contacting a designated responder in their school/organization, or calling a trusted service. Offer to sit with them or help them reach out.
-    </p>
-  </div>
-
-  <div style="text-align: center;">
-    <a href="{% url 'support:reach_out' %}" class="btn btn-secondary">Explore Responders & Hotlines</a>
   </div>
 </div>
 {% endblock %}

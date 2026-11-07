@@ -1,38 +1,55 @@
 /**
- * Words For It — Official Design System Tokens
- * Strict color tokens, typography scales, spacing, shadows, and radii.
+ * agkAInakem — Official Design System Tokens
+ * Rooted in San Fernando, La Union, Philippines
+ * Soft Teal (#4FA8A0), Sky Blue (#8EC5E8), Sage Green (#A9C8A5), Warm Off-White (#F7F4EF)
  */
 
 :root {
-  /* Brand Palette */
-  --color-primary: #4FA8A0;          /* Soft teal · Primary actions & brand identity */
-  --color-primary-hover: #3F918A;    /* Darkened teal for interactive states */
-  --color-primary-light: #EBF5F4;    /* Light teal tint for badges & subtle fills */
-  --color-secondary: #8EC5E8;        /* Sky blue · Secondary elements & accents */
-  --color-secondary-light: #EBF4FB;  /* Light sky blue tint */
-  --color-success: #A9C8A5;          /* Sage green · Positive states & approval */
-  --color-success-light: #EFF5EF;    /* Sage green subtle tint */
-  --color-background: #F7F4EF;       /* Warm off-white · Primary page background */
-  --color-surface: #FFFFFF;          /* Pure white · Content cards & surfaces */
-  --color-surface-soft: #FBF9F6;     /* Secondary surface fill */
+  /* Brand Identity */
+  --color-primary: #4FA8A0;          /* Soft Teal · Primary actions & brand anchor */
+  --color-primary-hover: #3E8F87;    /* Deeper teal for hover */
+  --color-primary-light: #EBF5F4;    /* Subtle teal tint */
+  --color-primary-soft: rgba(79, 168, 160, 0.12);
 
-  /* Semantic / Safety Status */
-  --color-warning: #E09F3E;          /* Amber for cautions / reflection alerts */
-  --color-warning-light: #FDF6EC;
-  --color-danger: #D95D39;           /* Red for urgent / crisis / emergency contacts */
-  --color-danger-light: #FBF0ED;
+  --color-secondary: #8EC5E8;        /* Sky Blue · Supportive & calm secondary */
+  --color-secondary-hover: #72B1D9;
+  --color-secondary-light: #EBF4FB;
+  --color-secondary-soft: rgba(142, 197, 232, 0.15);
 
-  /* Typography & High-Contrast Neutrals */
+  --color-success: #A9C8A5;          /* Sage Green · Positive states & healing */
+  --color-success-light: #EFF6EE;
+  --color-success-dark: #274D2B;
+
+  --color-background: #F7F4EF;       /* Warm Off-White · Base ambient background */
+  --color-surface: #FFFFFF;          /* Pure White · Card surfaces */
+  --color-surface-soft: #FCFAF7;     /* Soft card contrast surface */
+
+  /* The "AI" Accent in agkAInakem */
+  --color-brand-ai: #2C8C83;         /* Highlighted saturated teal */
+  --color-brand-ai-gradient: linear-gradient(135deg, #3FA89F 0%, #68BCE8 100%);
+
+  /* Ambient Mesh Gradients */
+  --gradient-ambient: radial-gradient(at 15% 15%, rgba(79, 168, 160, 0.08) 0px, transparent 55%),
+                      radial-gradient(at 85% 20%, rgba(142, 197, 232, 0.12) 0px, transparent 50%),
+                      radial-gradient(at 50% 85%, rgba(169, 200, 165, 0.08) 0px, transparent 55%);
+
+  /* Semantic Alerts */
+  --color-danger: #D95D39;           /* Red for urgent emergency hotline callouts */
+  --color-danger-light: #FBF1EE;
+  --color-warning: #E09F3E;          /* Warm Amber */
+  --color-warning-light: #FDF7ED;
+
+  /* Typography & High-Contrast Reading */
   --color-text: #263A38;             /* Deep slate-teal · Optimal contrast on warm backgrounds */
-  --color-text-muted: #657774;       /* Balanced secondary text (passes WCAG AA) */
-  --color-text-subtle: #899B98;      /* Captions and helper notes */
-  --color-text-on-primary: #FFFFFF;  /* White on primary teal */
-  --color-text-on-secondary: #1F3848;/* Dark blue on sky blue */
-  --color-text-on-success: #203B23;  /* Deep green on sage green */
+  --color-text-muted: #647572;       /* Balanced secondary copy (WCAG AA compliant) */
+  --color-text-subtle: #899B98;      /* Meta labels, captions */
+  --color-text-on-primary: #FFFFFF;
+  --color-text-on-secondary: #19384C;
+  --color-text-on-success: #1C3B1E;
 
   /* Borders & Dividers */
   --color-border: #E4E9E5;          /* Restrained structural borders */
-  --color-border-subtle: #EEF2EF;   /* Soft inner card dividers */
+  --color-border-subtle: #EEF2EF;   /* Whisper-thin inner dividers */
   --color-border-focus: #4FA8A0;    /* High-visibility accessibility focus ring */
 
   /* Typography Scale */
@@ -45,40 +62,46 @@
   --font-size-2xl: 1.5rem;    /* 24px */
   --font-size-3xl: 1.875rem;  /* 30px */
   --font-size-4xl: 2.25rem;   /* 36px */
-  --font-size-hero: 2.75rem;  /* 44px */
+  --font-size-hero: 2.85rem;  /* 45px */
 
   --line-height-tight: 1.25;
-  --line-height-normal: 1.5;
-  --line-height-relaxed: 1.7;
+  --line-height-normal: 1.55;
+  --line-height-relaxed: 1.75;
 
-  /* Spacing Scale */
-  --space-1: 0.25rem;  /* 4px */
-  --space-2: 0.5rem;   /* 8px */
-  --space-3: 0.75rem;  /* 12px */
-  --space-4: 1rem;     /* 16px */
-  --space-5: 1.25rem;  /* 20px */
-  --space-6: 1.5rem;   /* 24px */
-  --space-8: 2rem;     /* 32px */
-  --space-10: 2.5rem;  /* 40px */
-  --space-12: 3rem;    /* 48px */
-  --space-16: 4rem;    /* 64px */
+  /* Generous Spacing for White Space Minimalism */
+  --space-1: 0.25rem;   /* 4px */
+  --space-2: 0.5rem;    /* 8px */
+  --space-3: 0.75rem;   /* 12px */
+  --space-4: 1rem;      /* 16px */
+  --space-5: 1.25rem;   /* 20px */
+  --space-6: 1.5rem;    /* 24px */
+  --space-8: 2rem;      /* 32px */
+  --space-10: 2.5rem;   /* 40px */
+  --space-12: 3rem;     /* 48px */
+  --space-16: 4rem;     /* 64px */
+  --space-20: 5rem;     /* 80px */
+  --space-24: 6rem;     /* 96px */
 
-  /* Rounded Corner Radii */
+  /* Radii */
   --radius-sm: 8px;
   --radius-md: 14px;
   --radius-lg: 20px;
   --radius-xl: 28px;
   --radius-pill: 9999px;
 
-  /* Soft Shadows */
-  --shadow-subtle: 0 2px 6px rgba(38, 58, 56, 0.04);
-  --shadow-card: 0 4px 16px rgba(38, 58, 56, 0.05);
-  --shadow-soft: 0 8px 28px rgba(38, 58, 56, 0.07);
-  --shadow-hover: 0 12px 32px rgba(38, 58, 56, 0.10);
+  /* Shadows */
+  --shadow-subtle: 0 2px 8px rgba(38, 58, 56, 0.03);
+  --shadow-card: 0 4px 20px rgba(38, 58, 56, 0.05);
+  --shadow-soft: 0 10px 30px rgba(38, 58, 56, 0.06);
+  --shadow-hover: 0 14px 36px rgba(38, 58, 56, 0.09);
 
   /* Layout Constrains */
-  --max-width-content: 1180px;
-  --max-width-text: 740px;
-  --transition-fast: 0.15s ease-in-out;
-  --transition-smooth: 0.25s ease-in-out;
+  --max-width-content: 1140px;
+  --max-width-text: 720px;
+  --max-width-wide: 1240px;
+
+  /* Transitions & Smooth Animations */
+  --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }

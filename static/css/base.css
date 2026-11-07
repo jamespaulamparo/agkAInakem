@@ -1,5 +1,6 @@
 /**
- * Words For It — Base & Reset Styles
+ * agkAInakem — Base & Reset Styles
+ * Minimalist, expansive layout with generous breathing room.
  */
 
 *, *::before, *::after {
@@ -20,11 +21,14 @@ body {
   line-height: var(--line-height-normal);
   color: var(--color-text);
   background-color: var(--color-background);
+  background-image: var(--gradient-ambient);
+  background-attachment: fixed;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
 /* Accessibility Focus States */
@@ -70,12 +74,12 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
   line-height: var(--line-height-tight);
   color: var(--color-text);
-  letter-spacing: -0.02em;
+  letter-spacing: -0.025em;
 }
 
 h1 {
   font-size: var(--font-size-3xl);
-  margin-bottom: var(--space-4);
+  margin-bottom: var(--space-5);
 }
 
 @media (min-width: 768px) {
@@ -86,16 +90,22 @@ h1 {
 
 h2 {
   font-size: var(--font-size-2xl);
-  margin-bottom: var(--space-3);
+  margin-bottom: var(--space-4);
+}
+
+@media (min-width: 768px) {
+  h2 {
+    font-size: var(--font-size-3xl);
+  }
 }
 
 h3 {
   font-size: var(--font-size-xl);
-  margin-bottom: var(--space-2);
+  margin-bottom: var(--space-3);
 }
 
 p {
-  margin-bottom: var(--space-4);
+  margin-bottom: var(--space-5);
   color: var(--color-text);
 }
 
@@ -103,6 +113,7 @@ p.lead {
   font-size: var(--font-size-lg);
   line-height: var(--line-height-relaxed);
   color: var(--color-text-muted);
+  font-weight: 400;
 }
 
 a {
@@ -115,7 +126,7 @@ a:hover {
   color: var(--color-primary-hover);
 }
 
-/* Structural Layout */
+/* Structural Layout with Generous White Space */
 .site-wrapper {
   display: flex;
   flex-direction: column;
@@ -124,7 +135,7 @@ a:hover {
 
 .site-main {
   flex: 1 0 auto;
-  padding-bottom: var(--space-16);
+  padding-bottom: var(--space-20);
 }
 
 .container {
@@ -140,7 +151,30 @@ a:hover {
   max-width: var(--max-width-text);
 }
 
-/* Utility Helpers */
+.container-wide {
+  max-width: var(--max-width-wide);
+}
+
+/* Minimalist Scroll Animations */
+.reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger Delays */
+.delay-1 { transition-delay: 0.1s; }
+.delay-2 { transition-delay: 0.2s; }
+.delay-3 { transition-delay: 0.3s; }
+.delay-4 { transition-delay: 0.4s; }
+
+/* Utility Spacers */
 .text-center { text-align: center; }
 .text-muted { color: var(--color-text-muted); }
 .text-teal { color: var(--color-primary); }
@@ -149,5 +183,11 @@ a:hover {
 .mb-4 { margin-bottom: var(--space-4); }
 .mb-6 { margin-bottom: var(--space-6); }
 .mb-8 { margin-bottom: var(--space-8); }
+.mb-12 { margin-bottom: var(--space-12); }
+.mb-16 { margin-bottom: var(--space-16); }
 .mt-4 { margin-top: var(--space-4); }
 .mt-8 { margin-top: var(--space-8); }
+.mt-12 { margin-top: var(--space-12); }
+.py-12 { padding-top: var(--space-12); padding-bottom: var(--space-12); }
+.py-16 { padding-top: var(--space-16); padding-bottom: var(--space-16); }
+.py-20 { padding-top: var(--space-20); padding-bottom: var(--space-20); }
