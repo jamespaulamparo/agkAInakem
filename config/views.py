@@ -33,3 +33,22 @@ def service_worker(request):
     resp['Cache-Control'] = 'no-cache'
     resp['Service-Worker-Allowed'] = '/'
     return resp
+
+
+def _lan_ips():
+    """Private IPv4 addresses of this computer (for phones on the same Wi-Fi)."""
+    import socket
+    ips = set()
+    try:  # the default-route trick: no packet is actually sent
+        s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        s.connect(('10.255.255.255', 1))
+        ips.add(s.getsockname()[0])
+        s.close()
+    except OSError:
+        pass
+    try:
+        ips.update(socket.gethostbyname_ex(socket.gethostname())[2])
+    except OSError:
+        pass
+    private = lambda ip: ip.startswith(('192.168.', '10.')) or (ip.startswith('172.') and 16 <= int(ip.split('.')[1]) <= 31)
+    return sorted(ip for ip in ips if private(ip))

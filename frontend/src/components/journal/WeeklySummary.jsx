@@ -26,7 +26,7 @@ export default function WeeklySummary({ entries, anyDay }) {
           return (
             <div key={d} className="flex flex-1 flex-col items-center gap-1.5">
               <motion.span className="w-full max-w-[40px] rounded-full" initial={{ height: 0 }} animate={{ height: e ? 40 : 10 }} transition={{ delay: i * 0.05 }}
-                style={{ background: e ? MOODS[e.mood].fill : '#ECEFEC' }} />
+                style={{ background: e ? MOODS[e.mood].fill : 'rgb(var(--line))' }} />
               <span className="text-[0.7rem] font-semibold text-ink-faint">{fmt(parse(d), lang, { weekday: 'narrow' })}</span>
             </div>
           )

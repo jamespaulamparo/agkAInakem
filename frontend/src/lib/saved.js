@@ -15,7 +15,7 @@ export function useSaved() {
     const cur = load(KEY, [])
     const next = cur.some((t) => t.slug === term.slug)
       ? cur.filter((t) => t.slug !== term.slug)
-      : [{ slug: term.slug, term: term.term, short: term.short_definition, at: Date.now() }, ...cur]
+      : [{ slug: term.slug, term: term.term, term_fil: term.term_fil, short: term.short_definition, short_fil: term.short_definition_fil, at: Date.now() }, ...cur]
     save(KEY, next)
     listeners.forEach((l) => l(next))
   }, [])

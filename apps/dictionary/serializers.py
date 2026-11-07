@@ -25,7 +25,7 @@ class TermListSerializer(serializers.ModelSerializer):
         rels = getattr(obj, 'prefetched_out', None)
         if rels is None:
             rels = obj.outgoing_relationships.all()
-        return [{'slug': r.target_term.slug, 'term': r.target_term.term, 'type': r.relationship_type} for r in list(rels)[:3]]
+        return [{'slug': r.target_term.slug, 'term': r.target_term.term, 'term_fil': r.target_term.term_fil, 'type': r.relationship_type} for r in list(rels)[:3]]
 
 
 class RelationshipSerializer(serializers.Serializer):
@@ -34,6 +34,7 @@ class RelationshipSerializer(serializers.Serializer):
     direction = serializers.CharField()
     slug = serializers.CharField()
     term = serializers.CharField()
+    term_fil = serializers.CharField(allow_blank=True)
     term_type = serializers.CharField()
     explanation = serializers.CharField()
     explanation_fil = serializers.CharField(allow_blank=True)
@@ -64,7 +65,7 @@ class TermDetailSerializer(serializers.ModelSerializer):
         return [{'text': q.question, 'text_fil': q.question_fil} for q in obj.reflection_questions.all()]
 
     def get_sources(self, obj):
-        return [{'title': s.title, 'citation': s.citation, 'url': s.url, 'clinical': s.is_clinical_reference}
+        return [{'title': s.title, 'citation': s.citation, 'url': s.url, 'clinical': s.is_clinical_reference, 'language': s.language}
                 for s in obj.sources.all()]
 
     def get_relationships(self, obj):
@@ -84,7 +85,7 @@ def relationships_for(term):
     ).select_related('target_term')
     for r in qs_out:
         out.append({'type': r.relationship_type, 'label': r.get_relationship_type_display(), 'direction': 'out',
-                    'slug': r.target_term.slug, 'term': r.target_term.term, 'term_type': r.target_term.term_type,
+                    'slug': r.target_term.slug, 'term': r.target_term.term, 'term_fil': r.target_term.term_fil, 'term_type': r.target_term.term_type,
                     'explanation': r.explanation, 'explanation_fil': r.explanation_fil})
     qs_in = term.incoming_relationships.filter(
         source_term__review_status__in=('review', 'approved'),
@@ -92,7 +93,7 @@ def relationships_for(term):
     for r in qs_in:
         out.append({'type': r.relationship_type,
                     'label': INVERSE_LABELS.get(r.relationship_type, r.get_relationship_type_display()),
-                    'direction': 'in', 'slug': r.source_term.slug, 'term': r.source_term.term,
+                    'direction': 'in', 'slug': r.source_term.slug, 'term': r.source_term.term, 'term_fil': r.source_term.term_fil,
                     'term_type': r.source_term.term_type, 'explanation': r.explanation,
                     'explanation_fil': r.explanation_fil})
     return out

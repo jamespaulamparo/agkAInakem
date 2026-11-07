@@ -67,7 +67,7 @@ export function YearView({ cursor, entries, onPickMonth }) {
               {days.map((d) => {
                 const inMonth = d.getMonth() === m
                 const e = inMonth && entries[iso(d)]
-                return <span key={iso(d)} className="aspect-square rounded-[3px]" style={{ background: !inMonth ? 'transparent' : e ? MOODS[e.mood].fill : '#ECEFEC' }} />
+                return <span key={iso(d)} className="aspect-square rounded-[3px]" style={{ background: !inMonth ? 'transparent' : e ? MOODS[e.mood].fill : 'rgb(var(--line))' }} />
               })}
             </div>
           </button>

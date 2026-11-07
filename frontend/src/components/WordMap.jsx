@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { AnimatePresence, motion } from 'framer-motion'
 import * as d3 from 'd3'
 import { colorFor } from '../lib/palette'
+import { useI18n } from '../lib/i18n'
 
 /*
  * Force-directed map of the dictionary. D3 computes positions; React renders SVG.
@@ -10,6 +11,7 @@ import { colorFor } from '../lib/palette'
  * - `center` mode pins one term in the middle (used on word pages).
  */
 export default function WordMap({ nodes, edges, height = 520, center = null, labelAll = false, onOpen }) {
+  const { name } = useI18n()
   const wrap = useRef(null)
   const svgRef = useRef(null)
   const navigate = useNavigate()
@@ -79,7 +81,7 @@ export default function WordMap({ nodes, edges, height = 520, center = null, lab
             const on = active && active.has(e.source.id) && active.has(e.target.id) && (e.source.id === hover || e.target.id === hover)
             return (
               <line key={i} x1={e.source.x} y1={e.source.y} x2={e.target.x} y2={e.target.y}
-                stroke={on ? '#2B6F69' : '#263A38'} strokeOpacity={on ? 0.55 : active ? 0.04 : 0.11}
+                className={on ? 'stroke-teal-ink' : 'stroke-ink'} strokeOpacity={on ? 0.55 : active ? 0.04 : 0.11}
                 strokeWidth={on ? 1.4 : 1} strokeDasharray={e.type === 'different_from' || e.type === 'often_confused_with' ? '3 4' : undefined} />
             )
           })}
@@ -89,17 +91,17 @@ export default function WordMap({ nodes, edges, height = 520, center = null, lab
           const showLabel = labelAll || n.id === center || n.degree >= (labelAll ? 0 : 3) || (active && active.has(n.id))
           return (
             <g key={n.id} className="node cursor-pointer" transform={`translate(${n.x || 0},${n.y || 0})`}
-              tabIndex={0} role="link" aria-label={n.term}
+              tabIndex={0} role="link" aria-label={name(n)}
               onMouseEnter={() => setHover(n.id)} onMouseLeave={() => setHover(null)}
               onFocus={() => setHover(n.id)} onBlur={() => setHover(null)}
               onClick={() => open(n.id)} onKeyDown={(e) => e.key === 'Enter' && open(n.id)}
               style={{ opacity: dim ? 0.18 : 1, transition: 'opacity .25s' }}>
               <circle r={r(n) + 6} fill="transparent" />
-              <circle r={r(n)} fill={colorFor(n.category)} stroke="#F7F4EF" strokeWidth={2} />
+              <circle r={r(n)} fill={colorFor(n.category)} className="stroke-paper" strokeWidth={2} />
               {showLabel && (
-                <text y={-r(n) - 7} textAnchor="middle" className="word" fontSize={n.id === center ? 19 : 14}
-                  fill="#263A38" style={{ paintOrder: 'stroke', stroke: '#F7F4EF', strokeWidth: 4, fontStyle: n.id === center ? 'normal' : 'italic' }}>
-                  {n.term}
+                <text y={-r(n) - 7} textAnchor="middle" fontSize={n.id === center ? 19 : 14}
+                  className="word fill-ink" style={{ paintOrder: 'stroke', stroke: 'rgb(var(--paper))', strokeWidth: 4, fontStyle: n.id === center ? 'normal' : 'italic' }}>
+                  {name(n)}
                 </text>
               )}
             </g>
@@ -109,10 +111,10 @@ export default function WordMap({ nodes, edges, height = 520, center = null, lab
       <AnimatePresence>
         {hovered && !center && (
           <motion.div key={hovered.id} initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}
-            className="pointer-events-none absolute z-10 max-w-[260px] rounded-md bg-ink px-3.5 py-2.5 text-white shadow-lift"
+            className="pointer-events-none absolute z-10 max-w-[260px] rounded-md bg-ink px-3.5 py-2.5 text-paper shadow-lift"
             style={{ left: Math.min(width - 270, Math.max(8, hovered.x + 14)), top: Math.max(8, hovered.y + 14) }}>
-            <p className="word text-lg leading-tight">{hovered.term}</p>
-            <p className="mt-1 text-xs leading-snug text-white/80">{hovered.short}</p>
+            <p className="word text-lg leading-tight">{name(hovered)}</p>
+            <p className="mt-1 text-xs leading-snug text-paper/80">{hovered.short}</p>
           </motion.div>
         )}
       </AnimatePresence>

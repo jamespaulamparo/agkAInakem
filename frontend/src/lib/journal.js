@@ -41,6 +41,27 @@ export function useJournal() {
       const n = { ...local }; delete n[date]; setLocal(n)
     }
   }
+  // Bulk add / remove (used by demo data). Keeps existing days.
+  const addMany = async (list) => {
+    if (user) {
+      await api.importEntries(list)
+      load()
+    } else {
+      const next = { ...local }
+      list.forEach((e) => { if (!next[e.date]) next[e.date] = { ...e, updated_at: new Date().toISOString() } })
+      setLocal(next)
+    }
+  }
+  const removeMany = async (dates) => {
+    if (user) {
+      await Promise.all(dates.filter((d) => remote?.[d]).map((d) => api.deleteEntry(d)))
+      load()
+    } else {
+      const next = { ...local }
+      dates.forEach((d) => delete next[d])
+      setLocal(next)
+    }
+  }
   const localCount = Object.keys(local || {}).length
   const moveLocal = async () => {
     const r = await api.importEntries(Object.values(local))
@@ -48,5 +69,5 @@ export function useJournal() {
     load()
     return r
   }
-  return { entries, mode, loading: !ready || (user && remote === null && !error), error, save, remove, localCount, moveLocal }
+  return { entries, mode, loading: !ready || (user && remote === null && !error), error, save, remove, addMany, removeMany, localCount, moveLocal }
 }

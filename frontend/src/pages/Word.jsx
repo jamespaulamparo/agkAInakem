@@ -1,4 +1,5 @@
-import { lazy, Suspense, useMemo } from 'react'
+import { track } from '../lib/track'
+import { lazy, Suspense, useEffect, useMemo } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import Icon from '../components/Icon'
@@ -22,7 +23,7 @@ function Section({ title, children, delay = 0 }) {
 
 export default function Word() {
   const { slug } = useParams()
-  const { t, pick, lang } = useI18n()
+  const { t, pick, lang, name, rel } = useI18n()
   const { has, toggle } = useSaved()
   const { data: term, error, loading } = useApi(() => api.term(slug), [slug])
   const graph = useApi(() => api.related(slug), [slug])
@@ -35,6 +36,7 @@ export default function Word() {
     return { distinctions, connected: [...grouped.entries()] }
   }, [term])
 
+  useEffect(() => { if (term?.slug) track('term_view', term.slug) }, [term?.slug])
   if (loading && !term) return <Spinner />
   if (error) return <ErrorNote error={error} />
   const saved = has(term.slug)
@@ -51,13 +53,13 @@ export default function Word() {
         <article className="min-w-0 max-w-prose">
           <header>
             <motion.h1 className="word text-5xl font-medium leading-none sm:text-7xl" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}>
-              {term.term}
+              {name(term)}
             </motion.h1>
             <div className="mt-4 flex flex-wrap items-baseline gap-x-3 gap-y-1 text-ink-muted">
               <TypeTag type={term.term_type} className="text-lg" />
-              {term.term_fil && <span className="italic">· {term.term_fil}</span>}
+              {lang === 'fil' ? <span className="italic">· {t('in_english')} {term.term}</span> : term.term_fil && <span className="italic">· {term.term_fil}</span>}
               {term.aliases?.length > 0 && <span className="text-sm text-ink-faint">· {t('also')} {term.aliases.slice(0, 3).join(', ')}</span>}
-              <button onClick={() => toggle(term)} aria-pressed={saved}
+              <button onClick={() => { if (!saved) track('term_saved', term.slug); toggle(term) }} aria-pressed={saved}
                 className={`ml-auto flex items-center gap-1.5 rounded-full px-3 py-1.5 text-sm font-semibold transition-colors ${saved ? 'bg-teal-soft text-teal-ink' : 'text-ink-muted hover:bg-ink/5'}`}>
                 <motion.span animate={{ scale: saved ? [1, 1.3, 1] : 1 }}><Icon name="bookmark" size={16} className={saved ? 'fill-current' : ''} /></motion.span>
                 {saved ? t('saved') : t('save')}
@@ -90,7 +92,7 @@ export default function Word() {
                   <li key={r.slug + r.type} className="flex gap-3">
                     <span className="mt-2.5 h-px w-4 shrink-0 bg-ink-faint" />
                     <p className="leading-relaxed">
-                      <Link to={`/dictionary/${r.slug}`} className="word text-xl italic text-teal-ink hover:underline">{r.term}</Link>
+                      <Link to={`/dictionary/${r.slug}`} className="word text-xl italic text-teal-ink hover:underline">{name(r)}</Link>
                       <span className="text-ink-muted"> — {pick(r, 'explanation')}</span>
                     </p>
                   </li>
@@ -123,11 +125,11 @@ export default function Word() {
               <dl className="space-y-4">
                 {connected.map(([label, rels]) => (
                   <div key={label} className="sm:flex sm:gap-6">
-                    <dt className="w-44 shrink-0 text-sm font-semibold text-ink-faint">{label}</dt>
+                    <dt className="w-44 shrink-0 text-sm font-semibold text-ink-faint">{rel(label)}</dt>
                     <dd className="mt-1 sm:mt-0">
                       {rels.map((r, i) => (
                         <span key={r.slug}>
-                          <Link to={`/dictionary/${r.slug}`} title={r.explanation} className="word text-lg italic text-teal-ink hover:underline">{r.term}</Link>
+                          <Link to={`/dictionary/${r.slug}`} title={pick(r, 'explanation')} className="word text-lg italic text-teal-ink hover:underline">{name(r)}</Link>
                           {i < rels.length - 1 ? ', ' : ''}
                         </span>
                       ))}
@@ -140,11 +142,28 @@ export default function Word() {
 
           <footer className="mt-14 border-t border-line pt-6 text-sm text-ink-faint">
             {term.sources.length > 0 && (
-              <p><span className="font-semibold">{t('references')}:</span>{' '}
-                {term.sources.map((s, i) => (
-                  <span key={i}>{s.url ? <a href={s.url} target="_blank" rel="noreferrer" className="hover:text-ink hover:underline">{s.title}</a> : s.title} ({s.citation}){i < term.sources.length - 1 ? '; ' : ''}</span>
-                ))}
-              </p>
+              <section id="references">
+                <h2 className="font-semibold text-ink-muted">{t('references')}</h2>
+                {(() => {
+                  const fil = term.sources.filter((s) => s.language === 'fil'), en = term.sources.filter((s) => s.language !== 'fil')
+                  const groups = lang === 'fil' ? [[t('refs_fil'), fil], [t('refs_other'), en]] : [[null, en], [t('refs_fil'), fil]]
+                  let n = 0
+                  return groups.filter(([, list]) => list.length).map(([heading, list]) => (
+                    <div key={heading || 'main'} className="mt-2">
+                      {heading && <h3 className="mt-3 text-xs font-semibold uppercase tracking-wide text-ink-faint">{heading}</h3>}
+                      <ol className="mt-1.5 list-decimal space-y-1.5 pl-5" start={n + 1}>
+                        {list.map((s, i) => { n += 1; return (
+                          <li key={i} className="leading-relaxed">
+                            {s.url ? <a href={s.url} target="_blank" rel="noreferrer" className="text-ink-muted underline decoration-line underline-offset-2 hover:text-ink">{s.title}</a> : <span className="text-ink-muted">{s.title}</span>}
+                            {s.citation && <span>. {s.citation}</span>}
+                          </li>
+                        ) })}
+                      </ol>
+                    </div>
+                  ))
+                })()}
+                <p className="mt-3 text-xs">{t('refs_note')}</p>
+              </section>
             )}
             {term.review_status !== 'approved' && <p className="mt-2 flex items-center gap-2"><Icon name="sparkle" size={14} />{t('review_note')}</p>}
           </footer>

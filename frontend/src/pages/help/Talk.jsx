@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import Icon from '../../components/Icon'
 import MyContacts from '../../components/MyContacts'
 import { TalkArt } from '../../components/Illustrations'
@@ -8,7 +9,7 @@ import { useI18n } from '../../lib/i18n'
 function Step({ n, title, children }) {
   return (
     <li className="relative grid grid-cols-[2.5rem_1fr] gap-4 pb-12 last:pb-0">
-      <span className="word z-10 flex h-10 w-10 items-center justify-center rounded-full bg-teal-ink text-lg text-white">{n}</span>
+      <span className="word z-10 flex h-10 w-10 items-center justify-center rounded-full bg-teal-ink text-lg text-paper">{n}</span>
       <div className="min-w-0 pt-1.5">
         <h2 className="text-xl font-bold">{title}</h2>
         <div className="mt-4">{children}</div>
@@ -21,7 +22,7 @@ export function Phones({ phones, primary }) {
   return (
     <div className="flex flex-wrap gap-2">
       {phones.map((p, i) => (
-        <a key={p.number} href={tel(p.number)} className={`inline-flex items-center gap-2 whitespace-nowrap rounded-full font-bold ${i === 0 && primary ? 'bg-teal-ink px-5 py-2.5 text-white hover:bg-[#245d58]' : 'px-4 py-2 text-sm ring-1 ring-line hover:ring-teal'}`}>
+        <a key={p.number} href={tel(p.number)} className={`inline-flex items-center gap-2 whitespace-nowrap rounded-full font-bold ${i === 0 && primary ? 'bg-teal-ink px-5 py-2.5 text-paper hover:bg-teal-ink/90' : 'px-4 py-2 text-sm ring-1 ring-line hover:ring-teal'}`}>
           <Icon name="phone" size={15} />{p.number}{p.label && i > 0 ? <span className="font-medium text-ink-faint">{p.label}</span> : null}
         </a>
       ))}
@@ -59,6 +60,7 @@ export default function Talk() {
         <Step n="2" title={t('hotlines')}><Lines list={lines} /></Step>
         <Step n="3" title={t('clinic')}><Lines list={clinics} /></Step>
       </ol>
+      <Link to="/help/professional" className="mt-12 inline-flex items-center gap-2 border-t border-line pt-6 font-semibold text-teal-ink transition-all hover:gap-3">{t('pro_cta')} <Icon name="arrow" size={16} /></Link>
     </div>
   )
 }

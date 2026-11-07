@@ -1,0 +1,20 @@
+{
+  "name": "agkAInakem",
+  "short_name": "agkAInakem",
+  "description": "Find words for what you feel, and reach out for support.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#F7F4EF",
+  "theme_color": "#F7F4EF",
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "shortcuts": [
+    { "name": "Emergency", "url": "/help/emergency" },
+    { "name": "Calm down", "url": "/help/calm" },
+    { "name": "Journal", "url": "/journal" }
+  ]
+}

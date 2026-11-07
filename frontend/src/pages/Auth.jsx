@@ -10,7 +10,7 @@ export default function Auth({ mode }) {
   const { t } = useI18n()
   const auth = useAuth()
   const navigate = useNavigate()
-  const [form, setForm] = useState({ name: '', email: '', password: '' })
+  const [form, setForm] = useState({ name: '', email: '', password: '', consent: false, age_confirmed: false })
   const [err, setErr] = useState(null)
   const [busy, setBusy] = useState(false)
   const set = (k) => (e) => setForm({ ...form, [k]: e.target.value })
@@ -21,7 +21,7 @@ export default function Auth({ mode }) {
       navigate('/journal')
     } catch (x) {
       const d = x.data || {}
-      setErr(d.detail || d.email?.[0] || d.password?.join(' ') || (x.status === 429 ? 'Too many attempts. Wait a minute.' : 'Something went wrong.'))
+      setErr(d.detail || d.email?.[0] || d.password?.join(' ') || d.consent?.[0] || d.age_confirmed?.[0] || (x.status === 429 ? 'Too many attempts. Wait a minute.' : 'Something went wrong.'))
     } finally { setBusy(false) }
   }
   return (
@@ -37,6 +37,17 @@ export default function Auth({ mode }) {
             <input className="field" type="password" required minLength={mode === 'register' ? 8 : undefined} placeholder={t('password')} aria-label={t('password')} value={form.password} onChange={set('password')}
               autoComplete={mode === 'register' ? 'new-password' : 'current-password'} />
             {mode === 'register' && <p className="text-xs text-ink-faint">{t('pw_hint')}</p>}
+            {mode === 'register' && (
+              <div className="space-y-2 pt-2 text-sm">
+                {[['consent', t('consent_label')], ['age_confirmed', t('age_label')]].map(([k, label]) => (
+                  <label key={k} className="flex cursor-pointer items-start gap-3">
+                    <input type="checkbox" required checked={form[k]} onChange={(e) => setForm({ ...form, [k]: e.target.checked })} className="mt-1 h-4 w-4 shrink-0 accent-teal-ink" />
+                    <span className="text-ink-muted">{label}{k === 'consent' && <> <Link to="/privacy" target="_blank" className="font-semibold text-teal-ink">{t('privacy_link')} →</Link></>}</span>
+                  </label>
+                ))}
+              </div>
+            )}
+            {mode === 'login' && <Link to="/forgot" className="inline-block text-xs font-semibold text-ink-muted hover:text-ink">{t('forgot')}</Link>}
           </div>
           {err && <p className="mt-3 text-sm text-amber" role="alert">{err}</p>}
           <button className="btn-primary mt-6 w-full py-3 text-base" disabled={busy}>{mode === 'register' ? t('register') : t('log_in')}</button>

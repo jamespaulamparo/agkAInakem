@@ -1,3 +1,4 @@
+import { track } from '../lib/track'
 import { useEffect, useRef, useState } from 'react'
 import { motion } from 'framer-motion'
 import { useI18n } from '../lib/i18n'
@@ -30,12 +31,13 @@ export default function Breathing({ speak, onFinish, rounds: target = 4 }) {
   // Speak each phase change; finish after the target number of rounds.
   useEffect(() => { if (running) speak?.(t(PHASES[st.phase].key)) }, [st.phase, running]) // eslint-disable-line react-hooks/exhaustive-deps
   useEffect(() => {
-    if (running && st.rounds >= target) { setRunning(false); onFinish?.() }
+    if (running && st.rounds >= target) { setRunning(false); track('breathe_done'); onFinish?.() }
   }, [st.rounds]) // eslint-disable-line react-hooks/exhaustive-deps
 
   const toggle = () => {
     if (running) onFinish?.()
     setSt({ phase: 0, left: PHASES[0].secs, rounds: 0 })
+    if (!running) track('breathe_start')
     setRunning(!running)
   }
   const { phase, left, rounds } = st

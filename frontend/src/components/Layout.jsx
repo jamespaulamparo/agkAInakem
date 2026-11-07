@@ -1,35 +1,78 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Link, NavLink, Outlet, useLocation } from 'react-router-dom'
+import { trackPage } from '../lib/track'
 import { AnimatePresence, motion } from 'framer-motion'
 import { BrandMark, BrandName } from './Brand'
 import Icon from './Icon'
 import EmergencyButton from './HelpNow'
 import FollowUpBanner from './FollowUp'
+import ReminderBanner from './Reminder'
+import InstallLink from './InstallLink'
 import { useI18n, LANGS } from '../lib/i18n'
 import { useAuth } from '../lib/auth'
 
 function LangToggle() {
   const { lang, setLang } = useI18n()
-  return (
-    <div className="flex items-center rounded-full border border-line bg-surface/70 p-0.5 text-[0.7rem] font-bold" role="group" aria-label="Language">
+  const other = LANGS.find(([l]) => l !== lang)
+  return (<>
+    {/* phones: one compact button that switches language */}
+    <button type="button" onClick={() => setLang(other[0])} aria-label={`Language: ${lang.toUpperCase()}. Switch to ${other[2]}`}
+      className="flex h-8 w-9 items-center justify-center rounded-full text-[0.7rem] font-bold uppercase text-ink-muted ring-1 ring-line hover:text-ink sm:hidden">
+      {lang}
+    </button>
+    <div className="hidden items-center rounded-full border border-line bg-surface/70 p-0.5 text-[0.7rem] font-bold sm:flex" role="group" aria-label="Language">
       {LANGS.map(([l]) => (
         <button key={l} type="button" onClick={() => setLang(l)} aria-pressed={lang === l}
-          className={`relative rounded-full px-2.5 py-1 uppercase transition-colors ${lang === l ? 'text-white' : 'text-ink-muted hover:text-ink'}`}>
+          className={`relative rounded-full px-2.5 py-1 uppercase transition-colors ${lang === l ? 'text-paper' : 'text-ink-muted hover:text-ink'}`}>
           {lang === l && <motion.span layoutId="lang-pill" className="absolute inset-0 rounded-full bg-ink" transition={{ type: 'spring', bounce: 0.2, duration: 0.4 }} />}
           <span className="relative">{l}</span>
         </button>
       ))}
     </div>
-  )
+  </>)
 }
 
-function SimpleToggle() {
-  const { t, simple, setSimple } = useI18n()
+function DisplayMenu() {
+  const { t, simple, setSimple, theme, setTheme } = useI18n()
+  const [open, setOpen] = useState(false)
+  const ref = useRef(null)
+  useEffect(() => {
+    if (!open) return
+    const close = (e) => { if (!ref.current?.contains(e.target)) setOpen(false) }
+    const esc = (e) => e.key === 'Escape' && setOpen(false)
+    document.addEventListener('mousedown', close); document.addEventListener('keydown', esc)
+    return () => { document.removeEventListener('mousedown', close); document.removeEventListener('keydown', esc) }
+  }, [open])
   return (
-    <button type="button" onClick={() => setSimple(!simple)} aria-pressed={simple} title={t('simple_view')}
-      className={`hidden h-8 items-center rounded-full px-2.5 text-sm font-bold sm:flex ${simple ? 'bg-ink text-white' : 'text-ink-muted ring-1 ring-line hover:text-ink'}`}>
-      Aa<span className="sr-only"> {t('simple_view')}</span>
-    </button>
+    <div ref={ref} className="relative">
+      <button type="button" onClick={() => setOpen(!open)} aria-expanded={open} aria-haspopup="true" title={t('display')}
+        className={`flex h-8 items-center gap-1 rounded-full px-2 text-sm font-bold ring-1 ring-line sm:px-2.5 transition ${open ? 'bg-ink text-paper ring-ink' : 'text-ink-muted hover:text-ink'}`}>
+        Aa<span className="sr-only"> {t('display')}</span>
+      </button>
+      <AnimatePresence>
+        {open && (
+          <motion.div initial={{ opacity: 0, y: -6 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -6 }}
+            className="absolute right-0 top-10 z-50 w-56 rounded-lg bg-surface p-3 shadow-lift ring-1 ring-line">
+            <p className="eyebrow mb-2">{t('theme')}</p>
+            <div className="flex rounded-full bg-ink/5 p-1 text-xs font-semibold" role="group" aria-label={t('theme')}>
+              {[['system', t('theme_system'), 'sparkle'], ['light', t('theme_light'), 'sun'], ['dark', t('theme_dark'), 'moon']].map(([k, label, icon]) => (
+                <button key={k} onClick={() => setTheme(k)} aria-pressed={theme === k}
+                  className={`flex flex-1 items-center justify-center gap-1 rounded-full py-1.5 ${theme === k ? 'bg-surface shadow-soft text-ink' : 'text-ink-muted'}`}>
+                  <Icon name={icon} size={13} />{label}
+                </button>
+              ))}
+            </div>
+            <label className="mt-3 flex cursor-pointer items-center justify-between gap-3 text-sm font-semibold">
+              {t('simple_view')}
+              <span className={`relative h-6 w-11 rounded-full transition ${simple ? 'bg-teal-ink' : 'bg-line'}`}>
+                <span className={`absolute top-0.5 h-5 w-5 rounded-full bg-surface shadow transition-all ${simple ? 'left-[22px]' : 'left-0.5'}`} />
+              </span>
+              <input type="checkbox" className="sr-only" checked={simple} onChange={(e) => setSimple(e.target.checked)} />
+            </label>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
   )
 }
 
@@ -50,14 +93,14 @@ function Nav() {
   ]
   return (
     <header className={`sticky top-0 z-40 transition-[background,box-shadow] duration-300 ${scrolled || pathname !== '/' ? 'bg-paper/85 backdrop-blur-md shadow-[0_1px_0_#E4E9E5]' : ''}`}>
-      <nav className="mx-auto flex h-16 max-w-page items-center gap-4 px-4 sm:px-6" aria-label="Main">
-        <Link to="/" className="flex items-center gap-2 text-[1.05rem]" aria-label="agkAInakem home">
+      <nav className="mx-auto flex h-16 max-w-page items-center gap-2 px-3 sm:gap-4 sm:px-6" aria-label="Main">
+        <Link to="/" className="flex items-center gap-2 text-[1.05rem] max-[339px]:hidden" aria-label="agkAInakem home">
           <BrandMark size={26} /><BrandName className="hidden min-[400px]:inline" />
         </Link>
-        <div className="ml-auto flex items-center gap-1 sm:gap-2">
+        <div className="ml-auto flex items-center gap-0.5 sm:gap-2">
           {links.map((l) => (
             <NavLink key={l.to} to={l.to} className={({ isActive }) =>
-              `relative whitespace-nowrap rounded-full px-1.5 py-2 text-[0.8rem] font-semibold sm:px-3 sm:text-sm transition-colors ${isActive ? 'text-ink' : 'text-ink-muted hover:text-ink'}`}>
+              `relative whitespace-nowrap rounded-full px-1 py-2 text-[0.8rem] font-semibold min-[360px]:px-1.5 sm:px-3 sm:text-sm transition-colors ${isActive ? 'text-ink' : 'text-ink-muted hover:text-ink'}`}>
               {({ isActive }) => (<>
                 {l.label}
                 {isActive && <motion.span layoutId="nav-dot" className="absolute bottom-0.5 left-1/2 h-1 w-1 -translate-x-1/2 rounded-full bg-teal" />}
@@ -65,10 +108,10 @@ function Nav() {
             </NavLink>
           ))}
           <span className="mx-1 hidden h-5 w-px bg-line sm:block" />
-          <SimpleToggle />
+          <DisplayMenu />
           <LangToggle />
           <Link to={user ? '/account' : '/login'} title={user ? user.name : t('log_in')} aria-label={user ? t('account') : t('log_in')}
-            className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-sm font-bold ${user ? 'bg-teal-ink text-white' : 'text-ink-muted ring-1 ring-line hover:text-ink'}`}>
+            className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-sm font-bold ${user ? 'bg-teal-ink text-paper' : 'text-ink-muted ring-1 ring-line hover:text-ink'}`}>
             {user ? user.name.slice(0, 1).toUpperCase() : <Icon name="user" size={16} />}
           </Link>
         </div>
@@ -87,12 +130,15 @@ function Footer() {
           <p className="font-semibold text-ink">{t('first_aid')}</p>
           <p className="mt-1">{t('data_plain')}</p>
         </div>
-        <div className="flex gap-5 text-xs font-semibold sm:ml-auto">
+        <div className="flex flex-wrap gap-x-5 gap-y-2 whitespace-nowrap text-xs font-semibold sm:ml-auto sm:max-w-sm sm:justify-end">
           <Link className="hover:text-ink" to="/about">{t('about_link')}</Link>
+          <Link className="hover:text-ink" to="/privacy">{t('privacy_link')}</Link>
           <Link className="hover:text-ink" to="/help/plan">{t('my_plan')}</Link>
           <Link className="hover:text-ink" to="/saved">{t('saved_link')}</Link>
           <Link className="hover:text-ink" to="/extension">{t('ext_link')}</Link>
           <Link className="hover:text-ink" to="/credits">{t('credits_link')}</Link>
+          <InstallLink />
+          <Link className="flex items-center gap-1 hover:text-ink" to="/share"><Icon name="qr" size={14} />{t('open_phone')}</Link>
         </div>
       </div>
     </footer>
@@ -101,10 +147,10 @@ function Footer() {
 
 export default function Layout() {
   const location = useLocation()
-  useEffect(() => { window.scrollTo(0, 0) }, [location.pathname])
+  useEffect(() => { window.scrollTo(0, 0); trackPage(location.pathname) }, [location.pathname])
   return (
     <div className="flex min-h-screen flex-col">
-      <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-ink focus:px-4 focus:py-2 focus:text-white">Skip to content</a>
+      <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-ink focus:px-4 focus:py-2 focus:text-paper">Skip to content</a>
       <Nav />
       <AnimatePresence mode="wait">
         <motion.main id="main" key={location.pathname.split('/').slice(0, 2).join('/')} className="flex-1"
@@ -115,6 +161,7 @@ export default function Layout() {
       </AnimatePresence>
       <Footer />
       <FollowUpBanner />
+      <ReminderBanner />
       <EmergencyButton />
     </div>
   )

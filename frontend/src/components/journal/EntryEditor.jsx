@@ -1,3 +1,4 @@
+import { track } from '../../lib/track'
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { AnimatePresence, motion } from 'framer-motion'
@@ -38,6 +39,7 @@ export default function EntryEditor({ journal, date, setDate, onSaved, compact =
   const save = async () => {
     try {
       await journal.save(date, { mood, feelings, note })
+      track('checkin_saved', journal.mode === 'account' ? 'account' : 'guest')
       setStatus('saved')
       onSaved?.({ date, mood, feelings, note })
     } catch { setStatus('error') }
@@ -76,7 +78,7 @@ export default function EntryEditor({ journal, date, setDate, onSaved, compact =
             <div className="mx-auto mt-3 flex max-w-xl flex-wrap justify-center gap-2">
               {FEELINGS.map((f) => (
                 <button key={f.slug} onClick={() => toggleFeeling(f.slug)} aria-pressed={feelings.includes(f.slug)}
-                  className={`word rounded-full px-3.5 py-1 text-lg italic transition ${feelings.includes(f.slug) ? 'bg-teal-ink text-white' : 'text-ink-muted ring-1 ring-line hover:text-ink'}`}>
+                  className={`word rounded-full px-3.5 py-1 text-lg italic transition ${feelings.includes(f.slug) ? 'bg-teal-ink text-paper' : 'text-ink-muted ring-1 ring-line hover:text-ink'}`}>
                   {lang === 'fil' ? f.fil : f.en}
                 </button>
               ))}

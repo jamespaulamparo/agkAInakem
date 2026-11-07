@@ -1,3 +1,4 @@
+import { track } from '../lib/track'
 import { useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import Icon from './Icon'
@@ -34,7 +35,7 @@ export default function MyContacts() {
   const [editing, setEditing] = useState(null)   // contact id | 'new' | null
 
   const save = (c) => {
-    if (editing === 'new') setContacts([...contacts, { ...c, id: `c${Date.now()}` }])
+    if (editing === 'new') { setContacts([...contacts, { ...c, id: `c${Date.now()}` }]); track('contact_added') }
     else setContacts(contacts.map((x) => (x.id === editing ? { ...x, ...c } : x)))
     setEditing(null)
   }
@@ -56,7 +57,7 @@ export default function MyContacts() {
                   <p className="text-sm text-ink-faint">{c.phone}</p>
                 </div>
                 <div className="flex items-center gap-2">
-                  <a href={tel(c.phone)} className="inline-flex items-center gap-1.5 rounded-full bg-teal-ink px-4 py-2 text-sm font-bold text-white hover:bg-[#245d58]"><Icon name="phone" size={14} />{t('call')}</a>
+                  <a href={tel(c.phone)} className="inline-flex items-center gap-1.5 rounded-full bg-teal-ink px-4 py-2 text-sm font-bold text-paper hover:bg-teal-ink/90"><Icon name="phone" size={14} />{t('call')}</a>
                   <a href={sms(c.phone, c.message || t('trusted_default'))} className="inline-flex items-center gap-1.5 rounded-full px-4 py-2 text-sm font-bold ring-1 ring-line hover:ring-teal"><Icon name="message" size={14} />{t('text')}</a>
                   <button onClick={() => setEditing(c.id)} className="px-2 text-sm font-semibold text-ink-faint hover:text-ink">{t('edit')}</button>
                   <button onClick={() => remove(c.id)} aria-label={`${t('remove')} ${c.name}`} className="rounded-full p-1.5 text-ink-faint hover:bg-ink/5 hover:text-ink"><Icon name="x" size={16} /></button>

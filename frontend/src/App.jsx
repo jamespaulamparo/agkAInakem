@@ -15,6 +15,11 @@ const Journal = lazy(() => import('./pages/Journal'))
 const Auth = lazy(() => import('./pages/Auth'))
 const Account = lazy(() => import('./pages/Account'))
 const Credits = lazy(() => import('./pages/Credits'))
+const Privacy = lazy(() => import('./pages/Privacy'))
+const Dashboard = lazy(() => import('./pages/Dashboard'))
+const Share = lazy(() => import('./pages/Share'))
+const Forgot = lazy(() => import('./pages/Reset').then((m) => ({ default: m.Forgot })))
+const Reset = lazy(() => import('./pages/Reset').then((m) => ({ default: m.Reset })))
 
 export default function App() {
   return (
@@ -33,6 +38,11 @@ export default function App() {
           <Route path="account" element={<Account />} />
           <Route path="about" element={<About />} />
           <Route path="credits" element={<Credits />} />
+          <Route path="privacy" element={<Privacy />} />
+          <Route path="dashboard" element={<Dashboard />} />
+          <Route path="share" element={<Share />} />
+          <Route path="forgot" element={<Forgot />} />
+          <Route path="reset/:uid/:token" element={<Reset />} />
           <Route path="saved" element={<Saved />} />
           <Route path="extension" element={<Extension />} />
           <Route path="*" element={<NotFound />} />

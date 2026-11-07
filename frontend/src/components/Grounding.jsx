@@ -1,3 +1,4 @@
+import { track } from '../lib/track'
 import { useEffect, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import Icon from './Icon'
@@ -18,7 +19,7 @@ export default function Grounding({ speak, onFinish }) {
   const [i, setI] = useState(0)
   const s = STEPS[i]
   useEffect(() => { speak?.(t(s.key)) }, [i]) // eslint-disable-line react-hooks/exhaustive-deps
-  const next = () => (i === STEPS.length - 1 ? onFinish?.() : setI(i + 1))
+  const next = () => (i === STEPS.length - 1 ? (track('grounding_done'), onFinish?.()) : setI(i + 1))
   return (
     <div className="flex min-h-[360px] flex-col items-center justify-center text-center">
       <AnimatePresence mode="wait">

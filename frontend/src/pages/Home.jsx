@@ -6,6 +6,7 @@ import Icon from '../components/Icon'
 import HelpChoices from '../components/HelpChoices'
 import { JournalArt, WordsArt } from '../components/Illustrations'
 import CrisisMessage from '../components/CrisisMessage'
+import ProNudge from '../components/ProNudge'
 import { HeartStatic } from '../components/Brand'
 import { hasCrisisWords } from '../lib/crisis'
 import { api } from '../lib/api'
@@ -49,6 +50,7 @@ function Hero() {
         {t('need_q')}
       </motion.h1>
       <div className="mt-9"><HelpChoices delay={0.25} /></div>
+      <div className="mt-10 flex w-full justify-center"><ProNudge variant="home" /></div>
     </section>
   )
 }
@@ -73,7 +75,7 @@ function WordsSection() {
           <input id="hero-q" value={text} onChange={(e) => setText(e.target.value)} placeholder={t('hero_placeholder')}
             className="min-w-0 flex-1 bg-transparent py-2.5 text-base outline-none placeholder:text-ink-faint" autoComplete="off" />
           <motion.button type="submit" aria-label={t('explore_go')} whileTap={{ scale: 0.92 }}
-            className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-teal-ink text-white disabled:opacity-40" disabled={!text.trim()}>
+            className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-teal-ink text-paper disabled:opacity-40" disabled={!text.trim()}>
             <Icon name="arrow" size={20} />
           </motion.button>
         </form>
@@ -176,13 +178,13 @@ function ExtensionDemo() {
           </motion.div>
         )}
         {step === 3 && (
-          <motion.div className="absolute right-[-4%] top-[42%] w-[min(300px,78%)] rounded-lg bg-ink p-4 text-white shadow-lift sm:right-[-10%]"
+          <motion.div className="absolute right-[-4%] top-[42%] w-[min(300px,78%)] rounded-lg bg-ink p-4 text-paper shadow-lift sm:right-[-10%]"
             initial={{ opacity: 0, y: 12, scale: 0.96 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, y: 6 }}
             transition={{ type: 'spring', bounce: 0.25 }}>
             <p className="word text-2xl">Overwhelm</p>
-            <p className="mt-1 text-xs leading-snug text-white/80">The feeling that demands exceed what you can manage right now.</p>
+            <p className="mt-1 text-xs leading-snug text-paper/80">The feeling that demands exceed what you can manage right now.</p>
             <div className="mt-3 flex flex-wrap gap-1.5 text-[0.7rem]">
-              {['Stress', 'Emotional exhaustion', 'Burnout'].map((w) => <span key={w} className="rounded-full bg-white/10 px-2 py-0.5">{w}</span>)}
+              {['Stress', 'Emotional exhaustion', 'Burnout'].map((w) => <span key={w} className="rounded-full bg-paper/10 px-2 py-0.5">{w}</span>)}
             </div>
           </motion.div>
         )}

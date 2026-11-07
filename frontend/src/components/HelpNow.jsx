@@ -25,7 +25,7 @@ export default function EmergencyButton() {
   const { pathname } = useLocation()
   if (pathname === '/help/emergency') return null
   return (
-    <motion.div className="fixed bottom-5 right-5 z-40" initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }}>
+    <motion.div className="no-print fixed bottom-5 right-5 z-40" initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }}>
       <Link to="/help/emergency" className="flex items-center gap-2 rounded-full bg-alert py-3 pl-3.5 pr-5 text-sm font-bold text-white shadow-lift transition hover:-translate-y-0.5 hover:bg-alert-hover">
         <span className="relative flex h-5 w-5 items-center justify-center">
           <motion.span className="absolute inset-0 rounded-full bg-white/40" animate={{ scale: [1, 1.9], opacity: [0.6, 0] }} transition={{ repeat: Infinity, duration: 2.4 }} />

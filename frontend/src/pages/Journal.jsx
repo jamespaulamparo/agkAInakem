@@ -5,6 +5,11 @@ import Icon from '../components/Icon'
 import EntryEditor from '../components/journal/EntryEditor'
 import { WeekView, MonthView, YearView } from '../components/journal/Calendar'
 import WeeklySummary from '../components/journal/WeeklySummary'
+import Suggestions from '../components/journal/Suggestions'
+import Patterns from '../components/journal/Patterns'
+import { ProNudgeView } from '../components/ProNudge'
+import { ReminderSettings } from '../components/Reminder'
+import { demoEntries, demoDates, rememberDemo, forgetDemo } from '../lib/demo'
 import { JournalArt } from '../components/Illustrations'
 import { Page, Spinner } from '../components/Layout'
 import { useJournal } from '../lib/journal'
@@ -13,6 +18,25 @@ import { MOODS, feelingLabel } from '../lib/feelings'
 import { addDays, fmt, iso, parse, startOfWeek, todayIso } from '../lib/dates'
 import { useI18n } from '../lib/i18n'
 import { useAuth } from '../lib/auth'
+
+function DemoControls({ journal }) {
+  const { t } = useI18n()
+  const [has, setHas] = useState(() => demoDates().length > 0)
+  const fill = async () => {
+    const list = demoEntries(journal.entries)
+    await journal.addMany(list)
+    rememberDemo(list.map((e) => e.date)); setHas(true)
+  }
+  const clear = async () => { await journal.removeMany(demoDates()); forgetDemo(); setHas(false) }
+  return (
+    <p className="mt-16 text-center text-xs text-ink-faint">
+      <span className="mr-2 rounded-full bg-amber-soft px-2 py-0.5 font-bold text-amber">{t('demo_label')}</span>
+      {has
+        ? <button onClick={clear} className="underline underline-offset-4 hover:text-ink">{t('demo_clear')}</button>
+        : <button onClick={fill} className="underline underline-offset-4 hover:text-ink">{t('demo_fill')}</button>}
+    </p>
+  )
+}
 
 function MoveBanner({ journal }) {
   const { t } = useI18n()
@@ -107,15 +131,21 @@ export default function Journal() {
           </div>
 
           <div className="mt-20 grid gap-16 lg:grid-cols-[1fr_1fr]">
-            <div>
+            <div className="space-y-16">
+              <ProNudgeView entries={journal.entries} variant="journal" />
+              <Suggestions entries={journal.entries} />
+              <Patterns entries={journal.entries} />
+              <div>
+              <div className="mb-4"><ReminderSettings /></div>
               <label className="mb-6 flex cursor-pointer items-center gap-3 text-sm font-semibold text-ink-muted">
                 <span className={`relative h-6 w-11 rounded-full transition ${showSummary ? 'bg-teal-ink' : 'bg-line'}`}>
-                  <span className={`absolute top-0.5 h-5 w-5 rounded-full bg-white shadow transition-all ${showSummary ? 'left-[22px]' : 'left-0.5'}`} />
+                  <span className={`absolute top-0.5 h-5 w-5 rounded-full bg-surface shadow transition-all ${showSummary ? 'left-[22px]' : 'left-0.5'}`} />
                 </span>
                 <input type="checkbox" className="sr-only" checked={showSummary} onChange={(e) => setShowSummary(e.target.checked)} />
                 {t('summary_toggle')}
               </label>
               {showSummary && <WeeklySummary entries={journal.entries} anyDay={view === 'week' ? cursor : parse(date)} />}
+              </div>
             </div>
             <section>
               <h2 className="text-2xl font-bold">{t('archive')}</h2>
@@ -139,6 +169,7 @@ export default function Journal() {
           </div>
         </div>
       )}
+      <DemoControls journal={journal} />
     </Page>
   )
 }

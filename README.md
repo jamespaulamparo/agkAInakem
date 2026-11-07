@@ -14,7 +14,7 @@ It does **not** diagnose, score risk, or replace professional care. Text typed i
 
 ## How it’s made
 
-The same information is on the website at **/credits** (footer → “How it’s made”).
+The same information is on the website at **/credits** (footer → “How it’s made”). Logos are [Simple Icons](https://simpleicons.org) (CC0) loaded from jsDelivr, not stored in the repo.
 
 ### Made with AI tools
 
@@ -24,37 +24,40 @@ AI helped build the project. The live website does not use any AI: no chatbot, n
 |---|---|
 | ChatGPT (OpenAI) | Brainstorming, product discovery and the first product & development blueprint. |
 | Google Antigravity | Agentic IDE used for the first coding pass (Django project scaffold and early pages). |
-| Claude (Anthropic), in Cowork | Most of the code, design and testing: React frontend, Django API, discovery engine, journal, browser extension; and first drafts of dictionary entries and help-screen wording, all marked for expert review. |
+| <img src="https://cdn.jsdelivr.net/npm/simple-icons@16.36.0/icons/claude.svg" width="16" height="16" alt=""> Claude (Anthropic), in Cowork | Most of the code, design and testing: React frontend, Django API, discovery engine, journal, browser extension; and first drafts of dictionary entries and help-screen wording, all marked for expert review. |
 
 ### Frontend
 
 | | |
 |---|---|
-| React 18.3 | User interface |
-| Vite 5.4 | Development server and build |
-| React Router 6.30 | Page routing |
-| Tailwind CSS 3.4 | Styling and design tokens |
-| Framer Motion 11.18 | Animations and page transitions |
-| Three.js 0.169 · React Three Fiber 8.18 · drei 9.122 | The 3D heart on the homepage (WebGL) |
-| D3.js 7.9 | Force-directed word maps |
-| Plus Jakarta Sans · Newsreader | Typefaces, via Google Fonts |
+| <img src="https://cdn.jsdelivr.net/npm/simple-icons@16.36.0/icons/react.svg" width="16" height="16" alt=""> React 18.3 | User interface |
+| <img src="https://cdn.jsdelivr.net/npm/simple-icons@16.36.0/icons/vite.svg" width="16" height="16" alt=""> Vite 5.4 | Development server and build |
+| <img src="https://cdn.jsdelivr.net/npm/simple-icons@16.36.0/icons/reactrouter.svg" width="16" height="16" alt=""> React Router 6.30 | Page routing |
+| <img src="https://cdn.jsdelivr.net/npm/simple-icons@16.36.0/icons/tailwindcss.svg" width="16" height="16" alt=""> Tailwind CSS 3.4 | Styling and design tokens |
+| <img src="https://cdn.jsdelivr.net/npm/simple-icons@16.36.0/icons/framer.svg" width="16" height="16" alt=""> Framer Motion 11.18 | Animations and page transitions |
+| <img src="https://cdn.jsdelivr.net/npm/simple-icons@16.36.0/icons/threedotjs.svg" width="16" height="16" alt=""> Three.js 0.169 · React Three Fiber 8.18 · drei 9.122 | The 3D heart on the homepage (WebGL) |
+| <img src="https://cdn.jsdelivr.net/npm/simple-icons@16.36.0/icons/d3.svg" width="16" height="16" alt=""> D3.js 7.9 | Force-directed word maps |
+| qrcode 1.5 | QR code on the “Open on a phone” page |
+| Plus Jakarta Sans · Newsreader (Fontsource) | Typefaces, self-hosted so no font requests leave the site |
 | Illustrations and icons | Drawn for this project as inline SVG |
 
 ### Backend
 
 | | |
 |---|---|
-| Python · Django 5.1 | Web server, data models, admin for editors |
+| <img src="https://cdn.jsdelivr.net/npm/simple-icons@16.36.0/icons/django.svg" width="16" height="16" alt=""> Python · Django 5.1 | Web server, data models, admin for editors |
 | Django REST Framework 3.17 | JSON API shared by the website and the extension |
-| SQLite (local) · PostgreSQL (deployment) | Database |
+| <img src="https://cdn.jsdelivr.net/npm/simple-icons@16.36.0/icons/sqlite.svg" width="16" height="16" alt=""> SQLite (local) · PostgreSQL (deployment) | Database |
 | WhiteNoise · django-cors-headers · dj-database-url · python-dotenv | Static files, development CORS, database URL and settings |
 | Django sessions + CSRF | Optional accounts; passwords hashed with Django’s PBKDF2 |
+| Consent records + data export/erasure | RA 10173 (Data Privacy Act): consent stored with notice version; download and delete in Account |
+| Django password-reset tokens + email | One-time reset links (printed in the server window unless an email server is configured) |
 
 ### Browser extension
 
 | | |
 |---|---|
-| Chrome Manifest V3 | Service worker, content script, context menu, keyboard shortcut, storage |
+| <img src="https://cdn.jsdelivr.net/npm/simple-icons@16.36.0/icons/googlechrome.svg" width="16" height="16" alt=""> Chrome Manifest V3 | Service worker, content script, context menu, keyboard shortcut, storage |
 | CSS Custom Highlight API | Highlights the hovered word without changing the page |
 | caretPositionFromPoint / caretRangeFromPoint | Finds the text under the mouse |
 | Shadow DOM | Keeps the definition panel separate from page styles |
@@ -68,6 +71,10 @@ AI helped build the project. The live website does not use any AI: no chatbot, n
 | Geolocation API | Optional “share my location” — only after you confirm |
 | tel: and sms: links | Calls and texts open your own phone apps |
 | localStorage | Journal (without an account), safety plan, contacts, settings |
+| <img src="https://cdn.jsdelivr.net/npm/simple-icons@16.36.0/icons/pwa.svg" width="16" height="16" alt=""> Web App Manifest | Install to the home screen like an app (on https or localhost) |
+| Notifications API | Optional daily check-in reminder while the site is open |
+| prefers-color-scheme + CSS variables | Light, dark or automatic theme |
+| Print styles | Print or save the safety plan as a PDF |
 
 ### Our API
 
@@ -75,10 +82,13 @@ AI helped build the project. The live website does not use any AI: no chatbot, n
 |---|---|
 | /api/dictionary/… | categories, search, terms/{slug}, terms/{slug}/related, graph, lookup, index |
 | /api/discovery/explore/ | Sentence → possible words (text is never stored) |
-| /api/support/… | resources (hotlines), responders, requests |
-| /api/auth/… | me, register, login, logout, export, delete |
+| /api/support/… | resources (hotlines and clinics) |
+| /api/auth/… | me, register, login, logout, password-reset, password-reset/confirm, export, delete |
 | /api/journal/… | entries, entries/{date}, import |
-| External APIs | None. No analytics, ads or third-party data services. |
+| /api/events/ · /api/stats/ | Anonymous usage counters (POST); staff-only dashboard data and CSV export |
+| /api/meta/share/ | This computer’s Wi-Fi address, when Wi-Fi sharing is on |
+| Anonymous usage counts | /api/events/ adds 1 to a daily counter per event (fixed list, no IDs, IP, cookies or text). Staff dashboard /dashboard with hand-built SVG charts; journal research charts only from opt-ins, groups under 5 hidden. |
+| External APIs | None. No ads or third-party analytics or data services. Technology logos on this page load from the jsDelivr CDN (Simple Icons, CC0). |
 
 ### Algorithms
 
@@ -89,6 +99,9 @@ AI helped build the project. The live website does not use any AI: no chatbot, n
 | Dictionary search ranking | Exact name or alias → starts with → contains → found in definitions. |
 | Extension hover lookup | Longest match first (up to 5 words) against a locally stored word list, with suffix stemming. Hovered text stays on the device unless it is a dictionary word. |
 | Word maps | D3 force simulation: link, many-body, centring and collision forces. |
+| Suggested actions | Fixed rules over recent check-ins: several hard days close together; the last 14 days vs the 14 before; a weekday that tends to be harder (last 8 weeks); a feeling that keeps coming up; no safety plan or contacts yet; a gap in check-ins; steady streaks; bouncing back; ups and downs; weekday vs weekend; feelings tied to steadier days; feelings that often come together (e.g. stressed + tired → burnout). At most four suggestions, each linking to one action. |
+| Professional-help nudge | Shown on the homepage and journal when check-ins stay heavy: 4+ hard days in a row (one missed day doesn’t break a streak), hard days on half or more of 6+ check-ins in 14 days, 3 of the last 4 weeks heavy, each week heavier than the last, 10+ days without a steady day, or “hopeless”/“numb” more than once. Gentle wording, “Not now” hides it for 5 days. Thresholds need clinician review. |
+| 30-day patterns | Colour counts, week-by-week shape, longest steady and hard stretches, bounce-backs after hard days, weekday vs weekend, feelings linked to lighter or heavier days, and feelings that come together. |
 | Weekly summary | Counts per colour, repeated feeling words, comparison with the previous week, and fixed, pre-written observations. No scores shown, no diagnosis. |
 
 ### Content sources
@@ -97,7 +110,8 @@ Dictionary entries and help-screen wording are editorial drafts awaiting review 
 
 | | |
 |---|---|
-| References for dictionary entries | APA Dictionary of Psychology; WHO ICD-11, mhGAP Intervention Guide and Psychological First Aid guide; NIMH health topics; Figley (1995), Seligman (1975), Clance & Imes (1978), Linehan (2015), Maslach. |
+| References for dictionary entries | 97 entries, including positive and neutral words (joy, gratitude, hope, calm, mood, mental health…). Each lists its own linked references: WHO fact sheets, ICD-11, mhGAP and Psychological First Aid; APA Dictionary of Psychology and APA topic pages; peer-reviewed papers by DOI (e.g. Fredrickson 2001, Emmons & McCullough 2003, Snyder 2002, Maslach & Jackson 1981, Neff 2003, Holt-Lunstad 2015); RA 11036 and RA 10029. Definitions are written in our own words. |
+| Filipino version | Every entry has a Tagalog headword, meaning, explanation, examples and questions. Filipino references are listed first: Diksiyonaryo.ph entries for each root word, Church et al. (1998) on Filipino emotion concepts, and Sikolohiyang Pilipino (Pe-Pua & Protacio-Marcelino, 2000). Needs native-speaker and clinician review. |
 | Grounding and breathing | Based on widely used techniques, including WHO’s guidance on simple stress-management skills. |
 | Hotlines | NCMH Crisis Hotline (1553), Hopeline Philippines, DOH Center for Health Development I (as listed by the Provincial Government of La Union), 911. Numbers should be re-checked regularly. |
 
@@ -107,6 +121,7 @@ Dictionary entries and help-screen wording are editorial drafts awaiting review 
 |---|---|
 | Django test runner | API, discovery, accounts, journal privacy |
 | Playwright (Chromium) | End-to-end checks of the website, offline mode and the extension |
+| <img src="https://cdn.jsdelivr.net/npm/simple-icons@16.36.0/icons/nodedotjs.svg" width="16" height="16" alt=""> Node.js · npm | Build tooling and packages |
 
 ## Run it
 
@@ -117,7 +132,7 @@ pip install -r requirements.txt
 copy .env.example .env             # cp on macOS/Linux
 python manage.py migrate
 python manage.py seed_vocabulary   # dictionary, relationships, phrase cues
-python manage.py seed_support      # referral lines + demo responders
+python manage.py seed_support      # hotlines, hospitals, offices
 python manage.py test apps
 python manage.py runserver
 ```
@@ -131,7 +146,23 @@ npm run dev     # http://localhost:5173 with hot reload (proxies /api to :8000)
 npm run build   # writes frontend/dist, which Django serves
 ```
 
-Editorial admin: `python manage.py createsuperuser`, then http://127.0.0.1:8000/admin/.
+### Open it on phones (same Wi-Fi, not deployed)
+
+Double-click **`start-agkainakem-wifi.bat`**. It serves on port 8000 to your local network and opens **/share**, which shows a QR code with this computer’s Wi-Fi address (e.g. `http://192.168.1.23:8000`). Phones on the same Wi-Fi scan it. Allow Python through the Windows firewall on *private* networks if asked. Over plain http on a local IP, browsers turn off offline mode and location sharing (they need https); everything else works.
+
+**/share** (footer → “Open on a phone”) always shows a QR code for the public demo link `https://hbjhw4bn-8000.asse.devtunnels.ms/` (a dev tunnel to port 8000). If the tunnel address changes, edit `PUBLIC_URL` in `frontend/src/pages/Share.jsx` and rebuild. `*.devtunnels.ms` is already allowed in Django’s `ALLOWED_HOSTS` and `CSRF_TRUSTED_ORIGINS`.
+
+### Handy extras
+
+- **Demo data:** at the bottom of the Journal, “Fill with sample check-ins” adds about 6 weeks of sample check-ins (so the calendar, weekly summary and suggestions have something to show); “Remove sample check-ins” takes exactly those days out again.
+- **Password reset:** “Forgot password?” on the login page. Without email settings the reset link is printed in the server window; add the `EMAIL_*` settings from `.env.example` to send real emails.
+- **Daily reminder:** Journal → Daily reminder. Shows a gentle prompt (and a browser notification if allowed) once a day after the chosen time, while the site is open.
+- **Theme & Simple view:** the **Aa** button in the top bar (Auto / Light / Dark, and Simple view).
+- **Install as an app:** “Install app” appears in the footer when the browser allows it (https or localhost).
+- **Print the safety plan:** Safety plan → “Print or save as PDF” (includes your contacts and hotlines).
+- **Clean up old files:** double-click `cleanup-old-files.bat`. It lists unused old files (legacy templates, replaced components, old build files) and asks before deleting.
+
+Editorial admin: double-click `create-admin.bat` (creates user **pc** / password **password** for the demo), or run `python manage.py createsuperuser`. Then open http://127.0.0.1:8000/admin/. Change the demo password before the site is public — the tunnel link makes /admin/ reachable from the internet.
 
 ## Browser extension
 
@@ -156,16 +187,17 @@ Permissions: a content script on web pages (it only acts while the hover key is 
 | GET | `/api/dictionary/index/` | Word list for on-device hover matching |
 | POST | `/api/discovery/explore/` | `{text, lang}` → possible words + reasons (not stored) |
 | GET | `/api/support/resources/` | Emergency / crisis / referral lines |
-| GET | `/api/support/responders/` | Responder directory |
-| POST | `/api/support/requests/` | Contact request to a responder |
-| POST | `/api/check-ins/` | Anonymous check-in (legacy) |
 | GET | `/api/auth/me/` | Current user (sets CSRF cookie) |
 | POST | `/api/auth/register/` · `/login/` · `/logout/` | Optional account (session + CSRF) |
+| POST | `/api/auth/password-reset/` · `/password-reset/confirm/` | Email a reset link · set a new password |
 | GET | `/api/auth/export/` | Download my data |
 | POST | `/api/auth/delete/` | Delete account + journal (password required) |
 | GET | `/api/journal/entries/` | My entries |
 | PUT/DELETE | `/api/journal/entries/{YYYY-MM-DD}/` | Save / remove a day |
 | POST | `/api/journal/import/` | Move browser-saved entries into the account |
+| POST/DELETE | `/api/auth/research/` | Opt in to / out of anonymous research statistics |
+| POST | `/api/events/` | Anonymous usage counters (allow-listed events, no identifiers) |
+| GET | `/api/stats/?days=30` · `/api/stats/export.csv` | Staff only: dashboard data · daily counts CSV |
 
 Sensitive POST endpoints are rate-limited (see `REST_FRAMEWORK['DEFAULT_THROTTLE_RATES']`).
 
@@ -183,9 +215,26 @@ If the text contains explicit self-harm language, the response sets `show_suppor
 
 ## Offline & privacy
 
-- The production build registers `/sw.js`; after one visit the help screens, hotline numbers and responder list work without signal.
-- Safety plan, trusted person, read-aloud preference and follow-up reminders are stored only in the browser (`localStorage`). Nothing is sent to an organisation or contact without the person tapping send in their own messaging app.
+- The production build registers `/sw.js`; after one visit the help screens and hotline numbers work without signal.
+- Without an account, the journal, safety plan, contacts, reminders and settings are stored only in the browser (`localStorage`). Nothing is sent to an organisation or contact without the person tapping send in their own messaging app.
+- Text typed into “Find words” is processed in memory and never stored or logged.
 - Typing crisis phrases anywhere shows the fixed emergency message immediately (client-side, `frontend/src/lib/crisis.js`).
+
+### Data Privacy Act (RA 10173)
+
+- **Privacy Notice & Terms** at `/privacy` (footer → Privacy): data collected, purposes, legal basis, retention, security, breach notification (NPC + users within 72 h), minors, third parties, and how to use each right.
+- **Consent:** registering requires explicit consent to processing journal entries (sensitive health information) and confirmation of being 18+ or having a parent/guardian’s permission. Each consent is stored (`accounts.Consent`) with the notice version and time.
+- **Access & portability:** Account → Download my data (`GET /api/auth/export/`) — account, consents, journal as JSON.
+- **Rectification:** journal entries can be edited any time; account details via the privacy contact.
+- **Erasure / withdraw consent:** Account → Delete account (`POST /api/auth/delete/`, password required) removes the account, journal and consent records. “Erase all data on this device” clears everything in the browser.
+- **Privacy contact:** [jamespaulamparo](https://github.com/jamespaulamparo). Complaints may be filed with the National Privacy Commission (privacy.gov.ph).
+- Journal entries are not registered in the Django admin; no ads or tracking cookies; fonts are self-hosted.
+
+### Staff dashboard & research data
+
+- **`/dashboard`** (staff accounts only, e.g. the `pc` admin): visits, help tools used, calls tapped by type, safety signals, page views, devices/language/theme, most-viewed words, dictionary search hit/miss, accounts, and research charts. Date presets 7/30/90/365 days, a table view for every chart, CSV export (`/api/stats/export.csv`).
+- **Anonymous usage counts** (`apps/insights`): the site posts `{event, label}` pairs from a fixed allow-list to `/api/events/`; the server only increments `(day, event, label, count)`. No user, session, IP, cookie, free text, phone number or location is stored. Turned off by the visitor on /privacy, or automatically with Global Privacy Control / Do Not Track.
+- **Research statistics** use journals only from account holders who opt in (`accounts.ResearchConsent`, separate from the sign-up consent, withdrawable any time). Only totals of colours, weekdays and feeling words are shown, never notes, and any group smaller than 5 people is hidden.
 
 ## Content & review
 
@@ -194,7 +243,7 @@ If the text contains explicit self-harm language, the response sets `show_suppor
 - Vocabulary source of truth: `fixtures/vocabulary.json` (loaded by `seed_vocabulary`).
 - Every entry is `review` status ("Editorial draft — awaiting review by a qualified professional") until a reviewer approves it in admin. `draft` entries are hidden from the site and extension.
 - References point to the APA Dictionary of Psychology, WHO ICD-11 / mhGAP / PFA, NIMH and named publications for reviewers to check against.
-- **Before public launch:** re-confirm every number in `seed_support.py` (ITRMC and CDRRMO especially) and set `verified_on` in admin. Demo responders are synthetic and labelled as such.
+- **Before public launch:** re-confirm every number in `seed_support.py` (ITRMC and CDRRMO especially) and set `verified_on` in admin.
 
 ## Project layout
 
@@ -202,7 +251,9 @@ If the text contains explicit self-harm language, the response sets `show_suppor
 config/            settings, urls, api_urls, SPA view
 apps/dictionary/   Term, Category, TermRelationship, … + api.py, serializers.py
 apps/discovery/    PhraseCue + engine.py + api.py (+ tests.py: API/engine tests)
-apps/support/      ReferralResource, ResponderProfile, SupportRequest, DailyCheckIn + api.py
+apps/support/      ReferralResource, DailyCheckIn + api.py
+apps/journal/      JournalEntry (private, per user) + api.py
+apps/accounts/     optional accounts, password reset, export/delete
 fixtures/          vocabulary.json
 frontend/          React app (src/pages, src/components, src/lib)
 extension/         MV3 extension

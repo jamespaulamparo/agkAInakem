@@ -52,8 +52,10 @@ class Command(BaseCommand):
             for en, fil in t.get('questions', []):
                 ReflectionQuestion.objects.create(term=term, question=en, question_fil=fil)
             term.sources.all().delete()
-            for title, citation, url, clinical in t.get('sources', []):
-                SourceReference.objects.create(term=term, title=title, citation=citation, url=url, is_clinical_reference=clinical)
+            for src in t.get('sources', []):
+                title, citation, url, clinical = src[:4]
+                SourceReference.objects.create(term=term, title=title, citation=citation, url=url, is_clinical_reference=clinical,
+                                               language=src[4] if len(src) > 4 else 'en')
             term.phrase_cues.all().delete()
             for cue in t.get('cues', []):
                 phrase, why, weight = cue[0], cue[1], cue[2] if len(cue) > 2 else 1.0

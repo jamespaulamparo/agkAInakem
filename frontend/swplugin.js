@@ -9,7 +9,7 @@ export default function offlineServiceWorker() {
       const source = `// Generated at build time. Network-first for pages and API, cache-first for hashed assets.
 const CACHE = 'agk-${Date.now().toString(36)}'
 const PRECACHE = ['/', ...${JSON.stringify(files)}]
-const API_CACHE = ['/api/support/resources/', '/api/support/responders/']
+const API_CACHE = ['/api/support/resources/']
 self.addEventListener('install', (e) => {
   e.waitUntil(caches.open(CACHE).then((c) => Promise.all([...PRECACHE, ...API_CACHE].map((u) => c.add(u).catch(() => {})))).then(() => self.skipWaiting()))
 })

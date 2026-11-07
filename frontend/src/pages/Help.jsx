@@ -11,6 +11,7 @@ const Emergency = lazy(() => import('./help/Emergency'))
 const Plan = lazy(() => import('./help/Plan'))
 const Someone = lazy(() => import('./help/Someone'))
 const CheckIn = lazy(() => import('./help/CheckIn'))
+const Professional = lazy(() => import('./help/Professional'))
 
 function Hub() {
   const { t } = useI18n()
@@ -33,7 +34,7 @@ export default function Help() {
   const sub = pathname.replace(/\/$/, '') !== '/help'
   return (
     <Page className="pt-8 sm:pt-12">
-      {sub && <Link to="/help" className="mb-8 inline-flex items-center gap-2 text-sm font-semibold text-ink-muted hover:text-ink"><Icon name="arrowLeft" size={16} />{t('back_home')}</Link>}
+      {sub && <Link to="/help" className="no-print mb-8 inline-flex items-center gap-2 text-sm font-semibold text-ink-muted hover:text-ink"><Icon name="arrowLeft" size={16} />{t('back_home')}</Link>}
       <Suspense fallback={<Spinner />}>
       <Routes>
         <Route index element={<Hub />} />
@@ -43,6 +44,7 @@ export default function Help() {
         <Route path="plan" element={<Plan />} />
         <Route path="someone" element={<Someone />} />
         <Route path="check-in" element={<CheckIn />} />
+        <Route path="professional" element={<Professional />} />
       </Routes>
       </Suspense>
       <p className="mx-auto mt-20 max-w-xl text-center text-xs leading-relaxed text-ink-faint">{t('first_aid')}</p>

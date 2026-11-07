@@ -39,7 +39,7 @@ export default function SomeoneElse() {
         {NALC.map((n, j) => (
           <li key={n.key} className="relative z-10 flex w-1/4 flex-col items-center">
             <button onClick={() => setI(j)} aria-current={i === j ? 'step' : undefined}
-              className={`flex h-12 w-12 items-center justify-center rounded-full transition-all ${j <= i ? 'bg-teal-ink text-white' : 'bg-surface text-ink-faint ring-1 ring-line'} ${i === j ? 'scale-110 shadow-lift' : ''}`}>
+              className={`flex h-12 w-12 items-center justify-center rounded-full transition-all ${j <= i ? 'bg-teal-ink text-paper' : 'bg-surface text-ink-faint ring-1 ring-line'} ${i === j ? 'scale-110 shadow-lift' : ''}`}>
               <Icon name={n.icon} />
             </button>
             <span className={`mt-2 text-sm font-semibold ${i === j ? 'text-ink' : 'text-ink-faint'}`}>{lang === 'fil' ? n.fil : n.en}</span>

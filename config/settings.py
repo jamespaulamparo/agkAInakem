@@ -22,7 +22,16 @@ SECRET_KEY = os.getenv(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DJANGO_DEBUG', 'True').lower() in ('true', '1', 'yes')
 
-ALLOWED_HOSTS = [
+# Set by start-agkainakem-wifi.bat: lets phones on the same Wi-Fi open the dev server by IP.
+LAN_SHARING = os.getenv('DJANGO_LAN', 'False').lower() in ('true', '1', 'yes')
+
+# Public demo link (VS Code / Microsoft dev tunnel). The QR code on /share points here.
+PUBLIC_DEMO_URL = os.getenv('PUBLIC_DEMO_URL', 'https://hbjhw4bn-8000.asse.devtunnels.ms/')
+CSRF_TRUSTED_ORIGINS = ['https://*.devtunnels.ms'] + [
+    o.strip() for o in os.getenv('CSRF_TRUSTED_ORIGINS', '').split(',') if o.strip()
+]
+
+ALLOWED_HOSTS = ['*'] if (LAN_SHARING and DEBUG) else ['.devtunnels.ms'] + [
     host.strip()
     for host in os.getenv('DJANGO_ALLOWED_HOSTS', 'localhost,127.0.0.1,[::1]').split(',')
     if host.strip()
@@ -51,6 +60,7 @@ INSTALLED_APPS = [
     'apps.organizations.apps.OrganizationsConfig',
     'apps.community.apps.CommunityConfig',
     'apps.journal.apps.JournalConfig',
+    'apps.insights.apps.InsightsConfig',
 ]
 
 MIDDLEWARE = [
@@ -164,10 +174,24 @@ REST_FRAMEWORK = {
         'support_request': '5/hour',
         'check_in': '20/hour',
         'auth': '10/min',
+        'events': '120/min',
     },
 }
 
 SESSION_COOKIE_AGE = 60 * 60 * 24 * 30   # 30 days
+
+# Email (password reset). Without EMAIL_HOST, emails are printed in the server window.
+DEFAULT_FROM_EMAIL = os.getenv('DEFAULT_FROM_EMAIL', 'agkAInakem <no-reply@agkainakem.local>')
+if os.getenv('EMAIL_HOST'):
+    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+    EMAIL_HOST = os.environ['EMAIL_HOST']
+    EMAIL_PORT = int(os.getenv('EMAIL_PORT', '587'))
+    EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER', '')
+    EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD', '')
+    EMAIL_USE_TLS = os.getenv('EMAIL_USE_TLS', 'True').lower() in ('true', '1', 'yes')
+else:
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+PASSWORD_RESET_TIMEOUT = 60 * 60 * 24 * 3   # 3 days
 SESSION_COOKIE_SAMESITE = 'Lax'
 CSRF_COOKIE_SAMESITE = 'Lax'
 

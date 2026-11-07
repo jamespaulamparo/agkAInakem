@@ -105,6 +105,10 @@ const S = {
 }
 
 Object.assign(S, HELP_STRINGS, JOURNAL_STRINGS, CONTACT_STRINGS)
+const REL_FIL = {
+  'Similar to': 'Katulad ng', 'Related to': 'Kaugnay ng', 'Often associated with': 'Madalas kasama ng', 'Different from': 'Iba sa',
+  'Can contribute to': 'Maaaring humantong sa', 'Can result from': 'Maaaring bunga ng', 'Contrasting concept': 'Kasalungat', 'Often confused with': 'Madalas ipagkamali sa',
+}
 export const LANGS = [['en', 'EN', 'English'], ['fil', 'FIL', 'Tagalog']]
 const I18nContext = createContext(null)
 
@@ -115,6 +119,20 @@ export function I18nProvider({ children }) {
     document.documentElement.lang = lang === 'en' ? 'en' : lang
   }, [lang])
   const [simple, setSimple] = useState(() => load('agk_simple', false))
+  // theme: 'system' | 'light' | 'dark'
+  const [theme, setTheme] = useState(() => load('agk_theme', 'system'))
+  useEffect(() => {
+    save('agk_theme', theme)
+    const mq = window.matchMedia('(prefers-color-scheme: dark)')
+    const apply = () => {
+      const dark = theme === 'dark' || (theme === 'system' && mq.matches)
+      document.documentElement.classList.toggle('dark', dark)
+      document.querySelector('meta[name=theme-color]')?.setAttribute('content', dark ? '#14201F' : '#F7F4EF')
+    }
+    apply()
+    mq.addEventListener('change', apply)
+    return () => mq.removeEventListener('change', apply)
+  }, [theme])
   useEffect(() => {
     save('agk_simple', simple)
     document.documentElement.classList.toggle('simple', simple)
@@ -123,7 +141,10 @@ export function I18nProvider({ children }) {
   const t = (key) => (S[key] ? S[key][i] ?? S[key][0] : key)
   // pick(obj, 'short_definition') → obj.short_definition_fil when in Filipino and present
   const pick = (obj, field) => (obj ? (lang === 'fil' && obj[`${field}_fil`]) || obj[field] : '')
-  return <I18nContext.Provider value={{ lang, setLang, t, pick, simple, setSimple }}>{children}</I18nContext.Provider>
+  // Headword: Tagalog in the Filipino version, English otherwise.
+  const name = (obj) => (obj ? (lang === 'fil' && obj.term_fil) || obj.term : '')
+  const rel = (label) => (lang === 'fil' && REL_FIL[label]) || label
+  return <I18nContext.Provider value={{ lang, setLang, t, pick, name, rel, simple, setSimple, theme, setTheme }}>{children}</I18nContext.Provider>
 }
 
 export const useI18n = () => useContext(I18nContext)

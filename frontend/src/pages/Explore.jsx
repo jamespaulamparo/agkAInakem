@@ -1,3 +1,4 @@
+import { track } from '../lib/track'
 import { useEffect, useMemo, useState } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
 import { AnimatePresence, motion } from 'framer-motion'
@@ -28,7 +29,7 @@ function Highlighted({ text, fragments }) {
 }
 
 export default function Explore() {
-  const { t, pick, lang } = useI18n()
+  const { t, pick, lang, name } = useI18n()
   const [params, setParams] = useSearchParams()
   const initial = params.get('q') || ''
   const [text, setText] = useState(initial)
@@ -44,7 +45,7 @@ export default function Explore() {
     setBusy(true); setError(null); setDismissed(new Set())
     try {
       const r = await api.explore(v, lang)
-      setResult(r); setSubmitted(v)
+      setResult(r); setSubmitted(v); track('explore_run', r.results?.length ? 'results' : 'none')
       // Keep the text out of the URL after the first visit: it may be sensitive.
       if (params.get('q')) setParams({}, { replace: true })
     } catch (e) {
@@ -94,7 +95,7 @@ export default function Explore() {
                         initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, x: 40, transition: { duration: 0.25 } }}
                         transition={{ delay: 0.15 + i * 0.09, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}>
                         <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1 pr-10">
-                          <Link to={`/dictionary/${r.slug}`} className="word text-3xl font-medium hover:text-teal-ink sm:text-4xl">{r.term}</Link>
+                          <Link to={`/dictionary/${r.slug}`} className="word text-3xl font-medium hover:text-teal-ink sm:text-4xl">{name(r)}</Link>
                           <TypeTag type={r.term_type} />
                           <span className={`rounded-full px-2 py-0.5 text-[0.7rem] font-bold uppercase tracking-wider ${r.fit === 'closer' ? 'bg-teal-soft text-teal-ink' : 'bg-ink/5 text-ink-muted'}`}>
                             {r.fit === 'closer' ? t('fit_closer') : t('fit_possible')}
@@ -110,14 +111,14 @@ export default function Explore() {
                           <p className="mt-3 text-sm text-ink-faint">
                             {t('not_same')}{' '}
                             {r.distinctions.map((d, j) => (
-                              <span key={d.slug}><Link to={`/dictionary/${d.slug}`} title={d.explanation} className="word italic text-teal-ink hover:underline">{d.term}</Link>{j < r.distinctions.length - 1 ? ', ' : ''}</span>
+                              <span key={d.slug}><Link to={`/dictionary/${d.slug}`} title={(lang === 'fil' && d.explanation_fil) || d.explanation} className="word italic text-teal-ink hover:underline">{name(d)}</Link>{j < r.distinctions.length - 1 ? ', ' : ''}</span>
                             ))}
                           </p>
                         )}
                         <div className="mt-4 flex items-center gap-4 text-sm font-semibold">
                           <Link to={`/dictionary/${r.slug}`} className="inline-flex items-center gap-1.5 text-teal-ink hover:gap-2.5 transition-all">{t('open_word')} <Icon name="arrow" size={15} /></Link>
                         </div>
-                        <button onClick={() => setDismissed((s) => new Set(s).add(r.slug))} title={t('not_quite')} aria-label={`${t('not_quite')}: ${r.term}`}
+                        <button onClick={() => setDismissed((s) => new Set(s).add(r.slug))} title={t('not_quite')} aria-label={`${t('not_quite')}: ${name(r)}`}
                           className="absolute right-0 top-8 rounded-full p-2 text-ink-faint opacity-60 transition hover:bg-ink/5 hover:text-ink group-hover:opacity-100">
                           <Icon name="x" size={18} />
                         </button>

@@ -20,6 +20,7 @@ echo [3/5] Updating database...
 echo [4/5] Loading dictionary and support data...
 %PY% manage.py seed_vocabulary
 %PY% manage.py seed_support
+%PY% manage.py create_admin --username pc --password password --if-missing
 
 echo [5/5] Starting server at http://127.0.0.1:8000  (close this window to stop)
 start "" http://127.0.0.1:8000/

@@ -1,20 +1,24 @@
 /** Design tokens live here and in src/index.css — never hard-code brand colours in components. */
+const v = (name) => `rgb(var(--${name}) / <alpha-value>)`
+
 export default {
+  darkMode: 'class',
   content: ['./index.html', './src/**/*.{js,jsx}'],
   theme: {
     extend: {
       colors: {
-        teal: { DEFAULT: '#4FA8A0', hover: '#3F918A', ink: '#2B6F69', soft: '#E3F1EF' },
-        sky: { DEFAULT: '#8EC5E8', ink: '#2F6688', soft: '#E6F2FA' },
-        sage: { DEFAULT: '#A9C8A5', ink: '#3F6B3B', soft: '#EBF3EA' },
-        paper: '#F7F4EF',
-        surface: '#FFFFFF',
-        ink: { DEFAULT: '#263A38', muted: '#5F716D', faint: '#8C9B97' },
-        line: '#E4E9E5',
-        alert: { DEFAULT: '#AF4A33', hover: '#984029', soft: '#FBEDE8' },
+        // Theme-aware tokens: values live in src/index.css (light + dark).
+        teal: { DEFAULT: '#4FA8A0', hover: '#3F918A', ink: v('teal-ink'), soft: v('teal-soft') },
+        sky: { DEFAULT: '#8EC5E8', ink: v('sky-ink'), soft: v('sky-soft') },
+        sage: { DEFAULT: '#A9C8A5', ink: v('sage-ink'), soft: v('sage-soft') },
+        paper: v('paper'),
+        surface: v('surface'),
+        ink: { DEFAULT: v('ink'), muted: v('ink-muted'), faint: v('ink-faint') },
+        line: v('line'),
+        alert: { DEFAULT: '#AF4A33', hover: '#984029', soft: v('alert-soft') },
+        amber: { DEFAULT: v('amber'), soft: v('amber-soft') },
         calmbtn: { DEFAULT: '#3E7A5A', hover: '#346A4D' },
         talkbtn: { DEFAULT: '#3A6F96', hover: '#315F82' },
-        amber: { DEFAULT: '#C98A2B', soft: '#FBF2E3' },
       },
       fontFamily: {
         sans: ['"Plus Jakarta Sans"', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'sans-serif'],

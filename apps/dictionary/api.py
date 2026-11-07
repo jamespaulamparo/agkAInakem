@@ -125,7 +125,7 @@ def lookup(request):
             'slug', 'term', 'term_fil', 'term_type', 'short_definition', 'short_definition_fil',
             'in_simpler_terms', 'category', 'review_status')}
         data['match']['related'] = [
-            {'slug': r['slug'], 'term': r['term'], 'label': r['label'], 'explanation': r['explanation']}
+            {'slug': r['slug'], 'term': r['term'], 'term_fil': r['term_fil'], 'label': r['label'], 'explanation': r['explanation'], 'explanation_fil': r['explanation_fil']}
             for r in detail['relationships']][:5]
     else:
         data['suggestions'] = explore(q, limit=4)['results']

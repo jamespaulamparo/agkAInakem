@@ -1,3 +1,4 @@
+import { track } from '../lib/track'
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { AnimatePresence, motion } from 'framer-motion'
@@ -15,7 +16,7 @@ export function FollowUpOffer({ onDone }) {
     if (when === '1h') d.setHours(d.getHours() + 1)
     if (when === 'tonight') { d.setHours(20, 0, 0, 0); if (d < new Date()) d.setDate(d.getDate() + 1) }
     if (when === 'tomorrow') { d.setDate(d.getDate() + 1); d.setHours(9, 0, 0, 0) }
-    setFollow({ at: d.getTime() })
+    setFollow({ at: d.getTime() }); track('followup_set')
     setSet(true)
   }
   if (set) return <p className="text-sm text-ink-muted">{t('followup_set')}</p>

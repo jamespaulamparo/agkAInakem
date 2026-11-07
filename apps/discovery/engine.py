@@ -127,6 +127,7 @@ def explore(text: str, limit: int = 6, lang: str = 'en') -> dict:
     # 2) direct mentions of a term or alias
     for term in Term.public.select_related('category'):
         names = [term.term.lower()] + [a.lower() for a in (term.aliases or [])]
+        names += [p.strip().lower() for p in (term.term_fil or '').replace(')', '(').split('(') if len(p.strip()) > 3]
         for name in names:
             n = normalise(name)
             if n and f" {n} " in padded:
@@ -175,7 +176,8 @@ def explore(text: str, limit: int = 6, lang: str = 'en') -> dict:
             "reasons": c.reasons[:3],
             "matched": sorted(c.fragments),
             "distinctions": [
-                {"slug": d.target_term.slug, "term": d.target_term.term, "explanation": d.explanation}
+                {"slug": d.target_term.slug, "term": d.target_term.term, "term_fil": d.target_term.term_fil,
+                 "explanation": d.explanation, "explanation_fil": d.explanation_fil}
                 for d in distinctions
             ],
         })

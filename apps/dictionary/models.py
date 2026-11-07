@@ -143,6 +143,8 @@ class SourceReference(models.Model):
     citation = models.CharField(max_length=255, help_text="e.g. APA Dictionary of Psychology / WHO ICD-11")
     url = models.URLField(blank=True)
     is_clinical_reference = models.BooleanField(default=False)
+    language = models.CharField(max_length=3, choices=[('en', 'English'), ('fil', 'Filipino')], default='en',
+                                help_text='Filipino references are listed first in the Filipino version of the site.')
 
     def __str__(self):
         return f"{self.title} ({self.citation})"

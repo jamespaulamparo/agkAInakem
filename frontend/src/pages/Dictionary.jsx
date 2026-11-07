@@ -1,3 +1,4 @@
+import { track } from '../lib/track'
 import { useEffect, useMemo, useState } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
 import { motion } from 'framer-motion'
@@ -40,14 +41,16 @@ export default function Dictionary() {
   const all = useApi(() => api.search({}), [])                       // for the A–Z availability
   const res = useApi(() => api.search({ q: dq, category, type }), [dq, category, type])
 
-  const available = useMemo(() => new Set((all.data?.results || []).map((r) => r.term[0].toUpperCase())), [all.data])
+  const head = (r) => (lang === 'fil' && r.term_fil) || r.term
+  const available = useMemo(() => new Set((all.data?.results || []).map((r) => head(r)[0].toUpperCase())), [all.data, lang]) // eslint-disable-line react-hooks/exhaustive-deps
   const groups = useMemo(() => {
     const list = res.data?.results || []
     if (dq) return [[null, list]]                    // ranked results: keep ranking, no letter groups
     const m = new Map()
-    list.forEach((r) => { const L = r.term[0].toUpperCase(); m.set(L, [...(m.get(L) || []), r]) })
-    return [...m.entries()]
-  }, [res.data, dq])
+    ;[...list].sort((a, b) => head(a).localeCompare(head(b), lang === 'fil' ? 'fil' : 'en')).forEach((r) => { const L = head(r)[0].toUpperCase(); m.set(L, [...(m.get(L) || []), r]) })
+    return [...m.entries()].sort(([a], [b]) => a.localeCompare(b))
+  }, [res.data, dq, lang]) // eslint-disable-line react-hooks/exhaustive-deps
+  useEffect(() => { if (dq.trim().length >= 2 && res.data) track('search', res.data.count ? 'hit' : 'miss') }, [res.data]) // eslint-disable-line react-hooks/exhaustive-deps
 
   const jump = (L) => document.getElementById(`letter-${L}`)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
 
@@ -108,9 +111,9 @@ export default function Dictionary() {
                       <motion.li key={r.slug} className="border-b border-line py-5"
                         initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: Math.min(i, 10) * 0.025 }}>
                         <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-                          <Link to={`/dictionary/${r.slug}`} className="word text-2xl font-semibold text-ink hover:text-teal-ink">{r.term}</Link>
+                          <Link to={`/dictionary/${r.slug}`} className="word text-2xl font-semibold text-ink hover:text-teal-ink">{head(r)}</Link>
                           <TypeTag type={r.term_type} />
-                          {r.term_fil && lang === 'fil' && <span className="text-sm italic text-ink-faint">{r.term_fil}</span>}
+                          {lang === 'fil' && r.term_fil && <span className="text-sm italic text-ink-faint">{r.term}</span>}
                         </div>
                         <p className="mt-1.5 max-w-prose leading-relaxed text-ink-muted">{pick(r, 'short_definition')}</p>
                         {r.see_also.length > 0 && (
@@ -118,7 +121,7 @@ export default function Dictionary() {
                             {t('see_also')}:{' '}
                             {r.see_also.map((s, j) => (
                               <span key={s.slug}>
-                                <Link to={`/dictionary/${s.slug}`} className="word italic text-teal-ink hover:underline">{s.term}</Link>
+                                <Link to={`/dictionary/${s.slug}`} className="word italic text-teal-ink hover:underline">{head(s)}</Link>
                                 {j < r.see_also.length - 1 ? ', ' : ''}
                               </span>
                             ))}

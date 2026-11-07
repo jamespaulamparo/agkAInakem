@@ -1,3 +1,4 @@
+import { track } from '../../lib/track'
 import { CalmArt } from '../../components/Illustrations'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
@@ -24,7 +25,7 @@ export default function Calm() {
 
       {/* Read-aloud (uses the language chosen at the top of the page) */}
       <div className="mt-6 flex flex-wrap items-center justify-center gap-3 text-sm">
-        <button onClick={() => { setAudio(!audio); speech.stop() }} aria-pressed={audio}
+        <button onClick={() => { if (!audio) track('read_aloud'); setAudio(!audio); speech.stop() }} aria-pressed={audio}
           className={`flex items-center gap-2 rounded-full px-3 py-2 font-semibold ring-1 ${audio ? 'bg-teal-soft text-teal-ink ring-teal/40' : 'text-ink-muted ring-line'}`}>
           <Icon name="ear" size={16} />{t('read_aloud')}
         </button>
@@ -49,7 +50,7 @@ export default function Calm() {
                 <p className="mx-auto max-w-md text-2xl font-bold leading-snug">{t('better_q')}</p>
                 <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
                   <button onClick={() => setAfter('better')} className="btn bg-sage-soft px-6 py-3 text-base text-sage-ink hover:brightness-95">{t('a_bit_better')}</button>
-                  <Link to="/help/talk" className="btn bg-teal-ink px-6 py-3 text-base text-white hover:bg-[#245d58]">{t('choice_talk')}</Link>
+                  <Link to="/help/talk" className="btn bg-teal-ink px-6 py-3 text-base text-paper hover:bg-teal-ink/90">{t('choice_talk')}</Link>
                 </div>
               </>) : (<>
                 <div className="mx-auto mb-4 w-40"><CalmArt /></div>

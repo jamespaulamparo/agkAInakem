@@ -1,9 +1,11 @@
+import { track } from '../../lib/track'
 import { PlanArt } from '../../components/Illustrations'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import Icon from '../../components/Icon'
-import { usePlan } from '../../lib/local'
+import { usePlan, useContacts } from '../../lib/local'
+import { useResources } from '../../components/HelpNow'
 import { useI18n } from '../../lib/i18n'
 
 const FIELDS = [
@@ -18,13 +20,15 @@ const FIELDS = [
 export default function Plan() {
   const { t } = useI18n()
   const [plan, setPlan] = usePlan()
+  const [contacts] = useContacts()
+  const lines = useResources().filter((r) => r.kind === 'emergency' || r.kind === 'crisis_line')
   const [editing, setEditing] = useState(!plan)
   const [form, setForm] = useState(plan || {})
   const [saved, setSaved] = useState(false)
 
   const save = (e) => {
     e.preventDefault()
-    setPlan({ ...form, updated: Date.now() })
+    setPlan({ ...form, updated: Date.now() }); track('plan_saved')
     setEditing(false); setSaved(true)
   }
 
@@ -36,7 +40,12 @@ export default function Plan() {
           <h1 className="text-3xl font-extrabold sm:text-5xl">{t('plan_title')}</h1>
           <p className="mt-2 flex items-center gap-1.5 text-sm text-ink-muted"><Icon name="lock" size={14} />{t('plan_sub')}</p>
         </div>
-        {plan && !editing && <button onClick={() => { setForm(plan); setEditing(true); setSaved(false) }} className="btn-ghost ring-1 ring-line">{t('edit')}</button>}
+        {plan && !editing && (
+          <div className="no-print flex shrink-0 flex-col gap-2 sm:flex-row">
+            <button onClick={() => { track('plan_printed'); window.print() }} className="btn-ghost ring-1 ring-line"><Icon name="printer" size={16} />{t('print_plan')}</button>
+            <button onClick={() => { setForm(plan); setEditing(true); setSaved(false) }} className="btn-ghost ring-1 ring-line">{t('edit')}</button>
+          </div>
+        )}
       </div>
 
       {editing ? (
@@ -61,7 +70,17 @@ export default function Plan() {
           ))}
         </motion.dl>
       )}
-      <Link to="/help/emergency" className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-ink-muted hover:text-ink"><Icon name="phone" size={15} />{t('emergency')}</Link>
+      {plan && !editing && (
+        <div className="print-only mt-8">
+          {contacts.length > 0 && (<>
+            <h2 className="text-lg font-bold">{t('my_contacts')}</h2>
+            <ul className="mt-2">{contacts.map((c) => <li key={c.id}>{c.name}{c.role ? ` (${c.role})` : ''}: {c.phone}</li>)}</ul>
+          </>)}
+          <h2 className="mt-6 text-lg font-bold">{t('hotlines')}</h2>
+          <ul className="mt-2">{lines.map((r) => <li key={r.id}>{r.name}: {r.phones.map((p) => p.number).join(' / ')}{r.hours ? ` · ${r.hours}` : ''}</li>)}</ul>
+        </div>
+      )}
+      <Link to="/help/emergency" className="no-print mt-8 inline-flex items-center gap-2 text-sm font-semibold text-ink-muted hover:text-ink"><Icon name="phone" size={15} />{t('emergency')}</Link>
     </div>
   )
 }

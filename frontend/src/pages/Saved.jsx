@@ -21,8 +21,8 @@ export default function Saved() {
               {items.map((w) => (
                 <motion.li key={w.slug} layout exit={{ opacity: 0, x: 30 }} className="flex items-start gap-4 border-b border-line py-5">
                   <div className="flex-1">
-                    <Link to={`/dictionary/${w.slug}`} className="word text-2xl hover:text-teal-ink">{w.term}</Link>
-                    <p className="mt-1 text-ink-muted">{w.short}</p>
+                    <Link to={`/dictionary/${w.slug}`} className="word text-2xl hover:text-teal-ink">{(lang === 'fil' && w.term_fil) || w.term}</Link>
+                    <p className="mt-1 text-ink-muted">{(lang === 'fil' && w.short_fil) || w.short}</p>
                   </div>
                   <button onClick={() => toggle({ slug: w.slug })} className="rounded-full p-2 text-ink-faint hover:bg-ink/5 hover:text-ink" aria-label={`Remove ${w.term}`}><Icon name="x" size={18} /></button>
                 </motion.li>

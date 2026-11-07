@@ -3,13 +3,37 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    --paper: 247 244 239; --surface: 255 255 255; --line: 228 233 229;
+    --ink: 38 58 56; --ink-muted: 95 113 109; --ink-faint: 140 155 151;
+    --teal-ink: 43 111 105; --teal-soft: 227 241 239;
+    --sky-ink: 47 102 136; --sky-soft: 230 242 250;
+    --sage-ink: 63 107 59; --sage-soft: 235 243 234;
+    --amber: 201 138 43; --amber-soft: 251 242 227; --alert-soft: 251 237 232;
+    --viz-green: #5E9A5A; --viz-yellow: #D9A93A; --viz-red: #C8664B;
+    --viz-1: #2A78D6; --viz-2: #EB6834; --viz-3: #1BAF7A;
+    --viz-grid: #E6EBE7; --viz-axis: #C3CCC8;
+    color-scheme: light;
+  }
+  .dark {
+    --paper: 20 32 31; --surface: 28 43 41; --line: 46 63 60;
+    --ink: 228 236 234; --ink-muted: 169 186 182; --ink-faint: 128 145 141;
+    --teal-ink: 111 196 186; --teal-soft: 31 57 54;
+    --sky-ink: 156 203 234; --sky-soft: 30 49 64;
+    --sage-ink: 169 200 165; --sage-soft: 35 52 37;
+    --amber: 224 176 98; --amber-soft: 58 48 32; --alert-soft: 61 38 32;
+    --viz-green: #3F8A55; --viz-yellow: #B48A1C; --viz-red: #D45A5A;
+    --viz-1: #3987E5; --viz-2: #D95926; --viz-3: #199E70;
+    --viz-grid: #2A3B39; --viz-axis: #3A4E4B;
+    color-scheme: dark;
+  }
   html { -webkit-text-size-adjust: 100%; }
   body {
     @apply bg-paper text-ink font-sans antialiased;
     font-feature-settings: 'ss01';
   }
-  ::selection { background: #CFE8E5; color: #263A38; }
-  :focus-visible { outline: 2px solid #2B6F69; outline-offset: 3px; border-radius: 6px; }
+  ::selection { background: rgb(var(--teal-soft)); color: rgb(var(--ink)); }
+  :focus-visible { outline: 2px solid rgb(var(--teal-ink)); outline-offset: 3px; border-radius: 6px; }
   h1, h2, h3 { letter-spacing: -0.02em; }
 }
 
@@ -19,7 +43,7 @@
   .link { @apply text-teal-ink underline decoration-teal/40 underline-offset-4 hover:decoration-teal transition-colors; }
   .eyebrow { @apply text-[0.72rem] font-semibold uppercase tracking-[0.14em] text-ink-faint; }
   .btn { @apply inline-flex items-center justify-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold transition-all active:scale-[0.98] disabled:opacity-50; }
-  .btn-primary { @apply btn bg-teal-ink text-white hover:bg-[#245d58]; }
+  .btn-primary { @apply btn bg-teal-ink text-paper hover:bg-teal-ink/90; }
   .btn-ghost { @apply btn text-ink hover:bg-ink/5; }
   .field { @apply w-full rounded-md border border-line bg-surface px-4 py-3 text-base text-ink placeholder:text-ink-faint focus:border-teal focus:outline-none focus:ring-4 focus:ring-teal/15; }
   .rule { @apply border-t border-line; }
@@ -39,3 +63,14 @@ html.simple *, html.simple *::before, html.simple *::after { animation: none !im
 .illus .illus-float { animation: illus-float 4s ease-in-out infinite; }
 .illus .illus-float-slow { animation: illus-float 6s ease-in-out infinite; }
 .illus .illus-steam { animation: illus-float 3s ease-in-out infinite; }
+
+/* Dark mode: soften the light illustrations a little. */
+.dark .illus { opacity: .9; filter: saturate(.9); }
+
+/* Printing (safety plan): only the page content, no navigation or floating buttons. */
+@media print {
+  header, footer, .no-print { display: none !important; }
+  body { background: #fff !important; color: #000 !important; }
+  .print-only { display: block !important; }
+}
+.print-only { display: none; }

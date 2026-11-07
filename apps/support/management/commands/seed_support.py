@@ -7,7 +7,7 @@ is left empty on purpose so the interface does not claim verification.
 from django.core.management.base import BaseCommand
 from django.db import transaction
 
-from apps.support.models import ReferralResource, ResponderProfile
+from apps.support.models import ReferralResource
 
 RESOURCES = [
     dict(order=1, short_name='911', name='National Emergency Hotline', kind='emergency', is_24_7=True,
@@ -44,29 +44,11 @@ RESOURCES = [
          phones=[{'label': 'Office', 'number': '(072) 687-8100'}], hours='24/7'),
 ]
 
-RESPONDERS = [
-    dict(order=1, display_name='Ms. Andrea R.', organization='Demo High School — Guidance Office', role='Guidance Counselor',
-         support_type='counselor', scope='Personal, academic and family concerns. Can refer to health professionals.',
-         availability='Mon–Fri, 8:00–17:00', contact_methods=['In person', 'Message'], expected_response='Within 1 school day',
-         verification_status='verified'),
-    dict(order=2, display_name='Paolo M.', organization='Demo High School — Peer Support Circle', role='Peer supporter (Grade 12)',
-         support_type='peer', scope='Listening and helping you find the right adult or service. Not a counselor.',
-         availability='Weekdays after class', contact_methods=['In person', 'Message'], expected_response='Within 2 days',
-         verification_status='verified'),
-    dict(order=3, display_name='Kuya Ben', organization='Demo Barangay Youth Desk', role='Trained youth volunteer',
-         support_type='volunteer', scope='Psychological first aid and linking to barangay and city services.',
-         availability='Sat–Sun, 9:00–15:00', contact_methods=['In person', 'Phone call'], expected_response='Within 2 days',
-         verification_status='unverified'),
-]
-
-
 class Command(BaseCommand):
-    help = 'Seed referral resources and demo responder profiles for Reach Out'
+    help = 'Seed referral resources for Get help'
 
     @transaction.atomic
     def handle(self, *args, **opts):
         for r in RESOURCES:
             ReferralResource.objects.update_or_create(name=r['name'], defaults=r)
-        for r in RESPONDERS:
-            ResponderProfile.objects.update_or_create(display_name=r['display_name'], defaults={**r, 'is_demo': True})
-        self.stdout.write(self.style.SUCCESS(f'Seeded {len(RESOURCES)} referral resources and {len(RESPONDERS)} demo responders.'))
+        self.stdout.write(self.style.SUCCESS(f'Seeded {len(RESOURCES)} referral resources.'))

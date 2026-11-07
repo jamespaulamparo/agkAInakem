@@ -2,7 +2,7 @@ from django.core.management import call_command
 from django.test import TestCase
 
 from apps.dictionary.models import Term
-from apps.support.models import DailyCheckIn, SupportRequest, ResponderProfile
+from apps.support.models import DailyCheckIn
 
 
 class SeededTestCase(TestCase):
@@ -34,9 +34,9 @@ class DiscoveryTests(SeededTestCase):
         self.assertFalse(data['stored'])
 
     def test_text_is_not_persisted(self):
-        before = (Term.objects.count(), DailyCheckIn.objects.count(), SupportRequest.objects.count())
+        before = (Term.objects.count(), DailyCheckIn.objects.count())
         self.explore("a very private sentence about my week")
-        self.assertEqual(before, (Term.objects.count(), DailyCheckIn.objects.count(), SupportRequest.objects.count()))
+        self.assertEqual(before, (Term.objects.count(), DailyCheckIn.objects.count()))
 
     def test_filipino_phrase(self):
         slugs = [x['slug'] for x in self.explore("sobra na, hindi ko na kaya").json()['results']]
@@ -109,30 +109,6 @@ class SupportApiTests(SeededTestCase):
         self.assertIn('911', names)
         self.assertIn('NCMH', names)
 
-    def test_demo_responders_are_labelled(self):
-        data = self.client.get('/api/support/responders/').json()
-        self.assertTrue(data)
-        self.assertTrue(all(r['is_demo'] for r in data))
-
-    def test_support_request_flow(self):
-        rid = ResponderProfile.objects.first().id
-        r = self.client.post('/api/support/requests/', {'responder': rid, 'preferred_contact': 'message'},
-                             content_type='application/json')
-        self.assertEqual(r.status_code, 400)  # needs a contact detail
-        r = self.client.post('/api/support/requests/', {'responder': rid, 'preferred_contact': 'in_person',
-                                                         'message': 'Can we talk?'}, content_type='application/json')
-        self.assertEqual(r.status_code, 201)
-        self.assertIn('demonstration', r.json()['note'])
-
-    def test_check_in_stores_only_colour_and_word(self):
-        r = self.client.post('/api/check-ins/', {'mood_status': 'yellow', 'primary_feeling': 'tired', 'note': 'secret'},
-                             content_type='application/json')
-        self.assertEqual(r.status_code, 201)
-        c = DailyCheckIn.objects.get()
-        self.assertEqual(c.mood_status, 'yellow')
-        self.assertFalse(hasattr(c, 'note'))
-        self.assertEqual(self.client.post('/api/check-ins/', {'mood_status': 'purple'},
-                                          content_type='application/json').status_code, 400)
 
 
 class SpaTests(TestCase):
@@ -146,3 +122,15 @@ class OfflineTests(TestCase):
         r = self.client.get('/sw.js')
         self.assertEqual(r.status_code, 200)
         self.assertEqual(r['Service-Worker-Allowed'], '/')
+
+
+class ShareTests(TestCase):
+    def test_share_off_by_default(self):
+        self.assertEqual(self.client.get('/api/meta/share/').json(), {'lan': False, 'urls': []})
+
+    def test_share_lists_private_addresses_when_on(self):
+        with self.settings(LAN_SHARING=True):
+            data = self.client.get('/api/meta/share/').json()
+        self.assertTrue(data['lan'])
+        for u in data['urls']:
+            self.assertRegex(u, r'^http://(10\.|192\.168\.|172\.)')

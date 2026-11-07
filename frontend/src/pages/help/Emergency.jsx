@@ -1,3 +1,4 @@
+import { track } from '../../lib/track'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { AnimatePresence, motion } from 'framer-motion'
@@ -14,6 +15,7 @@ function ShareLocation({ contacts }) {
   const trusted = contacts.find((c) => c.id === who) || contacts[0]
   const go = () => {
     setStep('locating')
+    track('location_share')
     if (!navigator.geolocation) return setStep('error')
     navigator.geolocation.getCurrentPosition(
       ({ coords }) => {
@@ -71,7 +73,7 @@ export default function Emergency() {
         <a href={tel('911')} className="flex w-full items-center justify-center gap-3 rounded-xl bg-alert px-6 py-6 text-2xl font-extrabold text-white shadow-lift transition hover:bg-alert-hover">
           <Icon name="phone" size={26} />{t('call_911')}
         </a>
-        <a href={tel(crisis?.phones[0].number || '1553')} className="flex w-full items-center justify-center gap-3 rounded-xl bg-teal-ink px-6 py-5 text-xl font-bold text-white shadow-soft transition hover:bg-[#245d58]">
+        <a href={tel(crisis?.phones[0].number || '1553')} className="flex w-full items-center justify-center gap-3 rounded-xl bg-teal-ink px-6 py-5 text-xl font-bold text-paper shadow-soft transition hover:bg-teal-ink/90">
           <Icon name="phone" size={22} />{t('call_1553')}
         </a>
         {crisis?.phones.length > 1 && (
