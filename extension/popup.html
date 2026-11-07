@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <header><img src="icons/icon32.png" width="20" height="20" alt=""><strong>agk<span>AI</span>nakem</strong></header>
+  <form id="f">
+    <input id="q" type="search" placeholder="Look up a word or feeling" autocomplete="off" autofocus>
+  </form>
+  <div id="out" aria-live="polite"></div>
+  <div class="hover-row">
+    <label class="switch"><input id="hoverOn" type="checkbox"> Hover lookup</label>
+    <select id="modifier" aria-label="Key to hold">
+      <option value="shift">hold Shift</option>
+      <option value="ctrl">hold Ctrl</option>
+      <option value="alt">hold Alt</option>
+    </select>
+  </div>
+  <p class="hint small">Hold the key and move over a word on any page.</p>
+  <details>
+    <summary>Settings</summary>
+    <label for="site">Website address</label>
+    <input id="site" type="url" placeholder="http://127.0.0.1:8000">
+    <button id="saveSite" type="button">Save</button>
+    <p class="hint">Only the text you look up is sent to this address. No browsing history is collected.</p>
+  </details>
+  <script src="shared.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

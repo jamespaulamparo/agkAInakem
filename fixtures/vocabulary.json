@@ -1,0 +1,3995 @@
+{
+ "categories": [
+  {
+   "name": "Emotional Exhaustion",
+   "name_fil": "Pagkaubos ng Lakas at Emosyon",
+   "slug": "emotional-exhaustion",
+   "description": "States of physical, cognitive, and emotional depletion from sustained demands.",
+   "description_fil": "Mga kalagayan ng pisikal at emosyonal na pagkaubos dahil sa matagalang pasanin.",
+   "order": 1,
+   "icon": "battery-charging"
+  },
+  {
+   "name": "Stress & Anxiety",
+   "name_fil": "Stress at Pagkabalisa",
+   "slug": "stress-and-anxiety",
+   "description": "Apprehension, physiological tension, and responses to real or perceived threats.",
+   "description_fil": "Pangamba, kaba, tensyon sa katawan, at reaksyon sa mga hamon o banta.",
+   "order": 2,
+   "icon": "alert-circle"
+  },
+  {
+   "name": "Emotional Experiences",
+   "name_fil": "Mga Karaniwang Emosyon",
+   "slug": "emotional-experiences",
+   "description": "Fundamental emotional states including sadness, grief, guilt, shame, and anger.",
+   "description_fil": "Pangunahing damdamin tulad ng kalungkutan, pighati, hiya, at galit.",
+   "order": 3,
+   "icon": "heart"
+  },
+  {
+   "name": "Motivation & Engagement",
+   "name_fil": "Motibasyon at Sigasig",
+   "slug": "motivation-and-engagement",
+   "description": "Drive, apathy, inertia, and psychological barriers to taking action.",
+   "description_fil": "Kagustuhang kumilos, kawalan ng gana, at mga balakid sa pagsisimula.",
+   "order": 4,
+   "icon": "compass"
+  },
+  {
+   "name": "Self-Perception & Identity",
+   "name_fil": "Pagtingin sa Sarili",
+   "slug": "self-perception",
+   "description": "Self-worth, internal critic, self-compassion, and identity beliefs.",
+   "description_fil": "Halaga ng sarili, labis na pagpuna sa sarili, at pagtanggap.",
+   "order": 5,
+   "icon": "user"
+  },
+  {
+   "name": "Interpersonal Experiences",
+   "name_fil": "Pakikipagkapwa at Relasyon",
+   "slug": "interpersonal-experiences",
+   "description": "Belonging, rejection, loneliness, boundaries, and social connection.",
+   "description_fil": "Pakiramdam ng pag-iisa, pagtanggap, hangganan, at koneksyon sa iba.",
+   "order": 6,
+   "icon": "users"
+  },
+  {
+   "name": "Coping & Regulation",
+   "name_fil": "Pagharap at Pagpapakalma",
+   "slug": "coping-and-regulation",
+   "description": "Skills, practices, and mechanisms for steadying emotions and surviving distress.",
+   "description_fil": "Mga paraan at kasanayan para pakalmahin ang sarili sa oras ng hirap.",
+   "order": 7,
+   "icon": "shield"
+  },
+  {
+   "name": "Help-Seeking & Support",
+   "name_fil": "Paghiling ng Tulong",
+   "slug": "help-seeking",
+   "description": "Pathways, peer connection, counseling, and steps toward professional care.",
+   "description_fil": "Mga hakbang at paraan sa paglapit sa katuwang o propesyonal na tulong.",
+   "order": 10,
+   "icon": "life-buoy"
+  },
+  {
+   "name": "Mental Health Concepts",
+   "name_fil": "Mga Konsepto sa Kalusugang Pangkaisipan",
+   "slug": "mental-health-concepts",
+   "description": "Psychological and clinical concepts that are often discussed, and often misunderstood.",
+   "description_fil": "Mga konseptong sikolohikal at klinikal na madalas pag-usapan at mapagkamalan.",
+   "order": 9,
+   "icon": "book"
+  }
+ ],
+ "terms": [
+  {
+   "term": "Agency",
+   "slug": "agency",
+   "term_fil": "Kakayahang Kumilos",
+   "category": "motivation-and-engagement",
+   "term_type": "psychological",
+   "short_definition": "The sense that you can make choices and take actions that affect your life.",
+   "short_definition_fil": "Ang pakiramdam na kaya mong pumili at kumilos para sa iyong buhay.",
+   "detailed_definition": "Agency is the contrasting concept to helplessness. It can be rebuilt through small, achievable actions.",
+   "detailed_definition_fil": "",
+   "in_simpler_terms": "Feeling like your choices still count.",
+   "in_simpler_terms_fil": "",
+   "examples": [
+    [
+     "Choosing to walk for ten minutes and noticing that you made something happen.",
+     ""
+    ]
+   ],
+   "questions": [
+    [
+     "What is one small choice you made today?",
+     ""
+    ]
+   ],
+   "sources": [
+    [
+     "APA Dictionary of Psychology",
+     "American Psychological Association",
+     "https://dictionary.apa.org/",
+     false
+    ]
+   ],
+   "aliases": [
+    "sense of agency",
+    "control"
+   ],
+   "cues": [],
+   "review_status": "review"
+  },
+  {
+   "term": "Anger",
+   "slug": "anger",
+   "term_fil": "Galit",
+   "category": "emotional-experiences",
+   "term_type": "everyday",
+   "short_definition": "A strong feeling of displeasure, often in response to being wronged, blocked or threatened.",
+   "short_definition_fil": "Matinding pakiramdam ng inis o poot, kadalasang dahil sa pagkakamali ng iba, pagkahadlang o banta.",
+   "detailed_definition": "Anger is a normal emotion that can signal that a boundary or value has been crossed. How it is expressed matters more than whether it is felt.",
+   "detailed_definition_fil": "",
+   "in_simpler_terms": "The heat you feel when something seems unfair or wrong.",
+   "in_simpler_terms_fil": "",
+   "examples": [
+    [
+     "Feeling your face heat up when someone takes credit for your work.",
+     ""
+    ]
+   ],
+   "questions": [
+    [
+     "What do you think the anger is protecting?",
+     ""
+    ]
+   ],
+   "sources": [
+    [
+     "APA Dictionary of Psychology",
+     "American Psychological Association",
+     "https://dictionary.apa.org/",
+     false
+    ]
+   ],
+   "aliases": [
+    "angry",
+    "mad",
+    "furious",
+    "galit",
+    "rage"
+   ],
+   "cues": [
+    [
+     "angry",
+     "You named anger directly.",
+     1.5
+    ],
+    [
+     "mad",
+     "Being mad is everyday anger.",
+     1.1
+    ],
+    [
+     "furious",
+     "Fury is intense anger.",
+     1.4
+    ],
+    [
+     "galit",
+     "\"Galit\" means anger.",
+     1.5
+    ],
+    [
+     "unfair",
+     "Anger often responds to unfairness.",
+     0.7
+    ]
+   ],
+   "review_status": "review"
+  },
+  {
+   "term": "Anhedonia",
+   "slug": "anhedonia",
+   "term_fil": "Anhedonia (Kawalan ng Kasiyahan)",
+   "category": "mental-health-concepts",
+   "term_type": "clinical",
+   "short_definition": "A reduced ability to feel pleasure or interest in activities that used to be enjoyable.",
+   "short_definition_fil": "Paghina ng kakayahang makaramdam ng saya o interes sa mga gawaing dating kinagigiliwan.",
+   "detailed_definition": "Anhedonia is a clinical term used by professionals; it is one feature they look for when assessing depression and other conditions. Only a professional can assess it.",
+   "detailed_definition_fil": "",
+   "in_simpler_terms": "Things that used to feel good now feel flat.",
+   "in_simpler_terms_fil": "",
+   "examples": [],
+   "questions": [
+    [
+     "Have activities you used to enjoy started to feel flat for a long while?",
+     ""
+    ]
+   ],
+   "sources": [
+    [
+     "APA Dictionary of Psychology",
+     "American Psychological Association",
+     "https://dictionary.apa.org/",
+     false
+    ],
+    [
+     "ICD-11 for Mortality and Morbidity Statistics",
+     "World Health Organization",
+     "https://icd.who.int/",
+     true
+    ]
+   ],
+   "aliases": [
+    "loss of pleasure",
+    "loss of interest"
+   ],
+   "cues": [
+    [
+     "nothing makes me happy",
+     "Losing pleasure in things is what this clinical term describes — a professional can help make sense of it.",
+     0.9
+    ],
+    [
+     "lost interest",
+     "Losing interest in things you used to enjoy is related to this concept.",
+     0.9
+    ],
+    [
+     "don't enjoy",
+     "Not enjoying things anymore relates to this concept.",
+     0.8
+    ]
+   ],
+   "review_status": "review"
+  },
+  {
+   "term": "Anxiety",
+   "slug": "anxiety",
+   "term_fil": "Pagkabalisa",
+   "category": "stress-and-anxiety",
+   "term_type": "psychological",
+   "short_definition": "A feeling of unease, worry or fear about something that might happen, often with tension in the body.",
+   "short_definition_fil": "Pakiramdam ng kaba, pag-aalala o takot sa maaaring mangyari, kadalasang may tensyon sa katawan.",
+   "detailed_definition": "Anxiety is a normal response to uncertainty or threat. It becomes a concern when it is intense, lasts a long time, or gets in the way of daily life. Anxiety disorders are clinical conditions that only a professional can assess.",
+   "detailed_definition_fil": "",
+   "in_simpler_terms": "Your mind and body getting ready for danger, even when nothing is happening yet.",
+   "in_simpler_terms_fil": "",
+   "examples": [
+    [
+     "Your heart races and your stomach knots up the night before a big presentation.",
+     ""
+    ]
+   ],
+   "questions": [
+    [
+     "Is the worry tied to something specific, or does it float from one thing to another?",
+     ""
+    ]
+   ],
+   "sources": [
+    [
+     "APA Dictionary of Psychology",
+     "American Psychological Association",
+     "https://dictionary.apa.org/",
+     false
+    ],
+    [
+     "Health topics",
+     "National Institute of Mental Health",
+     "https://www.nimh.nih.gov/health/topics",
+     true
+    ]
+   ],
+   "aliases": [
+    "anxious",
+    "nervous",
+    "uneasy",
+    "kinakabahan",
+    "balisa"
+   ],
+   "cues": [
+    [
+     "anxious",
+     "You named anxiety directly.",
+     1.5
+    ],
+    [
+     "nervous",
+     "Nervousness is a mild everyday form of anxiety.",
+     1.1
+    ],
+    [
+     "heart racing",
+     "A racing heart is a common physical sign of anxiety.",
+     1.0
+    ],
+    [
+     "kinakabahan",
+     "\"Kinakabahan\" is the Filipino word for feeling nervous.",
+     1.2
+    ],
+    [
+     "balisa",
+     "\"Balisa\" means anxious or restless.",
+     1.3
+    ],
+    [
+     "scared something bad",
+     "Fear that something bad will happen is anxiety.",
+     1.2
+    ],
+    [
+     "worry",
+     "Worry is the thinking side of anxiety.",
+     0.7
+    ],
+    [
+     "tense",
+     "Body tension often comes with anxiety.",
+     0.7
+    ]
+   ],
+   "review_status": "review"
+  },
+  {
+   "term": "Apathy",
+   "slug": "apathy",
+   "term_fil": "Kawalang-Interes",
+   "category": "motivation-and-engagement",
+   "term_type": "psychological",
+   "short_definition": "A lack of interest, enthusiasm or concern about things that would normally matter.",
+   "short_definition_fil": "Kawalan ng interes, sigla o pakialam sa mga bagay na karaniwang mahalaga.",
+   "detailed_definition": "Apathy describes not caring, while procrastination usually involves caring but avoiding. Lasting apathy can come with exhaustion or low mood.",
+   "detailed_definition_fil": "",
+   "in_simpler_terms": "Not caring either way — \"whatever\".",
+   "in_simpler_terms_fil": "",
+   "examples": [
+    [
+     "Your favourite show comes on and you cannot be bothered to watch it.",
+     ""
+    ]
+   ],
+   "questions": [
+    [
+     "Is it that you do not care, or that caring feels too heavy right now?",
+     ""
+    ]
+   ],
+   "sources": [
+    [
+     "APA Dictionary of Psychology",
+     "American Psychological Association",
+     "https://dictionary.apa.org/",
+     false
+    ]
+   ],
+   "aliases": [
+    "apathetic",
+    "don't care",
+    "walang pakialam",
+    "unmotivated"
+   ],
+   "cues": [
+    [
+     "don't want to do anything",
+     "Not wanting to do anything at all can point to apathy.",
+     1.4
+    ],
+    [
+     "do not want to do anything",
+     "Not wanting to do anything at all can point to apathy.",
+     1.4
+    ],
+    [
+     "don't care",
+     "Not caring is the core of apathy.",
+     1.3
+    ],
+    [
+     "no motivation",
+     "Low motivation is closely tied to apathy.",
+     1.2
+    ],
+    [
+     "walang gana",
+     "\"Walang gana\" (no drive or appetite for things) is close to apathy.",
+     1.3
+    ],
+    [
+     "tinatamad",
+     "\"Tinatamad\" (feeling lazy) can sometimes be apathy or exhaustion underneath.",
+     0.8
+    ]
+   ],
+   "review_status": "review"
+  },
+  {
+   "term": "Belonging",
+   "slug": "belonging",
+   "term_fil": "Pakiramdam ng Kabilang",
+   "category": "interpersonal-experiences",
+   "term_type": "psychological",
+   "short_definition": "The feeling of being accepted and connected as part of a group or relationship.",
+   "short_definition_fil": "Pakiramdam ng pagtanggap at koneksyon bilang bahagi ng isang grupo o relasyon.",
+   "detailed_definition": "Belonging is considered a basic human need. Its absence is felt as loneliness or exclusion.",
+   "detailed_definition_fil": "",
+   "in_simpler_terms": "Feeling like you have a place where you fit.",
+   "in_simpler_terms_fil": "",
+   "examples": [
+    [
+     "Laughing with your barkada and feeling fully yourself.",
+     ""
+    ]
+   ],
+   "questions": [
+    [
+     "Where do you feel most like yourself?",
+     ""
+    ]
+   ],
+   "sources": [
+    [
+     "APA Dictionary of Psychology",
+     "American Psychological Association",
+     "https://dictionary.apa.org/",
+     false
+    ]
+   ],
+   "aliases": [
+    "sense of belonging",
+    "fitting in"
+   ],
+   "cues": [
+    [
+     "don't belong",
+     "Feeling you do not belong points to a missing sense of belonging.",
+     1.4
+    ],
+    [
+     "don't fit in",
+     "Not fitting in is the absence of belonging.",
+     1.4
+    ],
+    [
+     "outsider",
+     "Feeling like an outsider is the opposite of belonging.",
+     1.2
+    ]
+   ],
+   "review_status": "review"
+  },
+  {
+   "term": "Boundaries",
+   "slug": "boundaries",
+   "term_fil": "Malusog na Hangganan (Healthy Boundaries)",
+   "category": "interpersonal-experiences",
+   "term_type": "psychological",
+   "short_definition": "Clear physical, emotional, and mental limits that protect your well-being and delineate where your responsibilities end and others begin.",
+   "short_definition_fil": "Malinaw na hangganan sa sarili at sa iba upang maprotektahan ang kapayapaan ng isip at lakas.",
+   "detailed_definition": "Healthy boundaries are not walls to keep people out, but guidelines that allow genuine connection without resentment or emotional exploitation.",
+   "detailed_definition_fil": "Hindi ito pagtataboy sa iba, kundi pagtatakda kung anong kaya at hindi kayang ibigay nang bukal sa loob.",
+   "in_simpler_terms": "Knowing when to say \"no\" politely so that your \"yes\" can be genuine and not rooted in fear.",
+   "in_simpler_terms_fil": "Pagkakaroon ng lakas ng loob na tumanggi nang maayos upang hindi ka maubos sa kakabigay sa iba.",
+   "examples": [
+    [
+     "Politely declining an extra project during exam week to protect your sleep schedule.",
+     "Maayos na pagtanggi sa karagdagang pabor kapag tambak na ang iyong sariling mga gawain."
+    ]
+   ],
+   "questions": [
+    [
+     "Are you saying yes out of fear of conflict, even when it harms your health?",
+     "Pumapayag ka ba dahil lang sa takot magalit ang iba, kahit ikaw na ang nahihirapan?"
+    ]
+   ],
+   "sources": [],
+   "review_status": "review",
+   "aliases": [
+    "boundary",
+    "personal boundaries",
+    "limits"
+   ],
+   "cues": [
+    [
+     "can't say no",
+     "Difficulty saying no is a common boundary struggle.",
+     1.3
+    ],
+    [
+     "cannot say no",
+     "Difficulty saying no is a common boundary struggle.",
+     1.3
+    ],
+    [
+     "taken advantage",
+     "Feeling taken advantage of can signal that a boundary is being crossed.",
+     1.0
+    ],
+    [
+     "always say yes",
+     "Always saying yes, even when it costs you, relates to boundaries.",
+     1.0
+    ],
+    [
+     "hindi makatanggi",
+     "\"Hindi makatanggi\" (unable to refuse) is a boundary struggle.",
+     1.1
+    ]
+   ]
+  },
+  {
+   "term": "Burnout",
+   "slug": "burnout",
+   "term_fil": "Burnout (Sobra-sobrang Pagkaubos)",
+   "category": "emotional-exhaustion",
+   "term_type": "psychological",
+   "short_definition": "A state of physical, emotional, or mental exhaustion associated with prolonged, unmanaged stress.",
+   "short_definition_fil": "Kalagayan ng matinding pisikal at emosyonal na pagkaubos dulot ng matagalang stress na walang sapat na pahinga.",
+   "detailed_definition": "Burnout is characterized by emotional depletion, cynicism or mental detachment from responsibilities, and feelings of ineffectiveness. Recognized by the WHO as an occupational phenomenon rather than an isolated mood dip.",
+   "detailed_definition_fil": "Kinikilala ng World Health Organization bilang kalagayan ng patuloy na pagkaubos ng lakas, paglayo ng loob sa mga gawain, at pagbaba ng tiwala sa sariling kakayahan.",
+   "in_simpler_terms": "Feeling so thoroughly depleted by persistent demands that ordinary rest no longer seems to restore your energy.",
+   "in_simpler_terms_fil": "Pakiramdam na ubos na ubos ka na, kung saan kahit matulog o magpahinga ka ay pagod ka pa rin paggising.",
+   "examples": [
+    [
+     "Dreading waking up for classes or work every morning for weeks, feeling like you are operating on empty.",
+     "Araw-araw kang nagigising na parang ubos na ang lakas mo at mabigat ang bawat hakbang bago magsimula ang araw."
+    ]
+   ],
+   "questions": [
+    [
+     "Has this feeling of depletion persisted even when you've had weekends or breaks to rest?",
+     "Nanatili ba ang matinding pagod kahit nagkaroon ka na ng oras magpahinga?"
+    ],
+    [
+     "Do everyday responsibilities feel unusually burdensome or detached?",
+     "Pakiramdam mo ba ay nawawalan ka na ng gana sa mga gawaing dati mong nagagawa nang maayos?"
+    ]
+   ],
+   "sources": [
+    [
+     "WHO International Classification of Diseases (ICD-11)",
+     "QD85 Burn-out Syndrome",
+     "https://icd.who.int/browse11/l-m/en#/http://id.who.int/icd/entity/1291878064",
+     true
+    ],
+    [
+     "Maslach Burnout Inventory (MBI)",
+     "Maslach & Jackson (1981)",
+     "",
+     false
+    ]
+   ],
+   "review_status": "review",
+   "aliases": [
+    "burned out",
+    "burnt out",
+    "burn out",
+    "burned-out"
+   ],
+   "cues": [
+    [
+     "burned out",
+     "You used the everyday word for burnout itself.",
+     1.6
+    ],
+    [
+     "burnt out",
+     "You used the everyday word for burnout itself.",
+     1.6
+    ],
+    [
+     "tired even after rest",
+     "Exhaustion that rest does not fix is one thing that separates burnout from ordinary tiredness.",
+     1.3
+    ],
+    [
+     "cannot recover",
+     "Not recovering after rest is one thing that separates burnout from ordinary tiredness.",
+     1.0
+    ],
+    [
+     "can't recover",
+     "Not recovering after rest is one thing that separates burnout from ordinary tiredness.",
+     1.0
+    ],
+    [
+     "even when i sleep",
+     "Feeling depleted despite sleep can point to sustained exhaustion rather than short-term tiredness.",
+     1.1
+    ],
+    [
+     "dread work",
+     "Dreading the demands you face every day is often described alongside burnout.",
+     0.9
+    ],
+    [
+     "dread going to school",
+     "Dreading the demands you face every day is often described alongside burnout.",
+     0.9
+    ],
+    [
+     "ubos na ubos",
+     "\"Ubos na ubos\" describes being completely used up, close to what burnout means.",
+     1.2
+    ],
+    [
+     "pagod na pagod",
+     "Deep, repeated tiredness can be part of burnout when it lasts a long time.",
+     0.8
+    ]
+   ]
+  },
+  {
+   "term": "Chronic Stress",
+   "slug": "chronic-stress",
+   "term_fil": "Matagalang Stress (Chronic Stress)",
+   "category": "stress-and-anxiety",
+   "term_type": "psychological",
+   "short_definition": "A prolonged and continuous state of physiological and psychological arousal in response to enduring pressures.",
+   "short_definition_fil": "Matagalang tensyon sa katawan at isip dahil sa tuloy-tuloy na problemang walang agarang lunas.",
+   "detailed_definition": "Unlike acute stress which subsides once a situation resolves, chronic stress keeps cortisol and adrenaline elevated, taxing sleep, digestion, and emotional resilience.",
+   "detailed_definition_fil": "Hindi tulad ng karaniwang kaba na nawawala agad, ang matagalang stress ay nagpapanatili sa tensyon ng kalamnan, sakit ng ulo, at pagkabalisa.",
+   "in_simpler_terms": "Feeling like your nervous system is perpetually on high alert with no quiet period to recover.",
+   "in_simpler_terms_fil": "Pakiramdam na laging alerto at tensyonado ang katawan mo, na parang laging may nakaambang problema.",
+   "examples": [
+    [
+     "Worrying about family expenses, academic grades, and health difficulties every single day for months.",
+     "Araw-araw na pag-aalala sa gastusin sa pamilya at grado nang walang patid sa loob ng ilang buwan."
+    ]
+   ],
+   "questions": [
+    [
+     "Do you notice physical signs like jaw clenching, tight shoulders, or stomach knots during rest?",
+     "Napapansin mo ba ang pananakit ng batok, balikat, o tiyan kahit walang ginagawa?"
+    ]
+   ],
+   "sources": [
+    [
+     "American Psychological Association",
+     "Understanding Chronic Stress",
+     "https://apa.org",
+     false
+    ]
+   ],
+   "review_status": "review",
+   "aliases": [
+    "stressed for months",
+    "long-term stress",
+    "constant stress"
+   ],
+   "cues": [
+    [
+     "always stressed",
+     "Stress that never switches off may be chronic rather than short-term.",
+     1.3
+    ],
+    [
+     "for months",
+     "Pressure that has lasted months fits the idea of chronic stress.",
+     0.9
+    ],
+    [
+     "every day",
+     "Pressure that returns every day can become chronic stress.",
+     0.6
+    ],
+    [
+     "never ends",
+     "Pressure that never ends is the defining feature of chronic stress.",
+     1.0
+    ],
+    [
+     "on edge",
+     "Feeling constantly on alert is a common sign of prolonged stress.",
+     0.8
+    ]
+   ]
+  },
+  {
+   "term": "Compassion Fatigue",
+   "slug": "compassion-fatigue",
+   "term_fil": "Pagkapagod sa Pagmamalasakit",
+   "category": "emotional-exhaustion",
+   "term_type": "psychological",
+   "short_definition": "Exhaustion and reduced ability to feel empathy that can develop from caring for people who are suffering.",
+   "short_definition_fil": "Pagkahapo at paghina ng kakayahang makiramay dahil sa matagal na pag-aalaga sa mga nagdurusa.",
+   "detailed_definition": "Described by Charles Figley in work with helpers and caregivers. It can affect nurses, teachers, counselors, family caregivers and peer supporters.",
+   "detailed_definition_fil": "",
+   "in_simpler_terms": "Caring for others for so long that you start to feel numb or worn out by it.",
+   "in_simpler_terms_fil": "",
+   "examples": [
+    [
+     "A volunteer notices they no longer feel moved by stories that used to affect them deeply.",
+     ""
+    ]
+   ],
+   "questions": [
+    [
+     "Do you spend much of your time supporting people who are going through hard things?",
+     ""
+    ]
+   ],
+   "sources": [
+    [
+     "Compassion Fatigue",
+     "Figley, C. R. (Ed.) (1995)",
+     "",
+     false
+    ],
+    [
+     "APA Dictionary of Psychology",
+     "American Psychological Association",
+     "https://dictionary.apa.org/",
+     false
+    ]
+   ],
+   "aliases": [
+    "caregiver fatigue",
+    "empathy fatigue"
+   ],
+   "cues": [
+    [
+     "taking care of",
+     "Long-term caregiving is the setting where compassion fatigue appears.",
+     0.8
+    ],
+    [
+     "caring for everyone",
+     "Constantly caring for others can lead to compassion fatigue.",
+     1.1
+    ],
+    [
+     "can't feel for others",
+     "A drop in empathy after long caregiving is the core of compassion fatigue.",
+     1.2
+    ]
+   ],
+   "review_status": "review"
+  },
+  {
+   "term": "Counseling",
+   "slug": "counseling",
+   "term_fil": "Pagpapayo (Counseling)",
+   "category": "help-seeking",
+   "term_type": "psychological",
+   "short_definition": "A professional relationship in which a trained counselor helps a person work through personal, emotional or practical difficulties.",
+   "short_definition_fil": "Propesyonal na ugnayan kung saan tinutulungan ng sinanay na counselor ang tao sa personal, emosyonal o praktikal na suliranin.",
+   "detailed_definition": "Schools often have guidance counselors. Counseling is not only for crises; it can help with stress, decisions and relationships.",
+   "detailed_definition_fil": "",
+   "in_simpler_terms": "Talking things through with someone trained to help.",
+   "in_simpler_terms_fil": "",
+   "examples": [],
+   "questions": [
+    [
+     "Does your school or workplace have a counselor you could book a time with?",
+     ""
+    ]
+   ],
+   "sources": [
+    [
+     "APA Dictionary of Psychology",
+     "American Psychological Association",
+     "https://dictionary.apa.org/",
+     false
+    ]
+   ],
+   "aliases": [
+    "counselling",
+    "counselor",
+    "guidance counselor",
+    "therapy",
+    "therapist"
+   ],
+   "cues": [
+    [
+     "counselor",
+     "You mentioned a counselor.",
+     1.2
+    ],
+    [
+     "therapy",
+     "You mentioned therapy.",
+     1.0
+    ],
+    [
+     "professional help",
+     "You mentioned professional help.",
+     1.1
+    ]
+   ],
+   "review_status": "review"
+  },
+  {
+   "term": "Crisis Intervention",
+   "slug": "crisis-intervention",
+   "term_fil": "Agarang Interbensyon sa Krisis",
+   "category": "help-seeking",
+   "term_type": "psychological",
+   "short_definition": "Immediate, short-term help for someone in acute emotional distress or danger, focused on safety and stabilisation.",
+   "short_definition_fil": "Agarang panandaliang tulong para sa taong nasa matinding emosyonal na pagkabalisa o panganib, nakatuon sa kaligtasan.",
+   "detailed_definition": "Crisis lines and emergency services provide crisis intervention. If someone is in immediate danger, contact emergency services.",
+   "detailed_definition_fil": "",
+   "in_simpler_terms": "Urgent help focused on getting someone safe right now.",
+   "in_simpler_terms_fil": "",
+   "examples": [],
+   "questions": [],
+   "sources": [
+    [
+     "mhGAP Intervention Guide, version 2.0",
+     "World Health Organization (2016)",
+     "https://www.who.int/publications/i/item/9789241549790",
+     true
+    ]
+   ],
+   "aliases": [
+    "crisis support",
+    "crisis line",
+    "hotline"
+   ],
+   "cues": [
+    [
+     "crisis",
+     "You mentioned a crisis. If you or someone is in danger, contact emergency services or a crisis line now.",
+     1.0
+    ],
+    [
+     "emergency",
+     "If this is an emergency, please call 911 or the NCMH crisis line 1553.",
+     1.0
+    ]
+   ],
+   "review_status": "review"
+  },
+  {
+   "term": "Depression",
+   "slug": "depression",
+   "term_fil": "Depresyon (Clinical Depression)",
+   "category": "emotional-experiences",
+   "term_type": "clinical",
+   "short_definition": "A clinical mood disorder marked by persistent low mood, loss of interest in activities, and changes in sleep, energy, and self-worth lasting two weeks or more.",
+   "short_definition_fil": "Klinikal na karamdaman sa mood kung saan may patuloy na pagkawala ng gana, kawalan ng pag-asa, at pagbaba ng sigla sa loob ng dalawang linggo o higit pa.",
+   "detailed_definition": "Major Depressive Disorder is not merely sadness or weakness; it is a serious medical condition involving neurochemical and cognitive changes that interfere with daily life.",
+   "detailed_definition_fil": "Hindi ito simpleng pag-iinarte o kawalan ng pananampalataya; isa itong medikal na kondisyon na nangangailangan ng propesyonal na kalinga at pag-unawa.",
+   "in_simpler_terms": "A persistent grey cloud where feelings of pleasure, energy, and self-worth seem entirely muted, regardless of external circumstances.",
+   "in_simpler_terms_fil": "Pakiramdam na parang nababalot ka ng dilim kung saan walang nagpapasaya sa iyo at mabigat ang bawat minuto ng araw.",
+   "examples": [
+    [
+     "Finding it difficult to get out of bed for three straight weeks and having zero interest in hobbies you previously loved.",
+     "Tatlong linggo nang nahihirapang bumangon sa kama at wala nang maramdamang interes sa mga paboritong gawain."
+    ]
+   ],
+   "questions": [
+    [
+     "Has this heavy numbness or despair lasted nearly every day for more than two weeks?",
+     "Tumagal na ba ang ganitong kawalan ng gana nang mahigit dalawang linggo?"
+    ],
+    [
+     "Would you consider reaching out to the psychiatry clinic at ITRMC or calling 1553?",
+     "Bukas ka ba sa pakikipag-ugnayan sa doktor sa ITRMC o pagtawag sa 1553 para sa ligtas na gabay?"
+    ]
+   ],
+   "sources": [
+    [
+     "DSM-5-TR",
+     "Major Depressive Disorder Diagnostic Criteria",
+     "https://psychiatry.org",
+     true
+    ],
+    [
+     "WHO Mental Health Gap Action Programme (mhGAP)",
+     "Depression Intervention Guide",
+     "https://who.int",
+     true
+    ]
+   ],
+   "review_status": "review",
+   "aliases": [
+    "depressed",
+    "major depression",
+    "major depressive disorder",
+    "clinical depression"
+   ],
+   "cues": [
+    [
+     "depressed",
+     "You used the word \"depressed\". It is worth reading how everyday low mood differs from clinical depression.",
+     1.0
+    ],
+    [
+     "nothing makes me happy",
+     "Losing pleasure in almost everything is one of the features professionals look for — only a professional can assess this.",
+     0.8
+    ],
+    [
+     "for weeks",
+     "Low mood lasting weeks is one reason the distinction from ordinary sadness matters.",
+     0.4
+    ]
+   ]
+  },
+  {
+   "term": "Discouragement",
+   "slug": "discouragement",
+   "term_fil": "Panghihina ng Loob",
+   "category": "motivation-and-engagement",
+   "term_type": "everyday",
+   "short_definition": "Losing confidence or enthusiasm after setbacks or when progress feels out of reach.",
+   "short_definition_fil": "Pagkawala ng tiwala o sigla matapos ang mga kabiguan o kapag tila malayo ang pag-unlad.",
+   "detailed_definition": "Discouragement is tied to specific goals or efforts, which makes it different from wider hopelessness.",
+   "detailed_definition_fil": "",
+   "in_simpler_terms": "Feeling like your effort isn't getting you anywhere, so why keep trying.",
+   "in_simpler_terms_fil": "",
+   "examples": [
+    [
+     "Failing a quiz after studying hard and wondering if it is worth trying again.",
+     ""
+    ]
+   ],
+   "questions": [
+    [
+     "What small sign of progress might you be overlooking?",
+     ""
+    ]
+   ],
+   "sources": [
+    [
+     "APA Dictionary of Psychology",
+     "American Psychological Association",
+     "https://dictionary.apa.org/",
+     false
+    ]
+   ],
+   "aliases": [
+    "discouraged",
+    "disheartened",
+    "nanghihina ang loob"
+   ],
+   "cues": [
+    [
+     "discouraged",
+     "You named discouragement directly.",
+     1.5
+    ],
+    [
+     "give up",
+     "Wanting to give up after setbacks reflects discouragement.",
+     1.2
+    ],
+    [
+     "no use",
+     "Feeling that effort is no use is discouragement.",
+     1.0
+    ],
+    [
+     "nothing works",
+     "When nothing works, discouragement grows.",
+     0.9
+    ],
+    [
+     "don't want to do anything",
+     "Not wanting to try anything can follow repeated discouragement.",
+     0.6
+    ]
+   ],
+   "review_status": "review"
+  },
+  {
+   "term": "Dissociation",
+   "slug": "dissociation",
+   "term_fil": "Disosasyon",
+   "category": "mental-health-concepts",
+   "term_type": "psychological",
+   "short_definition": "A disconnection from your thoughts, feelings, surroundings or sense of self.",
+   "short_definition_fil": "Paghiwalay o pagkakawalay sa iyong isip, damdamin, paligid o pakiramdam sa sarili.",
+   "detailed_definition": "Mild dissociation, like zoning out, is common. More intense experiences, such as feeling unreal or watching yourself from outside, can follow severe stress and are worth discussing with a professional.",
+   "detailed_definition_fil": "",
+   "in_simpler_terms": "Feeling far away from yourself or the world, like watching through glass.",
+   "in_simpler_terms_fil": "",
+   "examples": [
+    [
+     "Feeling like you are watching your own life from far away.",
+     ""
+    ]
+   ],
+   "questions": [
+    [
+     "Does grounding (naming what you see and hear) bring you back a little?",
+     ""
+    ]
+   ],
+   "sources": [
+    [
+     "APA Dictionary of Psychology",
+     "American Psychological Association",
+     "https://dictionary.apa.org/",
+     false
+    ]
+   ],
+   "aliases": [
+    "dissociating",
+    "detached",
+    "zoning out",
+    "depersonalization",
+    "derealization"
+   ],
+   "cues": [
+    [
+     "far away",
+     "Feeling far away from yourself or your life is how dissociation is often described.",
+     1.3
+    ],
+    [
+     "watching my life",
+     "Watching your life as if from outside describes dissociation.",
+     1.5
+    ],
+    [
+     "not real",
+     "Feeling that things are not real can be dissociation.",
+     1.2
+    ],
+    [
+     "detached",
+     "Feeling detached is a sign of dissociation.",
+     1.3
+    ],
+    [
+     "autopilot",
+     "Going through life on autopilot can be a mild form of dissociation.",
+     1.0
+    ]
+   ],
+   "review_status": "review"
+  },
+  {
+   "term": "Distress Tolerance",
+   "slug": "distress-tolerance",
+   "term_fil": "Pagtitiis sa Matinding Damdamin",
+   "category": "coping-and-regulation",
+   "term_type": "psychological",
+   "short_definition": "The ability to get through intense emotional pain without making the situation worse.",
+   "short_definition_fil": "Ang kakayahang malampasan ang matinding sakit ng damdamin nang hindi pinalalala ang sitwasyon.",
+   "detailed_definition": "A set of skills taught in Dialectical Behaviour Therapy (DBT), such as temporarily distracting yourself or self-soothing with the senses, aimed at surviving a crisis moment.",
+   "detailed_definition_fil": "",
+   "in_simpler_terms": "Getting through the worst moment, one minute at a time.",
+   "in_simpler_terms_fil": "",
+   "examples": [],
+   "questions": [
+    [
+     "What has helped you get through a very hard hour before?",
+     ""
+    ]
+   ],
+   "sources": [
+    [
+     "DBT Skills Training Manual, 2nd ed.",
+     "Linehan, M. M. (2015)",
+     "",
+     false
+    ]
+   ],
+   "aliases": [
+    "crisis survival skills"
+   ],
+   "cues": [],
+   "review_status": "review"
+  },
+  {
+   "term": "Emotional Exhaustion",
+   "slug": "emotional-exhaustion",
+   "term_fil": "Emosyonal na Pagkahapo",
+   "category": "emotional-exhaustion",
+   "term_type": "psychological",
+   "short_definition": "Feeling emotionally drained and depleted after giving or coping for a long time.",
+   "short_definition_fil": "Pakiramdam na ubos na ang emosyonal na lakas matapos ang matagal na pagbibigay o pagtitiis.",
+   "detailed_definition": "Emotional exhaustion is a sense of having nothing left to give emotionally. It is one of the core dimensions in research on burnout, but it can also follow caregiving, grief, or long conflict.",
+   "detailed_definition_fil": "",
+   "in_simpler_terms": "Your emotional battery is empty, and even small feelings take effort.",
+   "in_simpler_terms_fil": "",
+   "examples": [
+    [
+     "After weeks of caring for a sick parent, even a friendly message feels like too much to answer.",
+     ""
+    ]
+   ],
+   "questions": [
+    [
+     "Is there something that has been asking a lot of you emotionally for a long time?",
+     ""
+    ]
+   ],
+   "sources": [
+    [
+     "APA Dictionary of Psychology",
+     "American Psychological Association",
+     "https://dictionary.apa.org/",
+     false
+    ]
+   ],
+   "aliases": [
+    "emotionally exhausted",
+    "emotionally drained",
+    "emotionally tired"
+   ],
+   "cues": [
+    [
+     "emotionally exhausted",
+     "You described emotional exhaustion directly.",
+     1.6
+    ],
+    [
+     "nothing left",
+     "Having \"nothing left\" to give is how emotional exhaustion is usually described.",
+     1.3
+    ],
+    [
+     "drained",
+     "Feeling drained points to depleted emotional energy.",
+     1.1
+    ],
+    [
+     "tired",
+     "Tiredness that is emotional rather than physical can be emotional exhaustion.",
+     0.7
+    ],
+    [
+     "too much",
+     "When feelings have been \"too much\" for a long time, exhaustion can follow.",
+     0.5
+    ],
+    [
+     "ubos na",
+     "\"Ubos na\" (all used up) describes depleted emotional energy.",
+     1.0
+    ]
+   ],
+   "review_status": "review"
+  },
+  {
+   "term": "Emotional Numbness",
+   "slug": "emotional-numbness",
+   "term_fil": "Pamamanhid ng Damdamin",
+   "category": "emotional-experiences",
+   "term_type": "psychological",
+   "short_definition": "A reduced ability to feel emotions, both painful and pleasant.",
+   "short_definition_fil": "Paghina ng kakayahang makaramdam ng emosyon, masakit man o masaya.",
+   "detailed_definition": "Numbness can be a temporary way the mind protects itself after overwhelming stress or loss. When it lasts, it is worth discussing with a professional.",
+   "detailed_definition_fil": "",
+   "in_simpler_terms": "Like your feelings have been turned down to zero.",
+   "in_simpler_terms_fil": "",
+   "examples": [
+    [
+     "Hearing good news and noticing you feel nothing at all.",
+     ""
+    ]
+   ],
+   "questions": [
+    [
+     "Did the numbness start after something overwhelming?",
+     ""
+    ]
+   ],
+   "sources": [
+    [
+     "APA Dictionary of Psychology",
+     "American Psychological Association",
+     "https://dictionary.apa.org/",
+     false
+    ]
+   ],
+   "aliases": [
+    "numb",
+    "numbness",
+    "feel nothing",
+    "manhid"
+   ],
+   "cues": [
+    [
+     "numb",
+     "You described feeling numb.",
+     1.5
+    ],
+    [
+     "feel nothing",
+     "Feeling nothing is emotional numbness.",
+     1.5
+    ],
+    [
+     "can't feel anything",
+     "Being unable to feel describes numbness.",
+     1.4
+    ],
+    [
+     "manhid",
+     "\"Manhid\" means numb.",
+     1.4
+    ]
+   ],
+   "review_status": "review"
+  },
+  {
+   "term": "Emotional Regulation",
+   "slug": "emotional-regulation",
+   "term_fil": "Pagpapanatili ng Damdamin",
+   "category": "coping-and-regulation",
+   "term_type": "psychological",
+   "short_definition": "The ways people influence which emotions they have, when, and how they experience and express them.",
+   "short_definition_fil": "Ang mga paraan ng pag-impluwensya sa nararamdaman, kung kailan, at paano ito nararanasan at ipinapahayag.",
+   "detailed_definition": "Everyone regulates emotions, through rest, talking, distraction, reframing or movement. Difficulty regulating is common under stress and can be strengthened with practice and support.",
+   "detailed_definition_fil": "",
+   "in_simpler_terms": "How you steer your feelings so they don't steer you.",
+   "in_simpler_terms_fil": "",
+   "examples": [
+    [
+     "Taking a walk before replying to an upsetting message.",
+     ""
+    ]
+   ],
+   "questions": [
+    [
+     "What helps you come back to steady after a strong feeling?",
+     ""
+    ]
+   ],
+   "sources": [
+    [
+     "APA Dictionary of Psychology",
+     "American Psychological Association",
+     "https://dictionary.apa.org/",
+     false
+    ]
+   ],
+   "aliases": [
+    "emotion regulation",
+    "managing emotions",
+    "self-regulation"
+   ],
+   "cues": [
+    [
+     "can't control my emotions",
+     "Struggling to manage strong feelings is what emotional regulation skills address.",
+     1.3
+    ],
+    [
+     "emotions are too strong",
+     "Very intense emotions are where regulation skills help.",
+     1.1
+    ],
+    [
+     "explode",
+     "Feeling like you will explode emotionally relates to regulation.",
+     0.9
+    ]
+   ],
+   "review_status": "review"
+  },
+  {
+   "term": "Emptiness",
+   "slug": "emptiness",
+   "term_fil": "Kahungkagan",
+   "category": "emotional-experiences",
+   "term_type": "psychological",
+   "short_definition": "A feeling of inner hollowness, as if something meaningful is missing.",
+   "short_definition_fil": "Pakiramdam ng kahungkagan sa loob, na parang may nawawalang mahalaga.",
+   "detailed_definition": "Emptiness is often described alongside loneliness, low mood or loss of meaning. Persistent emptiness is worth talking through with someone you trust or a professional.",
+   "detailed_definition_fil": "",
+   "in_simpler_terms": "Feeling hollow inside, like there is a space where something should be.",
+   "in_simpler_terms_fil": "",
+   "examples": [
+    [
+     "Going through the day doing everything right, yet feeling nothing inside.",
+     ""
+    ]
+   ],
+   "questions": [
+    [
+     "When did you last feel that something mattered to you?",
+     ""
+    ]
+   ],
+   "sources": [
+    [
+     "APA Dictionary of Psychology",
+     "American Psychological Association",
+     "https://dictionary.apa.org/",
+     false
+    ]
+   ],
+   "aliases": [
+    "empty",
+    "hollow",
+    "feel empty"
+   ],
+   "cues": [
+    [
+     "empty",
+     "Feeling empty is how emptiness is usually described.",
+     1.5
+    ],
+    [
+     "hollow",
+     "Feeling hollow describes emptiness.",
+     1.4
+    ],
+    [
+     "nothing matters",
+     "A sense that nothing matters can come with emptiness.",
+     1.0
+    ],
+    [
+     "parang walang laman",
+     "\"Parang walang laman\" (like nothing inside) describes emptiness.",
+     1.3
+    ]
+   ],
+   "review_status": "review"
+  },
+  {
+   "term": "Feeling Drained",
+   "slug": "feeling-drained",
+   "term_fil": "Pakiramdam na Naubos",
+   "category": "emotional-exhaustion",
+   "term_type": "everyday",
+   "short_definition": "An everyday way of saying that your physical or emotional energy has run low.",
+   "short_definition_fil": "Karaniwang paraan ng pagsasabing paubos na ang iyong lakas, pisikal man o emosyonal.",
+   "detailed_definition": "A broad everyday expression. It can describe a single tiring day or a longer pattern; noticing how long it lasts helps tell which.",
+   "detailed_definition_fil": "",
+   "in_simpler_terms": "Like a phone at 5%: still on, but running on very little.",
+   "in_simpler_terms_fil": "",
+   "examples": [
+    [
+     "After a long day of classes and chores, you sit down and cannot bring yourself to do anything else.",
+     ""
+    ]
+   ],
+   "questions": [
+    [
+     "Does the drained feeling lift after rest, or does it stay?",
+     ""
+    ]
+   ],
+   "sources": [],
+   "aliases": [
+    "drained",
+    "depleted",
+    "running on empty",
+    "wiped out"
+   ],
+   "cues": [
+    [
+     "drained",
+     "You used the word \"drained\".",
+     1.3
+    ],
+    [
+     "running on empty",
+     "\"Running on empty\" is another way to say drained.",
+     1.3
+    ],
+    [
+     "no energy",
+     "Having no energy is what feeling drained describes.",
+     1.2
+    ],
+    [
+     "tired",
+     "Tiredness is closely related to feeling drained.",
+     0.8
+    ],
+    [
+     "walang lakas",
+     "\"Walang lakas\" (no strength) is close to feeling drained.",
+     1.0
+    ]
+   ],
+   "review_status": "review"
+  },
+  {
+   "term": "Frustration",
+   "slug": "frustration",
+   "term_fil": "Pagkadismaya",
+   "category": "emotional-experiences",
+   "term_type": "everyday",
+   "short_definition": "The feeling of being blocked from doing or getting something you want or need.",
+   "short_definition_fil": "Pakiramdam ng pagkahadlang sa paggawa o pagkuha ng isang bagay na gusto o kailangan mo.",
+   "detailed_definition": "Frustration is closely linked to anger but centres on obstacles and effort that does not pay off.",
+   "detailed_definition_fil": "",
+   "in_simpler_terms": "Trying and trying, and still hitting the same wall.",
+   "in_simpler_terms_fil": "",
+   "examples": [
+    [
+     "Rewriting a paragraph five times and still not getting it right.",
+     ""
+    ]
+   ],
+   "questions": [
+    [
+     "What is the wall you keep hitting?",
+     ""
+    ]
+   ],
+   "sources": [
+    [
+     "APA Dictionary of Psychology",
+     "American Psychological Association",
+     "https://dictionary.apa.org/",
+     false
+    ]
+   ],
+   "aliases": [
+    "frustrated",
+    "frustrating",
+    "naiinis"
+   ],
+   "cues": [
+    [
+     "frustrated",
+     "You named frustration directly.",
+     1.5
+    ],
+    [
+     "nothing works",
+     "When nothing you try works, frustration builds.",
+     1.1
+    ],
+    [
+     "stuck",
+     "Feeling stuck against an obstacle is frustration.",
+     0.6
+    ],
+    [
+     "naiinis",
+     "\"Naiinis\" means feeling annoyed or frustrated.",
+     1.2
+    ]
+   ],
+   "review_status": "review"
+  },
+  {
+   "term": "Generalized Anxiety Disorder",
+   "slug": "generalized-anxiety-disorder",
+   "term_fil": "Generalized Anxiety Disorder (GAD)",
+   "category": "mental-health-concepts",
+   "term_type": "clinical",
+   "short_definition": "A clinical condition involving excessive, hard-to-control worry about many areas of life, most days, for months.",
+   "short_definition_fil": "Klinikal na kondisyon ng labis at mahirap kontroling pag-aalala sa maraming bagay, halos araw-araw, sa loob ng ilang buwan.",
+   "detailed_definition": "GAD is diagnosed by qualified professionals using specific criteria. Feeling anxious, even often, does not by itself mean someone has GAD. This entry is here so the term is understood, not to self-assess.",
+   "detailed_definition_fil": "",
+   "in_simpler_terms": "Worry that spreads to almost everything and is very hard to switch off, over a long time.",
+   "in_simpler_terms_fil": "",
+   "examples": [],
+   "questions": [
+    [
+     "If worry has been affecting your daily life for a long time, would you consider talking to a professional?",
+     ""
+    ]
+   ],
+   "sources": [
+    [
+     "ICD-11 for Mortality and Morbidity Statistics",
+     "World Health Organization",
+     "https://icd.who.int/",
+     true
+    ],
+    [
+     "Health topics",
+     "National Institute of Mental Health",
+     "https://www.nimh.nih.gov/health/topics",
+     true
+    ]
+   ],
+   "aliases": [
+    "gad",
+    "generalised anxiety disorder",
+    "anxiety disorder"
+   ],
+   "cues": [],
+   "review_status": "review"
+  },
+  {
+   "term": "Grief",
+   "slug": "grief",
+   "term_fil": "Pagdadalamhati",
+   "category": "emotional-experiences",
+   "term_type": "psychological",
+   "short_definition": "The deep sorrow and many other feelings that follow a loss, especially the death of someone close.",
+   "short_definition_fil": "Ang malalim na lungkot at iba pang damdamin na sumusunod sa pagkawala, lalo na ng isang mahal sa buhay.",
+   "detailed_definition": "Grief is not only sadness. It can include anger, guilt, numbness, relief, and longing, and it does not follow a neat order. Grief can also follow other losses: a relationship, a home, health, or a future you expected.",
+   "detailed_definition_fil": "",
+   "in_simpler_terms": "The way love keeps hurting after you lose someone or something.",
+   "in_simpler_terms_fil": "",
+   "examples": [
+    [
+     "Months after a grandparent's death, a smell in the kitchen suddenly brings the loss back.",
+     ""
+    ]
+   ],
+   "questions": [
+    [
+     "What or who are you missing?",
+     ""
+    ]
+   ],
+   "sources": [
+    [
+     "APA Dictionary of Psychology",
+     "American Psychological Association",
+     "https://dictionary.apa.org/",
+     false
+    ]
+   ],
+   "aliases": [
+    "grieving",
+    "mourning",
+    "bereavement",
+    "nagdadalamhati"
+   ],
+   "cues": [
+    [
+     "passed away",
+     "A death of someone close is the most common cause of grief.",
+     1.3
+    ],
+    [
+     "died",
+     "Losing someone to death brings grief.",
+     1.2
+    ],
+    [
+     "miss them",
+     "Longing for someone you lost is part of grief.",
+     1.1
+    ],
+    [
+     "lost my",
+     "Loss is the root of grief.",
+     1.0
+    ],
+    [
+     "namatay",
+     "Death of a loved one (namatay) brings grief.",
+     1.2
+    ]
+   ],
+   "review_status": "review"
+  },
+  {
+   "term": "Grounding",
+   "slug": "grounding",
+   "term_fil": "Pagpapakalma / Grounding",
+   "category": "coping-and-regulation",
+   "term_type": "psychological",
+   "short_definition": "Mindfulness and sensory strategies designed to anchor your awareness in the physical reality of the present moment.",
+   "short_definition_fil": "Mga simpleng paraan gamit ang paningin, pandinig, at pandama upang ibalik ang isip sa kasalukuyang sandali.",
+   "detailed_definition": "Grounding interrupts panic loops, flashbacks, and cognitive spirals by stimulating the senses, activating the parasympathetic nervous system.",
+   "detailed_definition_fil": "Pumuputol sa labis na kaba at pag-iisip sa pamamagitan ng pagtutok sa mga bagay na nakikita, naririnig, at nahihipo.",
+   "in_simpler_terms": "Using your five senses (what you see, touch, hear) to bring your frantic brain back into the calm room.",
+   "in_simpler_terms_fil": "Paggamit ng pandama—paghawak sa malamig na baso, pagbilang ng kulay sa paligid—upang kumalma.",
+   "examples": [
+    [
+     "Feeling your feet planted firmly on the floor and naming five green things in the room when your heart races.",
+     "Pagdama sa mga paa sa sahig at pagbilang ng limang bagay sa paligid kapag bumibilis ang tibok ng puso."
+    ]
+   ],
+   "questions": [
+    [
+     "Can you notice the temperature of the air on your skin right now?",
+     "Nararamdaman mo ba ang simoy ng hangin sa iyong balat ngayon?"
+    ]
+   ],
+   "sources": [
+    [
+     "Najavits, L. M.",
+     "Seeking Safety: Grounding Skills",
+     "",
+     false
+    ]
+   ],
+   "review_status": "review",
+   "aliases": [
+    "ground myself",
+    "grounding exercise",
+    "5-4-3-2-1"
+   ],
+   "cues": [
+    [
+     "calm down",
+     "If you are looking for ways to calm down, grounding is one practical skill.",
+     0.8
+    ],
+    [
+     "panicking",
+     "Grounding is often used to steady yourself during a wave of panic.",
+     0.6
+    ],
+    [
+     "not real",
+     "Feeling disconnected from what is real is something grounding exercises can help with.",
+     0.6
+    ]
+   ]
+  },
+  {
+   "term": "Guilt",
+   "slug": "guilt",
+   "term_fil": "Pagkakonsensya",
+   "category": "emotional-experiences",
+   "term_type": "everyday",
+   "short_definition": "A painful feeling that you have done something wrong or failed to do something you should have.",
+   "short_definition_fil": "Masakit na pakiramdam na may nagawa kang mali o may hindi nagawang dapat ginawa.",
+   "detailed_definition": "Guilt focuses on an action (\"I did a bad thing\"). It can be useful when it leads to repair. Shame, by contrast, focuses on the self (\"I am bad\").",
+   "detailed_definition_fil": "",
+   "in_simpler_terms": "\"I did something wrong\" — and it keeps bothering you.",
+   "in_simpler_terms_fil": "",
+   "examples": [
+    [
+     "Feeling awful for snapping at a friend and wanting to apologize.",
+     ""
+    ]
+   ],
+   "questions": [
+    [
+     "Is the feeling about something you did, or about who you are?",
+     ""
+    ]
+   ],
+   "sources": [
+    [
+     "APA Dictionary of Psychology",
+     "American Psychological Association",
+     "https://dictionary.apa.org/",
+     false
+    ]
+   ],
+   "aliases": [
+    "guilty",
+    "feel bad about",
+    "nakokonsensya"
+   ],
+   "cues": [
+    [
+     "guilty",
+     "You named guilt directly.",
+     1.5
+    ],
+    [
+     "my fault",
+     "Believing something is your fault is the core of guilt.",
+     1.3
+    ],
+    [
+     "should have",
+     "\"I should have…\" thinking often comes with guilt.",
+     0.9
+    ],
+    [
+     "nakokonsensya",
+     "\"Nakokonsensya\" means feeling guilty.",
+     1.4
+    ]
+   ],
+   "review_status": "review"
+  },
+  {
+   "term": "Helplessness",
+   "slug": "helplessness",
+   "term_fil": "Kawalan ng Magagawa",
+   "category": "motivation-and-engagement",
+   "term_type": "psychological",
+   "short_definition": "Feeling that you have no power to change your situation.",
+   "short_definition_fil": "Pakiramdam na wala kang kapangyarihang baguhin ang iyong sitwasyon.",
+   "detailed_definition": "Psychologist Martin Seligman described \"learned helplessness\": after repeated situations where effort made no difference, people may stop trying even when change becomes possible.",
+   "detailed_definition_fil": "",
+   "in_simpler_terms": "Feeling like nothing you do will make a difference.",
+   "in_simpler_terms_fil": "",
+   "examples": [
+    [
+     "After many rejected applications, not sending the next one even though it might work.",
+     ""
+    ]
+   ],
+   "questions": [
+    [
+     "Is there one small part of the situation you can still influence?",
+     ""
+    ]
+   ],
+   "sources": [
+    [
+     "Helplessness: On Depression, Development, and Death",
+     "Seligman, M. E. P. (1975)",
+     "",
+     false
+    ],
+    [
+     "APA Dictionary of Psychology",
+     "American Psychological Association",
+     "https://dictionary.apa.org/",
+     false
+    ]
+   ],
+   "aliases": [
+    "helpless",
+    "powerless",
+    "learned helplessness",
+    "walang magawa"
+   ],
+   "cues": [
+    [
+     "helpless",
+     "You described helplessness directly.",
+     1.5
+    ],
+    [
+     "powerless",
+     "Feeling powerless is helplessness.",
+     1.4
+    ],
+    [
+     "nothing i do",
+     "Believing nothing you do matters is helplessness.",
+     1.2
+    ],
+    [
+     "walang magawa",
+     "\"Walang magawa\" (nothing I can do) describes helplessness.",
+     1.4
+    ]
+   ],
+   "review_status": "review"
+  },
+  {
+   "term": "Hopelessness",
+   "slug": "hopelessness",
+   "term_fil": "Kawalan ng Pag-asa",
+   "category": "emotional-experiences",
+   "term_type": "psychological",
+   "short_definition": "The belief that things will not get better and that nothing you do will change them.",
+   "short_definition_fil": "Paniniwalang hindi na bubuti ang mga bagay at walang magagawa para magbago ito.",
+   "detailed_definition": "Hopelessness is a serious feeling to take care of. If it comes with thoughts of not wanting to be alive, please contact a crisis line or someone you trust right away.",
+   "detailed_definition_fil": "",
+   "in_simpler_terms": "Feeling like the future is closed and nothing will change.",
+   "in_simpler_terms_fil": "",
+   "examples": [],
+   "questions": [
+    [
+     "Who is one person you could tell about this feeling today?",
+     ""
+    ]
+   ],
+   "sources": [
+    [
+     "APA Dictionary of Psychology",
+     "American Psychological Association",
+     "https://dictionary.apa.org/",
+     false
+    ],
+    [
+     "mhGAP Intervention Guide, version 2.0",
+     "World Health Organization (2016)",
+     "https://www.who.int/publications/i/item/9789241549790",
+     true
+    ]
+   ],
+   "aliases": [
+    "hopeless",
+    "no hope",
+    "what's the point",
+    "wala nang pag-asa"
+   ],
+   "cues": [
+    [
+     "hopeless",
+     "You described hopelessness directly.",
+     1.5
+    ],
+    [
+     "no point",
+     "Feeling there is no point is close to hopelessness.",
+     1.2
+    ],
+    [
+     "what's the point",
+     "\"What's the point\" expresses hopelessness.",
+     1.2
+    ],
+    [
+     "never get better",
+     "Believing things will never improve is hopelessness.",
+     1.4
+    ],
+    [
+     "wala nang pag-asa",
+     "\"Wala nang pag-asa\" means there is no more hope.",
+     1.5
+    ]
+   ],
+   "review_status": "review"
+  },
+  {
+   "term": "Impostor Feelings",
+   "slug": "impostor-feelings",
+   "term_fil": "Pakiramdam na Impostor",
+   "category": "self-perception",
+   "term_type": "psychological",
+   "short_definition": "Feeling like a fraud who does not deserve your achievements, despite evidence of your abilities.",
+   "short_definition_fil": "Pakiramdam na isa kang mapagpanggap na hindi karapat-dapat sa iyong mga nagawa, kahit may patunay ng iyong kakayahan.",
+   "detailed_definition": "First described by Clance and Imes as the \"impostor phenomenon\". It is a common experience, not a diagnosis.",
+   "detailed_definition_fil": "",
+   "in_simpler_terms": "Feeling like you got here by luck and will be \"found out\".",
+   "in_simpler_terms_fil": "",
+   "examples": [
+    [
+     "Getting into a good program and worrying that the school made a mistake.",
+     ""
+    ]
+   ],
+   "questions": [
+    [
+     "What evidence would a friend point to that you earned this?",
+     ""
+    ]
+   ],
+   "sources": [
+    [
+     "The impostor phenomenon in high achieving women",
+     "Clance, P. R., & Imes, S. A. (1978)",
+     "",
+     false
+    ]
+   ],
+   "aliases": [
+    "impostor syndrome",
+    "imposter syndrome",
+    "impostor phenomenon",
+    "feel like a fraud"
+   ],
+   "cues": [
+    [
+     "fraud",
+     "Feeling like a fraud is the core of impostor feelings.",
+     1.5
+    ],
+    [
+     "found out",
+     "Fearing being \"found out\" is typical of impostor feelings.",
+     1.3
+    ],
+    [
+     "don't deserve",
+     "Feeling you do not deserve success relates to impostor feelings.",
+     1.1
+    ],
+    [
+     "just luck",
+     "Crediting success to luck is common in impostor feelings.",
+     1.2
+    ]
+   ],
+   "review_status": "review"
+  },
+  {
+   "term": "Inner Critic",
+   "slug": "inner-critic",
+   "term_fil": "Mapanghusgang Panloob na Tinig",
+   "category": "self-perception",
+   "term_type": "everyday",
+   "short_definition": "The harsh inner voice that judges, blames or puts you down.",
+   "short_definition_fil": "Ang malupit na tinig sa loob na humuhusga, sumisisi o nagpapababa sa iyo.",
+   "detailed_definition": "Many people have an inner critic. Noticing and naming it can create a bit of distance from it, which is a step used in several self-help and therapy approaches.",
+   "detailed_definition_fil": "",
+   "in_simpler_terms": "That voice in your head that says you messed up again.",
+   "in_simpler_terms_fil": "",
+   "examples": [
+    [
+     "Making a small mistake and hearing yourself think \"you always ruin everything\".",
+     ""
+    ]
+   ],
+   "questions": [
+    [
+     "What would a kinder voice say about the same situation?",
+     ""
+    ]
+   ],
+   "sources": [
+    [
+     "APA Dictionary of Psychology",
+     "American Psychological Association",
+     "https://dictionary.apa.org/",
+     false
+    ]
+   ],
+   "aliases": [
+    "self-criticism",
+    "self critical",
+    "hard on myself"
+   ],
+   "cues": [
+    [
+     "hard on myself",
+     "Being hard on yourself is the inner critic at work.",
+     1.4
+    ],
+    [
+     "i always mess up",
+     "\"I always mess up\" is classic inner-critic language.",
+     1.3
+    ],
+    [
+     "stupid",
+     "Calling yourself stupid is often the inner critic talking.",
+     0.9
+    ],
+    [
+     "blame myself",
+     "Blaming yourself is a voice of the inner critic.",
+     1.0
+    ]
+   ],
+   "review_status": "review"
+  },
+  {
+   "term": "Insecurity",
+   "slug": "insecurity",
+   "term_fil": "Kawalan ng Kumpiyansa",
+   "category": "self-perception",
+   "term_type": "everyday",
+   "short_definition": "Feeling uncertain about your worth, abilities or place with others.",
+   "short_definition_fil": "Pakiramdam na hindi sigurado sa iyong halaga, kakayahan o lugar sa iba.",
+   "detailed_definition": "Insecurity often shows up in specific areas, such as looks, relationships or school, and it can make people compare themselves to others constantly.",
+   "detailed_definition_fil": "",
+   "in_simpler_terms": "Doubting yourself, especially next to other people.",
+   "in_simpler_terms_fil": "",
+   "examples": [
+    [
+     "Scrolling through classmates' posts and feeling behind everyone.",
+     ""
+    ]
+   ],
+   "questions": [
+    [
+     "Where does the comparison usually start?",
+     ""
+    ]
+   ],
+   "sources": [
+    [
+     "APA Dictionary of Psychology",
+     "American Psychological Association",
+     "https://dictionary.apa.org/",
+     false
+    ]
+   ],
+   "aliases": [
+    "insecure",
+    "self-doubt",
+    "comparing myself"
+   ],
+   "cues": [
+    [
+     "insecure",
+     "You named insecurity directly.",
+     1.5
+    ],
+    [
+     "compare myself",
+     "Comparing yourself to others is a hallmark of insecurity.",
+     1.4
+    ],
+    [
+     "everyone is better",
+     "Believing everyone is better than you reflects insecurity.",
+     1.3
+    ],
+    [
+     "self-doubt",
+     "Self-doubt is insecurity about your abilities.",
+     1.3
+    ]
+   ],
+   "review_status": "review"
+  },
+  {
+   "term": "Irritability",
+   "slug": "irritability",
+   "term_fil": "Pagkamainisin",
+   "category": "emotional-experiences",
+   "term_type": "psychological",
+   "short_definition": "Being easily annoyed or quick to anger, often over small things.",
+   "short_definition_fil": "Madaling mainis o magalit, kadalasan sa maliliit na bagay.",
+   "detailed_definition": "Irritability is often a sign that someone is stretched thin — tired, stressed, in pain, or low in mood — rather than a personality trait.",
+   "detailed_definition_fil": "",
+   "in_simpler_terms": "Having a short fuse — little things set you off.",
+   "in_simpler_terms_fil": "",
+   "examples": [
+    [
+     "Snapping at your sibling for a small noise after a long week.",
+     ""
+    ]
+   ],
+   "questions": [
+    [
+     "Is the short fuse new, and what else has been draining you?",
+     ""
+    ]
+   ],
+   "sources": [
+    [
+     "APA Dictionary of Psychology",
+     "American Psychological Association",
+     "https://dictionary.apa.org/",
+     false
+    ]
+   ],
+   "aliases": [
+    "irritable",
+    "irritated",
+    "short-tempered",
+    "snappy",
+    "mainitin ang ulo"
+   ],
+   "cues": [
+    [
+     "irritable",
+     "You described irritability directly.",
+     1.5
+    ],
+    [
+     "snap at",
+     "Snapping at people is a sign of irritability.",
+     1.3
+    ],
+    [
+     "everything annoys me",
+     "Being annoyed by everything is irritability.",
+     1.4
+    ],
+    [
+     "short temper",
+     "A short temper describes irritability.",
+     1.3
+    ]
+   ],
+   "review_status": "review"
+  },
+  {
+   "term": "Loneliness",
+   "slug": "loneliness",
+   "term_fil": "Pangungulila (Loneliness)",
+   "category": "interpersonal-experiences",
+   "term_type": "psychological",
+   "short_definition": "The painful subjective feeling that your existing social connections do not meet your psychological need for closeness and belonging.",
+   "short_definition_fil": "Masakit na pakiramdam ng kawalan ng malalim na koneksyon o pag-unawa mula sa ibang tao.",
+   "detailed_definition": "Loneliness is distinct from being physically alone. One can feel profoundly lonely in a crowded room if there is a perceived lack of meaningful intimacy.",
+   "detailed_definition_fil": "Maaari kang makaramdam ng pangungulila kahit napapaligiran ka ng maraming tao kung pakiramdam mo ay walang tunay na nakakakilala sa iyo.",
+   "in_simpler_terms": "Feeling unseen or emotionally isolated, wishing you had someone who truly understands your inner world.",
+   "in_simpler_terms_fil": "Pangungulila sa taong tunay na makauunawa sa nararamdaman mo nang walang paghuhusga.",
+   "examples": [
+    [
+     "Sitting in a bustling classroom in San Fernando yet feeling like an invisible outsider.",
+     "Nasa gitna ng masiglang klase o pamilya ngunit pakiramdam mo ay dayuhan ka at nag-iisa."
+    ]
+   ],
+   "questions": [
+    [
+     "Do you yearn for deeper emotional intimacy rather than just more people around you?",
+     "Naghahanap ka ba ng mas tapat at malalim na pakikipag-usap?"
+    ]
+   ],
+   "sources": [
+    [
+     "Cacioppo & Patrick",
+     "Loneliness: Human Nature and the Need for Social Connection",
+     "",
+     false
+    ]
+   ],
+   "review_status": "review",
+   "aliases": [
+    "lonely",
+    "alone",
+    "isolated feeling"
+   ],
+   "cues": [
+    [
+     "lonely",
+     "You named loneliness directly.",
+     1.5
+    ],
+    [
+     "no one understands",
+     "Feeling that no one truly understands you is at the heart of loneliness.",
+     1.3
+    ],
+    [
+     "alone",
+     "Feeling alone can be loneliness even when people are around.",
+     0.8
+    ],
+    [
+     "invisible",
+     "Feeling unseen by others is a common description of loneliness.",
+     0.9
+    ],
+    [
+     "nobody cares",
+     "Feeling that nobody cares often goes with loneliness.",
+     1.0
+    ],
+    [
+     "walang nakakaintindi",
+     "\"Walang nakakaintindi\" (no one understands) is close to loneliness.",
+     1.2
+    ],
+    [
+     "mag-isa",
+     "Feeling \"mag-isa\" (alone) can describe loneliness.",
+     0.8
+    ]
+   ]
+  },
+  {
+   "term": "Mindfulness",
+   "slug": "mindfulness",
+   "term_fil": "Mindfulness (Mapanuring Kamalayan)",
+   "category": "coping-and-regulation",
+   "term_type": "psychological",
+   "short_definition": "Paying attention to the present moment on purpose, without judging it.",
+   "short_definition_fil": "Sadyang pagbibigay-pansin sa kasalukuyang sandali nang walang paghuhusga.",
+   "detailed_definition": "Mindfulness practices are used in several evidence-based approaches. They are a skill to practise, not a cure, and are not suitable for everyone in every moment.",
+   "detailed_definition_fil": "",
+   "in_simpler_terms": "Noticing what is happening right now, gently.",
+   "in_simpler_terms_fil": "",
+   "examples": [
+    [
+     "Noticing the warmth of a cup in your hands for a full minute.",
+     ""
+    ]
+   ],
+   "questions": [
+    [
+     "What do you notice right now, without changing it?",
+     ""
+    ]
+   ],
+   "sources": [
+    [
+     "APA Dictionary of Psychology",
+     "American Psychological Association",
+     "https://dictionary.apa.org/",
+     false
+    ]
+   ],
+   "aliases": [
+    "mindful",
+    "present moment"
+   ],
+   "cues": [
+    [
+     "calm down",
+     "Mindfulness is one way people practise steadying themselves.",
+     0.5
+    ]
+   ],
+   "review_status": "review"
+  },
+  {
+   "term": "Overthinking",
+   "slug": "overthinking",
+   "term_fil": "Sobrang Pag-iisip",
+   "category": "stress-and-anxiety",
+   "term_type": "everyday",
+   "short_definition": "An everyday word for thinking about something so much that it becomes tiring and unhelpful.",
+   "short_definition_fil": "Karaniwang salita para sa labis na pag-iisip sa isang bagay hanggang sa nakakapagod at hindi na nakatutulong.",
+   "detailed_definition": "Overthinking is a popular umbrella term. Psychologists usually split it into worry (about the future) and rumination (about the past).",
+   "detailed_definition_fil": "",
+   "in_simpler_terms": "Your brain stuck in a loop it cannot get out of.",
+   "in_simpler_terms_fil": "",
+   "examples": [
+    [
+     "Rereading a message you sent ten times and imagining every way it could be misunderstood.",
+     ""
+    ]
+   ],
+   "questions": [
+    [
+     "Is the loop about something that might happen, or something that already did?",
+     ""
+    ]
+   ],
+   "sources": [],
+   "aliases": [
+    "overthink",
+    "overthinking it",
+    "overanalyzing"
+   ],
+   "cues": [
+    [
+     "overthink",
+     "You used the word \"overthinking\".",
+     1.5
+    ],
+    [
+     "my mind won't stop",
+     "A mind that will not stop is how many people describe overthinking.",
+     1.2
+    ],
+    [
+     "mind won't stop",
+     "A mind that will not stop is how many people describe overthinking.",
+     1.2
+    ],
+    [
+     "can't stop thinking",
+     "Thoughts that will not stop are often called overthinking.",
+     1.0
+    ]
+   ],
+   "review_status": "review"
+  },
+  {
+   "term": "Overwhelm",
+   "slug": "overwhelm",
+   "term_fil": "Pagkabigla sa Dami ng Pasanin (Overwhelm)",
+   "category": "emotional-exhaustion",
+   "term_type": "everyday",
+   "short_definition": "The feeling that the demands placed on you far exceed your immediate capacity to process or manage them.",
+   "short_definition_fil": "Pakiramdam na sabay-sabay at sobra-sobra ang mga pasanin kumpara sa kaya mong dalhin sa sandaling ito.",
+   "detailed_definition": "Emotional overwhelm occurs when cognitive and sensory inputs outstrip coping resources, leading to mental freeze, paralysis, or a desire to shut down.",
+   "detailed_definition_fil": "Nangyayari kapag nagpatong-patong ang gawain at alalahanin kaya nahihirapang mag-isip o magdesisyon kung saan magsisimula.",
+   "in_simpler_terms": "Feeling like everything is happening all at once and your brain cannot find a place to start.",
+   "in_simpler_terms_fil": "Pakiramdam na parang sasabog ang isip mo dahil sa dami ng kailangang asikasuhin nang sabay-sabay.",
+   "examples": [
+    [
+     "Staring at a list of five urgent assignments and feeling entirely unable to write even a single word.",
+     "Nakatitig sa tambak na school requirements o gawaing-bahay nang hindi malaman kung anong uunahin."
+    ]
+   ],
+   "questions": [
+    [
+     "Does breaking down your current situation into one single tiny step bring a slight sense of relief?",
+     "Makatutulong ba kung hahatiin mo ang mga gawain sa pinakamaliit na hakbang muna?"
+    ]
+   ],
+   "sources": [
+    [
+     "APA Dictionary of Psychology",
+     "Entry: Emotional Overload",
+     "https://dictionary.apa.org",
+     false
+    ]
+   ],
+   "review_status": "review",
+   "aliases": [
+    "overwhelmed",
+    "overwhelming",
+    "overloaded"
+   ],
+   "cues": [
+    [
+     "too much",
+     "\"Too much\" describes demands that feel bigger than what you can handle right now — the core of overwhelm.",
+     1.7
+    ],
+    [
+     "everything at once",
+     "Many demands arriving together is the classic picture of overwhelm.",
+     1.3
+    ],
+    [
+     "can't keep up",
+     "Feeling unable to keep up suggests the demands exceed your current capacity.",
+     1.2
+    ],
+    [
+     "cannot keep up",
+     "Feeling unable to keep up suggests the demands exceed your current capacity.",
+     1.2
+    ],
+    [
+     "don't know where to start",
+     "Freezing because you cannot pick a starting point is common in overwhelm.",
+     1.2
+    ],
+    [
+     "so much to do",
+     "A pile-up of tasks is a frequent trigger of overwhelm.",
+     1.0
+    ],
+    [
+     "drowning",
+     "People often describe overwhelm as drowning in demands.",
+     1.0
+    ],
+    [
+     "sobra na",
+     "\"Sobra na\" means it has become too much — close to overwhelm.",
+     1.3
+    ],
+    [
+     "hindi ko na kaya",
+     "\"Hindi ko na kaya\" expresses feeling unable to cope with what is in front of you.",
+     1.1
+    ],
+    [
+     "ang dami",
+     "Saying there is so much at once often goes with overwhelm.",
+     0.7
+    ]
+   ]
+  },
+  {
+   "term": "Panic Attack",
+   "slug": "panic-attack",
+   "term_fil": "Panic Attack (Biglang Matinding Takot)",
+   "category": "stress-and-anxiety",
+   "term_type": "clinical",
+   "short_definition": "A sudden wave of intense fear that peaks within minutes, with strong physical symptoms such as a pounding heart or shortness of breath.",
+   "short_definition_fil": "Biglaang matinding takot na umaabot sa rurok sa loob ng ilang minuto, may kasamang malakas na kabog ng dibdib o hirap huminga.",
+   "detailed_definition": "Panic attacks are very frightening but typically pass. Chest pain or trouble breathing can also have medical causes, so new or severe symptoms should be checked by a health professional. Recurrent attacks are something a professional can help with.",
+   "detailed_definition_fil": "",
+   "in_simpler_terms": "Your body's alarm going off at full volume, all at once.",
+   "in_simpler_terms_fil": "",
+   "examples": [
+    [
+     "Suddenly feeling your chest tighten and being sure something terrible is happening, then it eases after ten minutes.",
+     ""
+    ]
+   ],
+   "questions": [
+    [
+     "Did it come on suddenly and peak within a few minutes?",
+     ""
+    ]
+   ],
+   "sources": [
+    [
+     "Health topics",
+     "National Institute of Mental Health",
+     "https://www.nimh.nih.gov/health/topics",
+     true
+    ],
+    [
+     "APA Dictionary of Psychology",
+     "American Psychological Association",
+     "https://dictionary.apa.org/",
+     false
+    ]
+   ],
+   "aliases": [
+    "panic",
+    "panicking",
+    "panic attacks"
+   ],
+   "cues": [
+    [
+     "panic",
+     "You mentioned panic.",
+     1.3
+    ],
+    [
+     "can't breathe",
+     "Feeling unable to breathe is a common panic symptom — if it is new or severe, seek medical help.",
+     1.0
+    ],
+    [
+     "cannot breathe",
+     "Feeling unable to breathe is a common panic symptom — if it is new or severe, seek medical help.",
+     1.0
+    ],
+    [
+     "heart pounding",
+     "A pounding heart is a common physical sign of panic.",
+     1.0
+    ],
+    [
+     "going to die",
+     "A sudden fear of dying is often reported during panic attacks.",
+     0.9
+    ]
+   ],
+   "review_status": "review"
+  },
+  {
+   "term": "Peer Support",
+   "slug": "peer-support",
+   "term_fil": "Suporta ng Kapwa",
+   "category": "help-seeking",
+   "term_type": "psychological",
+   "short_definition": "Support offered by someone with similar experiences or in a similar position, such as a fellow student.",
+   "short_definition_fil": "Suportang ibinibigay ng taong may katulad na karanasan o katayuan, gaya ng kapwa estudyante.",
+   "detailed_definition": "Peer supporters listen and help people connect to resources. They are not counselors or clinicians and should refer to professionals when needed.",
+   "detailed_definition_fil": "",
+   "in_simpler_terms": "Someone like you who has been there and can listen.",
+   "in_simpler_terms_fil": "",
+   "examples": [],
+   "questions": [
+    [
+     "Is there someone in your circle who would listen without judging?",
+     ""
+    ]
+   ],
+   "sources": [
+    [
+     "Psychological First Aid: Guide for Field Workers",
+     "World Health Organization (2011)",
+     "https://www.who.int/publications/i/item/9789241548205",
+     false
+    ]
+   ],
+   "aliases": [
+    "peer supporter",
+    "peer counselor",
+    "peer helper"
+   ],
+   "cues": [
+    [
+     "someone to talk to",
+     "Wanting someone to talk to is where peer support can help.",
+     1.2
+    ],
+    [
+     "need to talk",
+     "Needing to talk to someone points to support options.",
+     1.0
+    ],
+    [
+     "kausap",
+     "Needing a \"kausap\" (someone to talk to) is where support starts.",
+     1.1
+    ]
+   ],
+   "review_status": "review"
+  },
+  {
+   "term": "Perfectionism",
+   "slug": "perfectionism",
+   "term_fil": "Perpeksyonismo",
+   "category": "self-perception",
+   "term_type": "psychological",
+   "short_definition": "Holding extremely high standards and being very self-critical when they are not met.",
+   "short_definition_fil": "Pagkakaroon ng napakataas na pamantayan at labis na pagpuna sa sarili kapag hindi ito naabot.",
+   "detailed_definition": "Perfectionism can drive effort, but it is often linked to stress, procrastination and burnout when mistakes feel unacceptable.",
+   "detailed_definition_fil": "",
+   "in_simpler_terms": "Feeling like anything less than perfect is failure.",
+   "in_simpler_terms_fil": "",
+   "examples": [
+    [
+     "Not submitting a project because it is \"not good enough yet\", even though it is complete.",
+     ""
+    ]
+   ],
+   "questions": [
+    [
+     "What would \"good enough\" look like here?",
+     ""
+    ]
+   ],
+   "sources": [
+    [
+     "APA Dictionary of Psychology",
+     "American Psychological Association",
+     "https://dictionary.apa.org/",
+     false
+    ]
+   ],
+   "aliases": [
+    "perfectionist",
+    "has to be perfect"
+   ],
+   "cues": [
+    [
+     "perfect",
+     "Needing things to be perfect describes perfectionism.",
+     1.2
+    ],
+    [
+     "perfectionist",
+     "You named perfectionism directly.",
+     1.5
+    ],
+    [
+     "never good enough",
+     "Work that never feels good enough is a perfectionism pattern.",
+     1.2
+    ]
+   ],
+   "review_status": "review"
+  },
+  {
+   "term": "Post-Traumatic Stress Disorder (PTSD)",
+   "slug": "ptsd",
+   "term_fil": "PTSD",
+   "category": "mental-health-concepts",
+   "term_type": "clinical",
+   "short_definition": "A clinical condition that can develop after a traumatic event, involving re-experiencing, avoidance and a persistent sense of threat.",
+   "short_definition_fil": "Klinikal na kondisyong maaaring umusbong matapos ang traumatikong pangyayari, kasama ang muling pagdanas, pag-iwas, at patuloy na pakiramdam ng panganib.",
+   "detailed_definition": "PTSD is diagnosed by qualified professionals using specific criteria. Having difficult memories after an event does not by itself mean PTSD.",
+   "detailed_definition_fil": "",
+   "in_simpler_terms": "When the mind keeps reacting as if a past danger is still happening.",
+   "in_simpler_terms_fil": "",
+   "examples": [],
+   "questions": [],
+   "sources": [
+    [
+     "ICD-11 for Mortality and Morbidity Statistics",
+     "World Health Organization",
+     "https://icd.who.int/",
+     true
+    ],
+    [
+     "Health topics",
+     "National Institute of Mental Health",
+     "https://www.nimh.nih.gov/health/topics",
+     true
+    ]
+   ],
+   "aliases": [
+    "post traumatic stress disorder",
+    "post-traumatic stress"
+   ],
+   "cues": [],
+   "review_status": "review"
+  },
+  {
+   "term": "Procrastination",
+   "slug": "procrastination",
+   "term_fil": "Pagpapaliban",
+   "category": "motivation-and-engagement",
+   "term_type": "everyday",
+   "short_definition": "Delaying tasks you intend to do, even when you expect the delay to make things worse.",
+   "short_definition_fil": "Pagpapaliban ng mga gawaing balak mong gawin, kahit alam mong mas lalala ang sitwasyon.",
+   "detailed_definition": "Research often describes procrastination as a way of managing uncomfortable feelings about a task, not simply laziness.",
+   "detailed_definition_fil": "",
+   "in_simpler_terms": "Putting it off because starting feels uncomfortable.",
+   "in_simpler_terms_fil": "",
+   "examples": [
+    [
+     "Cleaning your entire room instead of starting an essay due tomorrow.",
+     ""
+    ]
+   ],
+   "questions": [
+    [
+     "What feeling shows up when you think about starting?",
+     ""
+    ]
+   ],
+   "sources": [
+    [
+     "APA Dictionary of Psychology",
+     "American Psychological Association",
+     "https://dictionary.apa.org/",
+     false
+    ]
+   ],
+   "aliases": [
+    "procrastinate",
+    "procrastinating",
+    "putting off",
+    "cramming"
+   ],
+   "cues": [
+    [
+     "procrastinat",
+     "Delaying tasks is procrastination.",
+     1.5
+    ],
+    [
+     "putting off",
+     "Putting things off is procrastination.",
+     1.4
+    ],
+    [
+     "can't start",
+     "Struggling to start is often what procrastination feels like from inside.",
+     1.0
+    ],
+    [
+     "cramming",
+     "Last-minute cramming usually follows procrastination.",
+     1.0
+    ]
+   ],
+   "review_status": "review"
+  },
+  {
+   "term": "Psychological First Aid",
+   "slug": "psychological-first-aid",
+   "term_fil": "Psychological First Aid (PFA)",
+   "category": "help-seeking",
+   "term_type": "psychological",
+   "short_definition": "Humane, practical support for people in distress: looking, listening and linking them to help.",
+   "short_definition_fil": "Makatao at praktikal na suporta sa taong nababagabag: pagtingin, pakikinig at pag-uugnay sa tulong.",
+   "detailed_definition": "Described by the World Health Organization as \"look, listen, link\". It does not require being a professional, and it is not therapy.",
+   "detailed_definition_fil": "",
+   "in_simpler_terms": "Basic, caring first steps you can take for someone who is struggling.",
+   "in_simpler_terms_fil": "",
+   "examples": [],
+   "questions": [],
+   "sources": [
+    [
+     "Psychological First Aid: Guide for Field Workers",
+     "World Health Organization (2011)",
+     "https://www.who.int/publications/i/item/9789241548205",
+     false
+    ]
+   ],
+   "aliases": [
+    "pfa",
+    "mental health first aid"
+   ],
+   "cues": [
+    [
+     "help my friend",
+     "If you want to help a friend, psychological first aid describes the first steps.",
+     1.2
+    ],
+    [
+     "help someone",
+     "If you want to help someone, psychological first aid describes the first steps.",
+     1.1
+    ]
+   ],
+   "review_status": "review"
+  },
+  {
+   "term": "Referral",
+   "slug": "referral",
+   "term_fil": "Referral (Pagsangguni)",
+   "category": "help-seeking",
+   "term_type": "everyday",
+   "short_definition": "Being directed or connected from one source of help to another that is better suited to your needs.",
+   "short_definition_fil": "Pagdirekta o pagkonekta mula sa isang mapagkukunan ng tulong patungo sa mas angkop sa iyong pangangailangan.",
+   "detailed_definition": "For example, a teacher may refer a student to the guidance office, and a counselor may refer to a doctor or psychologist.",
+   "detailed_definition_fil": "",
+   "in_simpler_terms": "Being pointed to the right person who can help.",
+   "in_simpler_terms_fil": "",
+   "examples": [],
+   "questions": [],
+   "sources": [
+    [
+     "Psychological First Aid: Guide for Field Workers",
+     "World Health Organization (2011)",
+     "https://www.who.int/publications/i/item/9789241548205",
+     false
+    ]
+   ],
+   "aliases": [
+    "refer",
+    "referred"
+   ],
+   "cues": [],
+   "review_status": "review"
+  },
+  {
+   "term": "Rejection",
+   "slug": "rejection",
+   "term_fil": "Pagtanggi",
+   "category": "interpersonal-experiences",
+   "term_type": "everyday",
+   "short_definition": "Being excluded, turned down or not accepted by others, and the hurt that follows.",
+   "short_definition_fil": "Hindi pagtanggap, pagtanggi o pag-etsapwera ng iba, at ang sakit na kasunod nito.",
+   "detailed_definition": "Social rejection can hurt in ways that feel physical. The hurt is real even when the rejection was small.",
+   "detailed_definition_fil": "",
+   "in_simpler_terms": "The sting of not being chosen or wanted.",
+   "in_simpler_terms_fil": "",
+   "examples": [
+    [
+     "Seeing photos of a gathering your friends did not invite you to.",
+     ""
+    ]
+   ],
+   "questions": [
+    [
+     "Is the hurt about this one moment, or does it echo older moments?",
+     ""
+    ]
+   ],
+   "sources": [
+    [
+     "APA Dictionary of Psychology",
+     "American Psychological Association",
+     "https://dictionary.apa.org/",
+     false
+    ]
+   ],
+   "aliases": [
+    "rejected",
+    "left out",
+    "excluded",
+    "turned down"
+   ],
+   "cues": [
+    [
+     "rejected",
+     "You named rejection directly.",
+     1.5
+    ],
+    [
+     "left out",
+     "Being left out is a form of rejection.",
+     1.4
+    ],
+    [
+     "excluded",
+     "Being excluded is rejection.",
+     1.3
+    ],
+    [
+     "not invited",
+     "Not being invited can feel like rejection.",
+     1.1
+    ],
+    [
+     "doesn't want me",
+     "Feeling unwanted is the sting of rejection.",
+     1.1
+    ]
+   ],
+   "review_status": "review"
+  },
+  {
+   "term": "Resilience",
+   "slug": "resilience",
+   "term_fil": "Katatagan",
+   "category": "mental-health-concepts",
+   "term_type": "psychological",
+   "short_definition": "The process of adapting well and recovering in the face of adversity or stress.",
+   "short_definition_fil": "Ang proseso ng mabuting pag-angkop at pagbangon sa harap ng pagsubok o stress.",
+   "detailed_definition": "Resilience is not a fixed trait or \"being strong\". It grows from relationships, support, skills and resources around a person.",
+   "detailed_definition_fil": "",
+   "in_simpler_terms": "Bending without breaking, and finding your way back.",
+   "in_simpler_terms_fil": "",
+   "examples": [
+    [
+     "Struggling after a family move, then slowly finding new routines and friends.",
+     ""
+    ]
+   ],
+   "questions": [
+    [
+     "Who or what has helped you get through hard times before?",
+     ""
+    ]
+   ],
+   "sources": [
+    [
+     "APA Dictionary of Psychology",
+     "American Psychological Association",
+     "https://dictionary.apa.org/",
+     false
+    ]
+   ],
+   "aliases": [
+    "resilient",
+    "bounce back",
+    "katatagan"
+   ],
+   "cues": [],
+   "review_status": "review"
+  },
+  {
+   "term": "Rumination",
+   "slug": "rumination",
+   "term_fil": "Paulit-ulit na Pag-iisip (Rumination)",
+   "category": "stress-and-anxiety",
+   "term_type": "psychological",
+   "short_definition": "Repetitive, unproductive dwelling on the causes and consequences of past distress without taking constructive action.",
+   "short_definition_fil": "Paulit-ulit na pag-ikot ng isip sa mga nakaraang pagkakamali o suliranin nang walang nalilikhang solusyon.",
+   "detailed_definition": "Rumination traps the mind in a loop of \"Why did this happen to me?\" and \"What if I failed?\", exacerbating anxiety and depressive symptoms.",
+   "detailed_definition_fil": "Pag-ikot ng isip sa nakalipas na kahihiyan o problema, na nagpapatagal lamang sa sama ng loob.",
+   "in_simpler_terms": "Like a broken record in your head replaying an awkward or painful event over and over.",
+   "in_simpler_terms_fil": "Parang sirang plaka sa isip na paulit-ulit na nagpapatugtog ng mga alalahanin at pagkakamali.",
+   "examples": [
+    [
+     "Lying awake until 3 AM replaying a misunderstanding from two days ago.",
+     "Gising hanggang madaling araw kakaisip sa isang nasabing salita sa kaklase noong nakaraang araw."
+    ]
+   ],
+   "questions": [
+    [
+     "Is this train of thought helping you find a solution, or simply making you feel heavier?",
+     "Nakatutulong ba ang paulit-ulit na pag-iisip, o lalo lang nitong pinapabigat ang loob mo?"
+    ]
+   ],
+   "sources": [
+    [
+     "Nolen-Hoeksema, S.",
+     "Ruminative Responses to Depressed Mood",
+     "Journal of Abnormal Psychology",
+     false
+    ]
+   ],
+   "review_status": "review",
+   "aliases": [
+    "ruminating",
+    "dwelling",
+    "replaying"
+   ],
+   "cues": [
+    [
+     "replaying",
+     "Replaying events over and over is the core of rumination.",
+     1.4
+    ],
+    [
+     "keep thinking about",
+     "Repeatedly returning to the same painful thought describes rumination.",
+     1.1
+    ],
+    [
+     "can't stop thinking",
+     "Thoughts that will not stop circling are typical of rumination.",
+     1.2
+    ],
+    [
+     "cannot stop thinking",
+     "Thoughts that will not stop circling are typical of rumination.",
+     1.2
+    ],
+    [
+     "over and over",
+     "Going over the same thing again and again is rumination.",
+     1.0
+    ],
+    [
+     "paulit-ulit",
+     "\"Paulit-ulit\" (again and again) describes the looping of rumination.",
+     1.1
+    ]
+   ]
+  },
+  {
+   "term": "Sadness",
+   "slug": "sadness",
+   "term_fil": "Kalungkutan",
+   "category": "emotional-experiences",
+   "term_type": "everyday",
+   "short_definition": "A natural human emotional response to loss, disappointment, or painful experiences.",
+   "short_definition_fil": "Normal at makataong damdamin dulot ng pagkabigo, pagkawala, o masakit na karanasan.",
+   "detailed_definition": "Sadness is transient and adaptive; it allows us to process sorrow and signal our need for support without a complete loss of self-worth or cognitive functioning.",
+   "detailed_definition_fil": "Ang kalungkutan ay pansamantala at mahalagang bahagi ng pagkatao; hindi nito ganap na pinapatay ang kakayahang magsaya kapag may magandang nangyari.",
+   "in_simpler_terms": "Feeling down or crying because something hurt, while still being able to smile at a comforting memory or hug.",
+   "in_simpler_terms_fil": "Pagkalungkot dahil may nangyaring masakit, ngunit kaya pa ring ngumiti o makaramdam ng ginhawa sa yakap ng kaibigan.",
+   "examples": [
+    [
+     "Feeling sorrowful for a few days after receiving low marks or saying goodbye to a visiting relative.",
+     "Nalulungkot dahil sa mababang marka o pamamaalam sa mahal sa buhay."
+    ]
+   ],
+   "questions": [
+    [
+     "Can you still experience moments of warmth, humor, or appetite despite feeling down?",
+     "May mga sandali pa rin ba na napapangiti ka o nagugutom kahit nalulungkot ka?"
+    ]
+   ],
+   "sources": [
+    [
+     "Paul Ekman",
+     "Emotions Revealed: Recognizing Faces and Feelings",
+     "",
+     false
+    ]
+   ],
+   "review_status": "review",
+   "aliases": [
+    "sad",
+    "down",
+    "unhappy",
+    "malungkot"
+   ],
+   "cues": [
+    [
+     "sad",
+     "You named sadness directly.",
+     1.3
+    ],
+    [
+     "feel down",
+     "Feeling down is a common way to describe sadness.",
+     1.1
+    ],
+    [
+     "crying",
+     "Crying is a natural expression of sadness.",
+     0.9
+    ],
+    [
+     "malungkot",
+     "\"Malungkot\" is the Filipino word for sad.",
+     1.3
+    ],
+    [
+     "heartbroken",
+     "Heartbreak is a deep form of sadness after loss or disappointment.",
+     0.9
+    ]
+   ]
+  },
+  {
+   "term": "Self-Compassion",
+   "slug": "self-compassion",
+   "term_fil": "Kabaitan at Pag-unawa sa Sarili",
+   "category": "self-perception",
+   "term_type": "psychological",
+   "short_definition": "Treating yourself with the same kindness, care, and understanding that you would offer to a beloved friend during failure or suffering.",
+   "short_definition_fil": "Pagturing sa sarili nang may lambing, malasakit, at pag-unawa sa halip na malupit na pagpuna kapag nagkakamali.",
+   "detailed_definition": "Composed of self-kindness versus self-judgment, common humanity versus isolation, and mindfulness versus over-identification with flaws.",
+   "detailed_definition_fil": "Pagtanggap na ang pagkakamali at kahinaan ay normal na bahagi ng pagiging tao, hindi patunay na wala kang kwenta.",
+   "in_simpler_terms": "Talking to yourself like a caring friend would, especially when you make a mistake.",
+   "in_simpler_terms_fil": "Pakikipag-usap sa sarili nang may respeto at malasakit kapag may nasirang plano.",
+   "examples": [
+    [
+     "Saying to yourself: 'It makes sense that I made a mistake, I have been under immense pressure,' instead of calling yourself useless.",
+     "Pagsasabi sa sarili: 'Tao lang ako, pagod ako ngayon kaya nagkamali ako,' sa halip na laitin ang sarili."
+    ]
+   ],
+   "questions": [
+    [
+     "What would you say right now to your closest friend if they were in your exact shoes?",
+     "Ano ang sasabihin mo sa matalik mong kaibigan kung siya ang nasa kalagayan mo ngayon?"
+    ]
+   ],
+   "sources": [
+    [
+     "Neff, Kristin D.",
+     "Self-Compassion: An Alternative Conceptualization of a Healthy Attitude Toward Oneself",
+     "",
+     false
+    ]
+   ],
+   "review_status": "review",
+   "aliases": [
+    "being kind to myself",
+    "self-kindness"
+   ],
+   "cues": [
+    [
+     "hard on myself",
+     "If you are hard on yourself, self-compassion is the contrasting skill worth knowing.",
+     0.8
+    ],
+    [
+     "kind to myself",
+     "Treating yourself kindly is what self-compassion means.",
+     1.0
+    ]
+   ]
+  },
+  {
+   "term": "Self-Esteem",
+   "slug": "self-esteem",
+   "term_fil": "Pagpapahalaga sa Sarili",
+   "category": "self-perception",
+   "term_type": "psychological",
+   "short_definition": "How you judge and value yourself overall.",
+   "short_definition_fil": "Kung paano mo hinuhusgahan at pinahahalagahan ang iyong sarili.",
+   "detailed_definition": "Low self-esteem often shows up as harsh self-judgement and doubting your worth. Self-compassion is a related but different idea: it is about how you treat yourself, not how you rate yourself.",
+   "detailed_definition_fil": "",
+   "in_simpler_terms": "The opinion you hold about yourself.",
+   "in_simpler_terms_fil": "",
+   "examples": [
+    [
+     "Assuming you will fail before trying something new.",
+     ""
+    ]
+   ],
+   "questions": [
+    [
+     "Whose voice does your self-judgement sound like?",
+     ""
+    ]
+   ],
+   "sources": [
+    [
+     "APA Dictionary of Psychology",
+     "American Psychological Association",
+     "https://dictionary.apa.org/",
+     false
+    ]
+   ],
+   "aliases": [
+    "self esteem",
+    "self-worth",
+    "self worth",
+    "confidence"
+   ],
+   "cues": [
+    [
+     "not good enough",
+     "Feeling not good enough is a sign of low self-esteem.",
+     1.4
+    ],
+    [
+     "hate myself",
+     "Harsh self-judgement is related to low self-esteem — please also be gentle with yourself.",
+     1.0
+    ],
+    [
+     "worthless",
+     "Feeling worthless reflects very low self-worth.",
+     1.0
+    ],
+    [
+     "useless",
+     "Seeing yourself as useless reflects low self-esteem.",
+     1.1
+    ]
+   ],
+   "review_status": "review"
+  },
+  {
+   "term": "Shame",
+   "slug": "shame",
+   "term_fil": "Hiya",
+   "category": "emotional-experiences",
+   "term_type": "psychological",
+   "short_definition": "A painful feeling that you are flawed, inadequate or unworthy as a person.",
+   "short_definition_fil": "Masakit na pakiramdam na may mali, kulang o hindi karapat-dapat sa iyong pagkatao.",
+   "detailed_definition": "Shame targets the whole self rather than a specific action, which makes it heavier than guilt and more likely to lead to hiding or withdrawing.",
+   "detailed_definition_fil": "",
+   "in_simpler_terms": "\"I am bad\", rather than \"I did something bad\".",
+   "in_simpler_terms_fil": "",
+   "examples": [
+    [
+     "Wanting to disappear after a mistake, sure that everyone now sees you as worthless.",
+     ""
+    ]
+   ],
+   "questions": [
+    [
+     "Would you speak to a friend in the same way you are speaking to yourself?",
+     ""
+    ]
+   ],
+   "sources": [
+    [
+     "APA Dictionary of Psychology",
+     "American Psychological Association",
+     "https://dictionary.apa.org/",
+     false
+    ]
+   ],
+   "aliases": [
+    "ashamed",
+    "embarrassed about myself",
+    "nahihiya"
+   ],
+   "cues": [
+    [
+     "ashamed",
+     "You named shame directly.",
+     1.5
+    ],
+    [
+     "worthless",
+     "Feeling worthless as a person is close to shame.",
+     1.0
+    ],
+    [
+     "something wrong with me",
+     "Believing something is wrong with you as a person is shame.",
+     1.3
+    ],
+    [
+     "want to disappear",
+     "Wanting to hide or disappear often follows shame.",
+     0.9
+    ],
+    [
+     "nakakahiya ako",
+     "Feeling that you yourself are shameful (nakakahiya) is shame.",
+     1.2
+    ]
+   ],
+   "review_status": "review"
+  },
+  {
+   "term": "Social Isolation",
+   "slug": "social-isolation",
+   "term_fil": "Pagkakabukod (Social Isolation)",
+   "category": "interpersonal-experiences",
+   "term_type": "psychological",
+   "short_definition": "An objective lack of contact and communication with family, friends, and the wider community.",
+   "short_definition_fil": "Pisikal at obhetibong kawalan ng pakikipag-ugnayan sa pamilya, kaibigan, o pamayanan.",
+   "detailed_definition": "Whereas loneliness is subjective distress, isolation is a measurable lack of social ties or interactions, often caused by illness, geographic distance, or withdrawal.",
+   "detailed_definition_fil": "Ang pananatili sa loob ng silid nang walang nakakausap na kahit sino sa loob ng maraming araw.",
+   "in_simpler_terms": "Actually having very few or no people to talk to or spend time with.",
+   "in_simpler_terms_fil": "Walang makausap o makasama dahil sa layo o sadyang pananatili nang mag-isa.",
+   "examples": [
+    [
+     "Remaining inside your bedroom without speaking to family or peers for several days.",
+     "Hindi lumalabas ng kwarto at hindi sumasagot sa mga tawag o mensahe sa loob ng mahabang panahon."
+    ]
+   ],
+   "questions": [
+    [
+     "Are you physically spending days without speaking to anyone outside?",
+     "Ilang araw ka nang hindi nakikipag-usap o nakikisalamuha sa labas ng bahay?"
+    ]
+   ],
+   "sources": [],
+   "review_status": "review",
+   "aliases": [
+    "isolated",
+    "isolation"
+   ],
+   "cues": [
+    [
+     "no friends",
+     "Having few social contacts describes social isolation, which is different from feeling lonely.",
+     1.0
+    ],
+    [
+     "haven't talked to anyone",
+     "Having little contact with others is the objective side of isolation.",
+     1.2
+    ],
+    [
+     "stay in my room",
+     "Spending most of the time without contact can lead to social isolation.",
+     0.8
+    ]
+   ]
+  },
+  {
+   "term": "Social Withdrawal",
+   "slug": "social-withdrawal",
+   "term_fil": "Pag-iwas sa Pakikisalamuha",
+   "category": "interpersonal-experiences",
+   "term_type": "psychological",
+   "short_definition": "Pulling back from people and social activities you would usually take part in.",
+   "short_definition_fil": "Pag-atras mula sa mga tao at gawaing panlipunan na karaniwan mong sinasalihan.",
+   "detailed_definition": "Withdrawal is something you do (a behaviour), while loneliness is something you feel. Withdrawal can be a sign that someone is struggling — it is one of the changes the Notice step of helping someone looks for.",
+   "detailed_definition_fil": "",
+   "in_simpler_terms": "Pulling away from people, even ones you like.",
+   "in_simpler_terms_fil": "",
+   "examples": [
+    [
+     "Leaving messages unread for days and skipping every invitation.",
+     ""
+    ]
+   ],
+   "questions": [
+    [
+     "Is pulling back giving you rest, or keeping you stuck?",
+     ""
+    ]
+   ],
+   "sources": [
+    [
+     "APA Dictionary of Psychology",
+     "American Psychological Association",
+     "https://dictionary.apa.org/",
+     false
+    ]
+   ],
+   "aliases": [
+    "withdrawing",
+    "withdrawn",
+    "avoiding people",
+    "isolating myself"
+   ],
+   "cues": [
+    [
+     "avoid people",
+     "Avoiding people is social withdrawal.",
+     1.4
+    ],
+    [
+     "avoid talking",
+     "Avoiding conversations is a form of withdrawal.",
+     1.3
+    ],
+    [
+     "dread checking my messages",
+     "Dreading messages and contact often comes with withdrawal.",
+     1.3
+    ],
+    [
+     "ignore messages",
+     "Leaving messages unanswered can be withdrawal.",
+     1.1
+    ],
+    [
+     "don't want to see anyone",
+     "Not wanting to see anyone describes withdrawal.",
+     1.4
+    ],
+    [
+     "ayokong makipag-usap",
+     "\"Ayokong makipag-usap\" (I don't want to talk) describes withdrawal.",
+     1.3
+    ]
+   ],
+   "review_status": "review"
+  },
+  {
+   "term": "Stigma",
+   "slug": "stigma",
+   "term_fil": "Stigma",
+   "category": "mental-health-concepts",
+   "term_type": "psychological",
+   "short_definition": "Negative beliefs, labels or treatment directed at people because of a characteristic such as a mental health condition.",
+   "short_definition_fil": "Negatibong paniniwala, tatak o pagtrato sa tao dahil sa isang katangian tulad ng kondisyon sa kalusugang pangkaisipan.",
+   "detailed_definition": "Stigma is one of the main reasons people delay seeking help. Self-stigma happens when people apply those negative beliefs to themselves.",
+   "detailed_definition_fil": "",
+   "in_simpler_terms": "Being judged or labelled for struggling.",
+   "in_simpler_terms_fil": "",
+   "examples": [
+    [
+     "Not telling anyone you see a counselor because you fear being called \"baliw\".",
+     ""
+    ]
+   ],
+   "questions": [
+    [
+     "What would make it easier to talk about this where you are?",
+     ""
+    ]
+   ],
+   "sources": [
+    [
+     "APA Dictionary of Psychology",
+     "American Psychological Association",
+     "https://dictionary.apa.org/",
+     false
+    ]
+   ],
+   "aliases": [
+    "mental health stigma",
+    "self-stigma"
+   ],
+   "cues": [
+    [
+     "judged",
+     "Fear of being judged for struggling relates to stigma.",
+     0.9
+    ],
+    [
+     "baliw",
+     "Fear of being called \"baliw\" is an example of stigma.",
+     1.2
+    ],
+    [
+     "they will think i am crazy",
+     "Fearing others will think you are \"crazy\" is stigma.",
+     1.3
+    ],
+    [
+     "weak for asking",
+     "Believing asking for help is weak reflects stigma.",
+     1.2
+    ]
+   ],
+   "review_status": "review"
+  },
+  {
+   "term": "Stress",
+   "slug": "stress",
+   "term_fil": "Stress",
+   "category": "stress-and-anxiety",
+   "term_type": "everyday",
+   "short_definition": "The body and mind's response to demands or pressure.",
+   "short_definition_fil": "Ang tugon ng katawan at isip sa mga hinihingi o presyon.",
+   "detailed_definition": "Short bursts of stress can help you focus. Stress becomes harmful when it is intense or never lets up, which is described as chronic stress.",
+   "detailed_definition_fil": "",
+   "in_simpler_terms": "The feeling of pressure when something is asking a lot of you.",
+   "in_simpler_terms_fil": "",
+   "examples": [
+    [
+     "Feeling tense the week before finals, then relieved when they are over.",
+     ""
+    ]
+   ],
+   "questions": [
+    [
+     "Is this pressure tied to a specific event that will end?",
+     ""
+    ]
+   ],
+   "sources": [
+    [
+     "APA Dictionary of Psychology",
+     "American Psychological Association",
+     "https://dictionary.apa.org/",
+     false
+    ]
+   ],
+   "aliases": [
+    "stressed",
+    "stressful",
+    "pressure",
+    "pressured",
+    "stressed out"
+   ],
+   "cues": [
+    [
+     "stressed",
+     "You named stress directly.",
+     1.4
+    ],
+    [
+     "pressure",
+     "Pressure is what stress responds to.",
+     1.1
+    ],
+    [
+     "deadline",
+     "Deadlines are a common source of stress.",
+     0.8
+    ],
+    [
+     "stress",
+     "You named stress directly.",
+     1.4
+    ]
+   ],
+   "review_status": "review"
+  },
+  {
+   "term": "Temporary Tiredness",
+   "slug": "temporary-tiredness",
+   "term_fil": "Pansamantalang Pagod",
+   "category": "emotional-exhaustion",
+   "term_type": "everyday",
+   "short_definition": "A natural, short-term reduction in physical or mental energy that reliably resolves after adequate rest or sleep.",
+   "short_definition_fil": "Normal at panandaliang pagbaba ng lakas na karaniwang nawawala matapos ang maayos na tulog o pamamahinga.",
+   "detailed_definition": "A benign physiological response to recent physical exertion, late nights, or concentrated cognitive tasks. Core motivation and enjoyment of life remain intact.",
+   "detailed_definition_fil": "Karaniwang tugon ng katawan sa puyat o mabigat na gawain. Nanatili pa rin ang gana sa buhay kapag nakapagpahinga na.",
+   "in_simpler_terms": "You are physically weary, but sleeping well or taking a quiet day makes you feel like yourself again.",
+   "in_simpler_terms_fil": "Pagod ka lang dahil sa maghapong trabaho o pag-aaral, pero sumisigla ulit pagkatapos ng magandang tulog.",
+   "examples": [
+    [
+     "Feeling sleepy after studying late for an exam, but waking up refreshed after an 8-hour sleep.",
+     "Inaantok matapos ang pagsusulit, ngunit sumigla muli pagkatapos makabawi ng tulog."
+    ]
+   ],
+   "questions": [
+    [
+     "Did you feel better and more optimistic after a good night's sleep or a quiet afternoon?",
+     "Bumuti ba ang pakiramdam mo matapos ang isang gabi ng mahimbing na tulog?"
+    ]
+   ],
+   "sources": [],
+   "review_status": "review",
+   "aliases": [
+    "tired",
+    "tiredness",
+    "sleepy",
+    "fatigue"
+   ],
+   "cues": [
+    [
+     "tired",
+     "Tiredness is the everyday word — worth comparing with deeper exhaustion.",
+     0.6
+    ],
+    [
+     "sleepy",
+     "Sleepiness after effort is usually short-term tiredness.",
+     0.9
+    ],
+    [
+     "pagod",
+     "\"Pagod\" is the everyday word for tiredness.",
+     0.7
+    ],
+    [
+     "puyat",
+     "Lack of sleep (puyat) usually causes short-term tiredness.",
+     0.9
+    ]
+   ]
+  },
+  {
+   "term": "Trauma",
+   "slug": "trauma",
+   "term_fil": "Trauma",
+   "category": "mental-health-concepts",
+   "term_type": "psychological",
+   "short_definition": "The emotional response to a deeply distressing or threatening event, or the event itself.",
+   "short_definition_fil": "Ang emosyonal na tugon sa isang lubhang nakababahala o mapanganib na pangyayari, o ang pangyayari mismo.",
+   "detailed_definition": "Not everyone who goes through a terrible event develops lasting difficulties. When reactions persist and disrupt daily life, trauma-informed professionals can help.",
+   "detailed_definition_fil": "",
+   "in_simpler_terms": "When something so frightening happens that it keeps affecting you afterwards.",
+   "in_simpler_terms_fil": "",
+   "examples": [],
+   "questions": [
+    [
+     "Do you have someone safe you could talk to about what happened?",
+     ""
+    ]
+   ],
+   "sources": [
+    [
+     "APA Dictionary of Psychology",
+     "American Psychological Association",
+     "https://dictionary.apa.org/",
+     false
+    ],
+    [
+     "Health topics",
+     "National Institute of Mental Health",
+     "https://www.nimh.nih.gov/health/topics",
+     true
+    ]
+   ],
+   "aliases": [
+    "traumatic",
+    "traumatized",
+    "traumatised"
+   ],
+   "cues": [
+    [
+     "traumatic",
+     "You described something as traumatic.",
+     1.2
+    ],
+    [
+     "flashback",
+     "Flashbacks can follow traumatic events — a professional can help.",
+     0.9
+    ],
+    [
+     "can't forget what happened",
+     "Being unable to put a frightening event behind you can relate to trauma.",
+     0.9
+    ]
+   ],
+   "review_status": "review"
+  },
+  {
+   "term": "Worry",
+   "slug": "worry",
+   "term_fil": "Pag-aalala",
+   "category": "stress-and-anxiety",
+   "term_type": "everyday",
+   "short_definition": "Repeated thoughts about possible problems or bad outcomes in the future.",
+   "short_definition_fil": "Paulit-ulit na pag-iisip tungkol sa mga posibleng problema o masamang mangyayari.",
+   "detailed_definition": "Worry is the thinking part of anxiety. It focuses on the future (\"what if…\"), while rumination tends to replay the past.",
+   "detailed_definition_fil": "",
+   "in_simpler_terms": "Your mind running through \"what if\" after \"what if\".",
+   "in_simpler_terms_fil": "",
+   "examples": [
+    [
+     "Lying awake thinking about every way tomorrow's exam could go wrong.",
+     ""
+    ]
+   ],
+   "questions": [
+    [
+     "Is your mind looking forward (\"what if\") or backward (\"why did I\")?",
+     ""
+    ]
+   ],
+   "sources": [
+    [
+     "APA Dictionary of Psychology",
+     "American Psychological Association",
+     "https://dictionary.apa.org/",
+     false
+    ]
+   ],
+   "aliases": [
+    "worried",
+    "worrying",
+    "what if",
+    "nag-aalala"
+   ],
+   "cues": [
+    [
+     "worry",
+     "You named worry directly.",
+     1.4
+    ],
+    [
+     "worried",
+     "You named worry directly.",
+     1.4
+    ],
+    [
+     "what if",
+     "\"What if\" thinking is the signature of worry.",
+     1.4
+    ],
+    [
+     "nag-aalala",
+     "\"Nag-aalala\" means worrying.",
+     1.4
+    ],
+    [
+     "constantly",
+     "Constant, repeated thoughts about problems describe worry.",
+     0.4
+    ]
+   ],
+   "review_status": "review"
+  }
+ ],
+ "relationships": [
+  [
+   "burnout",
+   "chronic-stress",
+   "related_to",
+   "Burnout develops over time as a direct consequence of unmanaged chronic stress.",
+   "Ang burnout ay nabubuo bunga ng matagalang stress na hindi nabigyan ng lunas o pahinga."
+  ],
+  [
+   "burnout",
+   "temporary-tiredness",
+   "different_from",
+   "Temporary tiredness recovers with a good sleep; burnout persists even after resting because emotional and motivational reserves are depleted.",
+   "Ang pansamantalang pagod ay nawawala sa tulog; ang burnout ay nananatili dahil ubos ang emosyonal na lakas."
+  ],
+  [
+   "burnout",
+   "overwhelm",
+   "often_associated_with",
+   "Chronic overwhelm frequently precedes burnout as sustained high demands wear down resilience.",
+   "Ang patuloy na pagka-overwhelm ang kadalasang nagiging dahilan ng tuluyang burnout."
+  ],
+  [
+   "sadness",
+   "depression",
+   "different_from",
+   "Sadness is a transient, healthy emotional reaction to pain; depression is an enduring clinical disorder causing persistent numbness, worthlessness, and functional impairment.",
+   "Ang kalungkutan ay pansamantalang damdamin; ang depresyon ay mas malalim na medikal na kalagayan na tumatagal ng linggo at pumipigil sa pamumuhay."
+  ],
+  [
+   "loneliness",
+   "social-isolation",
+   "different_from",
+   "Loneliness is the painful subjective ache of feeling disconnected; social isolation is the objective physical absence of social contact.",
+   "Ang pangungulila ay damdamin ng kakulangan sa malalim na koneksyon; ang isolation ay pisikal na kawalan ng kasama."
+  ],
+  [
+   "rumination",
+   "chronic-stress",
+   "can_contribute_to",
+   "Continually replaying distressing thoughts triggers continuous stress responses in the body.",
+   "Ang paulit-ulit na pag-ikot ng negatibong isip ay nagpapanatili ng mataas na stress sa katawan."
+  ],
+  [
+   "grounding",
+   "rumination",
+   "opposite_of",
+   "Grounding anchors you in the sensory present, directly breaking the mental spiral of rumination.",
+   "Ang grounding ay humihila sa iyo pabalik sa kasalukuyan, pumuputol sa paulit-ulit na pag-aalala."
+  ],
+  [
+   "self-compassion",
+   "burnout",
+   "opposite_of",
+   "Cultivating self-compassion helps prevent and heal burnout by moderating perfectionism and permitting rest.",
+   "Ang malasakit sa sarili ay panangga sa burnout dahil tinutulungan ka nitong magpahinga nang walang kasalanan."
+  ],
+  [
+   "overwhelm",
+   "emotional-exhaustion",
+   "can_contribute_to",
+   "Being overwhelmed again and again, without relief, can wear down emotional energy.",
+   ""
+  ],
+  [
+   "overwhelm",
+   "stress",
+   "different_from",
+   "Stress is the response to pressure; overwhelm is the sense that the pressure is more than you can manage right now.",
+   ""
+  ],
+  [
+   "emotional-exhaustion",
+   "burnout",
+   "related_to",
+   "Emotional exhaustion is one of the core parts of burnout, but it can also happen outside work or study.",
+   ""
+  ],
+  [
+   "emotional-exhaustion",
+   "temporary-tiredness",
+   "different_from",
+   "Tiredness usually lifts with rest; emotional exhaustion tends to stay even after a break.",
+   ""
+  ],
+  [
+   "compassion-fatigue",
+   "burnout",
+   "often_confused_with",
+   "Burnout comes from prolonged demands in general; compassion fatigue comes specifically from caring for people who are suffering.",
+   ""
+  ],
+  [
+   "compassion-fatigue",
+   "emotional-exhaustion",
+   "often_associated_with",
+   "People with compassion fatigue often describe deep emotional exhaustion.",
+   ""
+  ],
+  [
+   "feeling-drained",
+   "emotional-exhaustion",
+   "similar_to",
+   "\"Drained\" is the everyday word; emotional exhaustion is the term used when it is deep and lasting.",
+   ""
+  ],
+  [
+   "feeling-drained",
+   "temporary-tiredness",
+   "related_to",
+   "Feeling drained after one hard day is usually temporary tiredness.",
+   ""
+  ],
+  [
+   "anxiety",
+   "worry",
+   "related_to",
+   "Worry is the thinking side of anxiety; anxiety also includes body sensations and feelings of fear.",
+   ""
+  ],
+  [
+   "anxiety",
+   "generalized-anxiety-disorder",
+   "different_from",
+   "Anxiety is a common human emotion. GAD is a clinical condition diagnosed by professionals when worry is excessive and long-lasting.",
+   ""
+  ],
+  [
+   "anxiety",
+   "panic-attack",
+   "related_to",
+   "A panic attack is a sudden, intense surge of fear; anxiety is usually a longer, lower-level state.",
+   ""
+  ],
+  [
+   "worry",
+   "rumination",
+   "often_confused_with",
+   "Worry looks ahead (\"what if\"), while rumination looks back (\"why did I\").",
+   ""
+  ],
+  [
+   "overthinking",
+   "worry",
+   "related_to",
+   "\"Overthinking\" is the everyday umbrella; worry is the future-focused kind.",
+   ""
+  ],
+  [
+   "overthinking",
+   "rumination",
+   "related_to",
+   "\"Overthinking\" is the everyday umbrella; rumination is the past-focused kind.",
+   ""
+  ],
+  [
+   "stress",
+   "chronic-stress",
+   "different_from",
+   "Stress can be short and pass once the demand ends; chronic stress continues for months.",
+   ""
+  ],
+  [
+   "stress",
+   "anxiety",
+   "often_confused_with",
+   "Stress is a response to a current pressure; anxiety can continue even when no clear pressure is present.",
+   ""
+  ],
+  [
+   "grief",
+   "sadness",
+   "related_to",
+   "Sadness is part of grief, but grief also includes longing, anger, guilt and numbness.",
+   ""
+  ],
+  [
+   "grief",
+   "depression",
+   "different_from",
+   "Grief usually comes in waves tied to the loss and still allows moments of warmth; depression is a clinical condition with more pervasive changes.",
+   ""
+  ],
+  [
+   "guilt",
+   "shame",
+   "often_confused_with",
+   "Guilt says \"I did something bad\"; shame says \"I am bad\".",
+   ""
+  ],
+  [
+   "shame",
+   "self-compassion",
+   "opposite_of",
+   "Self-compassion is often described as an antidote to shame.",
+   ""
+  ],
+  [
+   "anger",
+   "frustration",
+   "related_to",
+   "Frustration is a kind of anger focused on obstacles and blocked goals.",
+   ""
+  ],
+  [
+   "anger",
+   "irritability",
+   "different_from",
+   "Anger is a response to a specific event; irritability is a lowered threshold that makes small things provoke annoyance.",
+   ""
+  ],
+  [
+   "emptiness",
+   "loneliness",
+   "often_associated_with",
+   "Emptiness and loneliness often appear together, but emptiness can be felt even with good company.",
+   ""
+  ],
+  [
+   "emptiness",
+   "emotional-numbness",
+   "similar_to",
+   "Both describe a muted inner life; emptiness feels like something missing, numbness like feelings turned down.",
+   ""
+  ],
+  [
+   "emotional-numbness",
+   "dissociation",
+   "related_to",
+   "Numbness is sometimes part of a wider dissociative experience after overwhelming stress.",
+   ""
+  ],
+  [
+   "irritability",
+   "burnout",
+   "often_associated_with",
+   "Irritability is frequently reported by people who are burned out or very stressed.",
+   ""
+  ],
+  [
+   "hopelessness",
+   "helplessness",
+   "related_to",
+   "Helplessness is \"I can't change this\"; hopelessness is \"this will never get better\".",
+   ""
+  ],
+  [
+   "hopelessness",
+   "discouragement",
+   "different_from",
+   "Discouragement is tied to a specific goal or setback; hopelessness is a broader belief about the future.",
+   ""
+  ],
+  [
+   "hopelessness",
+   "crisis-intervention",
+   "related_to",
+   "If hopelessness comes with thoughts of not wanting to live, crisis lines can help right away.",
+   ""
+  ],
+  [
+   "apathy",
+   "procrastination",
+   "often_confused_with",
+   "Procrastination usually involves caring about the task but avoiding it; apathy means not caring.",
+   ""
+  ],
+  [
+   "apathy",
+   "anhedonia",
+   "different_from",
+   "Apathy is a lack of interest or drive; anhedonia is a clinical term for reduced ability to feel pleasure.",
+   ""
+  ],
+  [
+   "apathy",
+   "burnout",
+   "often_associated_with",
+   "Losing interest and engagement is common in burnout.",
+   ""
+  ],
+  [
+   "discouragement",
+   "procrastination",
+   "can_contribute_to",
+   "Repeated setbacks can make starting the next task feel pointless.",
+   ""
+  ],
+  [
+   "helplessness",
+   "agency",
+   "opposite_of",
+   "Agency is the sense that your actions make a difference — the opposite of helplessness.",
+   ""
+  ],
+  [
+   "anhedonia",
+   "depression",
+   "related_to",
+   "Anhedonia is one of the features professionals look for when assessing depression.",
+   ""
+  ],
+  [
+   "self-esteem",
+   "self-compassion",
+   "different_from",
+   "Self-esteem is how you rate yourself; self-compassion is how you treat yourself, especially when you struggle.",
+   ""
+  ],
+  [
+   "insecurity",
+   "self-esteem",
+   "related_to",
+   "Insecurity in a specific area often reflects lower self-esteem there.",
+   ""
+  ],
+  [
+   "inner-critic",
+   "self-compassion",
+   "opposite_of",
+   "Self-compassion offers a kinder voice than the inner critic.",
+   ""
+  ],
+  [
+   "inner-critic",
+   "shame",
+   "can_contribute_to",
+   "A harsh inner critic can feed feelings of shame.",
+   ""
+  ],
+  [
+   "impostor-feelings",
+   "perfectionism",
+   "often_associated_with",
+   "People with impostor feelings often hold perfectionistic standards.",
+   ""
+  ],
+  [
+   "perfectionism",
+   "procrastination",
+   "can_contribute_to",
+   "Fear of not doing something perfectly can make it hard to start.",
+   ""
+  ],
+  [
+   "perfectionism",
+   "burnout",
+   "can_contribute_to",
+   "Never-ending high standards can add to prolonged stress and burnout.",
+   ""
+  ],
+  [
+   "rejection",
+   "loneliness",
+   "can_contribute_to",
+   "Experiences of rejection can deepen loneliness.",
+   ""
+  ],
+  [
+   "belonging",
+   "loneliness",
+   "opposite_of",
+   "Belonging is the felt sense of connection that loneliness lacks.",
+   ""
+  ],
+  [
+   "social-withdrawal",
+   "loneliness",
+   "different_from",
+   "Withdrawal is something you do (pulling back); loneliness is something you feel.",
+   ""
+  ],
+  [
+   "social-withdrawal",
+   "social-isolation",
+   "can_contribute_to",
+   "Pulling away from people over time can lead to social isolation.",
+   ""
+  ],
+  [
+   "trauma",
+   "ptsd",
+   "different_from",
+   "Trauma refers to a distressing event and its impact; PTSD is a specific clinical condition only some people develop.",
+   ""
+  ],
+  [
+   "trauma",
+   "dissociation",
+   "often_associated_with",
+   "Dissociation can be one of the ways the mind responds to traumatic experiences.",
+   ""
+  ],
+  [
+   "resilience",
+   "burnout",
+   "opposite_of",
+   "Resilience describes adapting and recovering; burnout describes depletion when demands outstrip recovery.",
+   ""
+  ],
+  [
+   "stigma",
+   "peer-support",
+   "related_to",
+   "Peer support can lower the barrier that stigma creates around asking for help.",
+   ""
+  ],
+  [
+   "dissociation",
+   "grounding",
+   "related_to",
+   "Grounding techniques are commonly used to reconnect with the present during dissociation.",
+   ""
+  ],
+  [
+   "mindfulness",
+   "rumination",
+   "opposite_of",
+   "Mindfulness brings attention to the present, while rumination keeps attention in the past.",
+   ""
+  ],
+  [
+   "mindfulness",
+   "grounding",
+   "related_to",
+   "Grounding is a quick, concrete form of present-moment attention.",
+   ""
+  ],
+  [
+   "emotional-regulation",
+   "distress-tolerance",
+   "related_to",
+   "Distress tolerance is about surviving a crisis moment; regulation is the broader skill of influencing emotions.",
+   ""
+  ],
+  [
+   "distress-tolerance",
+   "crisis-intervention",
+   "different_from",
+   "Distress tolerance is a personal skill; crisis intervention is help from another person or service.",
+   ""
+  ],
+  [
+   "peer-support",
+   "counseling",
+   "different_from",
+   "Peer supporters listen and connect you to help; counselors are trained professionals.",
+   ""
+  ],
+  [
+   "counseling",
+   "referral",
+   "related_to",
+   "Counselors may refer to doctors, psychologists or psychiatrists when needed.",
+   ""
+  ],
+  [
+   "psychological-first-aid",
+   "crisis-intervention",
+   "different_from",
+   "PFA is basic humane support anyone can give; crisis intervention is urgent help from trained services.",
+   ""
+  ],
+  [
+   "psychological-first-aid",
+   "peer-support",
+   "related_to",
+   "Peer supporters often use psychological first aid principles: look, listen, link.",
+   ""
+  ],
+  [
+   "sadness",
+   "emptiness",
+   "different_from",
+   "Sadness is an active feeling of sorrow; emptiness feels like an absence of feeling.",
+   ""
+  ]
+ ],
+ "_note": "Editorial content written by the project team. All entries are 'review' status until a qualified reviewer approves them in the admin."
+}

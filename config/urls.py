@@ -1,23 +1,15 @@
-"""
-Main URL Configuration for Words For It.
-"""
-
+"""URL configuration: Django admin, the shared REST API, and the React app for everything else."""
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import include, path, re_path
+
 from . import views
+
+admin.site.site_header = 'agkAInakem editorial admin'
+admin.site.site_title = 'agkAInakem admin'
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-
-    # Pages
-    path('', views.home_view, name='home'),
-    path('about/', views.about_view, name='about'),
-
-    # Modular apps
-    path('dictionary/', include('apps.dictionary.urls', namespace='dictionary')),
-    path('explore/', include('apps.discovery.urls', namespace='discovery')),
-    path('reach-out/', include('apps.support.urls', namespace='support')),
-
-    # Shared REST API
     path('api/', include('config.api_urls')),
+    path('sw.js', views.service_worker),
+    re_path(r'^(?!api/|admin/|static/).*$', views.spa, name='spa'),
 ]

@@ -1,0 +1,1 @@
+import{j as o}from"./three-DutUbj1w.js";import{u as a}from"./index-D5bBLocp.js";function c({type:t,className:s=""}){const{t:e}=a(),n=t==="clinical"?"text-alert":t==="psychological"?"text-sky-ink":"text-sage-ink";return o.jsx("span",{className:`word text-[0.95em] italic ${n} ${s}`,children:e(`type_${t}`)})}export{c as T};

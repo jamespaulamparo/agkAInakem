@@ -24,6 +24,15 @@ class Category(models.Model):
         super().save(*args, **kwargs)
 
 
+PUBLIC_REVIEW_STATUSES = ('review', 'approved')
+
+
+class PublicTermManager(models.Manager):
+    """Terms visible on the website and extension (drafts stay in the admin)."""
+    def get_queryset(self):
+        return super().get_queryset().filter(review_status__in=PUBLIC_REVIEW_STATUSES)
+
+
 class Term(models.Model):
     """Core mental health dictionary entry."""
     TERM_TYPES = [
@@ -51,11 +60,22 @@ class Term(models.Model):
     in_simpler_terms = models.TextField(blank=True, help_text="Everyday relatable translation (English)")
     in_simpler_terms_fil = models.TextField(blank=True, help_text="Mas simpleng paliwanag (Filipino)")
 
+    aliases = models.JSONField(
+        default=list, blank=True,
+        help_text="Alternative names and inflections used for lookup, e.g. [\"overwhelmed\", \"overwhelming\"]",
+    )
+
     term_type = models.CharField(max_length=30, choices=TERM_TYPES, default='psychological')
-    review_status = models.CharField(max_length=20, choices=REVIEW_STATUSES, default='approved')
+    # Content written by the project team stays 'review' until a qualified reviewer approves it.
+    review_status = models.CharField(max_length=20, choices=REVIEW_STATUSES, default='draft')
+    reviewed_by = models.CharField(max_length=150, blank=True)
+    reviewed_on = models.DateField(null=True, blank=True)
     
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+    objects = models.Manager()
+    public = PublicTermManager()
 
     class Meta:
         ordering = ['term']
@@ -72,13 +92,13 @@ class Term(models.Model):
 class TermRelationship(models.Model):
     """Explicit, curated psychological relationships between terms."""
     RELATIONSHIP_TYPES = [
-        ('similar_to', 'Similar To (Pagkakapareho)'),
-        ('related_to', 'Related Concept (Kaugnay na Konsepto)'),
-        ('often_associated_with', 'Often Associated With (Kadalasan Kasama)'),
-        ('different_from', 'Different From / Distinct (Pagkakaiba)'),
-        ('can_contribute_to', 'Can Contribute To (Maaaring Magdulot)'),
-        ('opposite_of', 'Opposite / Contrasting (Kabaligtaran)'),
-        ('often_confused_with', 'Often Confused With (Madalas Mapagkamalan)'),
+        ('similar_to', 'Similar to'),
+        ('related_to', 'Related to'),
+        ('often_associated_with', 'Often associated with'),
+        ('different_from', 'Different from'),
+        ('can_contribute_to', 'Can contribute to'),
+        ('opposite_of', 'Contrasting concept'),
+        ('often_confused_with', 'Often confused with'),
     ]
 
     source_term = models.ForeignKey(Term, on_delete=models.CASCADE, related_name='outgoing_relationships')
@@ -87,7 +107,7 @@ class TermRelationship(models.Model):
     
     explanation = models.TextField(help_text="Explains precisely why and how they differ or connect (English)")
     explanation_fil = models.TextField(blank=True, help_text="Paliwanag kung bakit magkaiba o magkaugnay (Filipino)")
-    editorial_review_status = models.CharField(max_length=20, default='approved')
+    editorial_review_status = models.CharField(max_length=20, choices=Term.REVIEW_STATUSES, default='draft')
 
     class Meta:
         unique_together = ('source_term', 'target_term', 'relationship_type')

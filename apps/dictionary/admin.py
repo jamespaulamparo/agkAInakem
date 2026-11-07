@@ -1,10 +1,17 @@
 from django.contrib import admin
+from apps.discovery.models import PhraseCue
 from .models import Category, Term, TermRelationship, TermExample, ReflectionQuestion, SourceReference
 
 class TermRelationshipInline(admin.TabularInline):
     model = TermRelationship
     fk_name = 'source_term'
     extra = 1
+
+class PhraseCueInline(admin.TabularInline):
+    model = PhraseCue
+    extra = 1
+    fields = ('phrase', 'language', 'weight', 'why', 'is_active')
+
 
 class TermExampleInline(admin.TabularInline):
     model = TermExample
@@ -27,10 +34,11 @@ class CategoryAdmin(admin.ModelAdmin):
 @admin.register(Term)
 class TermAdmin(admin.ModelAdmin):
     list_display = ('term', 'term_fil', 'category', 'term_type', 'review_status', 'updated_at')
+    list_editable = ('review_status',)
     list_filter = ('category', 'term_type', 'review_status')
     search_fields = ('term', 'term_fil', 'short_definition', 'detailed_definition')
     prepopulated_fields = {'slug': ('term',)}
-    inlines = [TermRelationshipInline, TermExampleInline, ReflectionQuestionInline, SourceReferenceInline]
+    inlines = [PhraseCueInline, TermRelationshipInline, TermExampleInline, ReflectionQuestionInline, SourceReferenceInline]
 
 @admin.register(TermRelationship)
 class TermRelationshipAdmin(admin.ModelAdmin):

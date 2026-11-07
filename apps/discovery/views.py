@@ -1,8 +1,1 @@
-from django.shortcuts import render
-
-def explore_view(request):
-    """Sentence-to-word discovery interface."""
-    context = {
-        'page_title': 'Explore Emotional Vocabulary | agkAInakem',
-    }
-    return render(request, 'discovery/explore.html', context)
+# Pages are rendered by the React app in /frontend. HTTP endpoints for this app live in api.py.

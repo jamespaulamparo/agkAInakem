@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    @apply bg-paper text-ink font-sans antialiased;
+    font-feature-settings: 'ss01';
+  }
+  ::selection { background: #CFE8E5; color: #263A38; }
+  :focus-visible { outline: 2px solid #2B6F69; outline-offset: 3px; border-radius: 6px; }
+  h1, h2, h3 { letter-spacing: -0.02em; }
+}
+
+@layer components {
+  /* Vocabulary words are always set in the serif face: one rule, used everywhere. */
+  .word { @apply font-word tracking-tight; }
+  .link { @apply text-teal-ink underline decoration-teal/40 underline-offset-4 hover:decoration-teal transition-colors; }
+  .eyebrow { @apply text-[0.72rem] font-semibold uppercase tracking-[0.14em] text-ink-faint; }
+  .btn { @apply inline-flex items-center justify-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold transition-all active:scale-[0.98] disabled:opacity-50; }
+  .btn-primary { @apply btn bg-teal-ink text-white hover:bg-[#245d58]; }
+  .btn-ghost { @apply btn text-ink hover:bg-ink/5; }
+  .field { @apply w-full rounded-md border border-line bg-surface px-4 py-3 text-base text-ink placeholder:text-ink-faint focus:border-teal focus:outline-none focus:ring-4 focus:ring-teal/15; }
+  .rule { @apply border-t border-line; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+}
+
+/* Simple view: bigger text, no motion — for children, older adults, low-end phones. */
+html.simple { font-size: 118%; }
+html.simple *, html.simple *::before, html.simple *::after { animation: none !important; transition: none !important; }
+
+/* Illustration motion: tiny, slow, and off for reduced motion / simple view. */
+.illus { width: 100%; height: auto; }
+@keyframes illus-float { 0%, 100% { transform: translateY(0) } 50% { transform: translateY(-4px) } }
+.illus .illus-float { animation: illus-float 4s ease-in-out infinite; }
+.illus .illus-float-slow { animation: illus-float 6s ease-in-out infinite; }
+.illus .illus-steam { animation: illus-float 3s ease-in-out infinite; }

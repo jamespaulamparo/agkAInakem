@@ -1,8 +1,2 @@
-from django.urls import path
-from . import views
-
-app_name = 'discovery'
-
-urlpatterns = [
-    path('', views.explore_view, name='explore'),
-]
+# Routes are defined in config/api_urls.py (REST API) and the React router (pages).
+urlpatterns = []

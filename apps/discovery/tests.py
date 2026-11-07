@@ -1,83 +1,148 @@
-from django.test import TestCase, Client
-from django.urls import reverse
-from apps.dictionary.models import Category, Term, TermRelationship
-from apps.support.models import DailyCheckIn
+from django.core.management import call_command
+from django.test import TestCase
 
-class ModernMilestoneTwoTests(TestCase):
-    def setUp(self):
-        self.client = Client()
-        self.category = Category.objects.create(
-            name='Emotional Exhaustion',
-            name_fil='Pagkaubos ng Lakas',
-            slug='emotional-exhaustion'
-        )
-        self.term_burnout = Term.objects.create(
-            term='Burnout',
-            slug='burnout',
-            term_fil='Sobra-sobrang Pagkaubos',
-            category=self.category,
-            short_definition='State of exhaustion.',
-            detailed_definition='Detailed burnout description.',
-            in_simpler_terms='Completely depleted.',
-            term_type='psychological',
-            review_status='approved'
-        )
-        self.term_tiredness = Term.objects.create(
-            term='Temporary Tiredness',
-            slug='temporary-tiredness',
-            term_fil='Pansamantalang Pagod',
-            category=self.category,
-            short_definition='Short-term tiredness.',
-            term_type='everyday',
-            review_status='approved'
-        )
-        self.rel = TermRelationship.objects.create(
-            source_term=self.term_burnout,
-            target_term=self.term_tiredness,
-            relationship_type='different_from',
-            explanation='Burnout persists even after sleeping, unlike tiredness.',
-            editorial_review_status='approved'
-        )
+from apps.dictionary.models import Term
+from apps.support.models import DailyCheckIn, SupportRequest, ResponderProfile
 
-    def test_homepage_has_three_big_hero_portal_buttons(self):
-        response = self.client.get(reverse('home'))
-        self.assertEqual(response.status_code, 200)
-        self.assertContains(response, "I Need Help")
-        self.assertContains(response, "Someone Else Needs Help")
-        self.assertContains(response, "Daily Tracker")
-        self.assertContains(response, "hero-portal-btn")
-        self.assertContains(response, "webgl-hero-container")
 
-    def test_bilingual_toggle_present(self):
-        response = self.client.get(reverse('home'))
-        self.assertEqual(response.status_code, 200)
-        self.assertContains(response, "lang-switcher")
-        self.assertContains(response, "data-lang=\"en\"")
-        self.assertContains(response, "data-lang=\"fil\"")
+class SeededTestCase(TestCase):
+    @classmethod
+    def setUpTestData(cls):
+        call_command('seed_vocabulary', verbosity=0)
+        call_command('seed_support', verbosity=0)
 
-    def test_dictionary_index_renders_tagalog_com_style(self):
-        response = self.client.get(reverse('dictionary:index'))
-        self.assertEqual(response.status_code, 200)
-        self.assertContains(response, "dict-entry-row")
-        self.assertContains(response, "dict-entry-word")
-        self.assertContains(response, "Burnout")
 
-    def test_term_detail_renders_distinctions_without_cards(self):
-        response = self.client.get(reverse('dictionary:detail', kwargs={'slug': 'burnout'}))
-        self.assertEqual(response.status_code, 200)
-        self.assertContains(response, "dict-detail-page")
-        self.assertContains(response, "Burnout")
-        self.assertContains(response, "Temporary Tiredness")
+class DiscoveryTests(SeededTestCase):
+    def explore(self, text, **extra):
+        return self.client.post('/api/discovery/explore/', {'text': text, **extra}, content_type='application/json')
 
-    def test_daily_tracker_workflow(self):
-        get_resp = self.client.get(reverse('support:daily_tracker'))
-        self.assertEqual(get_resp.status_code, 200)
-        self.assertContains(get_resp, "Daily Emotional Tracker")
+    def test_flagship_example_surfaces_differentiated_terms(self):
+        r = self.explore("I feel tired and everything is becoming too much.")
+        self.assertEqual(r.status_code, 200)
+        slugs = [x['slug'] for x in r.json()['results']]
+        self.assertIn('overwhelm', slugs)
+        self.assertIn('emotional-exhaustion', slugs)
+        for item in r.json()['results']:
+            self.assertTrue(item['reasons'], 'every suggestion must explain why')
+            self.assertIn(item['fit'], ('closer', 'possible'))
 
-        post_resp = self.client.post(reverse('support:daily_tracker'), {
-            'mood_status': 'yellow',
-            'primary_feeling': 'Exhausted',
-            'note': 'Studying late'
-        })
-        self.assertEqual(post_resp.status_code, 200)
-        self.assertEqual(DailyCheckIn.objects.count(), 1)
+    def test_no_diagnosis_or_score_fields(self):
+        data = self.explore("I feel sad and lonely").json()
+        flat = str(data).lower()
+        for banned in ('risk', 'diagnos', 'severity', '"score"'):
+            self.assertNotIn(banned, flat)
+        self.assertFalse(data['stored'])
+
+    def test_text_is_not_persisted(self):
+        before = (Term.objects.count(), DailyCheckIn.objects.count(), SupportRequest.objects.count())
+        self.explore("a very private sentence about my week")
+        self.assertEqual(before, (Term.objects.count(), DailyCheckIn.objects.count(), SupportRequest.objects.count()))
+
+    def test_filipino_phrase(self):
+        slugs = [x['slug'] for x in self.explore("sobra na, hindi ko na kaya").json()['results']]
+        self.assertIn('overwhelm', slugs)
+
+    def test_support_info_flag(self):
+        self.assertTrue(self.explore("I want to end my life").json()['show_support'])
+        self.assertFalse(self.explore("I am tired of exams").json()['show_support'])
+
+    def test_empty_text_rejected(self):
+        self.assertEqual(self.explore("").status_code, 400)
+
+
+class DictionaryApiTests(SeededTestCase):
+    def test_search_ranks_exact_alias_first(self):
+        data = self.client.get('/api/dictionary/search/?q=overwhelmed').json()
+        self.assertEqual(data['results'][0]['slug'], 'overwhelm')
+
+    def test_letter_and_category_filters(self):
+        data = self.client.get('/api/dictionary/search/?letter=b').json()
+        self.assertTrue(all(r['term'].lower().startswith('b') for r in data['results']))
+        data = self.client.get('/api/dictionary/search/?category=stress-and-anxiety').json()
+        self.assertTrue(all(r['category_slug'] == 'stress-and-anxiety' for r in data['results']))
+
+    def test_term_detail_has_relationships_both_directions(self):
+        data = self.client.get('/api/dictionary/terms/burnout/').json()
+        directions = {r['direction'] for r in data['relationships']}
+        self.assertEqual(directions, {'in', 'out'})
+        self.assertTrue(data['sources'])
+
+    def test_drafts_are_hidden(self):
+        Term.objects.filter(slug='burnout').update(review_status='draft')
+        self.assertEqual(self.client.get('/api/dictionary/terms/burnout/').status_code, 404)
+        slugs = [r['slug'] for r in self.client.get('/api/dictionary/search/').json()['results']]
+        self.assertNotIn('burnout', slugs)
+
+    def test_related_graph(self):
+        data = self.client.get('/api/dictionary/terms/burnout/related/').json()
+        ids = {n['id'] for n in data['nodes']}
+        self.assertIn('burnout', ids)
+        for e in data['edges']:
+            self.assertIn(e['source'], ids)
+            self.assertIn(e['target'], ids)
+
+    def test_extension_lookup(self):
+        data = self.client.get('/api/dictionary/lookup/?q=Overwhelmed').json()
+        self.assertEqual(data['match']['slug'], 'overwhelm')
+        data = self.client.get('/api/dictionary/lookup/?q=I cannot keep up with everything').json()
+        self.assertIsNone(data['match'])
+        self.assertTrue(data['suggestions'])
+
+
+class ExtensionIndexTests(SeededTestCase):
+    def test_index_lists_names_for_local_matching(self):
+        data = self.client.get('/api/dictionary/index/').json()
+        by_slug = {t['slug']: t for t in data['terms']}
+        self.assertIn('overwhelmed', by_slug['overwhelm']['names'])
+        self.assertIn('burnout', by_slug['burnout']['names'])
+        self.assertIn('kalungkutan', by_slug['sadness']['names'])
+
+    def test_lookup_by_slug(self):
+        data = self.client.get('/api/dictionary/lookup/?slug=burnout').json()
+        self.assertEqual(data['match']['slug'], 'burnout')
+        self.assertTrue(data['match']['related'])
+
+
+class SupportApiTests(SeededTestCase):
+    def test_resources_include_national_lines(self):
+        names = [r['short_name'] for r in self.client.get('/api/support/resources/').json()]
+        self.assertIn('911', names)
+        self.assertIn('NCMH', names)
+
+    def test_demo_responders_are_labelled(self):
+        data = self.client.get('/api/support/responders/').json()
+        self.assertTrue(data)
+        self.assertTrue(all(r['is_demo'] for r in data))
+
+    def test_support_request_flow(self):
+        rid = ResponderProfile.objects.first().id
+        r = self.client.post('/api/support/requests/', {'responder': rid, 'preferred_contact': 'message'},
+                             content_type='application/json')
+        self.assertEqual(r.status_code, 400)  # needs a contact detail
+        r = self.client.post('/api/support/requests/', {'responder': rid, 'preferred_contact': 'in_person',
+                                                         'message': 'Can we talk?'}, content_type='application/json')
+        self.assertEqual(r.status_code, 201)
+        self.assertIn('demonstration', r.json()['note'])
+
+    def test_check_in_stores_only_colour_and_word(self):
+        r = self.client.post('/api/check-ins/', {'mood_status': 'yellow', 'primary_feeling': 'tired', 'note': 'secret'},
+                             content_type='application/json')
+        self.assertEqual(r.status_code, 201)
+        c = DailyCheckIn.objects.get()
+        self.assertEqual(c.mood_status, 'yellow')
+        self.assertFalse(hasattr(c, 'note'))
+        self.assertEqual(self.client.post('/api/check-ins/', {'mood_status': 'purple'},
+                                          content_type='application/json').status_code, 400)
+
+
+class SpaTests(TestCase):
+    def test_any_page_route_serves_app_shell(self):
+        for path in ('/', '/dictionary/burnout', '/reach-out'):
+            self.assertIn(self.client.get(path).status_code, (200, 503))
+
+
+class OfflineTests(TestCase):
+    def test_service_worker_served_from_root(self):
+        r = self.client.get('/sw.js')
+        self.assertEqual(r.status_code, 200)
+        self.assertEqual(r['Service-Worker-Allowed'], '/')
